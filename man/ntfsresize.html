@@ -1,16 +1,17 @@
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>ntfsresize.8</title>
-<link rel="stylesheet" href="info.css" type="text/css">
-<link rel="icon" href="ntfsicon.png" type="image/png">
+<link rel="stylesheet" href="info.css" type="text/css" />
+<link rel="icon" href="ntfsicon.png" type="image/png" />
 </head><body class="ntfsdoc"><a name="top"></a>
 <!-- .\" -*- nroff -*- -->
 <!-- .\" Copyright 2002-2005 by Szabolcs Szakacsits  All Rights Reserved. -->
 <!-- .\" -->
 <!-- .TH NTFSRESIZE 8 "Sep 2005" "ntfsprogs version 1.12.2-WIP" -->
-<hr>
+<hr />
 <h1><a href="..">Linux NTFS</a> - NTFSRESIZE (8)</h1>
-<hr>
+<hr />
 <!-- .SH NAME -->
 <a name="0"></a>
 
@@ -27,11 +28,11 @@ ntfsresize - resize an NTFS filesystem without data loss
 <blockquote>
 <!-- .B ntfsresize -->
 <b>ntfsresize</b> [<i><a href="ntfsresize.html#6">OPTIONS</a></i>]
-<!-- .B --info  -->
+<!-- .B \-\-info  -->
 <b>--info</b> <!-- .I DEVICE -->
 <i>DEVICE</i> <!-- .br -->
 <!-- .B ntfsresize -->
-<!-- Need break --><br>
+<!-- Need break --><br />
 <b>ntfsresize</b> [<i><a href="ntfsresize.html#6">OPTIONS</a></i>]
 [<b>--size </b><i>SIZE</i>[<b>k</b>|<b>M</b>|<b>G</b>]]
 <!-- .I DEVICE -->
@@ -69,9 +70,9 @@ The
 by using k=10^3, M=10^6 and G=10^9.
 </p><p>
 If both
-<!-- .B --info -->
+<!-- .B \-\-info -->
 <b>--info</b> and
-<!-- .B --size -->
+<!-- .B \-\-size -->
 <b>--size</b> are omitted then the
 NTFS filesystem will be enlarged to the underlying
 <!-- .I DEVICE  -->
@@ -171,7 +172,7 @@ single command, e.g.
  -->
 <tbody><tr></tr><tr></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -i, --info -->
+<!-- .B -i, \-\-info -->
 <b>-i, --info</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 By using this option ntfsresize will determine the theoretically smallest
 shrunken filesystem size supported. Most of the time the result is the space
@@ -180,7 +181,7 @@ smaller size than what you got by this option and depending on several
 factors it might be unable to shrink very close to this theoretical
 size. Although the integrity of your data should be never in risk,
 it’s still strongly recommended to make a test run by using the
-<!-- .B --no-action -->
+<!-- .B \-\-no-action -->
 <b>--no-action</b> option before real resizing.
 <p>
 Practically the smallest shrunken size generally is
@@ -192,7 +193,7 @@ opened read-only.
 <!-- .TP -->
 </p></td></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -s, --size \fISIZE\fR[\fBk\fR|\fBM\fR|\fBG\fR] -->
+<!-- .B -s, \-\-size \fISIZE\fR[\fBk\fR|\fBM\fR|\fBG\fR] -->
 <b>-s, --size </b><i>SIZE</i>[<b>k</b>|<b>M</b>|<b>G</b>] </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 Resize filesystem to <i>size</i>[<b>k</b>|<b>M</b>|<b>G</b>] bytes.
 The optional modifiers <b>k</b>, <b>M</b>, <b>G</b> mean the
@@ -200,12 +201,12 @@ The optional modifiers <b>k</b>, <b>M</b>, <b>G</b> mean the
 <i>SIZE</i> parameter is given in kilo-, mega- or gigabytes respectively.
 Conforming to standards, k=10^3, M=10^6 and G=10^9. Use this option
 with
-<!-- .B --no-action -->
+<!-- .B \-\-no-action -->
 <b>--no-action</b> first.
 <!-- .TP -->
 </td></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -f, --force -->
+<!-- .B -f, \-\-force -->
 <b>-f, --force</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 Forces ntfsresize to proceed with the resize operation even if the filesystem
 is marked for consistency check.
@@ -220,7 +221,7 @@ resizing steps then you must use this option.
 <!-- .TP -->
 </p></td></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -n, --no-action -->
+<!-- .B -n, \-\-no-action -->
 <b>-n, --no-action</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 Use this option to make a test run before doing the real resize operation.
 Volume will be opened read-only and
@@ -230,7 +231,7 @@ Continue with the real resizing only if the test run passed.
 <!-- .TP -->
 </td></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -b, --bad-sectors -->
+<!-- .B -b, \-\-bad-sectors -->
 <b>-b, --bad-sectors</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 Support disks having hardware errors, bad sectors with those
 <!-- .B ntfsresize -->
@@ -248,19 +249,19 @@ This option doesn’t have any effect if the disk is flawless.
 <!-- .TP -->
 </p></td></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -P, --no-progress-bar -->
+<!-- .B -P, \-\-no-progress-bar -->
 <b>-P, --no-progress-bar</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 Don’t show progress bars.
 <!-- .TP -->
 </td></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -v, --verbose -->
+<!-- .B -v, \-\-verbose -->
 <b>-v, --verbose</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 More output.
 <!-- .TP -->
 </td></tr>
 <tr valign="top"><td colspan="2">
-<!-- .B -h, --help -->
+<!-- .B -h, \-\-help -->
 <b>-h, --help</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
 Display help and exit.
 <!-- .SH EXIT CODES -->

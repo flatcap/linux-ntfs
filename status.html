@@ -1,10 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en"><head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Linux NTFS Project">
-    <meta name="keywords" content="Linux NTFS">
-    <link rel="stylesheet" href="style/home.css" type="text/css">
-    <link rel="icon" href="style/ntfsicon.png" type="image/png">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Linux NTFS Project" />
+    <meta name="keywords" content="Linux NTFS" />
+    <link rel="stylesheet" href="style/home.css" type="text/css" />
+    <link rel="icon" href="style/ntfsicon.png" type="image/png" />
     <title>Linux NTFS Project</title>
   </head>
   <body>
@@ -74,7 +76,6 @@
           <h3>Status</h3>
 
           <p>Latest stable new NTFS kernel driver: <b>2.1.24</b></p>
-          <ul>
               <p>The new, rewritten NTFS driver is part of the current stable Linux kernel
               series and the latest release is included with kernels <b>2.6.14</b> and later.
               This rewritten NTFS driver backport to the previous stable Linux kernel series (2.4.x) is available from our <a href="downloads.html">download&nbsp;page</a>.
@@ -82,20 +83,17 @@
 relies on too many 2.6 kernel specific features and backporting it to
 2.4 would be a huge amount of work and involve rewriting the majority of
  the driver.</p>
-           </ul>
 
           <p>Latest old NTFS kernel driver: <b>1.1.22</b></p>
-          <ul>
               <p>The old NTFS driver is part of the now out-of-date Linux kernel series
-	      (2.4.x) and the latest release is included with kernels <b>2.4.18</b> and later. This driver is not endorsed and supported by this project.</p>
-          </ul>
+              (2.4.x) and the latest release is included with kernels <b>2.4.18</b> and later. This driver is not endorsed and supported by this project.</p>
 
-		  <p>Before reporting potential bugs in the new NTFS driver, it would be
+                  <p>Before reporting potential bugs in the new NTFS driver, it would be
           great if you could try a kernel containing the latest new NTFS driver
           first. Thanks.</p>
 
           <a name="ntfsdriver"></a>
-	  <h3>NTFS driver in Linux kernel 2.6</h3>
+          <h3>NTFS driver in Linux kernel 2.6</h3>
           <table summary="NTFS New Driver" border="0">
             <tbody><tr>
               <th class="indent">Status</th>
@@ -105,8 +103,8 @@ relies on too many 2.6 kernel specific features and backporting it to
               <td class="indent"></td>
               <td class="indent">
                 This NTFS driver was written by Anton Altaparmakov from scratch,
-		supporting all versions of NTFS. It is included in the mainline
-		kernel since 2.5.11 and also has a
+                supporting all versions of NTFS. It is included in the mainline
+                kernel since 2.5.11 and also has a
                 <a href="http://sourceforge.net/projects/linux-ntfs/files/">backported version</a>
                 for the latest 2.4 stable kernel. What are the advantages of the new driver
                 compared to the old one?
@@ -131,15 +129,15 @@ relies on too many 2.6 kernel specific features and backporting it to
                     use this feature to run Linux from a Windows NTFS partition with full read-write
                     support.
                 </li><li>Much better performance.
-		</li><li>Support for exporting mounted NTFS volumes via NFS.
-		</li><li>Support for async io (aio).
-		</li><li>Support for fsync(2), fdatasync(2), and msync(2).
-		</li><li>Support for readv(2) and writev(2).
-		</li><li>Support for access time updates (including mtime and ctime).
-		</li><li>Support for truncate(2) and open(2) with O_TRUNC.  But only
-		    very limited support for highly fragmented files, i.e. ones
-		    which have their data attribute split across multiple
-		    extents.
+                </li><li>Support for exporting mounted NTFS volumes via NFS.
+                </li><li>Support for async io (aio).
+                </li><li>Support for fsync(2), fdatasync(2), and msync(2).
+                </li><li>Support for readv(2) and writev(2).
+                </li><li>Support for access time updates (including mtime and ctime).
+                </li><li>Support for truncate(2) and open(2) with O_TRUNC.  But only
+                    very limited support for highly fragmented files, i.e. ones
+                    which have their data attribute split across multiple
+                    extents.
                 </li></ul></td>
           </tr></tbody></table>
 
@@ -151,7 +149,7 @@ relies on too many 2.6 kernel specific features and backporting it to
               <th class="indent">Status</th>
               <th class="indent">Description</th>
             </tr>
-	    <tr>
+            <tr>
               <td class="indent">libntfs</td>
               <td class="indent">Stable</td>
               <td class="indent">Move all the common code into a shared library</td>
@@ -169,7 +167,7 @@ relies on too many 2.6 kernel specific features and backporting it to
             <tr>
               <td class="indent"><a href="man/ntfsclone.html">ntfsclone</a></td>
               <td class="indent">Stable</td>
-	      <td class="indent">Efficiently clone, image, restore or rescue a volume at the sector level</td>
+              <td class="indent">Efficiently clone, image, restore or rescue a volume at the sector level</td>
             </tr>
             <tr>
               <td class="indent"><a href="man/ntfscluster.html">ntfscluster</a></td>
@@ -209,7 +207,7 @@ relies on too many 2.6 kernel specific features and backporting it to
             <tr>
               <td class="indent">ntfsresize</td>
               <td class="indent">Stable</td>
-	      <td class="indent">Non-destructively resize an NTFS volume without the need of prior defragmentation</td>
+              <td class="indent">Non-destructively resize an NTFS volume without the need of prior defragmentation</td>
             </tr>
             <tr>
               <td class="indent"><a href="man/ntfsundelete.html">ntfsundelete</a></td>
@@ -219,12 +217,12 @@ relies on too many 2.6 kernel specific features and backporting it to
             <tr>
               <td class="indent">ntfsrm</td>
               <td class="indent">Alpha</td>
-	      <td class="indent">Delete files from an NTFS volume</td>
+              <td class="indent">Delete files from an NTFS volume</td>
             </tr>
             <tr>
               <td class="indent">ntfstruncate</td>
               <td class="indent">Alpha</td>
-	      <td class="indent">Truncate an inode attribute to a specified length</td>
+              <td class="indent">Truncate an inode attribute to a specified length</td>
             </tr>
             <tr>
               <td class="indent">ntfswipe</td>
@@ -340,32 +338,7 @@ relies on too many 2.6 kernel specific features and backporting it to
     </tbody></table>
     <table summary="" border="0" cellspacing="0" width="100%">
       <tbody><tr>
-	<td>&nbsp;</td>
-	<td>
-	  <a href="http://sourceforge.net/donate/index.php?group_id=13956">
-	  <img src="style/project-support.jpg" alt="Donate to this project" border="0" width="88" height="32"></a>
-	</td>
-	<td>&nbsp;</td>
-	<td width="99%">
-	  <a href="http://sourceforge.net/donate/index.php?group_id=13956">
-	  Donate&nbsp;to&nbsp;Linux&nbsp;NTFS<br>file&nbsp;system&nbsp;support</a>
-	</td>
         <td class="copyright">Copyright&nbsp;&copy;&nbsp;2002-2004&nbsp;flatcap&nbsp;(Richard&nbsp;Russon)&nbsp;&nbsp;</td>
-        <td valign="bottom" width="88">
-          <a href="http://sourceforge.net/">
-            <img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31">
-          </a>
-        </td>
-        <td valign="bottom" width="88">
-          <a class="contact" href="http://validator.w3.org/check?uri=referer">
-          <img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31">
-          </a>
-        </td>
-        <td valign="bottom" width="88">
-          <a class="contact" href="http://jigsaw.w3.org/css-validator/validator?uri=referer">
-          <img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31">
-          </a>
-        </td>
       </tr>
     </tbody></table>
 

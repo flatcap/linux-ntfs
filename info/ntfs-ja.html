@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- ntfs-ja.html -->
-<html lang="ja"><head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="description" content="Linux NTFS Project">
-  <meta name="keywords" content="Linux NTFS FAQ HOWTO">
-  <link rel="stylesheet" type="text/css" href="style/info.css">
-  <link rel="icon" href="../style/ntfsicon.png" type="image/png">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="description" content="Linux NTFS Project" />
+  <meta name="keywords" content="Linux NTFS FAQ HOWTO" />
+  <link rel="stylesheet" type="text/css" href="style/info.css" />
+  <link rel="icon" href="../style/ntfsicon.png" type="image/png" />
   <title>NTFS FAQ (ja)</title>
 </head>
   <body class="ntfsdoc">
@@ -13,32 +14,32 @@
     <h2>NTFS FAQ (Frequently Asked Questions)</h2>
 
     <p>
-    <a href="ntfs.html"><img alt="English" src="style/uk.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-it.html"><img alt="Italian" src="style/italy.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-ja.html"><img alt="Japanese" src="style/japan.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-vi.html"><img alt="Vietnamese" src="style/vietnam.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-de.html"><img alt="German" src="style/germany.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-zh.html"><img alt="Simplified Chinese" src="style/china.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-fr.html"><img alt="French" src="style/france.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-es.html"><img alt="Spanish" src="style/spain.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-pt_BR.html"><img alt="Brazilian" src="style/brazil.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-zh_TW.html"><img alt="Traditional Chinese" src="style/taiwan.png" border="0" width="30" height="20"></a>
-    <a href="ntfs-ru.html"><img alt="Russian" src="style/russia.png" border="0" width="30" height="20"></a>
+    <a href="ntfs.html"><img alt="English" src="style/uk.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-it.html"><img alt="Italian" src="style/italy.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-ja.html"><img alt="Japanese" src="style/japan.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-vi.html"><img alt="Vietnamese" src="style/vietnam.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-de.html"><img alt="German" src="style/germany.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-zh.html"><img alt="Simplified Chinese" src="style/china.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-fr.html"><img alt="French" src="style/france.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-es.html"><img alt="Spanish" src="style/spain.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-pt_BR.html"><img alt="Brazilian" src="style/brazil.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-zh_TW.html"><img alt="Traditional Chinese" src="style/taiwan.png" border="0" width="30" height="20" /></a>
+    <a href="ntfs-ru.html"><img alt="Russian" src="style/russia.png" border="0" width="30" height="20" /></a>
     </p>
 
-<p>このFAQは<a href="../">Linux NTFS Project</a>の一部である。<br>
-最新のバージョンは以下のURIにある。<br>
+<p>このFAQは<a href="../">Linux NTFS Project</a>の一部である。<br />
+最新のバージョンは以下のURIにある。<br />
 <a href="ntfs.html">ntfs.html</a> </p>
 <p>このFAQの中に入っていないNTFSへの疑問があれば、あるいはこのFAQに対するコメントがあれば、 わたしにメールしてください:
-    <b>linux-ntfs-dev@sourceforge.net</b> <br>
-<small>日本語翻訳：園田道夫（日本語訳に関して文責はすべて園田にあります。誤り等見つけられたら、わたしにメールしてください：vp5m-snd@asahi-net.or.jp）</small><br>
+    <b>linux-ntfs-dev@sourceforge.net</b> <br />
+<small>日本語翻訳：園田道夫（日本語訳に関して文責はすべて園田にあります。誤り等見つけられたら、わたしにメールしてください：vp5m-snd@asahi-net.or.jp）</small><br />
 </p>
 <h2>目次</h2>
 <h3>キー</h3>
-<p style="margin-left: 2em; margin-bottom: 0px;"> <img src="style/blue.png" alt="**" width="16" height="16">&nbsp;- 一番多い質問<br>
-<img src="style/green.png" alt="!!" width="16" height="16">&nbsp;-
-他の興味深いネタ<br>
-<img src="style/red.png" alt="NB" width="16" height="16">&nbsp;-
+<p style="margin-left: 2em; margin-bottom: 0px;"> <img src="style/blue.png" alt="**" width="16" height="16" />&nbsp;- 一番多い質問<br />
+<img src="style/green.png" alt="!!" width="16" height="16" />&nbsp;-
+他の興味深いネタ<br />
+<img src="style/red.png" alt="NB" width="16" height="16" />&nbsp;-
 要チェック </p>
 <div style="border: 1px solid black; background-color: rgb(221, 221, 221); color: rgb(0, 0, 0); margin-left: 2em; max-width: 250px;">&nbsp;<b>コマンド</b>
 と 実行結果</div>
@@ -55,11 +56,11 @@
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td><a href="ntfs-ja.html#1.3">1.3 NTFSを使わなければならない（または</a><a href="ntfs-ja.html#1.3">アップグレードしなければならない）のか？<br>
+      <td><a href="ntfs-ja.html#1.3">1.3 NTFSを使わなければならない（または</a><a href="ntfs-ja.html#1.3">アップグレードしなければならない）のか？<br />
       </a></td>
     </tr>
     <tr>
-      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><img src="style/green.png" alt="!!" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#1.4">1.4 NTFSはWindowsのどのバージョンでも一緒なのか？</a></td>
     </tr>
     <tr>
@@ -81,7 +82,7 @@
       <td><a href="ntfs-ja.html#2.2">2.2 FATボリュームをNTFSボリュームにコンバートする方法は？</a></td>
     </tr>
     <tr>
-      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><img src="style/green.png" alt="!!" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#2.3">2.3 NTFSボリュームをFATボリュームにコンバートする方法は？</a></td>
     </tr>
     <tr>
@@ -93,7 +94,7 @@
       <td><a href="ntfs-ja.html#2.5">2.5 NTFSボリュームのデフラグ方法は？</a></td>
     </tr>
     <tr>
-      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><img src="style/blue.png" alt="**" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#2.6">2.6 NTFSボリュームをリサイズ（サイズ再設定）する方法は？</a></td>
     </tr>
   </tbody>
@@ -102,11 +103,11 @@
 <table summary="" border="0" cellspacing="0">
   <tbody>
     <tr>
-      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><img src="style/green.png" alt="!!" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#3.1">3.1 Linuxで読むことができるのはNTFSのどのバージョン？</a></td>
     </tr>
     <tr>
-      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><img src="style/blue.png" alt="**" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#3.2">3.2 ドライバーはNTFSボリュームに対して、書き込みも行えるのか？</a></td>
     </tr>
     <tr>
@@ -118,7 +119,7 @@
       <td><a href="ntfs-ja.html#3.4">3.4 何かおかしくなったときはどうすればいいのか？</a></td>
     </tr>
     <tr>
-      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><img src="style/blue.png" alt="**" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#3.5">3.5 LinuxにNTFSサポートを組み込む方法は？</a></td>
     </tr>
     <tr>
@@ -159,7 +160,7 @@
       <td><a href="ntfs-ja.html#4.4">4.4 どのバージョンのNTFSドライバーが組み込まれているのか？</a></td>
     </tr>
     <tr>
-      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><img src="style/green.png" alt="!!" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#4.5">4.5 NTFSボリュームをマウントする方法は？</a></td>
     </tr>
     <tr>
@@ -175,11 +176,11 @@
       <td><a href="ntfs-ja.html#4.8">4.8 新しいドライバーのマウントオプション</a></td>
     </tr>
     <tr>
-      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><img src="style/blue.png" alt="**" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#4.9">4.9 マウントされたNTFSボリュームのパーミッションの変更方法は？</a></td>
     </tr>
     <tr>
-      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><img src="style/green.png" alt="!!" width="16" height="16" /></td>
       <td><a href="ntfs-ja.html#4.10">4.10 NTFSボリュームを自動的にマウントする方法は？</a></td>
     </tr>
   </tbody>
@@ -201,7 +202,7 @@
     </tr>
   </tbody>
 </table>
-<h3>6. <a class="heading" href="ntfs-ja.html#6.0">Linux ディストリビューション<br>
+<h3>6. <a class="heading" href="ntfs-ja.html#6.0">Linux ディストリビューション<br />
 </a></h3>
 <table summary="" border="0" cellspacing="0">
   <tbody>
@@ -257,7 +258,7 @@
   </tbody>
 </table>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
-<hr><!-- ............................................................. --> <a name="1.0"></a>
+<hr /><!-- ............................................................. --> <a name="1.0"></a>
 <h2>1. NTFSに関する一般的な質問</h2>
 <a name="1.1"></a>
 <h3>1.1 NTFSとは何か？</h3>
@@ -275,7 +276,7 @@ NT、2000、XPからのみ読み込み可能という点である。例えばDOS
 <a name="1.3"></a>
 <h3>1.3 NTFSを使わなければ（アップグレードしなければ）ならないのか？</h3>
 <p>多くの人がそれは良い考えだと思っているが、必ずしもそうではない。あなたはおそらく、その違いにすら気づかないはずだ。一つだけ言えることは、いったんNTFSにしてしまったらFATには戻せない、ということだ（詳細は<a href="ntfs-ja.html#2.3">2.3</a> を参照のこと）。 </p>
-<p> <img src="style/red.png" alt="NB" width="16" height="16">
+<p> <img src="style/red.png" alt="NB" width="16" height="16" />
 Windows NTはFAT16ファイルシステムでインストール可能であり、Windows
 2000またはXPはFAT32ファイルシステムでのインストールが可能だ。NTFSへのコンバートはその後でも可能である。 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
@@ -287,7 +288,7 @@ Windows NTはFAT16ファイルシステムでインストール可能であり�
   <tbody>
     <tr>
       <th>NTFS</th>
-      <th>Windowsのバージョン<br>
+      <th>Windowsのバージョン<br />
       </th>
     </tr>
     <tr>
@@ -304,14 +305,14 @@ Windows NTはFAT16ファイルシステムでインストール可能であり�
     </tr>
   </tbody>
 </table>
-<p>バージョン1.2 は4.0としても知られている。<br>
+<p>バージョン1.2 は4.0としても知られている。<br />
 バージョン3.0 と 3.1 は、ときどき5.0と5.1と呼ばれている。 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="1.5"></a>
 <h3>1.5 NTFSの限界とは？</h3>
 <p>大きい。NTFSは上限2<sup>63</sup>バイトの大きさのファイルをサポートする。NTFSのボリュームは2<sup>63</sup>クラスターを上限とし、各クラス他は64キロバイト長を上限とする。従ってNTFSは約500兆ギガバイトまでが限界ということになる。</p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
-<hr><!-- ............................................................. --> <a name="2.0"></a>
+<hr /><!-- ............................................................. --> <a name="2.0"></a>
 <h2>2. NTFS ボリューム</h2>
 <a name="2.1"></a>
 <h3>2.1 NTFSボリュームをWindows 95/98/MEやDOSから読むためにはどうしたらよいか？</h3>
@@ -324,15 +325,15 @@ NT、2000、XPからのみ読むことができる。 </p>
 <a name="2.2"></a>
 <h3>2.2 FATボリュームをNTFSボリュームにコンバートする方法は？</h3>
 <p>コマンドウインドウから以下のように入力する（"x:"は対象ボリュームで置き換えること）： </p>
-<pre class="command">    <b>convert x: /fs:ntfs</b><br>    </pre>
+<pre class="command">    <b>convert x: /fs:ntfs</b><br />    </pre>
 <p>対象となるボリュームが使用中の場合は、コンバートのあと再起動する必要があるだろう。 </p>
-<p> <img src="style/red.png" alt="NB" width="16" height="16">
-このコマンドを一旦使ってしまったら、簡単には元に戻せない。次のFAQを参照のこと。<br>
+<p> <img src="style/red.png" alt="NB" width="16" height="16" />
+このコマンドを一旦使ってしまったら、簡単には元に戻せない。次のFAQを参照のこと。<br />
 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="2.3"></a>
 <h3>2.3 NTFSボリュームをFATボリュームにコンバートする方法は？</h3>
-<p>簡単に言えばそれは不可能だ。ただし、お金があれば別だ。パーティション・マジックという製品が <a href="http://us.norton.com/products/overview.jsp?pcid=sp&pvid=pm80" target="_blank">norton.com</a>
+<p>簡単に言えばそれは不可能だ。ただし、お金があれば別だ。パーティション・マジックという製品が <a href="http://norton.com" target="_blank">norton.com</a>
 から入手可能であり、その製品を使えばNTFSとFATを含む何種類かのファイルシステム間で相互に変換することができる。 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="2.4"></a>
@@ -359,7 +360,7 @@ NTのユーザーには、同じ機能を持つフリーのプログラムがあ
 <p>最近まで、NTFSボリュームを再設定する唯一の方法は、多額のお金を払うことだった。だが今は、<b>ntfsresize</b>というツールがある。このツールはずっとテストされてきたが、現在もなお試験的な状態にあると考えるべきだ。詳細についてはntfsresize FAQ.を参照されたい。 </p>
 <p>NTFSをリサイズするフリーではないプログラムの一つは、パーティション・マジックだ。<a href="http://powerquest.com/" target="_blank">http://powerquest.com</a> </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
-<hr><!-- ............................................................. --> <a name="3.0"></a>
+<hr /><!-- ............................................................. --> <a name="3.0"></a>
 <h2>3. Linux と NTFS</h2>
 <a name="3.1"></a>
 <h3>3.1 Linuxで読むことができるのはNTFSのどのバージョン？</h3>
@@ -454,7 +455,7 @@ ext2/ext3を読み書きするドライバーを使うかわりに、Windows上�
 <h3>3.7 他に何かツールはあるか？</h3>
 <p>現時点では開発者向けのツールが数個しか無い。ツールすべての <a href="../status.html">現状のリスト</a>
 を保持しつづけてはいる。 </p>
-<p>もちろん、優先事項はNTFSへの書き込みサポートの開発である。<br>
+<p>もちろん、優先事項はNTFSへの書き込みサポートの開発である。<br />
 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="3.8"></a>
@@ -485,7 +486,7 @@ Altaparmakovである。彼の情熱がこのプロジェクトを存続させ�
 から書き直した。彼は次の人々に助けられてきた：</p>
 <p class="quote"> Pawel&nbsp;Kot, Richard&nbsp;Russon. </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
-<hr><!-- ............................................................. --> <a name="4.0"></a>
+<hr /><!-- ............................................................. --> <a name="4.0"></a>
 <h2>4. NTFSボリュームをマウントする</h2>
 <a name="4.1"></a>
 <h3>4.1 NTFSボリュームをマウントできるのか？</h3>
@@ -500,37 +501,37 @@ Altaparmakovである。彼の情熱がこのプロジェクトを存続させ�
 <h3>4.3 どのパーティションを使うべきか？</h3>
 <p>Linuxの場合、最初のIDEコントローラー上のふたつのディスクはhdaとhdbという名前になり、3番目と4番目のディスクはhdcとhddという名前になる。SCSIディスクは見つかった順にsda、sdb、などの名前になる。</p>
 <p>NTFSボリュームを簡単に見る方法は： </p>
-<pre class="command">    <b>fdisk -l</b><br>    </pre>
+<pre class="command">    <b>fdisk -l</b><br />    </pre>
 <p>その出力はこうなる： </p>
-<pre class="command">    Disk /dev/hda: 64 heads, 63 sectors, 4465 cylinders<br>    Units = cylinders of 4032 * 512 bytes<br><br>       Device Boot    Start       End    Blocks   Id  System<br>       /dev/hda1             1      2125   4283968+  07  NTFS/HPFS<br>       /dev/hda2          2126     19851  35735616   0f  Win95 Ext'd (LBA)<br>       /dev/hda5   *      2126      4209   4201312+  83  Linux<br>       /dev/hda6          4210      4465    516064+  82  Linux swap<br>    </pre>
+<pre class="command">    Disk /dev/hda: 64 heads, 63 sectors, 4465 cylinders<br />    Units = cylinders of 4032 * 512 bytes<br /><br />       Device Boot    Start       End    Blocks   Id  System<br />       /dev/hda1             1      2125   4283968+  07  NTFS/HPFS<br />       /dev/hda2          2126     19851  35735616   0f  Win95 Ext'd (LBA)<br />       /dev/hda5   *      2126      4209   4201312+  83  Linux<br />       /dev/hda6          4210      4465    516064+  82  Linux swap<br />    </pre>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="4.4"></a>
 <h3>4.4 どのバージョンのNTFSドライバーが組み込まれているのか？</h3>
 <p>カーネルのバージョンが2.4.*か、2.5.0～2.5.10ならば、おそらくオリジナルのNTFSドライバーが組み込まれている。2.5.11以降であれば新しいNTFSドライバーが組み込まれている。</p>
 <p>何が入っているか試しに見てみるには、カーネルログの中のNTFSのログメッセージを確認すると良い。以下のコマンドを<span style="font-weight: bold;">どちらか</span>試してみてほしい（ログを読むにはrootになる必要がある） </p>
-<pre class="command">    <b>dmesg | grep -i ntfs</b><br>    <b>grep -i ntfs /var/log/messages</b><br>    </pre>
+<pre class="command">    <b>dmesg | grep -i ntfs</b><br />    <b>grep -i ntfs /var/log/messages</b><br />    </pre>
 <p>オリジナルドライバーの場合はバージョンが1.1.*で、新しいドライバーの場合はバージョンが2.*になっているはずだ。 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="4.5"></a>
 <h3>4.5 NTFSボリュームをマウントする方法は？</h3>
 <p>まず最初に、NTFSのことが理解できるカーネルかどうかチェックする。以下のコマンドで、Linuxが理解可能なすべてのファイルシステムのリストを表示できる。"ntfs"がリストにあったらOKだ。また、mountコマンドのマニュアルを"man
 8 mount"で読むというのもいいだろう。 </p>
-<pre class="command">    <b>cat /proc/filesystems</b><br>    </pre>
+<pre class="command">    <b>cat /proc/filesystems</b><br />    </pre>
 <p>次にNTFSボリュームをマウントするポイントを作る。そうすればマウント可能になる。 </p>
-<pre class="command">    <b>mkdir /mnt/windows</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br>    </pre>
-<p> <img src="style/red.png" alt="NB" width="16" height="16">
+<pre class="command">    <b>mkdir /mnt/windows</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br />    </pre>
+<p> <img src="style/red.png" alt="NB" width="16" height="16" />
 マウントされたファイルシステムのパーミッションを変えるには、<a href="ntfs-ja.html#4.6">4.6</a>.にあるように"umask"のオプションを使う。ブート時に自動的にマウントしたいときは、<a href="ntfs-ja.html#4.10">4.10</a>. を参照のこと。 </p>
 <p>用が済んだら、以下のコマンドの<span style="font-weight: bold;">どちらかで</span>umountできる。</p>
-<pre class="command">    <b>umount /mnt/windows</b><br>    <b>umount /dev/hda1</b><br>    </pre>
-<p> <img src="style/red.png" alt="NB" width="16" height="16">
+<pre class="command">    <b>umount /mnt/windows</b><br />    <b>umount /dev/hda1</b><br />    </pre>
+<p> <img src="style/red.png" alt="NB" width="16" height="16" />
 このコマンドはumount（ユーマウント）と呼ばれている（ｎはひとつだけだ）。 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="4.6"></a>
 <h3>4.6 一般的なmountのオプションは？</h3>
 <p>mountのオプションは（新旧）両方のドライバーに共通である。mountのmanのページを読むことをお勧めする。mountコマンドの一般的な書式は、</p>
-<pre class="command">    mount device directory [options]<br>    </pre>
+<pre class="command">    mount device directory [options]<br />    </pre>
 <p>"-o"オプションは都度指定しつつ使うか、個々の設定値をカンマ（,）で区切って使う。以下の2種類のやり方は同じ意味である： </p>
-<pre class="command">    <b>mount /dev/hda1 /mnt/windows -o X -o Y -o Z</b><br>    <b>mount /dev/hda1 /mnt/windows -o X,Y,Z</b><br>    </pre>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -o X -o Y -o Z</b><br />    <b>mount /dev/hda1 /mnt/windows -o X,Y,Z</b><br />    </pre>
 <dl>
   <dt>-t ntfs</dt>
   <dd>マウントするファイルシステムのタイプを記述する。mountコマンドはほとんどのファイルシステムのタイプを特定できるため、このオプションは必須ではない。</dd>
@@ -539,21 +540,21 @@ Altaparmakovである。彼の情熱がこのプロジェクトを存続させ�
   <dt>-o ro</dt>
   <dd><q>-r</q>と同じ。 </dd>
   <dt>-o umask={VALUE}</dt>
-  <dd>マウントされたNTFSボリュームのデフォルトパーミッションはrwx------だ（セキュリティ上の理由による）。<span style="font-weight: bold;">umask</span>パラメタはファイルとディレクトリのパーミッションを指定できる。詳細および他のサンプルは<a href="ntfs-ja.html#4.9">4.9</a>.を参照のこと。<br>
+  <dd>マウントされたNTFSボリュームのデフォルトパーミッションはrwx------だ（セキュリティ上の理由による）。<span style="font-weight: bold;">umask</span>パラメタはファイルとディレクトリのパーミッションを指定できる。詳細および他のサンプルは<a href="ntfs-ja.html#4.9">4.9</a>.を参照のこと。<br />
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b><br />    </pre></dd>
   <dt>-o uid={USERID}</dt>
   <dd>デフォルトではマウントされたNTFSボリューム上のすべてのファイルの所有者はrootである。<span style="font-weight: bold;">uid</span>パラメタを使えば、ファイルの所有者を設定できる。useridは/etc/passwdにあればどんな名前でも構わないし、どのようなユーザーID番号でも構わない</dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=flatcap</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=500</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=flatcap</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=500</b><br />    </pre></dd>
   <dt>-o gid={GROUPID}</dt>
   <dd>デフォルトではマウントされたNTFSボリューム上のすべてのファイルのグループはrootである。<span style="font-weight: bold;">gid</span>パラメタを使えば、ファイルのグループを設定できる。groupidは/etc/groupにあればどんな名前でも構わないし、どのようなグループID番号でも構わない。</dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=winusers</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=520</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=winusers</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=520</b><br />    </pre></dd>
 </dl>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="4.7"></a>
 <h3>4.7 オリジナルドライバーのマウントオプションは？</h3>
 <p>どのドライバーなのかを確かめる方法は、<a href="ntfs-ja.html#4.4">4.4</a>.を参照のこと。この章ではオリジナルドライバーだけのオプションについて触れる。一般的なマウントオプションは<a href="ntfs-ja.html#4.6">4.6</a>.を参照のこと。 </p>
-<p>いくつかのオプションでは"true"と"false"のパラメタを用いる。<br>
+<p>いくつかのオプションでは"true"と"false"のパラメタを用いる。<br />
 "true"は"yes"または"1"、"false"は"no"または"0"で置き換え可能。 </p>
 <dl>
   <dt>-o iocharset={NAME}</dt>
@@ -564,37 +565,37 @@ Altaparmakovである。彼の情熱がこのプロジェクトを存続させ�
 Europe）、iso8859-2 (Central Europe), gb2312 (簡体中国語), iso8859-8
 (Hebrew)）。以下にサンプルを示す： </p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=utf8</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=iso8859-2</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=gb2312</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=utf8</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=iso8859-2</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=gb2312</b><br />    </pre></dd>
   <dt>utf8=true</dt>
   <dd>
     <p>カーネルがutf8をサポートしていない場合、このオプションを使えばドライバーにutf8をサポートさせることができる。どの位置でも構わないが"-o
 iocharset=utf8"を用いるべきである。 </p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o utf8=true</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o utf8=true</b><br />    </pre></dd>
   <dt>-o posix={BOOL}</dt>
   <dd>
     <p>Windowsはファイル名の大文字小文字を記憶しているが、見ただけではわからないはずだ。従って、"MyFileName"という名前で作成したファイルを"mYfILEname"という名前で開くことができる。</p>
     <p>デフォルトではLinuxは大文字小文字を区別していて、"MyFile"と"myfile"はすべて違うファイルになる。linuxにNTFSボリューム上でWindowsのように振舞わせたいならば、<span style="font-weight: bold;">posix</span>オプションを"true"に設定する。このオプションを"false"にした場合はLinuxのように動く（デフォルトはfalse）。</p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o posix=true</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o posix=true</b><br />    </pre></dd>
   <dt>-o show_sys_files={BOOL}</dt>
   <dd>
     <p>このオプションをtrueにしたら、ファイルシステムのメタデータが見えるようになる。もし見えない場合であっても、例えば"ls -l
 \$MFT"などと指定すれば、表示させることができる。 </p>
-    <p> <img src="style/red.png" alt="NB" width="16" height="16">
+    <p> <img src="style/red.png" alt="NB" width="16" height="16" />
 glibcの制限があるので、"$MFT"はiノード番号がゼロになるため一覧表示には現れないはずだ。 </p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o show_sys_files=true</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o show_sys_files=true</b><br />    </pre></dd>
 </dl>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="4.8"></a>
 <h3>4.8 新しいドライバーのマウントオプションは？</h3>
 <p>どのドライバーなのかを確かめる方法は、<a href="ntfs-ja.html#4.4">4.4.</a>を参照のこと。この章ではオリジナルドライバーだけのオプションについて触れる。一般的なマウントオプションは<a href="ntfs-ja.html#4.6">4.6.</a>を参照のこと。&nbsp; </p>
-<p>いくつかのオプションでは"true"と"false"のパラメタを用いる。<br>
+<p>いくつかのオプションでは"true"と"false"のパラメタを用いる。<br />
 "true"は"yes"または"1"、"false"は"no"または"0"で置き換え可能。 </p>
 <dl>
   <dt>-o nls={NAME}</dt>
-  <dd><br>
+  <dd><br />
   </dd>
   <dd>
     <p>NTFSはファイル名とディレクトリ名をUnicodeで保持しているので、どの言語の文字であっても使える。デフォルトではLinuxのNTFSドライバーはその名前をASCIIに変換するが、あなたの用いる言語にå
@@ -603,62 +604,62 @@ glibcの制限があるので、"$MFT"はiノード番号がゼロになるた�
 Europe）、iso8859-2 (Central Europe), gb2312 (簡体中国語), iso8859-8
 (Hebrew)）。以下にサンプルを示す： </p>
   </dd>
-  <dd><br>
+  <dd><br />
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=utf8</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=iso8859-2</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=gb2312</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=utf8</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=iso8859-2</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=gb2312</b><br />    </pre></dd>
   <dt>-o fmask={VALUE}</dt>
   <dt>-o dmask={VALUE}</dt>
   <dd>
     <p>"umask"パラメタはファイルとディレクトリ両方のパーミッションを変更する（<a href="ntfs-ja.html#4.6">4.6</a>を参照のこと).<q>fmask</q>はファイル、"dmask"はディレクトリに対して同じことを行うものだ。組み合わせて使うこともできる。以下に例を示す：</p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0222</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o dmask=0222</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0077,dmask=0222</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0222</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o dmask=0222</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0077,dmask=0222</b><br />    </pre></dd>
   <dt>-o case_sensitive={BOOL}</dt>
   <dd>
     <p>Windowsはファイル名の大文字小文字を記憶しているが、見ただけではわからないはずだ。従って、"MyFileName"という名前で作成したファイルを"mYfILEname"という名前で開くことができる。</p>
     <p>デフォルトではLinuxは大文字小文字を区別していて、"MyFile"と"myfile"はすべて違うファイルになる。linuxにNTFSボリューム上でWindowsのように振舞わせたいならば、<b>case_sensitive</b>オプションを"false"に設定する。このオプションを"true"にした場合はLinuxのように動く（デフォルトはfalse）。</p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=true</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=false</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=true</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=false</b><br />    </pre></dd>
   <dt>-o sloppy={BOOL}</dt>
   <dd>
     <p>デフォルトでは、ドライバーはオプションが一つでも正しくないときはマウントしない。<span style="font-weight: bold;">sloppy</span>パラメタを指定すると、ドライバーは正しくないパラメタを単に無視する</p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=true</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=false</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=true</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=false</b><br />    </pre></dd>
   <dt>-o errors={VALUE}</dt>
   <dd>
     <p>このオプションは、問題が生じたときにドライバーがどう動くかを指定するものだ。デフォルトでは試行して、処理を<span style="font-weight: bold;">続行</span>する。問題が生じた部分はマークされるが、その他の部分を実行する。ドライバーに試行させるか、<span style="font-weight: bold;">リカバー</span>させるかを選ぶことができる。現時点でドライバーが実行可能なリカバリーは、ブートセクターをバックアップしてリプレースすることだけである。</p>
   </dd>
-  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=continue</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=recover</b><br>    </pre></dd>
+  <dd class="wide"><pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=continue</b><br />    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=recover</b><br />    </pre></dd>
 </dl>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="4.9"></a>
 <h3>4.9 マウントされたNTFSボリュームのパーミッションの変更方法は？</h3>
 <p>ファイルとディレクトリのパーミッションと所有権をコントロールするオプションは３つある。umask、uid、gidだ。<a href="ntfs-ja.html#4.6">一般的なmountオプション</a>のところに記述されている </p>
-<p>以下に各オプションの使用例と機能について示す。それぞれ同じmountコマンドを使い、オプションを表示させている。<br>
+<p>以下に各オプションの使用例と機能について示す。それぞれ同じmountコマンドを使い、オプションを表示させている。<br />
 </p>
-<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br>    </pre>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br />    </pre>
 <p> <q>"umask</q>はパーミッションのフィルターであり、chmodと反対の動きをする。フルのパーミッションの場合は777だ（rwxrwxrwx）。umaskの場合0222（-w--w--w-）はまだ555を残している（r-xr-xr-x）。</p>
 <p>デフォルトのumaskはセキュリティ上の理由から0077に設定されている。 </p>
-<pre class="command">    <b>mount ... -o umask=0277</b><br><br>    -r-x------ 1 root    root    28096 Aug 24 1996 chkdsk.exe<br>    </pre>
-<pre class="command">    <b>mount ... -o umask=0222</b><br><br>    -r-xr-xr-x 1 root    root    28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<pre class="command">    <b>mount ... -o umask=0277</b><br /><br />    -r-x------ 1 root    root    28096 Aug 24 1996 chkdsk.exe<br />    </pre>
+<pre class="command">    <b>mount ... -o umask=0222</b><br /><br />    -r-xr-xr-x 1 root    root    28096 Aug 24 1996 chkdsk.exe<br />    </pre>
 <p>今のところファイルの所有者とグループは"root"である。次に"uid"と"gid"のオプションを試してみよう。 </p>
-<pre class="command">    <b>mount ... -o uid=flatcap</b><br><br>    -r-x------ 1 flatcap root    28096 Aug 24 1996 chkdsk.exe<br>    </pre>
-<pre class="command">    <b>mount ... -o gid=winuser</b><br><br>    -r-x------ 1 root    winuser 28096 Aug 24 1996 chkdsk.exe<br>    </pre>
-<pre class="command">    <b>mount ... -o uid=flatcap,gid=winuser</b><br><br>    -r-x------ 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<pre class="command">    <b>mount ... -o uid=flatcap</b><br /><br />    -r-x------ 1 flatcap root    28096 Aug 24 1996 chkdsk.exe<br />    </pre>
+<pre class="command">    <b>mount ... -o gid=winuser</b><br /><br />    -r-x------ 1 root    winuser 28096 Aug 24 1996 chkdsk.exe<br />    </pre>
+<pre class="command">    <b>mount ... -o uid=flatcap,gid=winuser</b><br /><br />    -r-x------ 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe<br />    </pre>
 <p>最後に、すべての機能を試すためにオプションを組み合わせてみよう。以下の例では、ユーザー"flatcap"にフルコントロールを付与し、ユーザーグループ"winuser"は読み込み権限のみ、他のユーザーは一切アクセスできない。</p>
-<pre class="command">    <b>mount ... -o umask=0027,uid=flatcap,gid=winuser</b><br><br>    -rwxr-x--- 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<pre class="command">    <b>mount ... -o umask=0027,uid=flatcap,gid=winuser</b><br /><br />    -rwxr-x--- 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe<br />    </pre>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="4.10"></a>
 <h3>4.10 NTFSボリュームを自動的にマウントする方法は？</h3>
 <p>マウントコマンドを使い慣れたら、/etc/fstab（ファイルシステムテーブル=<b>f</b>ile<b>s</b>ystem <b>tab</b>le）に1行追加すれば、Linuxにそのボリュームを自動マウントさせることができる。</p>
-<p>以下にmountコマンドの例と、その例と同じ意味を持つfstabの記述例を示す。<br>
-<img src="style/red.png" alt="NB" width="16" height="16"> 末尾の"0
+<p>以下にmountコマンドの例と、その例と同じ意味を持つfstabの記述例を示す。<br />
+<img src="style/red.png" alt="NB" width="16" height="16" /> 末尾の"0
 0"の意味については心配しないで良い。 </p>
-<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br><br>    /dev/hda1 /mnt/windows ntfs ro                                    0 0<br>    </pre>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br /><br />    /dev/hda1 /mnt/windows ntfs ro                                    0 0<br />    </pre>
 <p>"-r"を"-o ro"と同じ意味で用いることができる。 </p>
-<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b><br><br>    /dev/hda1 /mnt/windows ntfs ro,umask=0222                         0 0<br>    </pre>
-<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222,uid=flatcap,gid=winuser</b><br><br>    /dev/hda1 /mnt/windows ntfs ro,umask=0222,uid=flatcap,gid=winuser 0 0<br>    </pre>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b><br /><br />    /dev/hda1 /mnt/windows ntfs ro,umask=0222                         0 0<br />    </pre>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222,uid=flatcap,gid=winuser</b><br /><br />    /dev/hda1 /mnt/windows ntfs ro,umask=0222,uid=flatcap,gid=winuser 0 0<br />    </pre>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
-<hr><!-- ............................................................. --> <a name="5.0"></a>
+<hr /><!-- ............................................................. --> <a name="5.0"></a>
 <h2>5. OSをNTFS上でブートする</h2>
 <a name="5.1"></a>
 <h3>5.1 NTFSボリューム上でWindowsを起動できるのか？</h3>
@@ -667,17 +668,17 @@ Europe）、iso8859-2 (Central Europe), gb2312 (簡体中国語), iso8859-8
 <a name="5.2"></a>
 <h3>5.2 liloの使い方は？</h3>
 <p>/etc/lilo.confに以下のエントリーを追加し、liloコマンドを走らせる。 </p>
-<pre class="command">    other = /dev/hda1<br>        table = /dev/hda<br>        label = Windows<br>    </pre>
+<pre class="command">    other = /dev/hda1<br />        table = /dev/hda<br />        label = Windows<br />    </pre>
 <p>"other"はWindowsが入っているパーティションを示し、"table"はディスクのパーティションテーブルを示している。 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="5.3"></a>
 <h3>5.3 grubの使い方は？</h3>
 <p>/boot/grub/grub.confに以下のエントリーを追加する。 </p>
-<pre class="command">    title Windows<br>        root (hd0,0)<br>        makeactive<br>        chainloader +1<br>    </pre>
-<p>grubのディスクナンバリングにより、/dev/hdaはhd0、hdbはhd1などとなる。パーティションはゼロから番号がふられる。従って、hda1はhd0,0となり、hdc4はhd2,3となる。<br>
+<pre class="command">    title Windows<br />        root (hd0,0)<br />        makeactive<br />        chainloader +1<br />    </pre>
+<p>grubのディスクナンバリングにより、/dev/hdaはhd0、hdbはhd1などとなる。パーティションはゼロから番号がふられる。従って、hda1はhd0,0となり、hdc4はhd2,3となる。<br />
 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
-<hr><!-- ............................................................. --> <a name="6.0"></a>
+<hr /><!-- ............................................................. --> <a name="6.0"></a>
 <h2>6. Linux ディストリビューション</h2>
 <a name="6.1"></a>
 <h3>6.1 どのディストリビューションがデフォルトでNTFSをサポートしているか？</h3>
@@ -699,8 +700,8 @@ Europe）、iso8859-2 (Central Europe), gb2312 (簡体中国語), iso8859-8
 <p>すべてではない。 <a href="http://phatlinux.com/" target="_blank">Phat Linux</a>
 はFATパーティション上のWindowsの中にインストールできるし、その場合Windows内部のファイルからブートできる。新しいドライバーはNTFS上でもこの手のトリックを演じさせることができる。 </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
-<hr><!-- ............................................................. --> <a name="7.0"></a>
-<h2>7. 新しいLinux NTFS ドライバー<br>
+<hr /><!-- ............................................................. --> <a name="7.0"></a>
+<h2>7. 新しいLinux NTFS ドライバー<br />
 </h2>
 <a name="7.1"></a>
 <h3>7.1 新しいNTFSドライバーとはどんなものか？</h3>
@@ -714,14 +715,14 @@ Europe）、iso8859-2 (Central Europe), gb2312 (簡体中国語), iso8859-8
 <a name="7.3"></a>
 <h3>7.3 新しいドライバーの使い方は？</h3>
 <p>われわれは<a href="http://www.kernel.org/pub/linux/kernel/v2.4/">オフィシャル名Linuxカーネルのソースコード</a>の<a href="../downloads.html">パッチとして</a>、新しいドライバーをリリースしている。&nbsp;</p>
-<p> <a href="../downloads.html">../downloads.html</a> <br>
+<p> <a href="../downloads.html">../downloads.html</a> <br />
 <a href="http://www.kernel.org/pub/linux/kernel/v2.4/" target="_blank">http://www.kernel.org/pub/linux/kernel/v2.4/</a> </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
 <a name="7.4"></a>
 <h3>7.4 パッチとは何か？</h3>
 <p>パッチとは、差分（変更部分）のテキストファイルのセットである。NTFSコードの部分だけを変更するので、小さな変更の都度カーネルコードをすべてリリースするのは非効率である。従って、オフィシャルなLinuxカーネルリリースのパッチという形でリリースしている。</p>
 <p>ソースを解凍したら、ソースディレクトリに移動し、以下のようにコマンドを叩く（パス名とパスの指定は必要に応じて変えること）： </p>
-<pre class="command">    <b>patch -p1 &lt; path/to/patchname</b><br>    </pre>
+<pre class="command">    <b>patch -p1 &lt; path/to/patchname</b><br />    </pre>
 <p>これでソースコードが変わる。拒否や失敗は起こらないはずだ。次に普通どおりカーネルを構築する。このFAQの他のところにやり方は書いてある。
  </p>
 <p><a href="ntfs-ja.html#top">このページのトップへ</a></p>
@@ -755,9 +756,6 @@ Europe）、iso8859-2 (Central Europe), gb2312 (簡体中国語), iso8859-8
 <table summary="" border="0" cellspacing="0" width="100%">
   <tbody><tr>
     <td class="copyright" width="99%">Copyright &copy; flatcap (Richard Russon)</td>
-    <td valign="bottom" width="88"><a href="http://sourceforge.net/"><img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31"></a></td>
-    <td valign="bottom" width="88"><a class="contact" href="http://validator.w3.org/check?uri=referer"><img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31"></a></td>
-    <td valign="bottom" width="88"><a class="contact" href="http://jigsaw.w3.org/css-validator/check/referer"><img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31"></a></td>
   </tr>
 </tbody></table>
 

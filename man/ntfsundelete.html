@@ -1,16 +1,17 @@
-<html><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>ntfsundelete.8.in</title>
-<link rel="stylesheet" href="info.css" type="text/css">
-<link rel="icon" href="ntfsicon.png" type="image/png">
+<link rel="stylesheet" href="info.css" type="text/css" />
+<link rel="icon" href="ntfsicon.png" type="image/png" />
 </head><body class="ntfsdoc"><a name="top"></a>
 <!-- .\" Copyright (c) 2002-2005 Richard Russon. All Rights Reserved. -->
 <!-- .\" This file may be copied under the terms of the GNU Public License. -->
 <!-- .\" -->
 <!-- .TH NTFSUNDELETE 8 "June 2002" "ntfsprogs version @VERSION@" -->
-<hr>
+<hr />
 <h1><a href="..">Linux NTFS</a> - NTFSUNDELETE (8)</h1>
-<hr>
+<hr />
 <!-- .SH NAME -->
 <a name="0"></a>
 
@@ -173,7 +174,7 @@ When a file is deleted, the metadata can be left in an inconsistent state. e.g.
 the file size may be zero; the dates of the file may be set to the time it was
 deleted, or random.
 <!-- .br -->
-<!-- Need break --><br>
+<!-- Need break --><br />
 To be safe
 <!-- .B ntfsundelete -->
 <b>ntfsundelete</b> will pick the largest file size it finds and write that to disk.  It will also
@@ -512,9 +513,9 @@ cluster (which will be a multiple of 512 bytes).
 Select
 <!-- .B undelete -->
 <b>undelete</b> mode.  You can specify the files to be recovered using by using
-<!-- .B --match -->
+<!-- .B \-\-match -->
 <b>--match</b> or
-<!-- .B --inodes -->
+<!-- .B \-\-inodes -->
 <b>--inodes</b> options.  This option can be combined with
 <!-- .BR \-\-output , -->
 <b>--output</b>, <!-- .BR \-\-destination , -->
@@ -669,7 +670,7 @@ linux-ntfs-dev@lists.sourceforge.net
 <!-- .br -->
 <!-- .nh -->
 <!-- ignored unsupported tag .nh -->
-<!-- Need break --><br>
+<!-- Need break --><br />
 http://linux-ntfs.sourceforge.net
 <!-- .hy -->
 <!-- ignored unsupported tag .hy -->
