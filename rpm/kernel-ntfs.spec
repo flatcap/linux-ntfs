@@ -171,7 +171,7 @@ fi
 * Sun Mar 21 2004 Richard Russon (FlatCap)
 - Obfuscate my email address
 
-* Sun Feb 01 2004 Richard Russon <rpm@flatcap.org>
+* Sun Feb 01 2004 Richard Russon (FlatCap)
 - Fix the error messages to give the rpm name
 
 * Tue Jan 22 2004 Richard Russon (FlatCap)
