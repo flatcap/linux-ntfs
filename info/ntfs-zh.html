@@ -1,0 +1,933 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="zh"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Linux NTFS Project">
+  <meta name="keywords" content="Linux NTFS FAQ HOWTO">
+  <link rel="stylesheet" type="text/css" href="style/info.css">
+  <link rel="icon" href="../style/ntfsicon.png" type="image/png">
+  <title>NTFS FAQ (zh)</title>
+</head>
+  <body class="ntfsdoc">
+  <a name="top"></a>
+    <h2>NTFS FAQ (常问问题)</h2>
+
+    <p>
+    <a href="ntfs.html"><img alt="English" src="style/uk.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-it.html"><img alt="Italian" src="style/italy.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ja.html"><img alt="Japanese" src="style/japan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-vi.html"><img alt="Vietnamese" src="style/vietnam.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-de.html"><img alt="German" src="style/germany.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh.html"><img alt="Simplified Chinese" src="style/china.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-fr.html"><img alt="French" src="style/france.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-es.html"><img alt="Spanish" src="style/spain.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-pt_BR.html"><img alt="Brazilian" src="style/brazil.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh_TW.html"><img alt="Traditional Chinese" src="style/taiwan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ru.html"><img alt="Russian" src="style/russia.png" border="0" width="30" height="20"></a>
+    </p>
+
+  <p>这份FAQ是<a href="ntfs.html">Linux NTFS计划</a>的一部分。  </p>
+  
+<p> 最新的版本可以通过访问 <a href="ntfs.html">ntfs.html</a> 
+  获得。 <br>
+  <br>
+  如果这份FAQ没有回答你的关于NTFS的问题，或者你对这份FAQ有什么意见，请发邮件给我：
+    <b>linux-ntfs-dev@sourceforge.net</b> 。 
+</p>
+  <p>中文版由kelvin翻译，如果对翻译有什么意见，请发邮件至：zhangyc@zju.edu.cn。</p>
+  <h2>内容</h2>
+  <h3>关键字</h3>
+
+  <p style="margin-left: 2em; margin-bottom: 0px;">
+  <img alt="**" src="style/blue.png" width="16" height="16">&nbsp;-&nbsp;最经常问到的问题<br>
+  <img alt="!!" src="style/green.png" width="16" height="16">&nbsp;-&nbsp;其他有意思的东东<br>
+  <img alt="NB" src="style/red.png" width="16" height="16">&nbsp;-&nbsp;需要特别注意的
+  </p>
+  <div style="background-color: #DDD; color: #000; border: 1px solid black; margin-left: 2em; max-width: 250px;">&nbsp;<b>命令或者输出</b></div>
+
+  <h3>1. <a class="heading" href="ntfs-zh.html#1.0">NTFS常见问题</a></h3>
+  <table summary="" border="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td width="24">&nbsp;</td>
+        <td width="266"><a href="ntfs-zh.html#1.1">1.1 什么是NTFS？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#1.2">1.2 NTFS比FAT/FAT32好吗？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#1.3">1.3 我需要使用或者升级到NTFS吗？ </a>
+        </td>
+      </tr>
+      <tr>
+        <td><img alt="!!" src="style/green.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#1.4">1.4 每一版本Windows中的NTFS都一样吗？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#1.5">1.5 NTFS的局限性是什么？</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>2. <a class="heading" href="ntfs-zh.html#2.0">NTFS卷</a></h3>
+  <table summary="" border="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td width="16">&nbsp;</td>
+        <td><a href="ntfs-zh.html#2.1">2.1 怎样从Windows 95/98/ME或DOS中读入一个NTFS卷？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        
+      <td><a href="ntfs-zh.html#2.2">2.2 怎样将FAT转换为NTFS？</a></td>
+      </tr>
+      <tr>
+        <td><img alt="!!" src="style/green.png" width="16" height="16"></td>
+        
+      <td><a href="ntfs-zh.html#2.3">2.3 怎样将NTFS转换为FAT卷？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#2.4">2.4 怎样删除一个NTFS卷？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#2.5">2.5 怎样对一个NTFS卷进行碎片整理？</a></td>
+      </tr>
+      <tr>
+        <td><img alt="**" src="style/blue.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#2.6">2.6 怎样调整一个NTFS卷的大小？</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>3. <a class="heading" href="ntfs-zh.html#3.0">Linux和NTFS</a></h3>
+  <table summary="" border="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td><img alt="!!" src="style/green.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#3.1">3.1 Linux可以读取那些版本的NTFS？</a></td>
+      </tr>
+      <tr>
+        <td><img alt="**" src="style/blue.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#3.2">3.2 驱动程序支持写入NTFS卷吗？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#3.3">3.3 Linux支持NTFS的哪些特性？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#3.4">3.4 如果出现问题我应该怎么做？</a></td>
+      </tr>
+      <tr>
+        <td><img alt="**" src="style/blue.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#3.5">3.5 怎样在Linux中加入对NTFS的支持？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#3.6">3.6 哪个版本的驱动是最好的？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#3.7">3.7 还有哪些其他的工具？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#3.8">3.8 Linux的NTFS驱动程序是怎样写成的？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#3.9">3.9 我们应该向谁表示感谢？</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>4. <a class="heading" href="ntfs-zh.html#4.0">挂载NTFS卷</a></h3>
+  <table summary="" border="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td width="16">&nbsp;</td>
+        <td><a href="ntfs-zh.html#4.1">4.1 我可以挂载一个NTFS卷吗？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#4.2">4.2 NTFS驱动程序的安全性怎样？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#4.3">4.3 我应该使用哪个分区？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#4.4">4.4 我在使用哪个版本的NTFS驱动？</a></td>
+      </tr>
+      <tr>
+        <td><img alt="!!" src="style/green.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#4.5">4.5 怎样挂载一个NTFS卷？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#4.6">4.6 常用的挂载选项。</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#4.7">4.7 用于原始驱动程序的挂载选项。</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#4.8">4.8 用于新驱动程序的挂载选项。</a></td>
+      </tr>
+      <tr>
+        <td><img alt="**" src="style/blue.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#4.9">4.9 怎样改变已挂载的NTFS卷的权限？</a></td>
+      </tr>
+      <tr>
+        <td><img alt="!!" src="style/green.png" width="16" height="16"></td>
+        <td><a href="ntfs-zh.html#4.10">4.10 怎样自动挂载一个NTFS卷？</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>5. <a class="heading" href="ntfs-zh.html#5.0">在NTFS上启动操作系统</a></h3>
+  <table summary="" border="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td width="16">&nbsp;</td>
+        <td><a href="ntfs-zh.html#5.1">5.1 可以在NTFS卷上启动Windows吗？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#5.2">5.2 应该怎样使用lilo?</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#5.3">5.3 应该怎样使用grub？</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>6. <a class="heading" href="ntfs-zh.html#6.0">Linux发行版</a></h3>
+  <table summary="" border="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td width="16">&nbsp;</td>
+        <td><a href="ntfs-zh.html#6.1">6.1 哪个发行版附加了对NTFS的支持？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#6.2">6.2 为什么RedHat不支持NTFS？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        
+      <td><a href="ntfs-zh.html#6.3">6.3 为什么RedHat在访问NTFS卷时会处于锁上状态？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#6.4">6.4 有可以安装在NTFS上的发行版吗？</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>7. <a class="heading" href="ntfs-zh.html#7.0">新的Linux NTFS驱动程序</a></h3>
+  <table summary="" border="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td width="16">&nbsp;</td>
+        <td><a href="ntfs-zh.html#7.1">7.1 新的NTFS驱动程序是什么？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#7.2">7.2 我需要使用它吗？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#7.3">7.3 我该怎样使用新的驱动程序？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><a href="ntfs-zh.html#7.4">7.4 什么是补丁？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        
+      <td><a href="ntfs-zh.html#7.5">7.5 如果我仍不理解呢？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        
+      <td><a href="ntfs-zh.html#7.6">7.6 什么时候Linux内核中才会收入这些新的代码？</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        
+      <td><a href="ntfs-zh.html#7.7">7.7 不可以对Windows的驱动进行封装吗？</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <hr>
+  <!-- ............................................................. -->
+  <a name="1.0"></a>
+  <h2>1. NTFS常见问题</h2>
+  <a name="1.1"></a>
+  <h3>1.1 什么是NTFS？</h3>
+  <p>NTFS是New Technology Filesystem的缩写。<q>称作NT是</q>因为它最初是用在Window 
+    NT上的，文件系统则表示电脑在磁盘上存储文件的方式。不同的操作系统一般使用 不同的方式存储文件。</p>
+  <p>NTFS通常用于Windows NT、2000和XP系统。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="1.2"></a>
+  <h3>1.2 NTFS比FAT/FAT32好吗？</h3>
+  <p>简单的说，是的。NTFS更健壮，它支持双字节编码文件名以及适当的安全、压缩和加密。它主要的不足之处在于只能在Windows NT、2000或XP系统下进行读取，比如用户不能用DOS启动盘启动然后读取NTFS上的数据。</p>
+  <p>和往常一样，这个规则也有例外存在。早在1997年10月就有了Linux下的NTFS驱动程序，同样也有程序支持DOS下对NTFS的操作（<a href="ntfs-zh.html#2.1">2.1节</a>对此有详细介绍）。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="1.3"></a>
+  <h3>1.3 我需要使用或者升级到NTFS吗？</h3>
+  <p>不，你并不需要，虽然这对于绝大多数人来说是一个不错的主意。你甚至可能察觉不到两者性能上的差别，唯一的缺点是你不能再将其转回FAT格式了(<a href="ntfs-zh.html#2.1">2.3节</a>对此有详细介绍)。</p>
+  <p><img alt="NB" src="style/red.png" width="16" height="16"> 你可以在FAT16文件系统上安装Windows 
+  NT，在FAT32文件系统上安装Windows 2000或XP，然后再可以升级到NTFS。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="1.4"></a>
+  <h3>1.4 每一版本Windows中的NTFS都一样吗？</h3>
+  
+<p>不，它们看起来很相似，但新的版本总有一些附加的特性。比如，Windows 2000就有磁盘配额（quotas）。 </p>
+  <table class="highlight" summary="NTFS/Windows versions" border="1" cellspacing="0">
+    <tbody>
+      <tr>
+        <th>
+          NTFS</th>
+        <th>
+          Windows Version</th>
+      </tr>
+      <tr>
+        <td>v1.2</td>
+        <td>NT 3.51, NT 4</td>
+      </tr>
+      <tr>
+        <td>v3.0</td>
+        <td>2000</td>
+      </tr>
+      <tr>
+        <td>v3.1</td>
+        <td>XP</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>1.2版本有时被称作NT4.0。<br>
+  3.0和3.1版本则被称作NT5.0和5.1。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="1.5"></a>
+  <h3>1.5 NTFS的局限性是什么？</h3>
+  
+<p>容量大小。NTFS支持最大为2<sup>63</sup>字节的文件。NTFS卷最多可包括2<sup>63</sup>个簇且每个簇最大可为64KB，这样它的最大容量就是约500万亿GB。</p>
+<p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <hr>
+  <!-- ............................................................. -->
+  <a name="2.0"></a>
+  <h2>2. NTFS卷</h2>
+  <a name="2.1"></a>
+  <h3>2.1 怎样从Windows 95/98/ME或DOS中读取一个NTFS卷？</h3>
+  
+<p>很可惜，这是不可以的。这些版本的Windows只支持FAT，NTFS只可以从Windows NT、2000和XP中进行读取。 </p>
+  
+<p>但是，只要稍微费些功夫，你就可以从<a href="http://technet.microsoft.com/sysinternals">SysInternals</a> 
+  得到 "NTFS for Windows 98" 和 "NTFSDOS" 两个工具，这样就以在Windows 95、98和DOS中对NTFS进行读取。如果你愿意付费的话，他们甚至可以提供支持写入NTFS的版本（但这是非常昂贵的）。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="2.2"></a>
+  <h3>2.2 怎样将FAT卷转换为NTFS卷？</h3>
+  <p>打开一个命令窗口并输入（将x:替换为正确的卷标）</p>
+  <pre class="command">    <b>convert x: /fs:ntfs</b>
+    </pre>
+  <p>如果该卷正在使用中，转换将会在下次系统启动时进行。</p>
+  <p><img alt="NB" src="style/red.png" width="16" height="16"> 此命令不支持逆向操作，详情请见下个FAQ。
+  </p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="2.3"></a>
+  <h3>2.3 怎样将NTFS卷转换为FAT卷？</h3>
+  
+<p>简单的说，这样是不可以的,当然如果你有足够的钱的话也有例外。<a href="http://us.norton.com/products/overview.jsp?pcid=sp&pvid=pm80" target="_blank">http://us.norton.com/products/overview.jsp?pcid=sp&pvid=pm80</a>出品的Partition 
+  Magic支持在不同的文件系统间进行转换，其中就包括NTFS和FAT。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="2.4"></a>
+  <h3>2.4 怎样删除一个NTFS卷？</h3>
+  
+<p>这依赖于你使用的操作系统。</p>
+  
+<p>DOS、Windows 95/98/ME: fdisk。使用启动盘启动系统，或者让Windows返回到DOS模式，然后运行fdisk。如果有多个磁盘，先选择磁盘，然后删除那些非DOS分区。操作时一定要特别小心，任何改变都会被立即提交并执行。</p>
+  <p>Windows NT: 计算机管理。</p>
+  <p>Windows 2000、XP: 逻辑磁盘管理器。从控制面板中开始，选择管理工具，然后选择计算机管理。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="2.5"></a>
+  <h3>2.5 怎样对NTFS卷进行碎片整理？</h3>
+  <p>当一个卷使用了很长时间，或者对磁盘进行过多次写入之后，保存在其中的文件可能变得支离破碎了。这些文件不再以一种连续的形式保存在磁盘上，而是被分成了很多小的部分，这样就减慢了访问文件的速度。</p>
+  <p>为此，Windows 2000和XP系统内置了磁盘碎片整理程序。而对于Windows NT的用户来说，也有免费的工具可以完成同样的工作，这就是Diskeeper 
+  Lite，它可以从 <a href="http://diskeeper.com/">http://diskeeper.com</a> 下载得到。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="2.6"></a>
+  <h3>2.6 怎样调整一个NTFS卷的大小？</h3>
+  
+<p>直到最近，唯一可以调整NTFS卷的大小而不造成数据损失的程序仍旧是很昂贵的。现在，我们有了自己的程序－<b>ntfsresize</b>。我们已经对其做了很多测试，但目前仍处于试验阶段。如果你想得到更详细的信息，请参阅ntfsresize FAQ。</p>
+<p><a href="http://powerquest.com/" target="_blank">http://powerquest.com/</a> 出品的Partition 
+  Magic仍是仅有的可以调整NTFS卷大小的商业程序。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <hr>
+  <!-- ............................................................. -->
+  <a name="3.0"></a>
+  <h2>3. Linux和NTFS</h2>
+  <a name="3.1"></a>
+  <h3>3.1 Linux可以读取那些版本的NTFS？</h3>
+  
+<p>Linux驱动程序可以读取<a href="ntfs-zh.html#1.4">所有版本的NTFS</a>。每个版本的NTFS都稍微有些差别，但是驱动程序仅需要对文件和路径进行解释，NTFS维护的所有索引记录都被安全地忽略了。</p>
+  <p>当驱动程序支持对一个NTFS卷进行写操作时，这种能力也会随着它所写入的NTFS版本的不同发生变化。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.2"></a>
+  <h3>3.2 驱动程序支持写入NTFS卷吗？</h3>
+  
+<p>并不完全是，但是如果你需要在装有双系统机器的上从Linux向Windows拷贝文件的话，请阅读下面的“<a href="ntfs-zh.html#3.2workaround">怎样写入NTFS</a>”部分，那里你将会找到一种在缺少写入支持的情况下解决问题的方法。</p>
+  
+<p>目前我们共有两个驱动程序，2.4内核中的原始驱动程序包含一些执行写入操作的代码，但是执行它们将会是<b>非常危险的</b>，极有可能彻底破坏你的文件系统。</p>
+  <p>2.5.11内核中引入的新驱动程序也包含一些执行写入操作的代码，但却是非常有限的。它可以覆写现存的文件，但不可以改变文件大小、添加新文件或者删除文件。</p>
+<p>添加对写操作的支持将耗费<strong>很长的时间</strong>。NTFS的结构和数据库很相似，基于一致性的考虑，用户做出的每个改变都
+可能带来其他的很多改变。一个错误可能对文件系统造成损害，很多错误则会彻底破坏整个文件系统。此外，目前的开发人员也只是出于个人爱好在空闲时间从事
+NTFS驱动的开发。如果你愿意帮助我们，请发邮件给我： <b>linux-ntfs-dev@sourceforge.net</b> 。</p>
+    
+<a name="3.2workaround"></a>
+  
+<p><strong>怎样写入NTFS。</strong>如果你在使用装有双系统的机器并且只需要对NTFS写操作的支持来从Linux向
+Windows转移文件，你可以通过使用Windows下的ext2/ext3驱动程序从Linux分区中读取文件来代替。这种方式只需使用两个只读的驱
+动，并且仍旧可以从一个文件系统向另一个拷贝文件。</p>
+  
+<p>截至2003年6月4日，共有以下这些开源的支持Linux ext2和ext3文件系统的Windows驱动程序：</p>
+  <ul type="square">
+    <li>
+      <strong>explore2fs</strong>
+      <ul>
+        <li>
+          主页：http://uranus.chrysocome.net/linux/explore2fs.htm
+        </li><li>
+          适用于Windows NT、Windows 2000和Windows XP。</li>
+      </ul>
+    </li><li>
+      <strong>ext2fsd</strong>
+      <ul>
+        <li>
+          主页：http://ext2fsd.sourceforge.net
+        </li><li>
+          适用于Windows NT、Windows 2000和Windows XP。</li>
+      </ul>
+    </li><li>
+      <strong>winext2fsd</strong>
+      <ul>
+        <li>
+          主页：http://sourceforge.net/projects/winext2fsd/
+        </li>
+      </ul>
+    </li><li>
+      <strong>ext2forxp</strong>
+      <ul>
+        <li>
+          主页：http://sourceforge.net/projects/ext2forxp
+        </li><li>
+          还处于早期开发阶段,没有进入实用(到2003年6月4日)。</li>
+      </ul>
+    </li><li>
+      <strong>vmware</strong>
+      <ul>
+        <li>
+          主页：http://www.vmware.com/
+        </li><li>
+        VMWare允许你在在一个系统中完全运行其他操作系统。
+        </li><li>
+        所以，你可以在Linux中运行Windows，自然也可以写入NTFS了。
+        </li><li>
+          这种写入操作就像你在运行的Windows一样安全，但同样也很昂贵。</li>
+      </ul>
+    </li>
+  </ul>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.3"></a>
+  <h3>3.3 Linux支持NTFS的哪些特性？</h3>
+  
+<p>NTFS支持极其众多的特性，但是Linux NTFS驱动程序实现的却很少。</p>
+<p>Linux NTFS驱动程序支持Unicode文件名、压缩文件和稀疏文件。</p>
+  
+<p>但是，此驱动不能读取加密后的文件，它忽略了Windows的安全信息和Windows设置的磁盘配额。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.4"></a>
+  <h3>3.4 如果出现问题我应该怎么做？</h3>
+  
+<p>此驱动对于只读操作是<a href="ntfs-zh.html#4.2">非常安全</a>的，但我们不可能对每个可能性都进行测试。如果发生了什么问题，请您帮助我们找出问题所在并解决它。</p>
+<p>请给开发小组发送邮件至 linux-ntfs-dev@lists.sourceforge.net，告诉我们你在使用<a href="ntfs-zh.html#4.4">哪个版本的驱动程序</a>，你的Linux内核版本（uname 
+  -a）和NTFS版本（Win NT、2000或XP）。</p>
+  
+<p>此外，如果有你认为有帮助的日志文件（/var/log/messages），请一并发给我们。</p>
+  <p>多谢。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.5"></a>
+  <h3>3.5 怎样在Linux中加入对NTFS的支持？</h3>
+  
+<p>大多数用户并不需要通过编译文件来启用对NTFS的支持。几乎每个Linux发行版（RedHat除外）都附加了对NTFS的支持。</p>
+<p>如果你在使用的是RedHat 9（Shrike）、8.0（Psyche）或7.3（Valhalla），只需<a href="../rpm/index.html">安装一个支持NTFS的rpm包</a>。此rpm包中包括了详细的使用说明。</p>
+<p>如果你在使用老版本的RedHat或其他不支持NTFS的发行版，就需要自己重新编译内核了。但这并不像听起来的那么困难，在<a href="compile.html">编译指导页</a>中可以找到详细的介绍。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.6"></a>
+  <h3>3.6 哪个版本的驱动是最好的？</h3>
+  
+<p>对于驱动程序来说，版本越新越好。新的版本写得更好、运行更快、错误更少并且对于对称多处理器也更加安全。新的驱动程序已经包含在版本2.5.11之后的内核中，我们也提供<a href="../downloads.html">补丁程序</a>向2.4内核添加此新驱动程序。</p>
+<p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.7"></a>
+  <h3>3.7 还有哪些其他的工具？</h3>
+  
+<p>当前只有很少的一些工具并且它们都是面向程序开发者的。我们有一份所有工具的<a href="../status.html">状态列表</a>。</p>
+<p>自然，列表中的排列顺序也代表了这些工具在编写NTFS驱动代码时起到的帮助作用的大小。</p>
+<p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.8"></a>
+  <h3>3.8 Linux的NTFS驱动程序是怎样写成的？</h3>
+  <p>Microsoft并没有公布任何关于NTFS内部机制的文档，所以我们必须采用逆向修改的形式研究文件系统。方法大致包括：</p>
+  <ol>
+    <li>
+    用十六进制编辑器观察卷内容
+    </li><li>
+    执行一些操作，比如创建一个文件
+    </li><li>
+    使用十六进制编辑器寻找产生的变化
+    </li><li>
+    对变化进行分类并记录
+    </li><li>
+      不断重复以上四个步骤</li>
+  </ol>
+  
+<p>以上听起来是都是很繁琐的工作吧，这样或许你就能理解这项任务的难度了。我们现在几乎已经完全了解了NTFS并撰写了相关文档放在<a href="../ntfs/index.html">../ntfs/index.html</a>，希望能对其他人有些帮助。</p>
+<p>实际上，相对于收集相关信息来说，编写驱动程序则要简单很多了。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="3.9"></a>
+  <h3>3.9 我们应该向谁表示感谢？</h3>
+  
+<p>首先我们应该感谢 Martin von Loewis。早在1995年他就编写了最初的NTFS驱动程序，1997年此驱动被添加到Linux内核（2.1.74）中。同时，他也受到了以下这些人的帮助：</p>
+<p class="quote">Albert&nbsp;Cahalan, Anton&nbsp;Altaparmakov, Damon&nbsp;Casale, 
+    David&nbsp;Dillard, Domagoj&nbsp;Pensa, Joseph&nbsp;Malicki, 
+    Matthew&nbsp;Fanto, Olof&nbsp;Wolgast, Rani&nbsp;Assaf, Régis&nbsp;Duchesne, 
+    Richard&nbsp;Russon, Steve&nbsp;Dodd, Werner&nbsp;Seiler.</p>
+  
+<p>其次我们应该感谢Anton Altaparmakov，整个项目在他的积极推动下才得以进行到现在。之前在项目没有得到有效维护时，是他接管了项目并保持了代码的稳定性。接着他又重写了整个驱动程序，为开发对写操作的支持打下了坚实的基础。他受到了以下这些人的帮助：</p>
+<p class="quote">Pawel&nbsp;Kot, Richard&nbsp;Russon.
+  </p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <hr>
+  <!-- ............................................................. -->
+  <a name="4.0"></a>
+  <h2>4. 挂载NTFS卷</h2>
+  <a name="4.1"></a>
+  <h3>4.1 我可以挂载一个NTFS卷吗？</h3>
+  
+<p>当然可以。驱动程序支持对所有版本NTFS的读取，但仅仅是读取。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.2"></a>
+  <h3>4.2 NTFS驱动程序的安全性怎样？</h3>
+  
+<p>当仅被用于读取时，原始的和新的驱动程序对于普通应用都是安全的。他们<strong>不会</strong>对你的文件系统做出任何改变，所以也不会造成任何损害。</p>
+<p>此外，新的驱动程序对于对称多处理器（SMP）也是安全的。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.3"></a>
+  <h3>4.3 我应该使用哪个分区？</h3>
+  
+<p>在Linux中，第一个IDE控制器上的两个磁盘被分别被称作hda和hdb，第三和第四个也相应被称为hdc和hdd。SCSI磁盘则根据它们的顺序依次命名为sda、sdb等。</p>
+<p>一个简单的寻找NTFS卷的方法是使用：</p>
+<pre class="command">    <b>fdisk -l</b>
+    </pre>
+  
+<p>输出可能如下所示：</p>
+  <pre class="command">    Disk /dev/hda: 64 heads, 63 sectors, 4465 cylinders
+    Units = cylinders of 4032 * 512 bytes
+
+       Device Boot    Start       End    Blocks   Id  System
+       /dev/hda1             1      2125   4283968+  07  NTFS/HPFS
+       /dev/hda2          2126     19851  35735616   0f  Win95 Ext'd (LBA)
+       /dev/hda5   *      2126      4209   4201312+  83  Linux
+       /dev/hda6          4210      4465    516064+  82  Linux swap
+    </pre>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.4"></a>
+  
+<h3>4.4 我在使用哪个版本的NTFS驱动程序？</h3>
+  
+<p>如果你的内核版本号是2.4.*或者2.5.0-2.5.10，可能你正在使用最初的NTFS驱动程序。如果你有2.5.11以后版本的内核，那么你就有了新的NTFS驱动。</p>
+<p>一个更好的方法读取内核日志中关于NTFS的日志消息。试试下面这些命令中的<strong>任意一个</strong>（可能需要root权限才能读取日志）。</p>
+<pre class="command">    <b>dmesg | grep -i ntfs</b>
+    <b>grep -i ntfs /var/log/messages</b>
+    </pre>
+  
+<p>原始驱动的版本号为1.1.*，而新驱动的版本号为2.*。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.5"></a>
+  <h3>4.5 怎样挂载一个NTFS卷？</h3>
+  
+<p>首先，你需要检查你的内核是否支持NTFS。下面的命令将会列出Linux支持的所有文件系统，如果其中有NTFS，那么一切都OK了。此外，你最好通过man 
+  8 mount读一下关于挂载操作的指南。</p>
+  <pre class="command">    <b>cat /proc/filesystems</b>
+    </pre>
+  
+<p>其次你需要开辟一块空间来挂载NTFS卷，然后就可以进行挂载操作了。</p>
+<pre class="command">    <b>mkdir /mnt/windows</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+    </pre>
+  
+<p><img alt="NB" src="style/red.png" width="16" height="16"> 若要改变已挂载的文件系统的权限，可以参考<a href="ntfs-zh.html#4.6">4.6节</a>中的umask选项。如果你希望在系统启动时自动挂载卷，可以参考<a href="ntfs-zh.html#4.10">4.10节</a>。</p>
+<p>操作完成以后，你可以使用以下任何一个命令卸载分区：</p>
+  <pre class="command">    <b>umount /mnt/windows</b>
+    <b>umount /dev/hda1</b>
+    </pre>
+  <p><img alt="NB" src="style/red.png" width="16" height="16"> 这些命令被称作“umount”。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.6"></a>
+  <h3>4.6 常用的挂载选项。</h3>
+  
+<p>这些挂载选项对两种驱动程序都适用。此外，我们强烈建议您阅读与挂载相关的参考文档。通用的挂载格式为：</p>
+  <pre class="command">    mount device directory [options]
+    </pre>
+  
+<p>附加选项中的-o选项可以单独给出，也可以作为参数用逗号进行分隔。下面两个命令是等价的：</p>
+  <pre class="command">    <b>mount /dev/hda1 /mnt/windows -o X -o Y -o Z</b>
+    <b>mount /dev/hda1 /mnt/windows -o X,Y,Z</b>
+    </pre>
+  <dl>
+    <dt>-t ntfs
+    
+  </dt><dd> 告诉挂载命令将要挂载的文件系统类型。这个选项并不是必须的，因为mount会自动识别大多数的文件系统。 
+  </dd><dt>-r
+          
+  </dt><dd> 以只读形式挂载卷。挂载操作默认以可读写形式挂载卷。除非指明，否则驱动将会以只读形式自动挂载文件系统。 
+  </dd><dt>-o ro
+              </dt><dd>
+                和-r相同。 </dd><dt>-o umask={VALUE}
+                  
+  </dt><dd> 因为安全的原因，默认给予已挂载的NTFS卷的权限为rwx------。参数<strong>umask</strong>控制这些文件和路径的权限。详细的资料和例子请参见<a href="ntfs-zh.html#4.9">4.9节</a>。 
+  </dd><dd class="wide">
+                      <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b>
+    </pre>
+    </dd><dt>-o uid={USERID}
+    
+  </dt><dd> 已挂载的NTFS卷上所有文件默认都是root所有的。如果提供uid参数就可以设置文件的所有者。这些参数可以是/etc/passwd中的任何用户名，或者任何表示用户id的数字。 
+  </dd><dd class="wide">
+                            <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=flatcap</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=500</b>
+    </pre>
+    </dd><dt>-o gid={GROUPID}
+    
+  </dt><dd> 已挂载的NTFS卷上所有的文件默认都是root组所有的。如果提供gid参数就可以设置文件的组。这些参数可以是/etc/group中的组名，或者任何表示组id的数字。 
+  </dd><dd class="wide">
+                                  <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=winusers</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=520</b>
+    </pre>
+    </dd>
+  </dl>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.7"></a>
+  <h3>4.7 原始驱动程序的挂载选项。</h3>
+  
+<p>要找出你在使用的驱动类型，请参见<a href="ntfs-zh.html#4.4">4.4节</a>。这一节讨论仅适用于原始驱动程序的选项，所有的常用选项都在<a href="ntfs-zh.html#4.6">4.6节</a>中进行说明。</p>
+<p>一些选项以true或false作为参数。
+    <br>
+    你可以用yes或1替换true。
+    <br>
+    也可以用no或0替换false。</p>
+  
+<dl>
+  <dt>-o iocharset={NAME} 
+  </dt><dd> 
+    <p>NTFS以Unicode形式保存所有的文件名和路径名，这样就可以表示任何语言中的任何字符。而Linux的NTFS驱动则默认将这些名称转换为ASCII形式，这对某些人来说是合适的，但是对于那些包括 
+      ? 或 é 等字符的语言则不合适了。</p>
+    <p>NLS（本地语言支持）决定字符是如何被显示的。你可以选择像Unicode一样可以表示所有字符的<b>utf8</b>，或者你自己的代码页，比如iso8859-1（西欧）、iso8859-2（中欧）、gb2312（简体中文）、iso8859-8（希伯来文）。下面是一些挂载选项的例子：</p>
+    
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=utf8</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=iso8859-2</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=gb2312</b>
+    </pre>
+  </dd><dt>utf8=true 
+  </dt><dd> 
+    <p>如果你的内核不支持utf8，那么你可以通过这个选项启用NTFS驱动程序对utf8的支持。你应该在任何需要的地方使用<q>选项-o iocharset=utf8</q>。</p>
+    
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o utf8=true</b>
+    </pre>
+  </dd><dt>-o posix={BOOL} 
+  </dt><dd> 
+    <p>Windows保存了文件名的大小写格式，但在读取时并不进行区分。因此你可以建立一个名为<q>MyFileName</q>的文件，然后用<q>mYfILEname</q>的名称打开它。</p>
+    <p>Linux默认对于大小写是敏感的，MyFile、Myfile和myfile是不同的文件。如果你希望Linux对NTFS卷具有和Windows相同的表现，那么就应将<b>posix</b>选项设置为true，将选项设置为false将使驱动程序具有与Linux类似的表现（默认设置）。</p>
+    
+  </dd><dd class="wide"> 
+    <pre class="command"><b>mount /dev/hda1 /mnt/windows -t ntfs -r -o posix=true</b>
+    </pre>
+  </dd><dt>-o show_sys_files={BOOL} 
+  </dt><dd> 
+    <p>如果这个选项被设置为true，那么文件系统的元数据将会处于可见状态。如若不可见，可通过提供它们的名称，比如<q>ls -l \$MFT</q>，使它们被显示地列出。</p>
+    <p><img alt="NB" src="style/red.png" width="16" height="16"> 因为glibc的局限，<q>$MFT</q>可能因为其inode值为0而不会被显示在列表之中。</p>
+  
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o show_sys_files=true</b>
+    </pre>
+  </dd>
+</dl>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.8"></a>
+  <h3>4.8 新驱动程序的挂载选项。</h3>
+  
+<p>要找出你在使用的驱动类型，请参见<a href="ntfs-zh.html#4.4">4.4节</a>。这一节只讨论适用于新驱动程序的选项，所有的常用选项都在<a href="ntfs-zh.html#4.6">4.6节</a>中进行说明。 
+</p>
+  <p>一些选项以true或false作为参数。
+    <br>
+    你可以用yes或1替换true。
+    <br>
+    也可以用no或0替换false。</p>
+  
+<dl>
+  <dt>-o nls={NAME} 
+  </dt><dd> 
+  </dd><dd> 
+    <p>NTFS以Unicode形式保存所有的文件名和路径名，这样就可以表示任何语言中的任何字符。而Linux的NTFS驱动则默认将这些名称转换为ASCII形式，这对某些人来说是合适的，但是对于那些包括 
+      ? 或 é 等字符的语言则不合适了。</p>
+    <p>NLS（本地语言支持）决定字符是如何被显示的。你可以选择像Unicode一样可以表示所有字符的<b>utf8</b>，或者你自己的代码页，比如iso8859-1（西欧）、iso8859-2（中欧）、gb2312（简体中文）、iso8859-8（希伯来文）。下面是一些挂载选项的例子：</p>
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=utf8</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=iso8859-2</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=gb2312</b>
+    </pre>
+  </dd><dt>-o fmask={VALUE} 
+  </dt><dt>-o dmask={VALUE} 
+  </dt><dd> 
+    <p>参数umask同时改变文件和路径两者的权限，fmask以同样的方式作用于文件而dmask作用于路径，这些选项也可以被组合使用。下面是一些例子：</p>
+    
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0222</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o dmask=0222</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0077,dmask=0222</b>
+    </pre>
+  </dd><dt>-o case_sensitive={BOOL} 
+  </dt><dd> 
+    <p>Windows保存了文件名的大小写格式，但在读取时并不进行区分。因此你可以建立一个名为<q>MyFileName</q>的文件，然后用<q>mYfILEname</q>的名称打开它。</p>
+    <p>Linux默认对于大小写字母是敏感的，MyFile、Myfile和myfile是不同的文件。如果你希望Linux对于NTFS卷具有和Windows相同的表现，那么就应将<b>case_sensitive</b>选项设置为false。将选项设置为true将使驱动具有和Linux类似的表现（默认设置）。</p>
+    
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=true</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=false</b>
+    </pre>
+  </dd><dt>-o sloppy={BOOL} 
+  </dt><dd> 
+    <p>默认情况下，驱动程序在任何选项发生错误时将拒绝进行挂载，添加参数<b>sloppy</b>后驱动程序将完全忽略这些错误参数。</p>
+    
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=true</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=false</b>
+    </pre>
+  </dd><dt>-o errors={VALUE} 
+  </dt><dd> 
+    <p>这个参数控制驱动程序处理问题的方式。默认为尝试进行处理并<strong>继续执行</strong>，任何的corruption都会被标记并留待以后处理。另一种选择是让驱动程序尝试处理并<strong>进行恢复，</strong>目前驱动程序可以做的唯一恢复是用备份替换当前的启动扇区。</p>
+    
+  </dd><dd class="wide"> 
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=continue</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=recover</b>
+    </pre>
+  </dd>
+</dl>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.9"></a>
+  <h3>4.9 怎样改变已经挂载的NTFS卷的权限？</h3>
+  
+<p>共有三个可以控制文件和路径的权限和所有权的选项，分别是：umask、uid和gid。它们在<a href="ntfs-zh.html#4.6">常用挂载选项</a>一节中都有提及。</p>
+<p>下面是每个选项以及它们对文件所起作用的一些例子。我们每次都会使用相同的挂载命令，并且只显示相关的选项。</p>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+    </pre>
+  
+<p>umask是对权限的过滤器，因此它的工作方式和chmod恰好相反。全部权限等价与777（rwxrwxrwx），umask值0222（-w--w--w-）则代表权限555（r-xr-xr-x）。</p>
+<p>考虑到安全的原因，默认的umask被设置为0077。</p>
+  <pre class="command">    <b>mount ... -o umask=0277</b>
+
+    -r-x------ 1 root    root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+  <pre class="command">    <b>mount ... -o umask=0222</b>
+
+    -r-xr-xr-x 1 root    root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+  
+<p>到此为止，这些文件的所有者和所有组仍为root，下面我们将会尝试使用uid和gid选项。</p>
+  <pre class="command">    <b>mount ... -o uid=flatcap</b>
+
+    -r-x------ 1 flatcap root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+  <pre class="command">    <b>mount ... -o gid=winuser</b>
+
+    -r-x------ 1 root    winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+  <pre class="command">    <b>mount ... -o uid=flatcap,gid=winuser</b>
+
+    -r-x------ 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+  
+<p>最后我们将组合一些选项以得到精确的权限控制。下面的例子中，我们将赋予用户flatcap完全的控制权限，赋予组winuser中的用户读权限，而其他所有用户则没有任何访问权限。</p>
+<pre class="command">    <b>mount ... -o umask=0027,uid=flatcap,gid=winuser</b>
+
+    -rwxr-x--- 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="4.10"></a>
+  <h3>4.10 怎样自动挂载一个NTFS卷？</h3>
+  
+<p>一旦你熟悉了挂载命令，就可以通过向/etc/fstab (<b>f</b>ile<b>s</b>ystem <b>tab</b>le)中添加指令行来告诉Linux如何自动挂载卷了。</p>
+<p>下面是一些挂载命令的例子和等价的fstab中指令行。<br>
+  <img alt="NB" src="style/red.png" width="16" height="16"> 不必担心行尾 
+  0 0 表示的意思。</p>
+  <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+
+    /dev/hda1 /mnt/windows ntfs ro                                    0 0
+    </pre>
+  
+<p>这里我们将 -r 转换为等价的 -o ro。</p>
+  <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b>
+
+    /dev/hda1 /mnt/windows ntfs ro,umask=0222                         0 0
+    </pre>
+  <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222,uid=flatcap,gid=winuser</b>
+
+    /dev/hda1 /mnt/windows ntfs ro,umask=0222,uid=flatcap,gid=winuser 0 0
+    </pre>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <hr>
+  <!-- ............................................................. -->
+  <a name="5.0"></a>
+  <h2>5. 在NTFS上启动操作系统</h2>
+  <a name="5.1"></a>
+  <h3>5.1 我可以在NTFS卷上启动Windows吗？</h3>
+  
+<p>可以的，grub和lilo都可以从NTFS卷上启动Windows。实际的过程是Linux启动加载程序找到NTFS的启动加载程序并将控制权转给它。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="5.2"></a>
+  <h3>5.2 我应该怎样使用lilo？
+  </h3>
+  
+<p>向文件/etc/lilo.conf中添加以下条目，然后重新运行lilo。</p>
+  <pre class="command">    other = /dev/hda1
+        table = /dev/hda
+        label = Windows
+    </pre>
+  
+<p>其中other指向包含Windows的分区而table指向磁盘的分区表。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="5.3"></a>
+  <h3>5.3 我应该怎样使用grub？</h3>
+  
+<p>向文件/boot/grub/grub.conf中添加以下条目。</p>
+  <pre class="command">    title Windows
+        root (hd0,0)
+        makeactive
+        chainloader +1
+    </pre>
+  
+<p>根据grub对磁盘计数的规则，/dev/hda代表hd0，hdb代表hd1，依次类推。磁盘分区则从0开始计数，这样hda1就代表hd0,0，hdc4则代表hd2,3。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <hr>
+  <!-- ............................................................. -->
+  <a name="6.0"></a>
+  <h2>6. Linux发行版</h2>
+  <a name="6.1"></a>
+  <h3>6.1 哪个发行版附加了对NTFS的支持？</h3>
+  
+<p>现在所知支持NTFS的Linux发行版有：<a href="http://www.mandrake.com/" target="_blank">Mandrake</a>、<a href="http://www.debian.org/" target="_blank">Debian</a>、<a href="http://www.suse.com/" target="_blank">SuSE</a>、<a href="http://www.gentoo.org/" target="_blank">Gentoo</a>、和<a href="http://www.caldera.com/" target="_blank">Caldera</a>。</p>
+  
+<p>实际的情况是，只要发行版的名称不是RedHat，那么它就支持NTFS。</p>
+<p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="6.2"></a>
+  <h3>6.2 为什么RedHat不支持NTFS？</h3>
+  
+<p>我也很想知道，据传言说这是出于法律上的原因。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="6.3"></a>
+  <h3>6.3 为什么RedHat在访问NTFS卷时会处于锁上状态？</h3>
+  
+<p>通过命令uname -a检查你使用的内核版本，如果版本号是2.4.9的话你就需要更新内核了。访问<a href="http://www.redhat.com/" target="_blank">RedHat的网址</a>将会得到更详细的信息。</p>
+  
+<p>如果你愿意的话也可以自己编译内核。阅读<a href="ntfs-zh.html#3.5">怎样在Linux中加入对NTFS的支持？</a>一节会得到更详细的信息。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="6.4"></a>
+  <h3>6.4 有可以安装在NTFS上的发行版吗？</h3>
+  <p>Not quite. <a href="http://phatlinux.com/" target="_blank">Phat Linux</a> can 
+    install onto a FAT partition within Windows, then boot from the files inside 
+    Windows. The New Driver <u>nearly has enough support for them to perform this trick 
+      using NTFS.</u></p>
+  
+<p>并不完全有。<a href="http://phatlinux.com/" target="_blank">Phat Linux</a>可以被安装在Windows内的FAT分区上，然后从Windows内部进行启动。新的驱动程序内含了充分的支持从而可以让其在NTFS分区上进行类似的启动过程。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <hr>
+  <!-- ............................................................. -->
+  <a name="7.0"></a>
+  <h2>7. 新的Linux NTFS驱动程序</h2>
+  <a name="7.1"></a>
+  <h3>7.1 新的NTFS驱动程序是什么？</h3>
+  
+<p>它是一个完全重写的NTFS驱动。最初的驱动程序已经写了很多年了，那时候我们对NTFS或者Linux知之甚少并且程序源代码也变得很难维护。所以我们根据最新的认识编写了新的驱动程序，它更简单、运行更迅速并且也更容易维护。</p>
+<p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="7.2"></a>
+  <h3>7.2 我需要使用它吗？</h3>
+  
+<p>不。当前的Linux内核中已经包含了一个NTFS驱动程序，所以你并不需要使用新的驱动。最初的驱动虽然很老了，但对于日常使用仍足以可靠地应对。</p>
+<p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="7.3"></a>
+  <h3>7.3 我该怎样使用新的驱动程序？</h3>
+  
+<p>我们将新驱动作为<a href="http://www.kernel.org/pub/linux/kernel/v2.4/">Linux内核正式源代码</a>的<a href="../downloads.html">补丁</a>发布。</p>
+<p><a href="../downloads.html">../downloads.html</a>
+    <br>
+    <a href="http://www.kernel.org/pub/linux/kernel/v2.4/" target="_blank">http://www.kernel.org/pub/linux/kernel/v2.4/</a>
+  </p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="7.4"></a>
+  <h3>7.4 什么是补丁？</h3>
+  
+<p>补丁是对一系列文本文件所做改变的集合。我们仅仅对NTFS相关代码做出改变，因此就没有必要在每次改变时发布所有的内核代码，这也是低效率的。我们只需对正式Linux内核源代码发布补丁即可。</p>
+<p>解开源文件之后，进入源文件路径并执行如下命令（将path和patchname替换为所需内容）：</p>
+  <pre class="command">    <b>patch -p1 &lt; path/to/patchname</b>
+    </pre>
+  
+<p>这将会对源文件进行修改，整个过程中应该不会发生错误或者失败。接着就是像往常一样编译内核了，这份FAQ中对此有详细说明。</p>
+<p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="7.5"></a>
+  <h3>7.5 如果我仍不理解呢？</h3>
+  
+<p>非常抱歉，我们会尽可能帮助每个人，但我们自己的时间也是有限的。下面有一些站点可以帮助你了解Linux的基础知识，此外，你也可以向附近的Linux User 
+  Group寻求帮助。</p>
+<ul>
+  <li>Just Linux - http://www.justlinux.com</li>
+  <li>The Linux Documentation Project - http://tldp.org</li>
+  <li>The Linux Kernel HOWTO - http://tldp.org/HOWTO/Kernel-HOWTO.html</li>
+  <li>Linux User Groups - http://www.linux.org/groups/index.html</li>
+  </ul>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="7.6"></a>
+  
+<h3>7.6 什么时候Linux内核中才会收入这些新的代码？</h3>
+  
+<p>我们要考虑到共有两个内核版本。新的驱动代码已经被收入到Linux内核开发版本中了，它是从2.5.11内核开始引入的。</p>
+<p>而稳定的Linux内核版本，比如当前的2.4.20，仍在使用最初的驱动程序。我们对新驱动的代码感到满意，但是仍需使内核管理者相信它是有益的。</p>
+  
+<p>我们仍会经常发布补丁程序，直到代码被内核正式收入为止。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+  <a name="7.7"></a>
+  <h3>7.7 我们不可以对Windows 的驱动进行封装吗？</h3>
+  
+<p>这听起来是个好主意，但是开始着手时则会遇到许多问题。</p>
+  
+<p>最大的技术问题是将Windows的DLL系统连接到Linux的VFS之中。问题倒是可以解决，但却不能很完美地解决。它需要作为内核的一部分运行，这也意味着如果它出了问题整个系统就会崩溃。我们没有源代码，自然也不可能很好地解决这个问题。</p>
+<p>其次主要的问题就是稳定性。我们应该使用哪个版本的Windows系统文件呢？只针对单一的版本会限制其使用价值，使封装对所有的版本都有效则会带来编程上的恶梦。</p>
+  
+<p>更糟的是，发布Windows系统文件具有法律上的限制，这会带来很多问题。同样，Windows驱动程序的私有本质也决定了其他内核开发者没有办法对用户使用NTFS封装过程中出现的问题进行研究解决。</p>
+  <p><a href="ntfs-zh.html#top">返回页面顶部</a></p>
+
+    <table summary="" border="0" cellspacing="0" width="100%">
+      <tbody><tr>
+	<td class="copyright" width="99%">Copyright &copy; flatcap (Richard Russon)</td>
+        <td valign="bottom" width="88"><a href="http://sourceforge.net/"><img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://validator.w3.org/check?uri=referer"><img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://jigsaw.w3.org/css-validator/check/referer"><img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31"></a></td>
+      </tr>
+    </tbody></table>
+  
+
+</body></html>

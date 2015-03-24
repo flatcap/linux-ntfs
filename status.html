@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Linux NTFS Project">
+    <meta name="keywords" content="Linux NTFS">
+    <link rel="stylesheet" href="style/home.css" type="text/css">
+    <link rel="icon" href="style/ntfsicon.png" type="image/png">
+    <title>Linux NTFS Project</title>
+  </head>
+  <body>
+    <table summary="" border="0" cellpadding="10" cellspacing="10" width="100%">
+      <tbody><tr>
+        <td colspan="2" class="block" valign="top">
+          <h2>Welcome to the Linux-NTFS Project</h2>
+        </td>
+      </tr>
+      <tr>
+        <td class="block" valign="top" width="1%">
+          <h3><a class="heading" href="index.html">Home</a></h3>
+          <ul>
+            <li><a class="quiet" href="index.html#latest">Latest</a></li>
+            <li><a class="quiet" href="index.html#about">About</a></li>
+            <li><a class="quiet" href="index.html#news">News</a></li>
+          </ul>
+
+          <h3><a class="heading" href="status.html">Status</a></h3>
+          <ul>
+            <li><a class="quiet" href="status.html#ntfsdriver">NTFS Driver</a></li>
+            <li><a class="quiet" href="status.html#ntfstools">NTFS Tools</a></li>
+            <li><a class="quiet" href="status.html#ldmdriver">LDM Driver</a></li>
+            <li><a class="quiet" href="status.html#ldmtools">LDM Tools</a></li>
+          </ul>
+
+          <h3><a class="heading" href="help.html">Help&nbsp;&amp;&nbsp;Info</a></h3>
+          <ul>
+            <li><a class="quiet" href="help.html#faq">FAQs,&nbsp;HOWTOs</a></li>
+            <li><a class="quiet" href="help.html#forums">Help&nbsp;Forums</a></li>
+            <li><a class="quiet" href="help.html#docs">Documentation</a></li>
+            <li><a class="quiet" href="help.html#lists">Mailing&nbsp;Lists</a></li>
+          </ul>
+
+          <h3><a class="heading" href="downloads.html">Downloads</a></h3>
+          <ul>
+            <li><a class="quiet" href="downloads.html#ntfs">NTFS&nbsp;Tools</a></li>
+            <li><a class="quiet" href="downloads.html#ldm">LDM&nbsp;Tools</a></li>
+            <li><a class="quiet" href="downloads.html#docs">Documentation</a></li>
+            <li><a class="quiet" href="downloads.html#src">Source&nbsp;Code</a></li>
+          </ul>
+
+          <h3><a class="heading" href="rpm/index.html">NTFS&nbsp;RPMs</a></h3>
+          <ul>
+            <li><a class="quiet" href="rpm/instructions.html">Instructions</a></li>
+            <li><a class="quiet" href="rpm/downloads.html">Downloads</a></li>
+            <li><a class="quiet" href="rpm/help.html">Help</a></li>
+          </ul>
+
+          <h3><a class="heading" href="misc.html">Miscellaneous</a></h3>
+          <ul>
+            <li><a class="quiet" href="misc.html#credits">Credits</a></li>
+            <li><a class="quiet" href="misc.html#praise">Praise</a></li>
+            <li><a class="quiet" href="misc.html#involved">Get&nbsp;Involved</a></li>
+            <li><a class="quiet" href="misc.html#related">Related&nbsp;Projects</a></li>
+          </ul>
+
+          <h3><a class="heading" href="sourceforge.html">SourceForge</a></h3>
+          <ul>
+            <li><a class="quiet" href="sourceforge.html#about">About</a></li>
+            <li><a class="quiet" href="sourceforge.html#project">Project&nbsp;Page</a></li>
+            <li><a class="quiet" href="sourceforge.html#stats">Statistics</a></li>
+          </ul>
+        </td>
+
+        <td class="block" valign="top">
+          <h3>Status</h3>
+
+          <p>Latest stable new NTFS kernel driver: <b>2.1.24</b></p>
+          <ul>
+              <p>The new, rewritten NTFS driver is part of the current stable Linux kernel
+              series and the latest release is included with kernels <b>2.6.14</b> and later.
+              This rewritten NTFS driver backport to the previous stable Linux kernel series (2.4.x) is available from our <a href="downloads.html">download&nbsp;page</a>.
+  Note that the backports are no longer maintained since the driver now
+relies on too many 2.6 kernel specific features and backporting it to
+2.4 would be a huge amount of work and involve rewriting the majority of
+ the driver.</p>
+           </ul>
+
+          <p>Latest old NTFS kernel driver: <b>1.1.22</b></p>
+          <ul>
+              <p>The old NTFS driver is part of the now out-of-date Linux kernel series
+	      (2.4.x) and the latest release is included with kernels <b>2.4.18</b> and later. This driver is not endorsed and supported by this project.</p>
+          </ul>
+
+		  <p>Before reporting potential bugs in the new NTFS driver, it would be
+          great if you could try a kernel containing the latest new NTFS driver
+          first. Thanks.</p>
+
+          <a name="ntfsdriver"></a>
+	  <h3>NTFS driver in Linux kernel 2.6</h3>
+          <table summary="NTFS New Driver" border="0">
+            <tbody><tr>
+              <th class="indent">Status</th>
+              <th class="indent"></th>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">
+                This NTFS driver was written by Anton Altaparmakov from scratch,
+		supporting all versions of NTFS. It is included in the mainline
+		kernel since 2.5.11 and also has a
+                <a href="http://sourceforge.net/projects/linux-ntfs/files/">backported version</a>
+                for the latest 2.4 stable kernel. What are the advantages of the new driver
+                compared to the old one?
+                <p>
+                </p><ul>
+                <li>Stable: no known problems in the implemented functionality, it's also multi-processor
+                    and reentrant safe.
+                </li><li>Supports all NTFS
+                    <a href="ntfs/help/glossary.html#cluster">cluster</a>
+                    sizes from 512 bytes up to 64 kB. The old driver is limited to
+                    maximum 4 kB cluster size.
+                </li><li>Full (read-only) support for <a href="http://www.ntfs.com/ntfs-sparse.htm">sparse</a>
+                    and <a href="http://www.ntfs.com/ntfs-compressed.htm">compressed</a>
+                    files also on Windows XP/2003/2000.
+                </li><li>Supports mmap() thus <a href="http://www.winehq.com/">Wine</a> users can start
+                    applications from an NTFS partition.
+                </li><li>Still read-only, but with safe file overwrite support on all Windows versions
+                    without changes to the file size (uncompressed, unencrypted, nonsparse files only).
+                </li><li>One can setup a loopback device
+                    on an NTFS file.
+                <a href="http://topologi-linux.sourceforge.net/index.php">TopologiLinux</a> and others
+                    use this feature to run Linux from a Windows NTFS partition with full read-write
+                    support.
+                </li><li>Much better performance.
+		</li><li>Support for exporting mounted NTFS volumes via NFS.
+		</li><li>Support for async io (aio).
+		</li><li>Support for fsync(2), fdatasync(2), and msync(2).
+		</li><li>Support for readv(2) and writev(2).
+		</li><li>Support for access time updates (including mtime and ctime).
+		</li><li>Support for truncate(2) and open(2) with O_TRUNC.  But only
+		    very limited support for highly fragmented files, i.e. ones
+		    which have their data attribute split across multiple
+		    extents.
+                </li></ul></td>
+          </tr></tbody></table>
+
+          <a name="ntfstools"></a>
+          <h3>NTFS User Tools: ntfsprogs</h3>
+          <table summary="NTFS Tools" border="0">
+            <tbody><tr>
+              <th class="indent">Tool</th>
+              <th class="indent">Status</th>
+              <th class="indent">Description</th>
+            </tr>
+	    <tr>
+              <td class="indent">libntfs</td>
+              <td class="indent">Stable</td>
+              <td class="indent">Move all the common code into a shared library</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/mkntfs.html">mkntfs</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Create an NTFS volume on a partition</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfscat.html">ntfscat</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Print a file on the standard output</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfsclone.html">ntfsclone</a></td>
+              <td class="indent">Stable</td>
+	      <td class="indent">Efficiently clone, image, restore or rescue a volume at the sector level</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfscluster.html">ntfscluster</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Given a cluster, or sector, find the file</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfscp.html">ntfscp</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Overwrite a file on an NTFS volume</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfsfix.html">ntfsfix</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Try to fix common errors and force Windows to check NTFS at boot time</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfsinfo.html">ntfsinfo</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Dump a file's attributes, completely</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfslabel.html">ntfslabel</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Display or set a volume's label</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfsls.html">ntfsls</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">List directory contents</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfsmount.html">ntfsmount</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Mount NTFS volume from userspace using FUSE and libntfs</td>
+            </tr>
+            <tr>
+              <td class="indent">ntfsresize</td>
+              <td class="indent">Stable</td>
+	      <td class="indent">Non-destructively resize an NTFS volume without the need of prior defragmentation</td>
+            </tr>
+            <tr>
+              <td class="indent"><a href="man/ntfsundelete.html">ntfsundelete</a></td>
+              <td class="indent">Stable</td>
+              <td class="indent">Find files that have been deleted and recover them</td>
+            </tr>
+            <tr>
+              <td class="indent">ntfsrm</td>
+              <td class="indent">Alpha</td>
+	      <td class="indent">Delete files from an NTFS volume</td>
+            </tr>
+            <tr>
+              <td class="indent">ntfstruncate</td>
+              <td class="indent">Alpha</td>
+	      <td class="indent">Truncate an inode attribute to a specified length</td>
+            </tr>
+            <tr>
+              <td class="indent">ntfswipe</td>
+              <td class="indent">Alpha</td>
+              <td class="indent">Write zeros over the unused parts of the disk</td>
+            </tr>
+            <tr>
+              <td class="indent">ntfsdefrag</td>
+              <td class="indent">Started</td>
+              <td class="indent">Defragment files, directories and the MFT</td>
+            </tr>
+            <tr>
+              <td class="indent">ntfsck</td>
+              <td class="indent">Started</td>
+              <td class="indent">Perform consistency checks on a volume</td>
+            </tr>
+            <tr>
+              <td class="indent">ntfsdiskedit</td>
+              <td class="indent">Not&nbsp;started</td>
+              <td class="indent">Walk the tree of NTFS ondisk structures (and alter them)</td>
+            </tr>
+          </tbody></table>
+
+          <a name="ldmdriver"></a>
+          <h3>LDM - Original Driver</h3>
+          <table summary="LDM Original Driver" border="0">
+            <tbody><tr>
+              <th class="indent">Status</th>
+              <th class="indent"></th>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">Slow and inefficient, but it works</td>
+            </tr>
+            <tr>
+              <th class="indent">ToDo</th>
+              <th class="indent"></th>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">Needs to be integrated with md</td>
+            </tr>
+          </tbody></table>
+
+          <h3>LDM - New Driver</h3>
+          <table summary="LDM New Driver" border="0">
+            <tbody><tr>
+              <th class="indent">Status</th>
+              <th class="indent"></th>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">The rewrite is nearly complete</td>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">It's faster, cleaner and more robust</td>
+            </tr>
+            <tr>
+              <th class="indent">ToDo</th>
+              <th class="indent"></th>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">Needs to be integrated with md</td>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">New code needs reviewing</td>
+            </tr>
+            <tr>
+              <td class="indent"></td>
+              <td class="indent">Make the driver compatible with the 2.4 kernel</td>
+            </tr>
+          </tbody></table>
+
+          <a name="ldmtools"></a>
+          <h3>LDM - Tools</h3>
+          <table summary="LDM Tools" border="0">
+            <tbody><tr>
+              <th class="indent">Tool</th>
+              <th class="indent">Status</th>
+              <th class="indent">Description</th>
+            </tr>
+            <tr>
+              <td class="indent">ldminfo</td>
+              <td class="indent">Stable</td>
+              <td class="indent">Display the database contents in a simple form</td>
+            </tr>
+            <tr>
+              <td class="indent">simple</td>
+              <td class="indent">Beta</td>
+              <td class="indent">Mount a single volume from a single partition</td>
+            </tr>
+            <tr>
+              <td class="indent">multi-volumes</td>
+              <td class="indent">Not&nbsp;started</td>
+              <td class="indent">Support NTFS volumes that span several partitions, e.g.  Spanned, Stripes, Mirrors and RAID</td>
+            </tr>
+            <tr>
+              <td class="indent">dbtools</td>
+              <td class="indent">Not&nbsp;started</td>
+              <td class="indent">Read/write information from/to the database</td>
+            </tr>
+            <tr>
+              <td class="indent">ldmlib</td>
+              <td class="indent">Not&nbsp;started</td>
+              <td class="indent">Move all the common code into a shared library</td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+    </tbody></table>
+    <table summary="" border="0" cellspacing="0" width="100%">
+      <tbody><tr>
+	<td>&nbsp;</td>
+	<td>
+	  <a href="http://sourceforge.net/donate/index.php?group_id=13956">
+	  <img src="style/project-support.jpg" alt="Donate to this project" border="0" width="88" height="32"></a>
+	</td>
+	<td>&nbsp;</td>
+	<td width="99%">
+	  <a href="http://sourceforge.net/donate/index.php?group_id=13956">
+	  Donate&nbsp;to&nbsp;Linux&nbsp;NTFS<br>file&nbsp;system&nbsp;support</a>
+	</td>
+        <td class="copyright">Copyright&nbsp;&copy;&nbsp;2002-2004&nbsp;flatcap&nbsp;(Richard&nbsp;Russon)&nbsp;&nbsp;</td>
+        <td valign="bottom" width="88">
+          <a href="http://sourceforge.net/">
+            <img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31">
+          </a>
+        </td>
+        <td valign="bottom" width="88">
+          <a class="contact" href="http://validator.w3.org/check?uri=referer">
+          <img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31">
+          </a>
+        </td>
+        <td valign="bottom" width="88">
+          <a class="contact" href="http://jigsaw.w3.org/css-validator/validator?uri=referer">
+          <img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31">
+          </a>
+        </td>
+      </tr>
+    </tbody></table>
+
+</body></html>

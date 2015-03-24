@@ -1,0 +1,681 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>mkntfs.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2001,2002 Anton Altaparmakov. All Rights Reserved. -->
+<!-- .\" Copyright (c) 2005 Richard Russon. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" Adapted from e2fsprogs-1.19/misc/mke2fs.8.in by Theodore Ts'o. -->
+<!-- .\" -->
+<!-- .TH MKNTFS 8 "June 2005" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - MKNTFS (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+mkntfs - create an NTFS 1.2 (Windows NT/2000/XP) file system
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B mkntfs -->
+<b>mkntfs</b> [
+<!-- .I options -->
+<i>options</i> ]
+<!-- .B device -->
+<b>device</b> [
+<!-- .I number-of-sectors -->
+<i>number-of-sectors</i> ]
+<!-- .P -->
+<p>
+<!-- .B mkntfs -->
+<b>mkntfs</b> [
+<!-- .B \-C -->
+<b>-C</b> ]
+[
+<!-- .B \-c -->
+<b>-c</b> <!-- .I cluster-size -->
+<i>cluster-size</i> ]
+[
+<!-- .B \-F -->
+<b>-F</b> ]
+[
+<!-- .B \-f -->
+<b>-f</b> ]
+[
+<!-- .B \-H -->
+<b>-H</b> <!-- .I heads -->
+<i>heads</i> ]
+[
+<!-- .B \-h -->
+<b>-h</b> ]
+[
+<!-- .B \-I -->
+<b>-I</b> ]
+[
+<!-- .B \-L -->
+<b>-L</b> <!-- .I volume-label -->
+<i>volume-label</i> ]
+[
+<!-- .B \-l -->
+<b>-l</b> ]
+[
+<!-- .B \-n -->
+<b>-n</b> ]
+[
+<!-- .B \-p -->
+<b>-p</b> <!-- .I part-start-sect -->
+<i>part-start-sect</i> ]
+[
+<!-- .B \-Q -->
+<b>-Q</b> ]
+[
+<!-- .B \-q -->
+<b>-q</b> ]
+[
+<!-- .B \-S -->
+<b>-S</b> <!-- .I sectors-per-track -->
+<i>sectors-per-track</i> ]
+[
+<!-- .B \-s -->
+<b>-s</b> <!-- .I sector-size -->
+<i>sector-size</i> ]
+[
+<!-- .B \-T -->
+<b>-T</b> ]
+[
+<!-- .B \-V -->
+<b>-V</b> ]
+[
+<!-- .B \-v -->
+<b>-v</b> ]
+[
+<!-- .B \-w -->
+<b>-w</b> <!-- .I ntfs-version -->
+<i>ntfs-version</i> ]
+[
+<!-- .B \-z -->
+<b>-z</b> <!-- .I mft-zone-multiplier -->
+<i>mft-zone-multiplier</i> ]
+[
+<!-- .B \-\-debug -->
+<b>--debug</b> ]
+<!-- .I device -->
+<i>device</i> [
+<!-- .I number-of-sectors -->
+<i>number-of-sectors</i> ]
+<!-- .SH DESCRIPTION -->
+</p></blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B mkntfs -->
+<b>mkntfs</b> is used to create an NTFS 1.2 (Windows NT 4.0) file system on a device (usually
+a disk partition).
+<!-- .I device -->
+<i>device</i> is the special file corresponding to the device (e.g
+<!-- .IR /dev/hdXX ). -->
+<i>/dev/hdXX</i>). <!-- .I number-of-sectors -->
+<i>number-of-sectors</i> is the number of blocks on the device.  If omitted,
+<!-- .B mkntfs -->
+<b>mkntfs</b> automagically figures the file system size.
+<!-- .SH OPTIONS -->
+</blockquote>
+<a name="3"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+Below is a summary of all the options that
+<!-- .B mkntfs -->
+<b>mkntfs</b> accepts.  Nearly all options have two equivalent names.  The short name is preceded by
+<!-- .BR \- -->
+<b>-</b> and the long name is preceded by
+<!-- .BR \-\- . -->
+<b>--</b>. Any single letter options, that don’t take an argument, can be combined into a
+single command, e.g.
+<!-- .BR \-fv -->
+<b>-fv</b> is equivalent to
+<!-- .BR "\-f \-v" . -->
+<b>-f -v</b>. Long named options can be abbreviated to any unique prefix of their name.
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: Below is a summary of all the options that
+ -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BR -->
+ <!-- .SS Basic options -->
+</td></tr>
+<tr></tr></tbody></table></blockquote>
+<a name="4"></a>
+
+    <h3>&nbsp; &nbsp; Basic options</h3>
+
+<blockquote>
+<!-- .BR -->
+ <p>
+<!-- .B \-f -->
+<b>-f</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: <B>-f</B>  -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-fast -->
+<b>--fast</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-Q -->
+<b>-Q</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-quick -->
+<b>--quick</b> </td><td valign="bottom">
+Perform quick (fast) format. This will skip both zeroing of the volume and bad sector
+checking.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BI \-L " STRING" -->
+<b>-L</b><i> STRING</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-label " STRING" -->
+<b>--label</b><i> STRING</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Set the volume label for the filesystem.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-C -->
+<b>-C</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-enable-compression -->
+<b>--enable-compression</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Enable compression on the volume.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BI \-c " BYTES" -->
+<b>-c</b><i> BYTES</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-cluster-size " BYTES" -->
+<b>--cluster-size</b><i> BYTES</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Specify the size of clusters in bytes. Valid cluster size values are powers of
+two, with at least 256, and at most 65536 bytes per cluster. If omitted,
+<!-- .B mkntfs -->
+<b>mkntfs</b> determines the
+<!-- .I cluster-size -->
+<i>cluster-size</i> from the volume size. The value is determined as follows:
+<!-- .TS -->
+<p></p><blockquote><table class="highlight" summary="data" border="1" cellpadding="3" cellspacing="0">
+<!-- lB lB lB -->
+<!-- l l r. -->
+<tbody><tr valign="top">
+<td><b>Volume</b></td><td><b>size</b></td><td><b>Default cluster size</b></td></tr>
+<tr valign="top">
+<td>0</td><td>- 512MB</td><td align="right">512 bytes</td></tr>
+<tr valign="top">
+<td>512MB</td><td>- 1GB</td><td align="right">1024 bytes</td></tr>
+<tr valign="top">
+<td>1GB</td><td>- 2GB</td><td align="right">2048 bytes</td></tr>
+<tr valign="top">
+<td>2GB</td><td>+</td><td align="right">4096 bytes</td></tr>
+</tbody></table></blockquote>
+Note that the default cluster size is set to be at least equal to the sector
+size as a cluster cannot be smaller than a sector. Also, note that values
+greater than 4096 have the side effect that compression is disabled on the
+volume (due to limitations in the NTFS compression algorithm currently in use
+by Windows).
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-I -->
+<b>-I</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-disable-indexing -->
+<b>--disable-indexing</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Disable content indexing on the volume. (This is only meaningful on
+Windows 2000 and later. Windows NT 4.0 and earlier ignore this as they do
+not implement content indexing at all.)
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-n -->
+<b>-n</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-no-action -->
+<b>--no-action</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Causes
+<!-- .B mkntfs -->
+<b>mkntfs</b> to not actually create a filesystem, but display what it would do if it were
+to create a filesystem. All steps of the format are carried out except the
+actual writing to the device.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BR -->
+ <!-- .SS Advanced options -->
+</td></tr>
+<tr></tr></tbody></table></p></blockquote>
+<a name="5"></a>
+
+    <h3>&nbsp; &nbsp; Advanced options</h3>
+
+<blockquote>
+<!-- .BR -->
+ <p>
+<!-- .BI \-s " BYTES" -->
+<b>-s</b><i> BYTES</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: <B>-s -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-sector-size " BYTES" -->
+<b>--sector-size</b><i> BYTES</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Specify the size of sectors in bytes. Valid sector size values are 256, 512,
+1024, 2048 and 4096 bytes per sector. If omitted,
+<!-- .B mkntfs -->
+<b>mkntfs</b> attempts to determine the
+<!-- .I sector-size -->
+<i>sector-size</i> automatically and if that fails a default of 512 bytes per sector is used.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BI \-p " SECTOR" -->
+<b>-p</b><i> SECTOR</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-partition-start " SECTOR -->
+<b>--partition-start</b><i></i><b>SECTOR</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Specify the partition start sector. The maximum is 4294967295 (2^32-1). If
+omitted,
+<!-- .B mkntfs -->
+<b>mkntfs</b> attempts to determine
+<!-- .I part-start-sect -->
+<i>part-start-sect</i> automatically and if that fails a default of 0 is used. Note that
+<!-- .I part-start-sect -->
+<i>part-start-sect</i> is required for Windows to be able to boot from the created volume.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BI \-H " NUM" -->
+<b>-H</b><i> NUM</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-heads " NUM" -->
+<b>--heads</b><i> NUM</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Specify the number of heads. The maximum is 65535 (0xffff). If omitted,
+<!-- .B mkntfs -->
+<b>mkntfs</b> attempts to determine the number of
+<!-- .I heads -->
+<i>heads</i> automatically and if that fails a default of 0 is used. Note that
+<!-- .I heads -->
+<i>heads</i> is required for Windows to be able to boot from the created volume.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BI \-S " NUM" -->
+<b>-S</b><i> NUM</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-sectors-per-track " NUM" -->
+<b>--sectors-per-track</b><i> NUM</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Specify the number of sectors per track. The maximum is 65535 (0xffff). If
+omitted,
+<!-- .B mkntfs -->
+<b>mkntfs</b> attempts to determine the number of
+<!-- .I sectors-per-track -->
+<i>sectors-per-track</i> automatically and if that fails a default of 0 is used. Note that
+<!-- .I sectors-per-track -->
+<i>sectors-per-track</i> is required for Windows to be able to boot from the created volume.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BI \-z " NUM" -->
+<b>-z</b><i> NUM</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-mft-zone-multiplier " NUM" -->
+<b>--mft-zone-multiplier</b><i> NUM</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Set the MFT zone multiplier, which determines the size of the MFT zone to use
+on the volume. The MFT zone is the area at the beginning of the volume reserved
+for the master file table (MFT), which stores the on disk inodes (MFT records).
+It is noteworthy that small files are stored entirely within the inode;
+thus, if you expect to use the volume for storing large numbers of very small
+files, it is useful to set the zone multiplier to a higher value. Note, that
+the MFT zone is resized on the fly as required during operation of the NTFS
+driver but choosing a good value will reduce fragmentation. Valid values
+are 1, 2, 3 and 4. The values have the following meaning:
+<!-- .TS -->
+<p></p><blockquote><table class="highlight" summary="data" border="1" cellpadding="3" cellspacing="0">
+<!-- lB lB -->
+<!-- lB lB -->
+<!-- c l. -->
+<tbody><tr valign="top">
+<td><b>MFT zone</b></td><td><b>MFT zone size</b></td></tr>
+<tr valign="top">
+<td><b>multiplier</b></td><td><b>(% of volume size)</b></td></tr>
+<tr valign="top">
+<td align="center">1</td><td>12.5% (default)</td></tr>
+<tr valign="top">
+<td align="center">2</td><td>25.0%</td></tr>
+<tr valign="top">
+<td align="center">3</td><td>37.5%</td></tr>
+<tr valign="top">
+<td align="center">4</td><td>50.0%</td></tr>
+</tbody></table></blockquote>
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-T -->
+<b>-T</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-zero-time -->
+<b>--zero-time</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Fake the time to be 00:00:00 UTC, Jan 1, 1970 instead of the current system
+time.  This is only really useful for debugging purposes.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-w STRING -->
+<b>-w STRING</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-ntfs-version STRING -->
+<b>--ntfs-version STRING</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Select the version of NTFS you wish to use.  This can be one of "1.2", "3.0", or "3.1".
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-F -->
+<b>-F</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-force -->
+<b>--force</b> </td><td valign="bottom">
+Force
+<!-- .B mkntfs -->
+<b>mkntfs</b> to run, even if the specified
+<!-- .I device -->
+<i>device</i> is not a block special device, or appears to be mounted.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BR -->
+ <!-- .SS Output options -->
+</td></tr>
+<tr></tr></tbody></table></p></blockquote>
+<a name="6"></a>
+
+    <h3>&nbsp; &nbsp; Output options</h3>
+
+<blockquote>
+<!-- .BR -->
+ <p>
+<!-- .B \-q -->
+<b>-q</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: <B>-q</B>  -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-quiet -->
+<b>--quiet</b> </td><td valign="bottom">
+Quiet execution; only errors are written to stderr, no output to stdout
+occurs at all. Useful if
+<!-- .B mkntfs -->
+<b>mkntfs</b> is run in a script.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-v -->
+<b>-v</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-verbose -->
+<b>--verbose</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Verbose execution.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-\-debug -->
+<b>--debug</b> Really verbose execution; includes the verbose output from the
+<!-- .B \-v -->
+<b>-v</b> option as well as additional output useful for debugging
+<!-- .B mkntfs. -->
+<b>mkntfs.</b> <!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .BR -->
+ <!-- .SS Help options -->
+</td></tr>
+<tr></tr></tbody></table></p></blockquote>
+<a name="7"></a>
+
+    <h3>&nbsp; &nbsp; Help options</h3>
+
+<blockquote>
+<!-- .BR -->
+ <p>
+<!-- .B \-V -->
+<b>-V</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: <B>-V</B>  -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-version -->
+<b>--version</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Print the version number of
+<!-- .B mkntfs -->
+<b>mkntfs</b> and exit.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-l -->
+<b>-l</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-license -->
+<b>--license</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Print the licensing information of
+<!-- .B mkntfs -->
+<b>mkntfs</b> and exit.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<p>
+</p></td><td valign="bottom">
+<!-- .B \-h -->
+<b>-h</b> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-help -->
+<b>--help</b> </td><td valign="bottom">
+Print the usage information of
+<!-- .B mkntfs -->
+<b>mkntfs</b> and exit.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BR -->
+ </td><td valign="bottom">
+<p>
+<!-- .SH BUGS -->
+</p></td></tr>
+<tr></tr></tbody></table></p></blockquote>
+<a name="8"></a>
+
+     <h2>BUGS</h2>
+
+<blockquote>
+<!-- .B mkntfs -->
+<b>mkntfs</b> writes the backup boot sector to the last sector of the block
+<!-- .I device -->
+<i>device</i> being formatted. However, current versions of the Linux kernel (all versions
+up to and including todays 2.4.18) either only report an even number of sectors
+when the sector size is below 1024 bytes, which is the case for most hard
+drives today (512 bytes sector size) or they return the correct number but
+accessing the last sector fails. Either way, this means that when a partition
+has an odd number of 512-byte sectors, the last sector is either not reported
+to us at all or it is not writable by us and hence the created NTFS volume
+will either have the backup boot sector placed one sector ahead of where it
+should be or it cannot be written at all. For this reason,
+<!-- .B mkntfs -->
+<b>mkntfs</b> marks the NTFS volume dirty, so that when you reboot into Windows, check disk
+runs automatically and creates a copy of the backup boot sector in the correct
+location. This also has the benefit of catching any bugs in
+<!-- .B mkntfs -->
+<b>mkntfs</b> as check disk would find any corrupt structures and repair them, as well as
+report them. - If you do see any problems reported, please report the messages
+to the author.
+<!-- .br -->
+<!-- Need break --><br>
+There may be other bugs. Please, report them to the author.
+<!-- .SH AUTHOR -->
+</blockquote>
+<a name="9"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+This version of
+<!-- .B mkntfs -->
+<b>mkntfs</b> has been written by Anton Altaparmakov.
+<!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="10"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B mkntfs -->
+<b>mkntfs</b> is part of the ntfsprogs package and is available for download from
+http://linux-ntfs.sourceforge.net in source (tar ball
+and rpm) and pre-compiled binary (i386 rpm and deb) form.
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="11"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR badblocks (8), -->
+<b>badblocks(8)</b>,
+<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b></blockquote>
+<p></p>
+</body></html>

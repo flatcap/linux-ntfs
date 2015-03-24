@@ -1,0 +1,270 @@
+#!/bin/bash
+#
+# Copyright 2002-2004 FlatCap (Richard Russon)
+# This file may be copied under the terms of the GNU Public License.
+# http://www.gnu.org/licenses/gpl.html
+#
+# Generate NTFS kernel modules and rpms from a RedHat kernel-source rpm.
+#
+
+NAME=kernel-ntfs
+MODULE=ntfs.o
+RPM2CPIO=/usr/bin/rpm2cpio
+CPIO=/bin/cpio
+MAKEOPTS=""	# -j5
+ROOT=`pwd`
+RPMTMP=$ROOT/rpmtmp-$$
+SPEC=""
+RPMS=""
+ARCHS=""
+
+if [ ! -x $RPM2CPIO ]; then
+	echo "Cannot find rpm2cpio.  Giving up."
+	exit 1
+fi
+
+if [ ! -x $CPIO ]; then
+	echo "Cannot find cpio.  Giving up."
+	exit 1
+fi
+
+for i in $*; do
+	case $i in
+		*.spec)	SPEC=$i			;;
+		*.rpm)	RPMS="$RPMS $i"		;;
+		*)	ARCHS="$ARCHS $i"	;;
+	esac
+done
+
+if [ -z "$SPEC" -o -z "$RPMS" ]; then
+	echo "Usage: $0 specfile source-rpm {source-rpms} {archs}"
+	exit 1
+fi
+
+if [ ! -r $SPEC ]; then
+	echo "Cannot read '$SPEC'  Giving up."
+	exit 1
+fi
+
+for RPM in $RPMS; do
+	if [ ! -r $RPM ];then
+		echo "Cannot read '$RPM'  Giving up."
+		exit 1
+	fi
+done
+
+echo
+echo Using: $SPEC
+
+# Create temporary directories to build in and for rpmbuild to use.
+rm -fr $RPMTMP
+mkdir -p $RPMTMP/BUILD
+mkdir -p $RPMTMP/RPMS/athlon
+mkdir -p $RPMTMP/RPMS/i386
+mkdir -p $RPMTMP/RPMS/i586
+mkdir -p $RPMTMP/RPMS/i686
+mkdir -p $RPMTMP/RPMS/noarch
+mkdir -p $RPMTMP/SOURCES
+mkdir -p $RPMTMP/SPECS
+mkdir -p $RPMTMP/SRPMS
+
+for RPM in $RPMS; do
+	# Parse the rpm name: kernel-source-2.4.20-20.9.i386.rpm
+	#   VERSION  2.4.20
+	#   RELEASE  20.9
+	TMP=`echo $RPM | sed 's/kernel-source-\(.*\)\..*\.rpm/\1/'`
+	VERSION=`echo $TMP | sed 's/\(.*\)-.*/\1/'`
+	RELEASE=`echo $TMP | sed 's/.*-//'`
+	OUT=$ROOT/$NAME-$VERSION-$RELEASE
+	LOG=$OUT/log-$VERSION-$RELEASE
+
+	# The kernel modules, the rpms and the log will be put here.
+	mkdir -p $OUT
+
+	echo >> $LOG
+	echo "Log started at `date`" >> $LOG
+	echo >> $LOG
+
+	echo
+	echo "Building modules for kernel: $VERSION-$RELEASE"
+
+	pushd $RPMTMP >> $LOG
+
+	# Either extract the source from the rpm, or take a copy from "clean".
+	# Copies from "clean" will be created using hard-links (for speed).
+	echo -n "    Extracting source...     "
+	if [ -d $ROOT/clean/linux-$VERSION-$RELEASE ]; then
+		mkdir -p usr/src
+		cp -al $ROOT/clean/linux-$VERSION-$RELEASE usr/src
+	else
+		$RPM2CPIO $ROOT/$RPM | $CPIO -id --quiet
+	fi
+	echo " done"
+
+	TMP=usr/src/linux-$VERSION-$RELEASE
+	pushd $TMP >> $LOG 2>&1
+	if [ $? -ne 0 ]; then
+		echo "Cannot find source directory: '$TMP'.  Giving up."
+		exit 1
+	fi
+
+	# If the user hasn't supplied any arches to build,
+	# create a list from the configs directory.
+	if [ -z "$ARCHS" ]; then
+		TMP=`find configs -name \*.config ! -name \*x86_64\* ! -name \*uml\* ! -name \*ia64\* ! -name \*ppc\* ! -name \*s390\* ! -name \*ia32\*`
+		for CFG in $TMP; do
+			CFG=`echo $CFG | sed 's/.*\///'`
+			CFG=`echo $CFG | sed 's/\.config//'`
+			CFG=`echo $CFG | sed 's/kernel-'$VERSION'-//'`
+			ARCHS="$ARCHS $CFG"
+		done
+	fi
+
+	# Check we can find a config file for each arch
+	for ARCH in $ARCHS; do
+		TMP=configs/kernel-$VERSION-$ARCH.config
+		if [ ! -r $TMP ]; then
+			echo "Cannot read config file: "$TMP".  Skipping."
+			popd >> $LOG
+			popd >> $LOG
+			continue
+		fi
+	done
+
+	# We alter two of the kernel Makefiles in order to speed up the build.
+	# We use the original Makefile for the "make dep" stage and a modfied
+	# Makefile for "make modules".
+
+	# Reduce the number of sub-directories built to just "fs".
+	echo -n "    Optimising Makefile...   "
+	cp Makefile Makefile.dep
+	cat Makefile | sed 's/^\(SUBDIRS\).*/\1 = fs/' > Makefile.mod
+	echo " done"
+
+	# Reduce the number of filesystems built to just "ntfs".
+	echo -n "    Optimising fs/Makefile..."
+	cp fs/Makefile fs/Makefile.dep
+	cat fs/Makefile | grep -B 999 "# Do not add any filesystems before this line" > fs/Makefile.mod
+	echo "subdir-\$(CONFIG_NTFS_FS)	+= ntfs" >> fs/Makefile.mod
+	echo >> fs/Makefile.mod
+	cat fs/Makefile | grep -A 999 "^obj-\$(CONFIG_BINFMT" >> fs/Makefile.mod
+	echo " done"
+
+	for ARCH in $ARCHS; do
+		# Parse the architecture: i686-smp
+		# (SUFF1 and SUFF2 may be empty)
+		#   CPU    i686
+		#   SUFF1  -smp
+		#   SUFF2  smp
+		CPU=`echo $ARCH | cut -d- -f1`
+		SUFF1=`echo $ARCH | sed 's/[^-]*\(-.*\)*/\1/'`
+		SUFF2=`echo $SUFF1 | sed 's/-//'`
+
+		echo
+		echo "Building: $CPU$SUFF1"
+
+		# Set the Makefiles for "make dep".  We copy and move things
+		# just in case we have a hard-linked copy of the source.
+		cat Makefile.dep | sed 's/^\(EXTRAVERSION\).*/\1 = -'$RELEASE$SUFF2'/' > Makefile.tmp
+		mv Makefile.tmp Makefile
+		cp fs/Makefile.dep fs/Makefile.tmp
+		mv fs/Makefile.tmp fs/Makefile
+
+		CONFIG=configs/kernel-$VERSION-$CPU$SUFF1.config
+
+		# Clear out any existing build products.
+		echo -n "    make distclean..."
+		make $MAKEOPTS distclean >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo " done"
+
+		cat $CONFIG | sed 's/.*\(CONFIG_NTFS_FS\).*/\1=m/' > .config
+
+		# Update the build config file, answering "no" to any new questions.
+		echo -n "    make oldconfig..."
+		yes "" | make $MAKEOPTS oldconfig >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo " done"
+
+		# Update the build dependencies.
+		echo -n "    make dep...      "
+		make $MAKEOPTS dep >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo " done"
+
+		# Set the Makefiles for "make modules".  We copy and move things
+		# just in case we have a hard-linked copy of the source.
+		cat Makefile.mod | sed 's/^\(EXTRAVERSION\).*/\1 = -'$RELEASE$SUFF2'/' > Makefile.tmp
+		mv Makefile.tmp Makefile
+		cp fs/Makefile.mod fs/Makefile.tmp
+		mv fs/Makefile.tmp fs/Makefile
+
+		# Actually compile the modules.
+		echo -n "    make modules...  "
+		make $MAKEOPTS modules >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo " done"
+
+		RESULT=fs/ntfs/$MODULE
+		if [ ! -f $RESULT ]; then
+			echo "Cannot find the compiled kernel module.  Skipping."
+			continue
+			#exit 1
+		fi
+		cp $RESULT $OUT/$NAME$SUFF1-$VERSION-$RELEASE.$CPU.o
+
+		rm -f $RPMTMP/BUILD/$MODULE
+		cp $RESULT $RPMTMP/BUILD/$MODULE
+
+		echo -n "    make rpm...      "
+		rpmbuild -bb --target=$CPU 				\
+			--define=module\ $MODULE			\
+			--define=name_bare\ $NAME			\
+			--define=name_suff\ $NAME$SUFF1			\
+			--define=version\ $VERSION			\
+			--define=release\ $RELEASE			\
+			--define=release_suff\ $RELEASE$SUFF2		\
+			--define=requires\ kernel			\
+			--define=requires_suff\ kernel$SUFF1		\
+			--define=_topdir\ $RPMTMP			\
+			--define=_tmppath\ $RPMTMP			\
+			$ROOT/$SPEC >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo " done"
+
+		# Put the rpm somewhere safe and clean up.
+		mv $RPMTMP/RPMS/$CPU/$NAME$SUFF1-$VERSION-$RELEASE.$CPU.rpm $OUT
+		rm -fr $RPMTMP/BUILD/$MODULE
+	done
+
+	echo "Done."
+	echo
+
+	popd >> $LOG
+	popd >> $LOG
+done
+
+echo -n "Cleaning up..."
+rm -fr $RPMTMP
+echo " done"
+echo
+
+echo >> $LOG
+echo "Log ends at `date`" >> $LOG
+echo >> $LOG
+

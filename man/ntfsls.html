@@ -1,0 +1,242 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfsls.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2003 Anton Altaparmakov. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSLS 8 "October 2005" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSLS (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfsls - list directory contents on an NTFS filesystem
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B ntfsls -->
+<b>ntfsls</b> [
+<!-- .B \-a -->
+<b>-a</b> |
+<!-- .B \-\-all -->
+<b>--all</b> ]
+[
+<!-- .B \-F -->
+<b>-F</b> |
+<!-- .B \-\-classify -->
+<b>--classify</b> ]
+[
+<!-- .B \-f -->
+<b>-f</b> |
+<!-- .B \-\-force -->
+<b>--force</b> ]
+[
+<!-- .B \-h -->
+<b>-h</b> |
+<!-- .B \-? -->
+<b>-?</b> |
+<!-- .B \-\-help -->
+<b>--help</b> ]
+[
+<!-- .B \-i -->
+<b>-i</b> |
+<!-- .B \-\-inode -->
+<b>--inode</b> ]
+[
+<!-- .B \-l -->
+<b>-l</b> |
+<!-- .B \-\-long -->
+<b>--long</b> ]
+[
+<!-- .B \-p -->
+<b>-p</b> |
+<!-- .B \-\-path -->
+<b>--path</b> <!-- .I PATH -->
+<i>PATH</i> ]
+[
+<!-- .B \-q -->
+<b>-q</b> |
+<!-- .B \-\-quiet -->
+<b>--quiet</b> ]
+[
+<!-- .B \-s -->
+<b>-s</b> |
+<!-- .B \-\-system -->
+<b>--system</b> ]
+[
+<!-- .B \-V -->
+<b>-V</b> |
+<!-- .B \-\-version -->
+<b>--version</b> ]
+[
+<!-- .B \-v -->
+<b>-v</b> |
+<!-- .B \-\-verbose -->
+<b>--verbose</b> ]
+[
+<!-- .B \-x -->
+<b>-x</b> |
+<!-- .B \-\-dos -->
+<b>--dos</b> ]
+<!-- .I DEVICE -->
+<i>DEVICE</i> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfsls -->
+<b>ntfsls</b> is used to list information about the files specified by the
+<!-- .I PATH -->
+<i>PATH</i> option (the root directory by default).
+<!-- .I DEVICE -->
+<i>DEVICE</i> is the special file corresponding to the device (e.g
+<!-- .IR /dev/hdXX )  -->
+<i>/dev/hdXX</i>) or an NTFS image file.
+<!-- .SH OPTIONS -->
+</blockquote>
+<a name="3"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+<!-- .TP -->
+<table summary="formatting" cellpadding="3">
+<tbody><tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-a, \-\-all -->
+<b>-a, --all</b> </td><td valign="bottom">
+Display all files.  If this option is not specified file names in the POSIX
+namespace will not be displayed.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-F, \-\-classify -->
+<b>-F, --classify</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Append indicator (one of */=@|) to entries.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-f, \-\-force -->
+<b>-f, --force</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Force execution.  For example necessary to run on an NTFS partition stored in
+a normal file.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-h, \-?, \-\-help -->
+<b>-h, -?, --help</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Print the usage information of
+<!-- .B ntfsls -->
+<b>ntfsls</b> and exit.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-i, \-\-inode -->
+<b>-i, --inode</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Print inode number of each file.  This is the MFT reference number in NTFS
+terminology.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-l, \-\-long -->
+<b>-l, --long</b> </td><td valign="bottom">
+Use a long listing format.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-p, \-\-path -->
+<b>-p, --path</b> </td><td valign="bottom">
+The directory whose contents to list or the file (including the path) about
+which to display information.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-q, \-\-quiet -->
+<b>-q, --quiet</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Suppress some debug/warning/error messages.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-s, \-\-system -->
+<b>-s, --system</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Unless this options is specified, all files beginning with a dollar sign
+character will not be listed as these files are usually system files.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-V, \-\-version -->
+<b>-V, --version</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Print the version number of
+<!-- .B ntfsls -->
+<b>ntfsls</b> and exit.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-v, \-\-verbose -->
+<b>-v, --verbose</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Display more debug/warning/error messages.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-x, \-\-dos -->
+<b>-x, --dos</b> </td><td valign="bottom">
+Display short file names, i.e. files in the DOS namespace, instead of long
+file names, i.e. files in the WIN32 namespace.
+<!-- .SH BUGS -->
+</td></tr>
+<tr></tr></tbody></table></blockquote>
+<a name="4"></a>
+
+     <h2>BUGS</h2>
+
+<blockquote>
+We are not aware of any bugs.  If you find a bug, please report it to
+linux-ntfs-dev@lists.sourceforge.net  Thank you.
+<!-- .SH AUTHOR -->
+</blockquote>
+<a name="5"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+This version of
+<!-- .B ntfsls -->
+<b>ntfsls</b> has been written by Lode Leroy and enhanced by
+Anton Altaparmakov.  This man page has been written by
+Anton Altaparmakov.
+<!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="6"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfsls -->
+<b>ntfsls</b> is part of the ntfsprogs package and is available for download from
+http://linux-ntfs.sourceforge.net in source (tar ball
+and rpm) and pre-compiled binary (i386 rpm and deb) form.
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="7"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

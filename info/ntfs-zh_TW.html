@@ -1,0 +1,863 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en"><head>
+<!-- ntfs.html -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="description" content="Linux NTFS Project">
+  <meta name="keywords" content="Linux NTFS FAQ HOWTO">
+  <link rel="stylesheet" type="text/css" href="style/info.css">
+  <link rel="icon" href="../style/ntfsicon.png" type="image/png">
+  <title>NTFS FAQ (zh TW)</title>
+</head>
+<body class="ntfsdoc">
+<a name="top"></a>
+<h2>NTFS FAQ (Frequently Asked Questions)</h2>
+    <p>
+    <a href="ntfs.html"><img alt="English" src="style/uk.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-it.html"><img alt="Italian" src="style/italy.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ja.html"><img alt="Japanese" src="style/japan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-vi.html"><img alt="Vietnamese" src="style/vietnam.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-de.html"><img alt="German" src="style/germany.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh.html"><img alt="Simplified Chinese" src="style/china.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-fr.html"><img alt="French" src="style/france.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-es.html"><img alt="Spanish" src="style/spain.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-pt_BR.html"><img alt="Brazilian" src="style/brazil.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh_TW.html"><img alt="Traditional Chinese" src="style/taiwan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ru.html"><img alt="Russian" src="style/russia.png" border="0" width="30" height="20"></a>
+    </p>
+<p>這份 FAQ 是 <a href="../">Linux
+NTFS Project</a> 的一部分<br>
+最新版可在 <a href="ntfs.html">ntfs.html</a>
+取得.<br>
+</p>
+<p>如果你有關於 NTFS 的問題無法在這得到解答, 或對這份 FAQ 有任何意見, 請 email 至
+<b>linux-ntfs-dev@sourceforge.net</b> 給我. <br>
+</p>
+<p>正體中文版由 Eric 翻譯, 對翻譯有任何意見, 請 email 至 vingtaine ~ yahoo ~ com. <br>
+</p>
+<h2>內容</h2>
+<h3>說明</h3>
+<p style="margin-left: 2em; margin-bottom: 0px;"> <img src="style/blue.png" alt="**" width="16" height="16">&nbsp;- 最常問到的問題<br>
+<img src="style/green.png" alt="!!" width="16" height="16">&nbsp;-
+其他有趣的東西<br>
+<img src="style/red.png" alt="NB" width="16" height="16">&nbsp;- 請特別注意 </p>
+<div style="border: 1px solid black; background-color: rgb(221, 221, 221); color: rgb(0, 0, 0); margin-left: 2em; max-width: 250px;">&nbsp;<b>指
+令</b>
+或 輸出結果<br>
+</div>
+<h3>1. <a class="heading" href="ntfs-zh_TW.html#1.0">一般 NTFS 問題</a></h3>
+<table summary="" border="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#1.1">1.1 什麼是 NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#1.2">1.2 NTFS 比 FAT/FAT32 好嗎?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#1.3">1.3 我需要使用 NTFS 嗎? (或升級)<br>
+      </a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#1.4">1.4 NTFS 在每個版本的
+Windows 都相同嗎?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#1.5">1.5 NTFS 的限制是什麼?</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>2. <a class="heading" href="ntfs-zh_TW.html#2.0">NTFS 磁區</a></h3>
+<table summary="" border="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#2.1">2.1 如何在 Windows
+95/98/ME 或 DOS 下讀取 NTFS 磁區?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#2.2">2.2 如何將 FAT <span style="text-decoration: underline;">格式</span></a><a href="ntfs-zh_TW.html#2.2">轉換成
+NTFS <span style="text-decoration: underline;">格式</span></a><a href="ntfs-zh_TW.html#2.2">?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#2.3">2.3 如何將 NTFS 格式轉換成 FAT
+格式?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#2.4">2.4 如何刪除 NTFS 磁區?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#2.5">2.5 如何重組 NTFS 磁區?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#2.6">2.6 如何調整 NTFS 磁區的大小?</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>3. <a class="heading" href="ntfs-zh_TW.html#3.0">Linux 和 NTFS</a></h3>
+<table summary="" border="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#3.1">3.1 Linux 可以讀取那些版本的 NTFS 格式呢?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#3.2">3.2 這個驅動程式也支援寫入 NTFS 磁區嗎?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#3.3">3.3 Linux 支援那些 NTFS 的功能呢?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#3.4">3.4 出現問題時我該如何?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#3.5">3.5 如何將 NTFS 的支援加入 Linux 呢?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#3.6">3.6 那個版本是最好的?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#3.7">3.7 還有那些其他的工具呢?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#3.8">3.8 Linux NTFS 驅動程式是如何寫成的?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#3.9">3.9 我們該感謝誰呢?</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>4. <a class="heading" href="ntfs-zh_TW.html#4.0">掛載 NTFS 磁區<br>
+</a></h3>
+<table summary="" border="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#4.1">4.1 我可以掛載 NTFS 磁區嗎?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#4.2">4.2 NTFS 驅動程式的安全性如何?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#4.3">4.3 我該使用在那個磁區?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#4.4">4.4 我該使用那個版本的 NTFS 驅動程式 ?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#4.5">4.5 如何掛載 NTFS 磁區?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#4.6">4.6 常用的掛載選項.</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#4.7">4.7 原始驅動程式的掛載選項.</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#4.8">4.8 新驅動程式的掛載選項.</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#4.9">4.9 如何更改已掛載的 NTFS 磁區的權限?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-zh_TW.html#4.10">4.10 如何自動掛載一個 NTFS 磁區?</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>5. <a class="heading" href="ntfs-zh_TW.html#5.0">在 NTFS 上啟動作業系統<br>
+</a></h3>
+<table summary="" border="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#5.1">5.1 可以在 NTFS 磁區啟動 Windows 嗎?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#5.2">5.2 如何使用 lilo?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#5.3">5.3 如何使用 grub?</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>6. <a class="heading" href="ntfs-zh_TW.html#6.0">Linux 版本</a></h3>
+<table summary="" border="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#6.1">6.1 那個 linux 版本有原生的 NTFS 支援?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#6.2">6.2 為何 RedHat 不支援 NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#6.3">6.3 為何 RedHat 在存取 NTFS 磁區時是鎖定的狀態?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#6.4">6.4 有可以安裝在 NTFS 的版本嗎?</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>7. <a class="heading" href="ntfs-zh_TW.html#7.0">新的 Linux NTFS 驅動程式</a></h3>
+<table summary="" border="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#7.1">7.1 新的 NTFS 驅動程式是什麼?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#7.2">7.2 我需要使用它嗎?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#7.3">7.3 我該如何使用它呢?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#7.4">7.4 什麼是修補程式?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#7.5">7.5 如果我還是不了解呢?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#7.6">7.6 何時新的程式碼才會放入 Linux
+核心呢?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-zh_TW.html#7.7">7.7 不可以寫個 Windows
+驅動程式的封裝程式嗎?</a></td>
+    </tr>
+  </tbody>
+</table>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<hr><!-- ............................................................. -->
+<a name="1.0"></a>
+<h2>1. 一般 NTFS 問題</h2>
+<a name="1.1"></a>
+<h3>1.1 什麼是 NTFS?</h3>
+<p> NTFS 是 New Technology File System 的縮寫. <q>NT</q>
+是因為最初是在 Windows NT 上使用, File System, 檔案系統是電腦在磁碟上儲存檔案的方法.
+不同的作業系統會用不同的方式儲存檔案.
+</p>
+<p> NTFS 用於 Windows NT, 2000, XP 和 Windows Server 2003. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="1.2"></a>
+<h3>1.2 NTFS 比 FAT/FAT32 好嗎?</h3>
+<p> 簡單的說, 是的. NTFS 的檔案系統非常不易被損害,&nbsp; 它支援 Unicode 檔名, 有適當的安全性, 壓縮和加密.
+主要的缺點是你只能在 Windows NT, 2000 或 XP 下讀取, 你無法使用 DOS 軟碟開機, 然後讀取資料. </p>
+<p> 所有規則皆有例外, Linux 在 1997 年 12 月時就有了 NTFS 的驅動程式, 同樣也有支援 DOS NTFS 的程式 (
+<a href="ntfs-zh_TW.html#2.1">2.1 節</a> 有詳細介紹). </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="1.3"></a>
+<h3>1.3 我需要使用 NTFS 嗎? (或升級)<br>
+</h3>
+<p> 不, 不一定需要, 雖然對大多數的人這是個好主意.
+你也許不會注意到有差別. 唯一的缺點是你無法再轉換回 FAT (<a href="ntfs-zh_TW.html#2.3">2.3 節</a> 有詳細說明). </p>
+<p> <img src="style/red.png" alt="NB" width="16" height="16"> 你可以在
+FAT16 格式的磁區上安裝 Windows NT, 在 FAT32 上安裝 Windows 2000 或 XP, 之後再升級到 NTFS. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="1.4"></a>
+<h3>1.4 NTFS 在每個版本的 Windows 都相同嗎?</h3>
+<p> 不是. 他們看起來很相似, 但新的版本有多加的功能.
+例如 Windows 2000 有磁碟限額. </p>
+<table class="highlight" summary="NTFS/Windows versions" border="1" cellspacing="0">
+  <tbody>
+    <tr>
+      <th>NTFS</th>
+      <th>Windows 版本</th>
+    </tr>
+    <tr>
+      <td>v1.2</td>
+      <td>NT 3.51, NT 4</td>
+    </tr>
+    <tr>
+      <td>v3.0</td>
+      <td>2000</td>
+    </tr>
+    <tr>
+      <td>v3.1</td>
+      <td>XP, Server 2003</td>
+    </tr>
+  </tbody>
+</table>
+<p> 1.2 版有時稱 4.0 版.<br>
+3.0 和 3.1 版有時稱 5.0 和 5.1 版. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="1.5"></a>
+<h3>1.5 NTFS 的限制是什麼?</h3>
+<p> 容量大. NTFS 支援最大 2<sup>63</sup> 位元組的檔案. NTFS
+磁區可有最多 2<sup>63</sup> 單位, 每個單位最大為 64KB. 如此 NTFS 的上限約為 500
+兆 GB. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<hr><!-- ............................................................. -->
+<a name="2.0"></a>
+<h2>2. NTFS 磁區</h2>
+<a name="2.1"></a>
+<h3>2.1 如何在 Windows 95/98/ME 或 DOS 下讀取 NTFS 磁區?</h3>
+<p>不幸的, 這是不行的. 這些版本的 Windows 只支援 FAT. NTFS 只能在 Windows NT, 2000 和 XP
+下被讀取. </p>
+<p> 但是稍費點功夫, 你可以在
+<a href="http://technet.microsoft.com/en-us/sysinternals" target="_blank">SysInternals</a>
+取得 "NTFS for Windows 98" 和 "NTFSDOS" 的工具程式, 如此就可以在 Windows
+95, 98 和 DOS 下讀取 NTFS. 如果你願意付費, 他們甚至有支援寫入 NTFS 的版本 (注意: 這非常昂貴). </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="2.2"></a>
+<h3>2.2 如何將 FAT 格式轉換成 NTFS 格式?</h3>
+<p> 開啟一個指令 xxxxxx 並輸入 (將 <q>x:</q> 換成正確的磁區代碼): </p>
+<pre class="command">    <b>convert x: /fs:ntfs</b><br>    </pre>
+<p> 如果該磁區正在使用中, 下次重開機時才會進行轉換. </p>
+<p> <img src="style/red.png" alt="NB" width="16" height="16">
+這個指令不可反向使用, 詳見下個 FAQ. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="2.3"></a>
+<h3>2.3 如何將 NTFS 格式轉換成 FAT 格式?</h3>
+<p> 簡單說, "不行". 但如果你願意付費的話也有例外. <a href="http://us.norton.com/products/overview.jsp?pcid=sp&pvid=pm80" target="_blank">norton.com</a>
+的 Partition Magic 能在數個檔案系統間進行轉換, 包含 NTFS 和 FAT. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首<br>
+</a></p>
+<a name="2.4"></a>
+<h3>2.4 如何刪除 NTFS 磁區?</h3>
+<p> 視你的作業系統而定. </p>
+<p> DOS, Windows 95/98/ME: fdisk. 使用軟碟開機, 或在 Windows 開機時進入 DOS 模式. 然後執行
+fdisk. 如果你有多個磁區, 先選擇磁區, 然後刪除非 DOS 的部分. 要小心, 你的任何變更都會馬上被執行. </p>
+<p> Windows NT: 管理. </p>
+<p> Windows 2000, XP 和 Server 2003: 磁碟管理. 從控制台, 選系統管理工具, 然後選電腦管理. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="2.5"></a>
+<h3>2.5 如何重組 NTFS 磁區?</h3>
+<p> 在一個磁區使用了一陣子, 多次寫入磁碟之後, 裡面的檔案可能是一塊一塊的, 不連續地, 分成很多小部分存在於磁碟上.
+這會減慢存取那些檔案的速度. </p>
+<p> Windows 2000, XP 和 Server 2003 都有內建的磁碟重組工具. Windows NT 的使用者,
+也有一個免費的工具且完成相同的工作. "Diskeeper Lite " , 可以在<a href="http://diskeeper.com/" target="_blank"> http://diskeeper.com</a>
+下載.<br>
+<br>
+<a href="ntfs-zh_TW.html#top">回頁首<br>
+</a></p>
+<a name="2.6"></a>
+<h3>2.6 如何調整 NTFS 磁區的大小?</h3>
+<p>使用我們穩定且廣泛被使用的程式, <b>ntfsresize</b>. 或更好的, 任一個整合這功能又簡易使用的磁碟分割工具
+(DiskDrake, QTParted, YAST,
+EVMS, Partman, GParted, 等). 詳情請看 ntfsresize FAQ. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首<br>
+</a></p>
+<hr><!-- ............................................................. -->
+<a name="3.0"></a>
+<h2>3. Linux 和 NTFS</h2>
+<a name="3.1"></a>
+<h3>3.1 Linux 可以讀取那些版本的 NTFS 格式呢?</h3>
+<p>&nbsp;這個 Linux 驅動程式可以讀取所有 <a href="ntfs-zh_TW.html#1.4">NTFS 的版本</a>.
+每個版本的 NTFS 都有些微不同, 但驅動程式只需對檔案和目錄加以解釋處理. 而 NTFS 所維護的索引檔都安全地被忽略了. </p>
+<p> 當驅動程式支援對 NTFS 的寫入時, 寫入的能力會因 NTFS 版本而有不同. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="3.2"></a>
+<h3>3.2 這個驅動程式也支援寫入 NTFS 磁區嗎?</h3>
+<p> 不完全是, 但如果你只需要在有雙系統的機器上從 Linux 複製檔案到 Windows,&nbsp; 請讀以下 "<a href="ntfs-zh_TW.html#3.2workaround">如何寫入 NTFS 磁區</a>" 部分, 你會找到一個在缺少寫入支援的情況下的解決方案.
+請繼續閱讀 Linux 的 NTFS 寫入支援.<br>
+</p>
+<p>目前我們有兩個驅動程式. 原始的驅動程式, 在 2.4 核心中有部份的支援寫入的程式碼, 但使用這個來寫入是<b>非常危險的</b>,
+有極高的危險性會摧毀你的檔案系統. </p>
+<p>2.5.11 核心引進的新的驅動程式, 有部分支援寫入的程式碼, 但非常有限. 這個驅動程式可以抹寫已存在的檔案,
+但它無法改變檔案大小, 新增或刪除現有檔案. </p>
+<p> 增加寫入的支援需耗費<b>很長的時間</b>. NTFS 的結構和資料庫類似. 基於一致性的考量,
+任何一個變更都需要在很多其他地方作改變. 任何一的錯誤都會損壞檔案系統, 過多的錯誤會摧毀整個檔案系統. 此外, 目前的研發人員都是基於興趣,
+在空閒時間投入 NTFS 的研發. 如果你願意幫忙, 請 email 至:
+    <b>linux-ntfs-dev@sourceforge.net</b> </p>
+<a name="3.2workaround"></a>
+<p> <strong>如何寫入 NTFS 磁區.</strong> 如果你使用有雙系統的機器, 只是需要 NTFS 寫入支援從 Linux
+傳檔到 Windows, 你可以使用讀取 ext2/ext3 的 windows 驅動程式, 在執行 Windows 時, 從 Linux
+磁區讀取檔案. 如此, 使用兩個只支援讀取的驅動程式, 你還是可以從一個磁區複製檔案到另一個磁區. </p>
+<p> 截至 2003 年 6 月 4 日, 有以下開放原碼支援 ext 2 和 ext3 的 Linux 檔案系統的 Windows
+驅動程式: </p>
+<ul type="square">
+  <li><strong>explore2fs</strong>
+    <ul>
+      <li>首頁: http://uranus.chrysocome.net/linux/explore2fs.htm</li>
+      <li>Windows NT, Windows 2000 和 Windows XP 適用.</li>
+    </ul>
+  </li>
+  <li><strong>ext2fsd</strong>
+    <ul>
+      <li>首頁: http://ext2fsd.sourceforge.net</li>
+      <li>Windows NT, Windows 2000 和 Windows XP 適用.</li>
+    </ul>
+  </li>
+  <li><strong>winext2fsd</strong>
+    <ul>
+      <li>首頁: http://sourceforge.net/projects/winext2fsd/"</li>
+    </ul>
+  </li>
+  <li><strong>ext2forxp</strong>
+    <ul>
+      <li>首頁: http://sourceforge.net/projects/ext2forxp
+      </li>
+      <li>尚處在早期發展階段, 未進入實用階段 (2003 年 6 月 4 日).</li>
+    </ul>
+  </li>
+  <li><strong>vmware</strong>
+    <ul>
+      <li>首頁: http://www.vmware.com
+      </li>
+      <li>VMWare 允許你在一個系統中執行另一個系統.</li>
+      <li>所以, 你可以在 Linux 中執行 Windows, 當然可以寫入 NTFS 磁區了.</li>
+      <li>這就像你單獨執行 Windows 一樣安全, 但也很昂貴.</li>
+    </ul>
+  </li>
+</ul>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="3.3"></a>
+<h3>3.3 Linux 支援那些 NTFS 的功能呢?</h3>
+<p> NTFS 有非常多功能, 但
+Linux NTFS 驅動程式支援的很少. </p>
+<p> Linux NTFS 驅動程式支援: Unicode 檔名 (轉換成本機的編碼, 或 utf8); 壓縮檔; 稀疏文件. </p>
+<p>但是, 這個驅動程式無法讀取加密的檔案, 它忽略了 Windows 的安全資訊和容量限制. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="3.4"></a>
+<h3>3.4 出現問題時我該如何?</h3>
+<p> 這個驅動程式再讀取方面是<a href="ntfs-zh_TW.html#4.2">非常安全的</a>, 但是我們無法對每個可能性作測試. 如過發生了任何問題,
+請幫助我們找到並解決問題. </p>
+<p> 請 email: 
+linux-ntfs-dev@lists.sourceforge.net 給研發小組, 並告訴我們你使用的是<a href="ntfs-zh_TW.html#4.4">那
+個版本的驅動程式</a>, Linux 的版本 (uname -a), 還有 NTFS 的版本 (Win NT, 2K 或 XP). </p>
+<p> 此外, 如果有任何你覺得有用的紀錄檔 (/var/log/messages), 請一併寄給我們. </p>
+<p> 謝謝. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首<br>
+</a></p>
+<a name="3.5"></a>
+<h3>3.5 如何將 NTFS 的支援加入 Linux 呢?</h3>
+<p>大多數的使用者不需要編譯任何程式來取得 NTFS 的支援. 幾乎所有的 Linux 版本 (除了 RedHat 之外)
+都附加了 NTFS 的支援. </p>
+<p> 如果你使用 RedHat 9 (Shrike), 8.0 (Psyche) 或 7.3 (Valhalla), 只需<a href="../rpm/index.html">安裝支援 NTFS 的 rpm</a>. 這個 rpm 有詳細的使用說明. </p>
+<p> 如果你使用較早的 RedHat 版本, 或是其他沒有附加 NTFS 支援的 Linux 版本, 你必須自己編譯核心.
+這不像聽起來地那麼困難. 在<a href="compile.html">編譯頁</a>有詳細說明. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="3.6"></a>
+<h3>3.6 那個版本是最好的?</h3>
+<p> 新的版本是比較好. 它寫得較佳, 執行速度更快, 錯誤更少, 對多處理器也更加安全. 新的驅動程式可支援 2.5.11
+之後的核心,&nbsp; 我們也有<a href="../downloads.html">修補程式</a>可以使新的驅動
+程式加入 2.4 的核心. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="3.7"></a>
+<h3>3.7 還有那些其他的工具呢?</h3>
+<p> 到目前為止, 只有很少,且針對研發人員的工具. 我們有個所有我們的工具的<a href="../status.html">進度列表</a>. </p>
+<p> 優先順序是先編寫 寫入 NTFS 的支援. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="3.8"></a>
+<h3>3.8 Linux NTFS 驅動程式是如何寫成的?</h3>
+<p> 微軟沒有公佈任何關於 NTFS 結構的任何文件, 所以我們必須從頭對 NTFS 使用逆向工程. 方法大概是: </p>
+<ol>
+  <li>以 16 進位編輯器查看磁區</li>
+  <li>執行一些命令, 例如: 新增一個檔案</li>
+  <li>以 16 進位編輯器尋找所產生的變化</li>
+  <li>將那些變化紀錄並分類</li>
+  <li>一直重覆步驟 1 至 4</li>
+</ol>
+<p>如果這聽起來很繁重, 那你應該了解這個工作的困難了. 我們現在幾乎了解關於 NTFS 的所有, 而且我們紀錄在<a href="../ntfs/index.html">../ntfs/index.html</a><br>
+, 希望對他人有幫助.</p>
+<p>事實上, 編寫驅動程式比蒐集資料要簡單的多了. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="3.9"></a>
+<h3>3.9 我們該感謝誰呢?</h3>
+<p> 首先我們要感謝 Martin von Löwis. 他早在 1995 時就編寫了原始的 NTFS 的驅動程式. 它在
+1997 年 12 月被加入 Linux 核心 (2.1.74). Martin 得到以下友善的人的幫助:
+</p>
+<p class="quote"> Albert&nbsp;Cahalan, Anton&nbsp;Altaparmakov,
+Damon&nbsp;Casale, David&nbsp;Dillard, Domagoj&nbsp;Pensa,
+Joseph&nbsp;Malicki, Matthew&nbsp;Fanto, Olof&nbsp;Wolgast,
+Rani&nbsp;Assaf, Régis&nbsp;Duchesne, Richard&nbsp;Russon,
+Steve&nbsp;Dodd, Werner&nbsp;Seiler. </p>
+<p> 其次, 我們該感謝 Anton&nbsp;Altaparmakov, 由於他的熱忱才使這個計畫繼續下去.
+之前有段時間這個計畫是完全沒有人在負責, 他接手並改善了程式碼, 接著也為了要支援寫入而重新寫了整個驅動程式. 他得到以下人的幫助: </p>
+<p class="quote"> Pawel&nbsp;Kot, Richard&nbsp;Russon. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<hr><!-- ............................................................. -->
+<a name="4.0"></a>
+<h2>4. 掛載 NTFS 磁區</h2>
+<a name="4.1"></a>
+<h3>4.1 我可以掛載 NTFS 磁區嗎?</h3>
+<p> 當然. 這個驅動程式可以讀取所有版本的 NTFS, 但只支援讀取. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.2"></a>
+<h3>4.2 NTFS Driver 的安全性如何?</h3>
+<p>原始和新的驅動程式在讀取磁區時都很安全. 他們<b>不會</b>更動檔案系統的任合部分,
+所以不會造成任何損害. </p>
+<p> 再者, 新的驅動程式也是對多處理器也是安全的. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.3"></a>
+<h3>4.3 我改使用在那個磁區?</h3>
+<p> 在 Linux 中, 第一個 IDE 控制器的前兩個磁碟稱 hda, hdb, 第三和第四個磁碟稱 hdc, hdd. SCSI
+磁碟依照順序稱為 sda, sdb, 等等. </p>
+<p>一個找尋 NTFS 磁區的簡單方法: </p>
+<pre class="command">    <b>fdisk -l</b><br>    </pre>
+<p>輸出可能是: </p>
+<pre class="command">    Disk /dev/hda: 64 heads, 63 sectors, 4465 cylinders<br>    Units = cylinders of 4032 * 512 bytes<br><br>       Device Boot    Start       End    Blocks   Id  System<br>       /dev/hda1             1      2125   4283968+  07  NTFS/HPFS<br>       /dev/hda2          2126     19851  35735616   0f  Win95 Ext'd (LBA)<br>       /dev/hda5   *      2126      4209   4201312+  83  Linux<br>       /dev/hda6          4210      4465    516064+  82  Linux swap<br>    </pre>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.4"></a>
+<h3>4.4 我該使用那個版本的 NTFS Driver?</h3>
+<p>如果你的 Linux 核心是 2.4.x 版, 或 2.5.0 - 2.5.10 版, 那你可能有原始的版本. 如果你是比
+2.5.11版新的版本,
+那你有新的 NTFS 驅動程式. </p>
+<p>一個較好的方法是查看核心中關於 NTFS 的紀錄檔. 試試<b>任一</b>個指令 (可能需要 root 的權限). </p>
+<pre class="command">    <b>dmesg | grep -i ntfs</b><br>    <b>grep -i ntfs /var/log/messages</b><br>    </pre>
+<p> 原始的驅動程式時 1.1.x 版, 新的驅動程式是 2.x 版. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.5"></a>
+<h3>4.5 如何掛載 NTFS 磁區?</h3>
+<p> 首先, 先查看你的核心是否支援 NTFS. 以下的指令會列出所有 Linux 可讀的檔案系統類型. 如果你有看到 <q>ntfs</q>,
+那就沒問題了. 另外, 閱讀 mount 的說明也是個好主意,&nbsp; <q>man
+8 mount</q>. </p>
+<pre class="command">    <b>cat /proc/filesystems</b><br>    </pre>
+<p>接著, 你要建立一的空間來掛載 NTFS 磁區. 然後你才可以掛載它. </p>
+<pre class="command">    <b>mkdir /mnt/windows</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br>    </pre>
+<p> <img src="style/red.png" alt="NB" width="16" height="16">
+要改變已掛載的磁區的權限, 見 <a href="ntfs-zh_TW.html#4.6">4.6 節</a>
+<q>umask</q> 的選項. 如果你希望在系統啟動時自動掛載磁區, 詳見 <a href="ntfs-zh_TW.html#4.10">4.10 節</a>. </p>
+<p> 如果你完成操作, 你可以用以下<span style="font-weight: bold;">任一</span>個指令卸除磁區: </p>
+<pre class="command">    <b>umount /mnt/windows</b><br>    <b>umount /dev/hda1</b><br>    </pre>
+<p> <img src="style/red.png" alt="NB" width="16" height="16"> 這個指令叫 <q>umount</q>.
+</p>
+<p><a href="ntfs-zh_TW.html#top">Back to the top</a></p>
+<a name="4.6"></a>
+<h3>4.6 常用的掛載選項.</h3>
+<p>這些掛載選項適用於兩種驅動程式. 我們建議您閱讀 mount 的說明頁. 通用的格式是 : </p>
+<pre class="command">    mount device directory [options]<br>    </pre>
+<p>選項 <q>-o</q> 是可以單獨寫, 或是用逗點分隔. 以下兩個指令是一樣的: </p>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -o X -o Y -o Z</b><br>    <b>mount /dev/hda1 /mnt/windows -o X,Y,Z</b><br>    </pre>
+<dl>
+  <dt>-t ntfs</dt>
+  <dd>標示要掛載的檔案系統類型. 這個選項不是必要的, 因為 mount 知道如何分辨大多數的檔案系統. </dd>
+  <dt>-r</dt>
+  <dd> 以唯讀的方式掛載磁區. Mount 會以可讀寫的方式來掛載磁區. 除非指定這個選項,&nbsp; mount
+才會以唯讀的方式來掛載磁區. </dd>
+  <dt>-o ro</dt>
+  <dd>和 "-r" 相同. <br>
+  </dd>
+  <dt>-o umask={VALUE}</dt>
+  <dd> 掛載的 NTFS 磁區的預設權限是
+rwx------ (為了安全的理由). <b>umask</b> 控制檔案和目錄的權限. 詳細資料和例子在 <a href="ntfs-zh_TW.html#4.9">4.9
+節</a>. </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b><br>    </pre>
+  </dd>
+  <dt>-o uid={USERID}</dt>
+  <dd>掛載的 NTFS 磁區預設是 Root 所有. 如果你提供 <b>uid</b>, 你可以指定檔案的所有人. Userid
+可以是在 /etc/passwd 的任何使用者, 或任何代表使用者的代碼. </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=flatcap</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=500</b><br>    </pre>
+  </dd>
+  <dt>-o gid={GROUPID}</dt>
+  <dd>掛載的 NTFS 磁區預設是 Root 的群組所有. 如果你提供 <b>gid</b>, 你可以指定檔案的所有群組.
+Groupid 可以是在 /etc/group 的任何群組, 或任何代表群組的代碼. </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=winusers</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=520</b><br>    </pre>
+  </dd>
+</dl>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.7"></a>
+<h3>4.7 原始驅動程式的掛載選項.</h3>
+<p>要知道你使用的是那個驅動程式, 見 <a href="ntfs-zh_TW.html#4.4">4.4 節</a>. 這個小節只討論原始驅動程式的選項.
+共用的選項在 <a href="ntfs-zh_TW.html#4.6">4.6 節</a> 提及. </p>
+<p>一些以 "True" 或 <q>False</q> 位參數的選項.<br>
+你可以以 "Yes" 或 "1" 代替 <q>true</q>.<br>
+你可以以 "No" 或 "0" 代替 "false".</p>
+<p> -o iocharset={NAME}</p>
+<dl>
+  <dd>
+    <p> NTFS 以 Unicode 的編碼 (可以用任何語言的任何字元) 來儲存所有的檔案名和路徑名. Linux NTFS
+驅動程式預設地將檔名轉換成 ASCII, 對某些人是沒問題, 但對於包含像 å 或 é 的語言就不合適了. </p>
+    <p> NLS (母語支援) 決定字元是如何被顯示的. 你可以選擇像 Unicode 一樣可以顯示所有字元的 <b>utf8</b>,
+或是你自己的編碼, 例如. iso8859-1 (西歐), iso8859-2 (中歐), gb2312 (簡體中文),
+iso8859-8 (希伯來文). 以下是一些 mount 的例子: </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=utf8</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=iso8859-2</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=gb2312</b><br>    </pre>
+  </dd>
+  <dt>utf8=true</dt>
+  <dd>
+    <p> 如果你的核心不支援 utf8, 那你可以使用 NTFS 驅動程式的 utf8 支援. 你該使用 <q>-o
+iocharset=utf8</q>. </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o utf8=true</b><br>    </pre>
+  </dd>
+  <dt>-o posix={BOOL}</dt>
+  <dd>
+    <p> Windows 保留了檔名的大小寫, 但你讀取時並不區分. 如此你可以建立一個叫<q>MyFileName</q>
+的檔案, 然後用 <q>mYfILEname</q> 的名字打開. </p>
+    <p>Linux 的預設是大小寫有區別的, <q>MyFile</q>, <q>MyFile</q> 和 <q>myfile</q>
+是完全不同的但案. 如果你希望 Linux 像 Windows 一樣對 NTFS 磁區忽視大小寫, 設 <b>posix</b> 選項為 <q>true</q>.
+設為 <q>false</q> 會使驅動程式和 Linux 一樣區分大小寫 (預設). </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o posix=true</b><br>    </pre>
+  </dd>
+  <dt>-o show_sys_files={BOOL}</dt>
+  <dd>
+    <p>如果這個選項設為 true, 那麼我們就可以看到檔案系統的元數據. 如果不行, 他們還是可以被列出來, 例如. <q>ls
+-l \$MFT</q>. </p>
+    <p> <img src="style/red.png" alt="NB" width="16" height="16">因為
+glibc 的限制, <q>$MFT</q> 可能因為它的 inode 是 0 而無法顯示. </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o show_sys_files=true</b><br>    </pre>
+  </dd>
+</dl>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.8"></a>
+<h3>4.8 新的驅動程式的掛載選項.</h3>
+<p>要知道你使用的是那個驅動程式, 見 <a href="ntfs-zh_TW.html#4.4">4.4
+節</a>. 這個小節只討論新驅動程式的選項. 共用的選項在 <a href="ntfs-zh_TW.html#4.6">4.6 節</a> 提及. </p>
+<p>一些以 "True" 或 <q>False</q> 位參數的選項.<br>
+你可以以 "Yes" 或 "1" 代替 <q>true</q>.<br>
+你可以以 "No" 或 "0" 代替 "false".<br>
+</p>
+<p> -o nls={NAME}</p>
+<p style="margin-left: 40px;"></p>
+<dl>
+  <dd>
+    <p> NTFS 以 Unicode 的編碼 (可以用任何語言的任何字元) 來儲存所有的檔案名和路徑名. Linux NTFS
+驅動程式預設地將檔名轉換成 ASCII, 對某些人是沒問題, 但對於包含像 å 或 é 的語言就不合適了.</p>
+  </dd>
+  <dd>
+    <p>NLS (母語支援) 決定字元是如何被顯示的. 你可以選擇像 Unicode 一樣可以顯示所有字元的 <b>utf8</b>,
+或是你自己的編碼, 例如. iso8859-1 (西歐), iso8859-2 (中歐), gb2312 (簡體中文),
+iso8859-8 (希伯來文). 以下是一些 mount 的例子: </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=utf8</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=iso8859-2</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=gb2312</b><br>    </pre>
+  </dd>
+  <dt>-o fmask={VALUE}</dt>
+  <dt>-o dmask={VALUE}</dt>
+  <dd>
+    <p><q>Umask</q> 同時改變檔案和目錄的權限 (見 <a href="ntfs-zh_TW.html#4.6">4.6 節</a>). <q>fmask</q>
+適用於檔案, 而 <q>dmask</q> 適用於目錄. 這些選項也可以被合併使用. 這有些例子: </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0222</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o dmask=0222</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0077,dmask=0222</b><br>    </pre>
+  </dd>
+  <dt>-o case_sensitive={BOOL}</dt>
+  <dd>
+    <p> Windows 保留了檔名的大小寫, 但你讀取時並不區分. 如此你可以建立一個叫<q>MyFileName</q>
+的檔案, 然後用 <q>mYfILEname</q> 的名字打開. </p>
+    <p>Linux 的預設是大小寫有區別的, <q>MyFile</q>, <q>MyFile</q> 和 <q>myfile</q>
+是完全不同的但案. 如果你希望 Linux 像 Windows 一樣對 NTFS 磁區忽視大小寫, 設 <b>posix</b> 選項為 <q>true</q>.
+設為 <q>false</q> 會使驅動程式和 Linux 一樣區分大小寫 (預設). </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=true</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=false</b><br>    </pre>
+  </dd>
+  <dt>-o sloppy={BOOL}</dt>
+  <dd>
+    <p>在於設的情形下, 如果有任何不正確的選項, 驅動程式會拒絕掛載磁區. 加入 <b>sloppy</b> 的選項,
+驅動程式會略過錯誤的參數. </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=true</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=false</b><br>    </pre>
+  </dd>
+  <dt>-o errors={VALUE}</dt>
+  <dd>
+    <p> 這個選項控制驅動程式如何處理問題. 預設是<span style="font-weight: bold;">繼續</span>嘗
+試. 任何問題將會被標記並延後解決. 另一個選擇是驅動程式試著解決.
+此時驅動程式能做的就是把啟動磁區段替換成備份的資料. </p>
+  </dd>
+  <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=continue</b><br>    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=recover</b><br>    </pre>
+  </dd>
+</dl>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.9"></a>
+<h3>4.9 如何更改已掛載的 NTFS 磁區的權限?</h3>
+<p>有三種控制權限和所有權的選項. <q>Umask</q>, <q>uid</q> and <q>gid</q>.
+他們在<a href="ntfs-zh_TW.html#4.6">常用的掛載選項</a>中有提及. </p>
+<p>以下是一些每一個選項的例子, 和對檔案的作用. 我們會用相同的 mount 指令來示範. </p>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br>    </pre>
+<p> <q>umask</q> 是權限的過濾, 它的工作方式和 chmod 正好相反. 完整的權限和 777
+(rwxrwxrwx) 相等. Umask 的 0222 (-w--w--w-) 給我們 555 (r-xr-xr-x). </p>
+<p>預設的 umask 是為了安全理由設為 0077. </p>
+<pre class="command">    <b>mount ... -o umask=0277</b><br><br>    -r-x------ 1 root    root    28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<pre class="command">    <b>mount ... -o umask=0222</b><br><br>    -r-xr-xr-x 1 root    root    28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<p>到此為止這些檔案仍是為 <q>root</q> 的使用者和群組所有.
+接下來我們有試試 <q>uid</q> 和 <q>gid</q> 的選項. </p>
+<pre class="command">    <b>mount ... -o uid=flatcap</b><br><br>    -r-x------ 1 flatcap root    28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<pre class="command">    <b>mount ... -o gid=winuser</b><br><br>    -r-x------ 1 root    winuser 28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<pre class="command">    <b>mount ... -o uid=flatcap,gid=winuser</b><br><br>    -r-x------ 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<p> 最後我們為了更精確的控制而合併一些選項. 以下我們賦予使用者 <q>flatcap</q> 完全的控制權限, 賦予群組 <q>winuser</q>
+有讀取的權限而其他用戶沒有任何存取權限. </p>
+<pre class="command">    <b>mount ... -o umask=0027,uid=flatcap,gid=winuser</b><br><br>    -rwxr-x--- 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe<br>    </pre>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="4.10"></a>
+<h3>4.10 如何自動掛載一個 NTFS 磁區?</h3>
+<p> 當你成功地執行了你的 mount 指令, 你可以在 <q>/etc/fstab</q>
+(<b>f</b>ile<b>s</b>ystem <b>tab</b>le) 加一行指令來告訴 Linux 自動在啟動時掛載磁區.. </p>
+<p>以下是一些 mount 的例子和相同作用的 fstab.<br>
+<img src="style/red.png" alt="NB" width="16" height="16"> 別擔心句尾 <q>0&nbsp;0</q>
+的意思. </p>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b><br><br>    /dev/hda1 /mnt/windows ntfs ro                                    0 0<br>    </pre>
+<p>這裡我們將 <q>-r</q> 轉換成 <q>-o ro</q>.
+</p>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b><br><br>    /dev/hda1 /mnt/windows ntfs ro,umask=0222                         0 0<br>    </pre>
+<pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222,uid=flatcap,gid=winuser</b><br><br>    /dev/hda1 /mnt/windows ntfs ro,umask=0222,uid=flatcap,gid=winuser 0 0<br>    </pre>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<hr><!-- ............................................................. -->
+<a name="5.0"></a>
+<h2>5. 在 NTFS 上啟動作業系統<br>
+</h2>
+<a name="5.1"></a>
+<h3>5.1 可以在 NTFS 磁區啟動 Windows 嗎?</h3>
+<p>可以, grub 和 lilo 都可以從 NTFS 磁區上啟動 Windows. 事實上時 Linux 的啟動程式找到 NTFS
+啟動程式並將控制權交給它. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="5.2"></a>
+<h3>5.2 如何使用 lilo?</h3>
+<p> 加入以下的項目到 /etc/lilo.conf, 然後再執行 lilo. </p>
+<pre class="command">    other = /dev/hda1<br>        table = /dev/hda<br>        label = Windows<br>    </pre>
+<p><q>Other</q> 指向包含 Windows 的磁區, <q>table</q>
+指向磁碟的磁區表. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首<br>
+</a></p>
+<a name="5.3"></a>
+<h3>5.3 如何使用 grub?</h3>
+<p> 加入以下的項目到 /boot/grub/grub.conf </p>
+<pre class="command">    title Windows<br>        root (hd0,0)<br>        makeactive<br>        chainloader +1<br>    </pre>
+<p>依據 grub 磁碟命名的規則, /dev/hda 是 hd0, hdb 是 hd1,
+等. 這些磁區是從 0 開始. 所以, hda1 是 hd0,0,
+hdc4 是 hd2,3. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<hr><!-- ............................................................. -->
+<a name="6.0"></a>
+<h2>6. Linux 版本</h2>
+<a name="6.1"></a>
+<h3>6.1 那個 Linux 版本有原生的 NTFS 支援?</h3>
+<p>已知支援 NTFS 的 Linux 是: <a href="http://www.mandrake.com/" target="_blank">Mandrake</a>, <a href="http://www.debian.org/" target="_blank">Debian</a>, <a href="http://www.suse.com/" target="_blank">SuSE</a>, <a href="http://www.gentoo.org/" target="_blank">Gentoo</a>,  和 <a href="http://www.caldera.com/" target="_blank">Caldera</a> </p>
+<p> 事實上, 如果名字不是 RedHat, 他們就會支援 NTFS. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="6.2"></a>
+<h3>6.2 為何 RedHat 不支援 NTFS?</h3>
+<p> 我也想知道. 根據謠言說是法律上的考量. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="6.3"></a>
+<h3>6.3 為何 RedHat 在存取 NTFS 磁區時是鎖定的狀態?</h3>
+<p>用 "uname -a" 查看你的核心版本. 如果是 2.4.9 版, 那你必須更新你的核心. 詳見 <a href="http://www.redhat.com/" target="_blank">RedHat
+網站</a>. </p>
+<p> 如果你願意也可以自己編譯你的核心. 詳見<a href="ntfs-zh_TW.html#3.5">如何加 NTFS 支援到 Linux?</a>. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="6.4"></a>
+<h3>6.4 有可以安裝在 NTFS 的版本嗎?</h3>
+<p>不儘然, <a href="http://phatlinux.com/" target="_blank">Phat
+Linux</a> 可以安裝在 Windows 內的 FAT 磁區, 並從 Windows 中啟動. 新的驅動程式幾乎有足夠的支援在 NTFS
+上進行相同的操作. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<hr><!-- ............................................................. -->
+<a name="7.0"></a>
+<h2>7. 新的 Linux NTFS 驅動程式</h2>
+<a name="7.1"></a>
+<h3>7.1 新的 NTFS 驅動程式是什麼?</h3>
+<p>它是一個完全重寫的 NTFS 驅動程式. 原始的驅動程式已經很多年了, 那時我們對 NTFS 或 Linux 的了解都很少,
+所以程式碼變得很難維護. </p>
+<p> 我們用我們新的知識建立了一個新的驅動程式, 它更簡化, 快速且簡易維護. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="7.2"></a>
+<h3>7.2 我需要使用它嗎?</h3>
+<p> 不. 現在的 Linux 核心中已包含了一個 NTFS 驅動程式, 你不需要使用新的. 原始的驅動程式雖然舊,
+但是在日常使用上還是很可靠的. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="7.3"></a>
+<h3>7.3 我該如何使用它呢?</h3>
+<p> 我們將新的驅動程式作成<a href="http://www.kernel.org/pub/linux/kernel/v2.4/">官方
+Linux
+核心程式碼</a>的<a href="../downloads.html">修補程
+式</a>. </p>
+<p> <a href="../downloads.html">../downloads.html</a>
+<br>
+<a href="http://www.kernel.org/pub/linux/kernel/v2.4/" target="_blank">http://www.kernel.org/pub/linux/kernel/v2.4/</a>
+</p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="7.4"></a>
+<h3>7.4 什麼是修補程式? <br>
+</h3>
+<p>修補程式是對一組文件所作的改變的集合. 我們只有改變關於 NTFS 的程式碼, 如果我們每次只做了小改變而就要發布所有的核心程式碼,
+那是很沒有效率的. 所以我們只要針對核心版本發布修補程式即可. </p>
+<p> 打開文件之後, 進入程式碼的目錄並使用以下的指令 (如果需要, 更改路徑和程式名稱): </p>
+<pre class="command">    <b>patch -p1 &lt; path/to/patchname</b><br>    </pre>
+<p>這將會更動程式碼, 且在過程中應該不會有任何的錯誤發生. 接下來像平常一樣編譯核心. 在這份 FAQ 中有指導說明. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="7.5"></a>
+<h3>7.5 如果我還是不了解呢?</h3>
+<p> 很抱歉. 我們儘可能的幫助每一個人, 但我們只有有限的時間. 有一些其他的網站會讓你了解 Linux 的基本知識, 或是你可以像附近的
+Linux 使用者俱樂部尋求幫助. </p>
+<ul>
+  <li>Just Linux - http://www.justlinux.com</li>
+  <li>The Linux Documentation Project - http://tldp.org</li>
+  <li>The Linux Kernel HOWTO - http://tldp.org/HOWTO/Kernel-HOWTO.html</li>
+  <li>Linux User Groups - http://www.linux.org/groups/index.html</li>
+</ul>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="7.6"></a>
+<h3>7.6 何時新的程式碼才會放入 Linux 核心呢?</h3>
+<p>有兩個核心要考慮, 新的程式碼已經在 Linux 核心的研發版本中, 它是在 2.5.11 版是導入的. </p>
+<p> 穩定的 Linux 核心, 目前是 2.4.20 版, 仍在使用舊的驅動程式. 我們很滿意新的程式碼的現狀,
+但我們仍要說服核心的管理者那是很好的. </p>
+<p>我們仍會經常發布新的修補程式, 直到程式碼被納入核心為止. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<a name="7.7"></a>
+<h3>7.7 不可以寫個 Windows 驅動程式的封裝程式嗎?</h3>
+<p> 聽起來是個好主意, 但要開始其實有很多的問題. </p>
+<p>最大技術上的問題是把 Windows 的 DLL 加入 Lunix 的 VFS 中, 這問題可以解決, 但不完美.
+它需要成為核心的一部份, 這也意味著如果它出問題整個系統會崩潰. 沒有原程式碼, 我們將無法解決這個問題. </p>
+<p>下一個問題是相容性. 我們該用那個版本的 Windows 系統檔? 選一個會限制了它的用途, 封裝所有的版本將會是編寫程式者的惡夢. </p>
+<p>更糟的是, 發布 Windows 系統檔會有法律上的問題. 由於 Windows 的著作權, 如果某使用者使用 NTFS 封裝程式,
+核心的程式工作者將無法對所發生的問題加以研究.</p>
+<p>總之, 曾有個勇敢的人做過. Jan Kratochvil 的 <a href="http://www.jankratochvil.net/project/captive/">Captive</a> 就是
+Windows 驅動程式的封裝. 它有 NTFS 的寫入支援, 但是有已知的臭蟲, 且和 Linux NTFS 驅動程式相比下也慢了許多.
+Captive
+是以 <a href="http://www.reactos.com/">ReactOS</a> 為基礎, 使用 LUFS 驅動程式. 如果開發 Captive
+的時間像開發 Linux NTFS 驅動程式的時間一樣多, 我們就會有可靠且完全是開放原碼的, 並有寫入支援的驅動程式了. </p>
+<p><a href="ntfs-zh_TW.html#top">回頁首</a></p>
+<table summary="" border="0" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td class="copyright" width="99%">版權所有 &copy; flatcap
+(Richard Russon)</td>
+      <td valign="bottom" width="88"><a href="http://sourceforge.net/"><img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31"></a></td>
+      <td valign="bottom" width="88"><a class="contact" href="http://validator.w3.org/check?uri=referer"><img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31"></a></td>
+      <td valign="bottom" width="88"><a class="contact" href="http://jigsaw.w3.org/css-validator/check/referer"><img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31"></a></td>
+    </tr>
+  </tbody>
+</table>
+
+</body></html>

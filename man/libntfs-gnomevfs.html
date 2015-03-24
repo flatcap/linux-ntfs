@@ -1,0 +1,188 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>libntfs-gnomevfs.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2003 Anton Altaparmakov. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSPROGS 8 "November 2003" "Linux-NTFS version 1.9.1-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSPROGS (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+libntfs-gnomevfs - Module for GNOME VFS that allows access to NTFS filesystems.
+<!-- .SH OVERVIEW -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>OVERVIEW</h2>
+
+<blockquote>
+The GNOME virtual filesystem (VFS) provides universal access to different filesystems.
+The
+<!-- .BR libntfs-gnomevfs -->
+<b>libntfs-gnomevfs</b> module enables GNOME VFS aware clients to seamlessly utilize the NTFS library
+<!-- .BR libntfs . -->
+<b>libntfs</b>. <p>
+So you can access an NTFS filesystem without needing to use the NTFS utilities themselves
+(at least in theory anyway).  In practice this is probably more useful for programs and
+programmers to make using
+<!-- .BR libntfs -->
+<b>libntfs</b> easier, more generic, and to allow easier debugging of
+<!-- .BR libntfs . -->
+<b>libntfs</b>. </p><p>
+<!-- .SH Examples -->
+</p></blockquote>
+<a name="2"></a>
+
+     <h2>Examples</h2>
+
+<blockquote>
+<!-- .SS Prerequisites -->
+</blockquote>
+<a name="3"></a>
+
+    <h3>&nbsp; &nbsp; Prerequisites</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+To be able to follow these examples you will need to have installed the test utilities
+from the gnome-vfs-2.4.x package.  The easiest way to do this is to download and compile
+the gnome-vfs-2 package, e.g. download from:
+</p><p>
+<a href="http://ftp.gnome.org">http://ftp.gnome.org</a>
+</p><p>
+Then run ./configure followed by make and make install (as root).  This will install
+it into /usr/local so it should not conflict with your existing installation from
+rpm or deb packages which will be in /usr.
+</p><p>
+Note you may also need to add /usr/local/lib to /etc/ld.so.conf and then run ldconfig
+(as root) to let your system see the installed gnome-vfs-2.4.x libraries.
+</p><p>
+Then run ./configure followed by make and make install (as root) in the main
+<!-- .BR ntfsprogs -->
+<b>ntfsprogs</b> directory to build and install the
+<!-- .BR libntfs-gnomevfs -->
+<b>libntfs-gnomevfs</b> module and
+<!-- .BR libntfs -->
+<b>libntfs</b> library which is used by the module.
+</p><p>
+<!-- .SS Copying a file from an NTFS partition -->
+</p></blockquote>
+<a name="4"></a>
+
+    <h3>&nbsp; &nbsp; Copying a file from an NTFS partition</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+To copy the file autoexec.bat from the main directory of an NTFS partition (/dev/hda1)
+to the /tmp directory on your system you could run:
+</p><p>
+/path/to/gnome-vfs-2.4.x/test/test-xfer file:///dev/hda1#libntfs:/autoexec.bat /tmp/autoexec.bat
+</p><p>
+To copy a file from a directory inside the NTFS partition you would just specify the full path.
+So for example to copy the file win.ini from the Windows directory you would run:
+</p><p>
+/path/to/gnome-vfs-2.4.x/test/test-xfer file:///dev/hda1#libntfs:/Windows/win.ini /tmp/win.ini
+</p><p>
+<!-- .SS Shell access to an NTFS partition -->
+</p></blockquote>
+<a name="5"></a>
+
+    <h3>&nbsp; &nbsp; Shell access to an NTFS partition</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+For debugging it is most useful to be able to do various things to the NTFS partition while it
+is being operated upon by
+<!-- .BR libntfs . -->
+<b>libntfs</b>. This is achieved using the test-shell utility (from the gnome-vfs-2.4.x package) by running:
+/path/to/gnome-vfs-2.4.x/test/test-shell
+</p><p>
+This drops you into the GNOME VFS shell from where you can now cd into the NTFS partition (/dev/hda1)
+by typing: cd file:///dev/hda1#libntfs:/
+</p><p>
+You are now in the root directory of the NTFS partition.  The first thing you will probably want to
+do is to type "ls" to display the directory contents.
+</p><p>
+You could then change directories using the "cd" command, e.g. to enter the Windows directory you
+would type: cd Windows
+</p><p>
+You can then open files, seek inside files, read from files (write is not enabled at present), etc
+thus exercising large portions of the NTFS library.
+</p><p>
+Use the "help" command while in the shell to see the available commands.
+</p><p>
+<!-- .SH BUGS -->
+</p></blockquote>
+<a name="6"></a>
+
+     <h2>BUGS</h2>
+
+<blockquote>
+<!-- .PP -->
+<p>
+No bugs are known but there are several limitations at the moment:
+</p><p>
+You cannot get information about files other than what the "ls" command
+in the test-shell can give you, i.e. the "info" command in the test-shell
+does not work.
+</p><p>
+Further access to the partition is read-only and hence you cannot write
+to files.  This will be changed in the future once the module has had
+more wide testing.
+</p><p>
+There may be other limitations and possibly bugs.  Please report any
+problems to the NTFS mailing list: linux-ntfs-dev@lists.sourceforge.net
+</p><p>
+<!-- .SH AUTHORS -->
+</p></blockquote>
+<a name="7"></a>
+
+     <h2>AUTHORS</h2>
+
+<blockquote>
+<!-- .PP -->
+<p>
+The
+<!-- .BR libntfs-gnomevfs -->
+<b>libntfs-gnomevfs</b> module was written by Jan Kratochvil.  This man page was written by Anton Altaparmakov.
+</p><p>
+<!-- .SH AVAILABILITY -->
+</p></blockquote>
+<a name="8"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+The
+<!-- .BR ntfsprogs -->
+<b>ntfsprogs</b> package which contains the
+<!-- .BR libntfs-gnomevfs -->
+<b>libntfs-gnomevfs</b> module can be downloaded from http://linux-ntfs.sourceforge.net
+<!-- .BR -->
+ These manual pages can be viewed online at <a href="ntfsprogs.html">ntfsprogs.html</a>
+<p>
+<!-- .SH SEE ALSO -->
+</p></blockquote>
+<a name="9"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

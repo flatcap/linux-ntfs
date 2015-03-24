@@ -1,0 +1,688 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfsundelete.8.in</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" Copyright (c) 2002-2005 Richard Russon. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSUNDELETE 8 "June 2002" "ntfsprogs version @VERSION@" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSUNDELETE (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfsundelete - recover a deleted file from an NTFS volume.
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> [
+<!-- .I options -->
+<i>options</i> ]
+<!-- .B device -->
+<b>device</b> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> has three modes of operation:
+<!-- .IR scan , -->
+<i>scan</i>, <!-- .I undelete -->
+<i>undelete</i> and
+<!-- .IR copy . -->
+<i>copy</i>. <!-- .SS Scan -->
+</blockquote>
+<a name="3"></a>
+
+    <h3>&nbsp; &nbsp; Scan</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+The default mode,
+<!-- .I scan -->
+<i>scan</i> simply reads an NTFS Volume and looks for files that have been deleted.  Then it
+will print a list giving the inode number, name and size.
+<!-- .SS Undelete -->
+</p></blockquote>
+<a name="4"></a>
+
+    <h3>&nbsp; &nbsp; Undelete</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+The
+<!-- .I undelete -->
+<i>undelete</i> mode takes the files either matching the regular expression (option -m)
+or  specified by the inode-expressions and recovers as much of the data
+as possible.   It saves the result to another location.  Partly for
+safety, but mostly because NTFS write support isn’t finished.
+<!-- .SS Copy -->
+</p></blockquote>
+<a name="5"></a>
+
+    <h3>&nbsp; &nbsp; Copy</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+This is a wizard’s option.  It will save a portion of the MFT to a file.  This
+probably only be useful when debugging
+<!-- .I ntfsundelete -->
+<i>ntfsundelete</i> <!-- .SS Notes -->
+</p></blockquote>
+<a name="6"></a>
+
+    <h3>&nbsp; &nbsp; Notes</h3>
+
+<blockquote>
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> only ever
+<!-- .B reads -->
+<b>reads</b> from the NTFS Volume.
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> will never change the volume.
+<!-- .SH CAVEATS -->
+</blockquote>
+<a name="7"></a>
+
+     <h2>CAVEATS</h2>
+
+<blockquote>
+<!-- .SS Miracles -->
+</blockquote>
+<a name="8"></a>
+
+    <h3>&nbsp; &nbsp; Miracles</h3>
+
+<blockquote>
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> cannot perform the impossible.
+<!-- .PP -->
+<p>
+When a file is deleted the MFT Record is marked as not in use and the bitmap
+representing the disk usage is updated.  If the power isn’t turned off
+immediately, the free space, where the file used to live, may become
+overwritten.  Worse, the MFT Record may be reused for another file.  If this
+happens it is impossible to tell where the file was on disk.
+<!-- .PP -->
+</p><p>
+Even if all the clusters of a file are not in use, there is no guarantee that
+they haven’t been overwritten by some short-lived file.
+<!-- .SS Locale -->
+</p></blockquote>
+<a name="9"></a>
+
+    <h3>&nbsp; &nbsp; Locale</h3>
+
+<blockquote>
+In NTFS all the filenames are stored as Unicode.  They will be converted into
+the current locale for display by
+<!-- .BR ntfsundelete . -->
+<b>ntfsundelete</b>. The utility has successfully displayed some Chinese pictogram filenames and then
+correctly recovered them.
+<!-- .SS Extended MFT Records -->
+</blockquote>
+<a name="10"></a>
+
+    <h3>&nbsp; &nbsp; Extended MFT Records</h3>
+
+<blockquote>
+In rare circumstances, a single MFT Record will not be large enough to hold the
+metadata describing a file (a file would have to be in hundreds of fragments
+for this to happen).  In these cases one MFT record may hold the filename, but
+another will hold the information about the data.
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> will not try and piece together such records.  It will simply show unnamed files
+with data.
+<!-- .SS Compressed and Encrypted Files -->
+</blockquote>
+<a name="11"></a>
+
+    <h3>&nbsp; &nbsp; Compressed and Encrypted Files</h3>
+
+<blockquote>
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> cannot recover compressed or encrypted files.  When scanning for them, it will
+display as being 0% recoverable.
+<!-- .SS The Recovered File's Size and Date -->
+</blockquote>
+<a name="12"></a>
+
+    <h3>&nbsp; &nbsp; The Recovered File’s Size and Date</h3>
+
+<blockquote>
+To recover a file
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> has to read the file’s metadata.  Unfortunately, this isn’t always intact.
+When a file is deleted, the metadata can be left in an inconsistent state. e.g.
+the file size may be zero; the dates of the file may be set to the time it was
+deleted, or random.
+<!-- .br -->
+<!-- Need break --><br>
+To be safe
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> will pick the largest file size it finds and write that to disk.  It will also
+try and set the file’s date to the last modified date.  This date may be the
+correct last modified date, or something unexpected.
+<!-- .SH OPTIONS -->
+</blockquote>
+<a name="13"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+Below is a summary of all the options that
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> accepts.  All options have two equivalent names.  The short name is preceded by
+<!-- .BR \- -->
+<b>-</b> and the long name is preceded by
+<!-- .BR \-\- . -->
+<b>--</b>. Any single letter options, that don’t take an argument, can be combined into a
+single command, e.g.
+<!-- .BR \-fv -->
+<b>-fv</b> is equivalent to
+<!-- .BR "\-f \-v" . -->
+<b>-f -v</b>. Long named options can be abbreviated to any unique prefix of their name.
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: Below is a summary of all the options that
+ -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI "\-b " NUM -->
+<b>-b </b><i>NUM</i> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-byte " NUM -->
+<b>--byte </b><i>NUM</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+If any clusters of the file cannot be recovered, the missing parts will be
+filled with this byte.  The default is zeros.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-C -->
+<b>-C</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-case -->
+<b>--case</b> </td><td valign="bottom">
+When scanning an NTFS volume, any filename matching (using the
+<!-- .B \-\-match -->
+<b>--match</b> option) is case-insensitive.  This option makes the matching case-sensitive.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-c " RANGE -->
+<b>-c </b><i>RANGE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-copy " RANGE -->
+<b>--copy </b><i>RANGE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+This wizard’s option will write a block of MFT FILE records to a file.  The
+default file is
+<!-- .I mft -->
+<i>mft</i> which will be created in the current directory.  This option can be combined
+with the
+<!-- .B \-\-output -->
+<b>--output</b> and
+<!-- .B \-\-destination -->
+<b>--destination</b> options.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI "\-d " DIR -->
+<b>-d </b><i>DIR</i> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-destination " DIR -->
+<b>--destination </b><i>DIR</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+This option controls where to put the output file of the
+<!-- .B \-\-undelete -->
+<b>--undelete</b> and
+<!-- .B \-\-copy -->
+<b>--copy</b> options.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-f -->
+<b>-f</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-force -->
+<b>--force</b> </td><td valign="bottom">
+This will override some sensible defaults, such as not overwriting an existing
+file.  Use this option with caution.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-h -->
+<b>-h</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-help -->
+<b>--help</b> </td><td valign="bottom">
+Show a list of options with a brief description of each one.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-i " RANGE -->
+<b>-i </b><i>RANGE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-inodes " RANGE -->
+<b>--inodes </b><i>RANGE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Recover the files with these inode numbers.
+<!-- .I RANGE -->
+<i>RANGE</i> can be a single inode number, several numbers separated by commas "," or a
+range separated by a dash "-".
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-m " PATTERN -->
+<b>-m </b><i>PATTERN</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-match " PATTERN -->
+<b>--match </b><i>PATTERN</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Filter the output by only looking for matching filenames.  The pattern can include the
+wildcards ’?’, match exactly one character or ’*’, match zero or more
+characters.  By default the matching is case-insensitive.  To make the search
+case sensitive, use the
+<!-- .B \-\-case -->
+<b>--case</b> option.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI "\-o " FILE -->
+<b>-o </b><i>FILE</i> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-output " FILE -->
+<b>--output </b><i>FILE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Use this option to set name of output file that
+<!-- .B \-\-undelete -->
+<b>--undelete</b> or
+<!-- .B \-\-copy -->
+<b>--copy</b> will create.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI "\-p " NUM -->
+<b>-p </b><i>NUM</i> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-percentage " NUM -->
+<b>--percentage </b><i>NUM</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Filter the output of the
+<!-- .B \-\-scan -->
+<b>--scan</b> option, by only matching files with a certain amount of recoverable content.
+<!-- .B Please read the caveats section for more details. -->
+<b>Please read the caveats section for more details.</b> <!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI \-q -->
+<b>-q</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI \-\-quiet -->
+<b>--quiet</b> </td><td valign="bottom">
+Reduce the amount of output to a minimum.  Naturally, it doesn’t make sense to
+combine this option with
+<!-- .BR \-\-scan . -->
+<b>--scan</b>. <!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-s -->
+<b>-s</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-scan -->
+<b>--scan</b> </td><td valign="bottom">
+Search through an NTFS volume and print a list of files that could be recovered.
+This is the default action of
+<!-- .BR ntfsundelete . -->
+<b>ntfsundelete</b>. This list can be filtered by filename, size, percentage recoverable or last
+modification time, using the
+<!-- .BR \-\-match , -->
+<b>--match</b>, <!-- .BR \-\-size , -->
+<b>--size</b>, <!-- .B \-\-percent -->
+<b>--percent</b> and
+<!-- .B \-\-time -->
+<b>--time</b> options, respectively.
+<!-- .sp -->
+<p>
+The output of scan will be:
+<!-- .sp -->
+</p><p>
+<!-- .nf -->
+</p><pre>Inode  Flags  %age     Date      Size  Filename
+ 6038  FN..    93%  2002-07-17  26629  thesis.doc
+<!-- .fi -->
+</pre>
+<!-- .TS -->
+<p></p><blockquote><table class="highlight" summary="data" border="1" cellpadding="3" cellspacing="0">
+<!-- lB lB -->
+<!-- l l. -->
+<tbody><tr valign="top">
+<td><b>Flag</b></td><td><b>Description</b></td></tr>
+<tr valign="top">
+<td>F/D</td><td>File/Directory</td></tr>
+<tr valign="top">
+<td>N/R</td><td>(Non-)Resident data stream</td></tr>
+<tr valign="top">
+<td>C/E</td><td>Compressed/Encrypted data stream</td></tr>
+<tr valign="top">
+<td>!</td><td>Missing attributes</td></tr>
+</tbody></table></blockquote>
+<!-- .RS -->
+<!-- .sp -->
+<p>
+<!-- .br -->
+The percentage field shows how much of the file can potentially be recovered.
+<!-- .sp -->
+</p><p>
+<!-- .br -->
+<!-- .RE -->
+<!-- .BI "\-S " RANGE -->
+<b>-S </b><i>RANGE</i> <!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-size " RANGE -->
+<b>--size </b><i>RANGE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Filter the output of the
+<!-- .B \-\-scan -->
+<b>--scan</b> option, by looking for a particular range of file sizes.  The range may be
+specified as two numbers separated by a ’-’.  The sizes may be abbreviated
+using the suffixes k, m, g, t, for kilobytes, megabytes, gigabytes and terabytes
+respectively.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-t " SINCE -->
+<b>-t </b><i>SINCE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-time " SINCE -->
+<b>--time </b><i>SINCE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Filter the output of the
+<!-- .B \-\-scan -->
+<b>--scan</b> option.  Only match files that have been altered since this time.  The time must
+be given as number using a suffix of d, w, m, y for days, weeks, months or years
+ago.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI \-T -->
+<b>-T</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI \-\-truncate -->
+<b>--truncate</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+If
+<!-- .BR ntfsundelete -->
+<b>ntfsundelete</b> is confident about the size of a deleted file, then it will restore the file to
+exactly that size.  The default behaviour is to round up the size to the nearest
+cluster (which will be a multiple of 512 bytes).
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI "\-u " -->
+<b>-u </b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-undelete " -->
+<b>--undelete </b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Select
+<!-- .B undelete -->
+<b>undelete</b> mode.  You can specify the files to be recovered using by using
+<!-- .B --match -->
+<b>--match</b> or
+<!-- .B --inodes -->
+<b>--inodes</b> options.  This option can be combined with
+<!-- .BR \-\-output , -->
+<b>--output</b>, <!-- .BR \-\-destination , -->
+<b>--destination</b>, and
+<!-- .BR \-\-byte . -->
+<b>--byte</b>. <!-- .sp -->
+<p>
+When the file is recovered it will be given its original name, unless the
+<!-- .B "\-\-output" -->
+<b>--output</b> option is used.
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-v -->
+<b>-v</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-verbose -->
+<b>--verbose</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Increase the amount of output that
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> prints.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-V -->
+<b>-V</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-version -->
+<b>--version</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Show the version number, copyright and license
+<!-- .BR ntfsundelete . -->
+<b>ntfsundelete</b>. <!-- .SH EXAMPLES -->
+</td></tr>
+<tr></tr></tbody></table></blockquote>
+<a name="14"></a>
+
+     <h2>EXAMPLES</h2>
+
+<blockquote>
+Look for deleted files on /dev/hda1.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsundelete /dev/hda1 -->
+<b>ntfsundelete /dev/hda1</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Look for deleted documents on /dev/hda1.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsundelete /dev/hda1 -s \-m '*.doc' -->
+<b>ntfsundelete /dev/hda1 -s -m ’*.doc’</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Look for deleted files between 5000 and 6000000 bytes, with at least 90% of the
+data recoverable, on /dev/hda1.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsundelete /dev/hda1 \-S 5k\-6m \-p 90 -->
+<b>ntfsundelete /dev/hda1 -S 5k-6m -p 90</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Look for deleted files altered in the last two days
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsundelete /dev/hda1 \-t 2d -->
+<b>ntfsundelete /dev/hda1 -t 2d</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Undelete inodes 2, 5 and 100 to 131 of device /dev/sda1
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsundelete /dev/sda1 -u -i 2,5,100-131 -->
+<b>ntfsundelete /dev/sda1 -u -i 2,5,100-131</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Undelete inode number 3689, call the file ’work.doc’ and put it in the user’s
+home directory.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsundelete /dev/hda1 \-u -i 3689 \-o work.doc \-d ~ -->
+<b>ntfsundelete /dev/hda1 -u -i 3689 -o work.doc -d ~</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Save MFT Records 3689 to 3690 to a file ’debug’
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsundelete /dev/hda1 \-c 3689\-3690 \-o debug -->
+<b>ntfsundelete /dev/hda1 -c 3689-3690 -o debug</b> <!-- .RE -->
+</p></blockquote>
+<!-- .SH BUGS -->
+</blockquote>
+<a name="15"></a>
+
+     <h2>BUGS</h2>
+
+<blockquote>
+There are some small limitations to this program, but currently no known bugs.
+If you find one, please send an email to
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+linux-ntfs-dev@lists.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH AUTHORS -->
+</blockquote>
+<a name="16"></a>
+
+     <h2>AUTHORS</h2>
+
+<blockquote>
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> was written by Richard Russon (FlatCap) and Holger Ohmacht.
+<!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="17"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfsundelete -->
+<b>ntfsundelete</b> is part of the ntfsprogs package and is available from
+<!-- .br -->
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+<!-- Need break --><br>
+http://linux-ntfs.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="18"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR ntfsinfo (8), -->
+<b><a href="ntfsinfo.html">ntfsinfo(8)</a></b>,<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

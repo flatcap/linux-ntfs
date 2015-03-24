@@ -1,0 +1,265 @@
+#!/bin/bash
+#
+# Copyright 2003-2004 FlatCap (Richard Russon)
+# This file may be copied under the terms of the GNU Public License:
+#   http://www.gnu.org/licenses/gpl.html
+#
+# Determine which NTFS RPM the user needs.
+#
+# This file is available online from:
+#   http://data.linux-ntfs.org/rpm/whichrpm
+#
+# whichrpm should be used in conjuection with the NTFS RPM instructions:
+#   http://www.linux-ntfs.org/content/view/127/63/
+#
+# ChangeLog:
+#
+# 1.11 - 15 Apr 2007 - Richard Russon (FlatCap)
+#     - Identify RHEL5 and CentOS5
+#
+# 1.10 - 20 Mar 2006 - Richard Russon (FlatCap)
+#      - Identify Fedora 5 (Bordeaux)
+#
+# 1.9 - 8 Mar 2006 - Richard Russon (FlatCap)
+#     - Identify CentOS 4 (RHEL4 clone)
+#
+# 1.8 - 3 Dec 2005 - Richard Russon (FlatCap)
+#     - Update links to point at the new website
+#
+# 1.7 - 6 Jul 2005 - Richard Russon (FlatCap)
+#     - Identify Fedora Core 4 Xen kernels
+#     - Contrib has moved to main pages
+#
+# 1.6 - 13 Jun 2005 - Richard Russon (FlatCap)
+#     - Identify RedHat Enterprise 4 (Nahant)
+#     - Identify Fedora Core 4 (Stentz)
+#
+# 1.5 - 24 Nov 2004 - Richard Russon (FlatCap)
+#     - Direct 64-bit users to the contrib page
+#
+# 1.4 - 18 Oct 2004 - Richard Russon (FlatCap)
+#     - Identify RedHat Enterprise 4 Beta
+#
+# 1.3 - 02 Aug 2004 - Richard Russon (FlatCap)
+#     - Identify RedHat Enterprise
+#
+# 1.2 - 02 Aug 2004 - Richard Russon (FlatCap)
+#     - Identify Fedora Core 2 and Fedora Core 3 test versions
+#     - Bugfix: More verbose on errors
+#
+# 1.1 - 03 Dec 2003 - Richard Russon (FlatCap)
+#     - Bugfix: multiple kernels gave misleading results
+#
+# 1.0 - 09 Nov 2003 - Richard Russon (FlatCap)
+#     - Initial version
+#     - Identifies RH7,8,9 and FC1
+
+# Intialisation
+
+VER="1.11"
+RDT="15 April 2007"
+REL=
+DOWN=
+
+if [ "$1" = "-v" ]; then
+	VERBOSE="true"
+fi
+
+vecho()
+{
+	if [ "$VERBOSE" = "true" ]; then
+		echo $*
+	fi
+}
+
+
+# Welcome
+
+vecho
+vecho "This is the 'whichrpm' script, v$VER, released $RDT"
+vecho "It will try to work out which NTFS RPM you need."
+vecho
+vecho "The latest version can be downloaded from:"
+vecho "    http://www.linux-ntfs.org/content/view/127/63/"
+vecho
+
+# First determine which vendor we have: RedHat or Fedora
+
+RH_REL=/etc/redhat-release
+FC_REL=/etc/fedora-release
+
+if [ -f $FC_REL ]; then
+	VENDOR="Fedora"
+	REL=`cat $FC_REL`
+else
+	if [ -f $RH_REL ]; then
+		VENDOR="RedHat"
+		REL=`cat $RH_REL`
+	fi
+fi
+
+if [ -z "$REL" ]; then
+	echo "Error:"
+	echo "Unfortunately, I can't find either /etc/redhat-release, or"
+	echo "/etc/fedora-release  Without either of these files, I can't work out"
+	echo "which distribution you have."
+	echo "Giving up."
+	echo
+	exit 1
+fi
+
+# See if we have a download for this version
+
+case $REL in
+	"Fedora Core release 5 (Bordeaux)")
+		vecho "You are using Fedora 5 (Bordeaux)"
+		DOWN="http://www.linux-ntfs.org/content/view/187/89/"
+		;;
+	"Fedora Core release 4 (Stentz)")
+		vecho "You are using Fedora 4 (Stentz)"
+		DOWN="http://www.linux-ntfs.org/content/view/129/65/"
+		;;
+	"Fedora Core release 3 (Heidelberg)")
+		vecho "You are using Fedora 3 (Heidelberg)"
+		DOWN="http://www.linux-ntfs.org/content/view/130/66/"
+		;;
+	"Fedora Core release 2 (Tettnang)")
+		vecho "You are using Fedora 2 (Tettnang)"
+		DOWN="http://www.linux-ntfs.org/content/view/133/69/"
+		;;
+	"Fedora Core release 1 (Yarrow)")
+		vecho "You are using Fedora 1 (Yarrow)"
+		DOWN="http://www.linux-ntfs.org/content/view/134/70/"
+		;;
+	"Fedora Core release"*)
+		echo "I don't recognise this version of Fedora Linux.  Please check you have the"
+		echo "latest version of the 'whichrpm' script."
+		;;
+	"Red Hat Linux release 7.0 (Guinness)" |	\
+	"Red Hat Linux release 7.1 (Seawolf)"  |	\
+	"Red Hat Linux release 7.2 (Enigma)")
+		echo "Unfortunately, you are running an old version of RedHat Linux."
+		echo "There aren't any NTFS RPMs for this version.  I recommend that you consult"
+		echo "the RedHat website for instruction on how to upgrade your kernel."
+		;;
+	"Red Hat Linux release 7.3 (Valhalla)")
+		vecho "You are using RedHat 7.3 (Valhalla)"
+		DOWN="http://www.linux-ntfs.org/content/view/139/75/"
+		;;
+	"Red Hat Linux release 8.0 (Psyche)")
+		vecho "You are using RedHat 8.0 (Psyche)"
+		DOWN="http://www.linux-ntfs.org/content/view/138/74/"
+		;;
+	"Red Hat Linux release 9 (Shrike)")
+		vecho "You are using RedHat 9 (Shrike)"
+		DOWN="http://www.linux-ntfs.org/content/view/137/73/"
+		;;
+	"Red Hat Enterprise Linux "??" release 3 (Taroon"*)
+		vecho "You are using RedHat Enterprise 3 (Taroon)"
+		DOWN="http://www.linux-ntfs.org/content/view/136/72/"
+		;;
+	"Red Hat Enterprise Linux "??" release 4 (Nahant"*)
+		vecho "You are using RedHat Enterprise 4 (Nahant)"
+		DOWN="http://www.linux-ntfs.org/content/view/135/71/"
+		;;
+	"Red Hat Enterprise Linux "*"Tikanga"*)
+		vecho "You are using RedHat Enterprise 5 (Tikanga)"
+		DOWN="http://www.linux-ntfs.org/content/view/257/92/"
+		;;
+	"CentOS release 4"*)
+		vecho "You are using CentOS release 4"
+		DOWN="http://www.linux-ntfs.org/content/view/135/71/"
+		;;
+	"CentOS release 5"*)
+		vecho "You are using CentOS release 5"
+		DOWN="http://www.linux-ntfs.org/content/view/257/92/"
+		;;
+	"Red Hat Enterprise Linux"* |	\
+	"Red Hat Linux"*)
+		echo "Unfortunately there aren't any NTFS RPMs for the version of RedHat Linux"
+		echo "that you are running."
+		;;
+	*)
+		echo "I can't identify which distribution you are running."
+		;;
+esac
+
+if [ -z "$DOWN" ]; then
+	echo "Giving up."
+	echo
+	exit 1
+fi
+
+# determine which kernel version and type we have
+
+KVER=`uname -r`
+
+case $KVER in
+	*smp)
+		vecho "You have an Multi Processor (SMP) kernel"
+		SECTION="Multi Processor"
+		SUFFIX='-smp'
+		VERSION=`echo $KVER | sed 's/smp$//'`
+		;;
+	*BOOT)
+		vecho "You have a Specialist kernel"
+		SECTION="Specialist"
+		SUFFIX="-BOOT"
+		VERSION=`echo $KVER | sed 's/BOOT$//'`
+		;;
+	*xen0)
+		vecho "You have a Specialist kernel"
+		SECTION="Specialist"
+		SUFFIX="-xen0"
+		VERSION=`echo $KVER | sed 's/xen0$//'`
+		;;
+	*xenU)
+		vecho "You have a Specialist kernel"
+		SECTION="Specialist"
+		SUFFIX="-xenU"
+		VERSION=`echo $KVER | sed 's/xenU$//'`
+		;;
+	*bigmem)
+		vecho "You have a Specialist kernel"
+		SECTION="Specialist"
+		SUFFIX="-bigmem"
+		VERSION=`echo $KVER | sed 's/bigmem$//'`
+		;;
+	*hugemem)
+		vecho "You have a Specialist kernel"
+		SECTION="Specialist"
+		SUFFIX="-hugemem"
+		VERSION=`echo $KVER | sed 's/hugemem$//'`
+		;;
+	*)
+		vecho "You have a Single Processor kernel"
+		SECTION="Single Processor"
+		SUFFIX=""
+		VERSION=$KVER
+		;;
+esac
+
+# determine which architecture the kernel is
+
+ARCH=`rpm -q --queryformat '%{ARCH}' kernel$SUFFIX-$VERSION`
+
+vecho "You have an $ARCH kernel"
+vecho
+
+# Summarise
+
+vecho "Go to this page:"
+vecho "  $DOWN"
+vecho
+vecho "and lookup Version '$VERSION' in the 'NTFS RPMs' table."
+vecho "Then find the '$ARCH$SUFFIX' column - it will be in the '$SECTION' section."
+
+vecho
+vecho "Summary..."
+echo
+echo "Web Page: $DOWN"
+echo "Version:  $VERSION"
+echo "Section:  $SECTION"
+echo "Arch:     $ARCH$SUFFIX"
+echo
+

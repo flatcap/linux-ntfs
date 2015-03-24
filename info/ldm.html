@@ -1,0 +1,443 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- ldm.html -->
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Linux NTFS Project">
+    <meta name="keywords" content="Linux LDM Logical Disk Manager Dynamic Disks Windows NT 2000 XP NET">
+    <link rel="stylesheet" type="text/css" href="style/info.css">
+    <link rel="icon" href="style/ldmicon.png" type="image/png">
+    <title>LDM FAQ</title>
+  </head>
+
+  <body class="ldmdoc">
+  <a name="top"></a>
+    <h2>LDM FAQ</h2>
+    <h3>(Windows Dynamic Disks - Frequently Asked Questions)</h3>
+
+    <p>
+    This FAQ is part of the
+    <a href="../">Linux NTFS Project</a>.
+    <br>The latest version can be found online at<br>
+    <a href="ldm.html">
+    ldm.html</a>
+    </p>
+
+    <p>
+    If you have an LDM question that isn't answered in this FAQ, or you have
+    comments about the FAQ, please email me: ldm@flatcap.org
+    </p>
+
+    <h3>Key</h3>
+    <p style="margin-left: 2em; margin-bottom: 0px;">
+    <img src="style/blue.png" alt="**" width="16" height="16">&nbsp;-&nbsp;Most frequently asked questions<br>
+    <img src="style/green.png" alt="!!" width="16" height="16">&nbsp;-&nbsp;Other interesting bits<br>
+    <img src="style/red.png" alt="NB" width="16" height="16">&nbsp;-&nbsp;Note carefully
+    </p>
+    <div style="background-color: #DDD; color: #000; border: 1px solid black;
+    margin-left: 2em; max-width: 250px;">&nbsp;<b>Commands</b> or output</div>
+
+  todo - under construction?
+  todo - m$ evil destroy non-ntfs/fat partitions
+  todo - convert to/from ldm/dynamic disks
+
+    <h2>Contents</h2>
+
+    <h3>1. <a class="heading" href="ldm.html#1.0">General LDM Questions</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#1.1">1.1 What is the LDM?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#1.2">1.2 Why is it so good?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#1.3">1.3 Why should I use LDM?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#1.4">1.4 Who designed the LDM?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#1.5">1.5 Which operating systems use it?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>2. <a class="heading" href="ldm.html#2.0">Linux-LDM Questions</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.1">2.1 Can Linux understand LDM?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.2">2.2 Which version of the driver do I have?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.3">2.3 What the difference between the two drivers?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.4">2.4 What about Spanned Volumes? Stripes? Mirrors? RAID5?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.5">2.5 Which Linux Distros Support LDM?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.6">2.6 How was the driver written?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.7">2.7 Where is the LDM Documented?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#2.8">2.8 Who do we thank?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>3. <a class="heading" href="ldm.html#3.0">LDM Development</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#3.1">3.1 Can Linux edit LDM Partitions?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#3.2">3.2 Are there any tools for LDM?</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#3.3">3.3 When will there be some tools LDM?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>4. <a class="heading" href="ldm.html#4.0">HOWTO Mount an LDM Volume</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#4.1">4.1 Kernel Support</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#4.2">4.2 ldminfo</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#4.3">4.3 /etc/raidtab</a></td>
+    </tr>
+    <tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ldm.html#4.4">4.4 mount</a></td>
+    </tr>
+    </tbody></table>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="1.0"></a>
+    <h2>1. General LDM Questions</h2>
+    <a name="1.1"></a>
+    <h3>1.1 What is the LDM?</h3>
+
+    <p>
+    The Logical Disk Manager (LDM) is a blanket term for a new way of
+    partitioning a disk.  The LDM controls Windows Dynamic Disks which support
+    spanned, striped, mirrored and RAID5 volumes.  The LDM stores its
+    information in a database at the end of each physical disk.
+    </p>
+
+    <p>
+    The LDM was introduced in Windows 2000.  Before that, Windows NT used volume
+    sets, which stored their information in the registry.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="1.2"></a>
+    <h3>1.2 Why is it so good?</h3>
+
+    <p>
+    To see why the LDM is so good, it's necessary to look at what was wrong the
+    old method of partitioning disks.
+    todo
+    </p>
+
+    <p>
+    The LDM is basically without limits.  The old method of partitioning a disk
+    was very limited.  It has limits on its size and the geometry of the disk
+    affected the partitions.
+
+    For a brief history of partitioning, see the
+    <a href="../ldm/overview/history.html">LDM Documentation</a>.
+    </p>
+
+    limits, complicated, extendable, journalled (reliable), all on disk
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="1.3"></a>
+    <h3>1.3 Why should I use LDM?</h3>
+
+    <p>
+    TODO
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="1.4"></a>
+    <h3>1.4 Who designed the LDM?</h3>
+
+    <p>
+    TODO
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="1.5"></a>
+    <h3>1.5 Which operating systems use it?</h3>
+
+    <p>
+    TODO
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.0"></a>
+    <h2>2. Linux-LDM Questions</h2>
+    <a name="2.1"></a>
+    <h3>2.1 Can Linux understand LDM?</h3>
+    <p>
+    Yes.  The LDM driver was accepted into the Linux Kernel (2.4.8) in August
+    2001.  That driver has now been rewritten from scratch.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="2.2"></a>
+    <h3>2.2 Which version of the driver do I have?</h3>
+
+    <p>
+    The simplest way to decide is to find out which Linux Kernel version you
+    have.  Run the command:
+    </p>
+
+    <pre class="command">    <b>uname -r</b>
+    </pre>
+
+    <table class="highlight" summary="LDM Driver versions" border="1" cellspacing="0">
+      <tbody><tr><th>Kernel Version</th><th>LDM Driver</th></tr>
+      <tr><td>2.4.8 - 2.4.19</td><td>old</td></tr>
+      <tr><td>2.4.20+</td><td>new</td></tr>
+      <tr><td>2.5.0 - 2.5.28</td><td>old</td></tr>
+      <tr><td>2.5.29+</td><td>new</td></tr>
+    </tbody></table>
+
+    TODO - partition check [LDM] (same division)
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="2.3"></a>
+    <h3>2.3 What the difference between the two drivers?</h3>
+
+    <p>
+    The old driver was rather crude.  It allocated a lot of memory
+    todo
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="2.4"></a>
+    <h3>2.4 What about Spanned Volumes? Stripes? Mirrors? RAID5?</h3>
+
+    <p>
+    TODO
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="2.5"></a>
+    <h3>2.5 Which Linux Distros Support LDM?</h3>
+
+    <p>
+    At the moment, only <a href="http://www.mandrake.com/">Mandrake</a> installs
+    a kernel that supports LDM, though the installer doesn't understand LDM.
+    The kernel they use has the <a href="ldm.html#2.3">old driver</a>.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="2.6"></a>
+    <h3>2.6 How was the driver written?</h3>
+
+    <p>
+    Neither Veritas nor Microsoft have released any documentation about the
+    internals of the LDM, so we had to reverse engineer the database from
+    scratch.  The method was roughly:
+    </p>
+
+    <ol>
+    <li>Look at the volume with a hex editor</li>
+    <li>Perform some operation, e.g. create a partition</li>
+    <li>Use the hex editor to look for changes</li>
+    <li>Classify and document the changes</li>
+    <li>Repeat steps 1-4 forever</li>
+    </ol>
+
+    <p>
+    If this sounds like a lot of work, then you probably understand how hard
+    the task has been.  We now understand pretty much everything about the LDM
+    database.
+    </p>
+
+    <p>
+    Actually writing the driver was far simpler than gathering the information.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="2.7"></a>
+    <h3>2.7 Where is the LDM Documented?</h3>
+
+    <p>
+    As we reverse engineered the database, we documented everything.  The docs
+    are available online at:
+    <a href="../ldm/index.html">../ldm/index.html</a>
+    or for download at:
+    <a href="../downloads.html">../downloads.html</a>
+    </p>
+
+    <p>
+    The docs contain a high-level overview and a complete technical breakdown.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="2.8"></a>
+    <h3>2.8 Who do we thank?</h3>
+
+    <p>
+    The LDM Driver was written by Richard&nbsp;Russon&nbsp;(FlatCap) in 2001.
+    He has been helped by: Anton&nbsp;Altaparmakov and Jakob&nbsp;Kemi.  The
+    driver was added to the Linux Kernel in August 2001 (2.4.8).
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.0"></a>
+    <h2>3. LDM Development</h2>
+    <a name="3.1"></a>
+    <h3>3.1 Can Linux edit LDM Partitions?</h3>
+
+    <p>
+    Jakob Kemi has written a tool, ldmtool,  to edit the partition types of LDM
+    partition, but it can't edit anything else.  The source is available in our
+    bitkeeper respository or from our
+    <a href="../downloads.html">download page</a>.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="3.2"></a>
+    <h3>3.2 Are there any tools for LDM?</h3>
+
+    <p>
+    There are two: ldmtool, above, and ldminfo.  ldminfo simply dumps the
+    contents of an LDM database in a human-readable format.  It's more of a
+    debugging aid, than a useful utility.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="3.3"></a>
+    <h3>3.3 When will there be some tools LDM?</h3>
+
+    <p>
+    No time soon.  The LDM Driver was written for fun and there seems to be very
+    little demand for it.  As such <a href="ldm.html#2.8">the author</a> will fix any
+    bugs but is reluctant to put much more work into it.
+    </p>
+
+    <p>
+    The LDM is <a href="../ldm/index.html">
+    comprehensively documented</a> and <a href="ldm.html#2.8">the author</a> is happy to
+    help anyone if they wish to write some utilities.
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.0"></a>
+    <h2>4. HOWTO Mount an LDM Volume</h2>
+    <a name="4.1"></a>
+    <h3>4.1 Kernel Support</h3>
+
+    <p>
+    TODO
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="4.2"></a>
+    <h3>4.2 ldminfo</h3>
+
+    <p>
+    TODO
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="4.3"></a>
+    <h3>4.3 /etc/raidtab</h3>
+
+    <p>
+    TODO
+    http://tldp.org/HOWTO/Software-RAID-HOWTO.html
+    </p>
+
+    <pre class="command">    raiddev /dev/md0
+            raid-level              5
+            nr-raid-disks           3
+            chunk-size              16k
+            persistent-superblock   0
+            device                  /dev/hdb1
+            raid-disk               0
+            device                  /dev/hdc1
+            raid-disk               1
+            device                  /dev/hdd1
+            raid-disk               2
+    </pre>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <a name="4.4"></a>
+    <h3>4.4 mount</h3>
+
+    <p>
+    TODO
+    </p>
+
+    <p><a href="ldm.html#top">Back to the top</a></p>
+
+    <table summary="" border="0" cellspacing="0" width="100%">
+      <tbody><tr>
+	<td class="copyright" width="99%">Copyright &copy; flatcap (Richard Russon)</td>
+        <td valign="bottom" width="88"><a href="http://sourceforge.net/"><img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://validator.w3.org/check?uri=referer"><img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://jigsaw.w3.org/css-validator/check/referer"><img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31"></a></td>
+      </tr>
+    </tbody></table>
+
+</body></html>

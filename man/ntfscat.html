@@ -1,0 +1,307 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfscat.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2003 Richard Russon. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSCAT 8 "October 2005" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSCAT (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfscat - print NTFS files and streams on the standard output
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B ntfscat -->
+<b>ntfscat</b> [
+<!-- .I options -->
+<i>options</i> ]
+<!-- .B device file -->
+<b>device file</b> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfscat -->
+<b>ntfscat</b> will read a file or stream from an NTFS volume and display the contents
+on the standard output.
+<!-- .PP -->
+<p>
+The case of the filename passed to
+<!-- .B ntfscat -->
+<b>ntfscat</b> is ignored.
+<!-- .SH OPTIONS -->
+</p></blockquote>
+<a name="3"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+Below is a summary of all the options that
+<!-- .B ntfscat -->
+<b>ntfscat</b> accepts.  All options have two equivalent names.  The short name is preceded by
+<!-- .BR \- -->
+<b>-</b> and the long name is preceded by
+<!-- .BR \-\- . -->
+<b>--</b>. Any single letter options, that don’t take an argument, can be combined into a
+single command, e.g.
+<!-- .BR \-fv -->
+<b>-fv</b> is equivalent to
+<!-- .BR "\-f \-v" . -->
+<b>-f -v</b>. Long named options can be abbreviated to any unique prefix of their name.
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: Below is a summary of all the options that
+ -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B "\-a " type -->
+<b>-a  type</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B "\-\-attribute " type -->
+<b>--attribute  type</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Display the contents of a particular attribute type.  By default, the unnamed
+$DATA attribute will be shown.  The attribute can be specified by a number
+in decimal or hexadecimal, or by name.
+<!-- .TS -->
+<p></p><blockquote><table class="highlight" summary="data" border="1" cellpadding="3" cellspacing="0">
+<!-- lB lB lB -->
+<!-- l l l. -->
+<tbody><tr valign="top">
+<td><b>Hex</b></td><td><b>Decimal</b></td><td><b>Name</b></td></tr>
+<tr valign="top">
+<td>0x10</td><td>16</td><td>"$STANDARD_INFORMATION",</td></tr>
+<tr valign="top">
+<td>0x20</td><td>32</td><td>"$ATTRIBUTE_LIST",</td></tr>
+<tr valign="top">
+<td>0x30</td><td>48</td><td>"$FILE_NAME",</td></tr>
+<tr valign="top">
+<td>0x40</td><td>64</td><td>"$OBJECT_ID",</td></tr>
+<tr valign="top">
+<td>0x50</td><td>80</td><td>"$SECURITY_DESCRIPTOR",</td></tr>
+<tr valign="top">
+<td>0x60</td><td>96</td><td>"$VOLUME_NAME",</td></tr>
+<tr valign="top">
+<td>0x70</td><td>112</td><td>"$VOLUME_INFORMATION",</td></tr>
+<tr valign="top">
+<td>0x80</td><td>128</td><td>"$DATA",</td></tr>
+<tr valign="top">
+<td>0x90</td><td>144</td><td>"$INDEX_ROOT",</td></tr>
+<tr valign="top">
+<td>0xA0</td><td>160</td><td>"$INDEX_ALLOCATION",</td></tr>
+<tr valign="top">
+<td>0xB0</td><td>176</td><td>"$BITMAP",</td></tr>
+<tr valign="top">
+<td>0xC0</td><td>192</td><td>"$REPARSE_POINT",</td></tr>
+<tr valign="top">
+<td>0xD0</td><td>208</td><td>"$EA_INFORMATION",</td></tr>
+<tr valign="top">
+<td>0xE0</td><td>224</td><td>"$EA",</td></tr>
+<tr valign="top">
+<td>0xF0</td><td>240</td><td>"$PROPERTY_SET",</td></tr>
+<tr valign="top">
+<td>0x100</td><td>256</td><td>"$LOGGED_UTILITY_STREAM",</td></tr>
+</tbody></table></blockquote>
+<!-- .br -->
+<!-- .B Notes -->
+<!-- Need break --><br>
+<b>Notes</b> <!-- .br -->
+<!-- Need break --><br>
+The attribute names may be given without the leading $ symbol.
+<!-- .br -->
+<!-- Need break --><br>
+If you use the $ symbol, you must escape it from the shell.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B "\-n " name -->
+<b>-n  name</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B "\-\-attribute-name " name -->
+<b>--attribute-name  name</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Display this named attribute, stream.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B "\-i " num -->
+<b>-i  num</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B "\-\-inode " num -->
+<b>--inode  num</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Specify a file by its inode number instead of its name.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-h -->
+<b>-h</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-help -->
+<b>--help</b> </td><td valign="bottom">
+Show a list of options with a brief description of each one.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-q -->
+<b>-q</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-quiet -->
+<b>--quiet</b> </td><td valign="bottom">
+Suppress some debug/warning/error messages.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-V -->
+<b>-V</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-version -->
+<b>--version</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Show the version number, copyright and license
+<!-- .BR ntfscat . -->
+<b>ntfscat</b>. <!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-v -->
+<b>-v</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-verbose -->
+<b>--verbose</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Display more debug/warning/error messages.
+<!-- .SH EXAMPLES -->
+</td></tr>
+<tr></tr></tbody></table></blockquote>
+<a name="4"></a>
+
+     <h2>EXAMPLES</h2>
+
+<blockquote>
+Display the contents of a file in the root of an NTFS volume.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfscat /dev/hda1 boot.ini -->
+<b>ntfscat /dev/hda1 boot.ini</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Display the contents of a file in a subdirectory of an NTFS volume.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfscat /dev/hda1 /winnt/system32/drivers/etc/hosts -->
+<b>ntfscat /dev/hda1 /winnt/system32/drivers/etc/hosts</b> <!-- .RE -->
+</p></blockquote>
+<!-- .sp -->
+<p>
+Display the contents of the $INDEX_ROOT attribute of the root directory (inode
+5).
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfscat /dev/hda1 \-a INDEX_ROOT \-i 5 | hexdump \-C -->
+<b>ntfscat /dev/hda1 -a INDEX_ROOT -i 5 | hexdump -C</b> <!-- .RE -->
+</p></blockquote>
+<!-- .SH KNOWN ISSUES -->
+</blockquote>
+<a name="5"></a>
+
+     <h2>KNOWN ISSUES</h2>
+
+<blockquote>
+There are no known problems. If you think you had found any then
+please report it to
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+linux-ntfs-dev@lists.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH AUTHOR -->
+</blockquote>
+<a name="6"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+<!-- .B ntfscat -->
+<b>ntfscat</b> was written by Richard Russon (FlatCap)
+<!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="7"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfscat -->
+<b>ntfscat</b> is part of the ntfsprogs package and is available from
+<!-- .br -->
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+<!-- Need break --><br>
+http://linux-ntfs.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="8"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR ntfsls (8), -->
+<b><a href="ntfsls.html">ntfsls(8)</a></b>,<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

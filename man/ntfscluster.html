@@ -1,0 +1,295 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfscluster.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" Copyright (c) 2003 Richard Russon. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSCLUSTER 8 "September 2003" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSCLUSTER (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfscluster - identify files in a specified region of an NTFS volume.
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B ntfscluster -->
+<b>ntfscluster</b> [
+<!-- .I options -->
+<i>options</i> ]
+<!-- .B device -->
+<b>device</b> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfscluster -->
+<b>ntfscluster</b> has three modes of operation:
+<!-- .IR info , -->
+<i>info</i>, <!-- .I sector -->
+<i>sector</i> and
+<!-- .IR cluster . -->
+<i>cluster</i>. <!-- .SS Info -->
+</blockquote>
+<a name="3"></a>
+
+    <h3>&nbsp; &nbsp; Info</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+The default mode,
+<!-- .I info -->
+<i>info</i> is currently not implemented.  It will display general information about the NTFS
+volume when it is working.
+<!-- .SS Sector -->
+</p></blockquote>
+<a name="4"></a>
+
+    <h3>&nbsp; &nbsp; Sector</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+The
+<!-- .I sector -->
+<i>sector</i> mode will display a list of files that have data in the specified range of
+sectors.
+<!-- .SS Cluster -->
+</p></blockquote>
+<a name="5"></a>
+
+    <h3>&nbsp; &nbsp; Cluster</h3>
+
+<blockquote>
+The
+<!-- .I cluster -->
+<i>cluster</i> mode will display a list of files that have data in the specified range of
+clusters.  When the cluster size is one sector, this will be equivalent to the
+<!-- .I sector -->
+<i>sector</i> mode of operation.
+<!-- .SH OPTIONS -->
+</blockquote>
+<a name="6"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+Below is a summary of all the options that
+<!-- .B ntfscluster -->
+<b>ntfscluster</b> accepts.  All options have two equivalent names.  The short name is preceded by
+<!-- .BR \- -->
+<b>-</b> and the long name is preceded by
+<!-- .BR \-\- . -->
+<b>--</b>. Any single letter options, that don’t take an argument, can be combined into a
+single command, e.g.
+<!-- .BR \-fv -->
+<b>-fv</b> is equivalent to
+<!-- .BR "\-f \-v" . -->
+<b>-f -v</b>. Long named options can be abbreviated to any unique prefix of their name.
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: Below is a summary of all the options that
+ -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-c " range -->
+<b>-c </b><i>range</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-\-cluster " range -->
+<b>--cluster </b><i>range</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Any files whose data is in this range of clusters will be displayed.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-f -->
+<b>-f</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-force -->
+<b>--force</b> </td><td valign="bottom">
+This will override some sensible defaults, such as not working with a mounted
+volume.  Use this option with caution.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-help -->
+<b>--help</b> </td><td valign="bottom">
+Show a list of options with a brief description of each one.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-i -->
+<b>-i</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-\-info -->
+<b>--info</b> </td><td valign="bottom">
+This option is not yet implemented.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI \-q -->
+<b>-q</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .BI \-\-quiet -->
+<b>--quiet</b> </td><td valign="bottom">
+Reduce the amount of output to a minimum.  Naturally, it doesn’t make sense to
+combine this option with
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-s -->
+<b>-s</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-sector -->
+<b>--sector</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Any files whose data is in this range of sectors will be displayed.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-v -->
+<b>-v</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-verbose -->
+<b>--verbose</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Increase the amount of output that
+<!-- .B ntfscluster -->
+<b>ntfscluster</b> prints.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-V -->
+<b>-V</b> </td><td valign="bottom">
+<!-- .br -->
+<!-- .ns -->
+<!-- ignored unsupported tag .ns -->
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-version -->
+<b>--version</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Show the version number, copyright and license
+<!-- .BR ntfscluster . -->
+<b>ntfscluster</b>. <!-- .SH EXAMPLES -->
+</td></tr>
+<tr></tr></tbody></table></blockquote>
+<a name="7"></a>
+
+     <h2>EXAMPLES</h2>
+
+<blockquote>
+Get some information about the volume /dev/hda1.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfscluster /dev/hda1 -->
+<b>ntfscluster /dev/hda1</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Look for files in the first 500 clusters of /dev/hda1.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfscluster -c 0-500 /dev/hda1 -->
+<b>ntfscluster -c 0-500 /dev/hda1</b> <!-- .sp -->
+</p><p>
+<!-- .SH BUGS -->
+</p></blockquote>
+</blockquote>
+<a name="8"></a>
+
+     <h2>BUGS</h2>
+
+<blockquote>
+The
+<!-- .I info -->
+<i>info</i> mode isn’t implemented yet.  This program is quite limited, but it has no known
+bugs.  If you find one, please send an email to
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+linux-ntfs-dev@lists.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH AUTHOR -->
+</blockquote>
+<a name="9"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+<!-- .B ntfscluster -->
+<b>ntfscluster</b> was written by Richard Russon (FlatCap)
+<!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="10"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfscluster -->
+<b>ntfscluster</b> is part of the ntfsprogs package and is available from
+<!-- .br -->
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+<!-- Need break --><br>
+http://linux-ntfs.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="11"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR ntfsinfo (8), -->
+<b><a href="ntfsinfo.html">ntfsinfo(8)</a></b>,<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

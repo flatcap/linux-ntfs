@@ -1,0 +1,100 @@
+
+
+
+
+
+/*
+     FILE ARCHIVED ON 22:23:31 Dec 28, 2004 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:00:24 Sep 17, 2011.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+body {
+  margin: 0px 0px;
+  color: #000;
+  background-color: #eeb;
+}
+
+a {
+  color: #000;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a.quiet, a.contact {
+  text-decoration: none;
+}
+
+a.contact, td.copyright {
+  font: 75% serif;
+  color: #cc9;
+  background-color: transparent;
+}
+
+a.heading {
+  color: #069;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #069;
+}
+
+h1, h2, h3, h4 {
+  color: #069;
+  background-color: transparent;
+}
+
+h2 {
+  text-align: center;
+}
+
+h2, h3, h4 {
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 5px;
+}
+
+dl {
+  margin-top: 0px;
+}
+
+dd {
+  text-align: justify;
+}
+
+dt {
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+td.block, td.alert {
+  color: inherit;
+  background-color: #ffc;
+}
+
+td.alert {
+  border: 3px solid red;
+  font: 120% serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+th {
+  text-align: left;
+}
+
+th.indent, td.indent {
+  padding: 0px 0px 0px 1em;     /* trbl */
+}
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+

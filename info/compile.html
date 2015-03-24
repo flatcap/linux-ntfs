@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- ../ntfs/info/compile.html -->
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Linux NTFS Project">
+    <meta name="keywords" content="Linux NTFS FAQ HOWTO">
+    <link rel="stylesheet" type="text/css" href="style/info.css">
+    <link rel="icon" href="../style/ntfsicon.png" type="image/png">
+    <title>NTFS Compilation</title>
+  </head>
+  <body class="ntfsdoc">
+  <a name="top"></a>
+    <h2>Linux NTFS Project</h2>
+
+    <p>
+    Go to the <a href="../index.html">Linux NTFS Home Page</a>, the
+    <a href="ntfs.html">NTFS FAQ (Frequently Asked Questions)</a> or
+    back to the <a href="index.html">Information Page</a>.
+    </p>
+
+    <p>
+    If you are a <b style="color: #f00;">RedHat user</b> and you simply want
+    NTFS support, you now need only install an RPM to get it.  See our
+    <a href="../rpm/index.html">RedHat Page</a> for more details.
+    </p>
+
+    <h3>Compiling the Kernel</h3>
+
+    <p>
+    To do this you need to compile your own kernel.  This isn't as hard, or
+    scary, as it sounds.  If you have problems after reading the help and the
+    HOWTOs you can ask question on our
+    help forum.
+    </p>
+
+    <h3>1. Get the source code</h3>
+
+    <p>
+    Your linux distribution should come with the kernel source.  It's probably a
+    good idea to start with the same version as the kernel you are already
+    running.
+    </p>
+
+    <p>
+    These instructions are written using Linux 2.4 as a guide, but they should
+    be almost the same for Linux 2.2.  This isn't a tutorial on how to build the
+    Linux kernel, only on how to add NTFS support.
+    </p>
+
+    <p>
+    In the source directory, in the file Documentation/Changes, there is a list
+    of the <q>Current Minimal Requirements</q> to compile and run Linux.  If you
+    are upgrading to a new version, it might be wise to check these.
+    </p>
+
+    <p>
+    The latest kernel source code is available from:
+    <a href="http://www.kernel.org/">http://www.kernel.org</a>
+    At the time of writing, the latest stable kernel is 2.4.18 and it
+    can be found at:
+    <a href="http://www.kernel.org/pub/linux/kernel/v2.4/">http://www.kernel.org/pub/linux/kernel/v2.4/</a>
+    </p>
+
+    <h3>2. Compile the source code</h3>
+
+    <p>
+    Many linux distributions will help you start the next job.  The key to
+    building the kernel is the <q>.config</q>.  The kernel is very modular and
+    you only build what you need to run.
+    </p>
+
+    <p>
+    There's a HOWTO explaining how to configure and build the kernel. It lives
+    at:
+    http://www.tldp.org/HOWTO/Kernel-HOWTO.html
+
+    </p><p>
+    If you are lucky, your distro left a copy of the .config for your kernel in
+    the source directory.  If not, you will just have to think a bit more.
+    </p>
+
+    <p>
+    Start with:
+    </p>
+
+    <pre class="command">    <b>make config</b>
+    </pre>
+
+    <p>
+    You should be able to accept the defaults for a lot of the options.  For
+    NTFS, choose either 'y' to build it into a kernel or 'm' to build a loadable
+    module.
+    </p>
+
+    <p>
+    <b>N.B.</b> DO NOT enable write support for NTFS.  It isn't finished and is
+    potentially very dangerous.
+    </p>
+
+    <p>
+    If you make any mistakes, simply rerun the <q>make config</q> and try again.
+    Each time you run it, it will remember all the values you typed last time
+    and should be a bit quicker.
+    </p>
+
+    <p>
+    Next:
+    </p>
+
+    <pre class="command">    <b>make dep</b>
+    </pre>
+
+    <p>
+    If you want to just build some modules, do:
+    </p>
+
+    <pre class="command">    <b>make modules</b>
+    </pre>
+
+    <p>
+    Otherwise:
+    </p>
+
+    <pre class="command">    <b>make bzImage modules</b>
+    </pre>
+
+    <h3>3.1 Install the modules</h3>
+
+    <p>
+    Now copy the modules into /lib/modules with:
+    </p>
+
+    <pre class="command">    <b>make modules_install</b>
+    </pre>
+
+    <h3>3.2 Install the kernel</h3>
+
+    <p>
+    This is complicated and depends on you bootloader.  Both lilo and grub come
+    with detailed instructions.  Also there is help online at:
+    </p>
+
+    <p class="quote">
+    http://www.tldp.org/HOWTO/mini/LILO.html<br>
+    http://www.gnu.org/software/grub/grub-documentation.en.html
+    </p>
+
+    <h3>3.3 Reboot</h3>
+
+    <p>
+    If you are just building modules, ignore this section.
+    </p>
+
+    <p>
+    Cross your fingers and reboot.  Good luck.  If everything went well then
+    <q>uname -a</q>: should tell you about your new kernel.
+    </p>
+
+    <h3>3.4 Add modules</h3>
+
+    <p>
+    If you built NTFS into the kernel, not as a module, ignore this section.
+    </p>
+
+    <p>
+    Now add the NTFS module to the running kernel:
+    </p>
+
+    <pre class="command">    <b>/sbin/modprobe ntfs</b>
+    </pre>
+
+    <h3>4. Mount</h3>
+
+    <p>
+    First try this command and check that <q>ntfs</q> is listed:
+    </p>
+
+    <pre class="command">    <b>cat /proc/filesystems</b>
+    </pre>
+
+    <p>
+    Then:
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+    </pre>
+
+    <p><a href="compile.html#top">Back to the top</a></p>
+
+    <table summary="" border="0" cellspacing="0" width="100%">
+      <tbody><tr>
+	<td class="copyright" width="99%">Copyright &copy; flatcap (Richard Russon)</td>
+        <td valign="bottom" width="88"><a href="http://sourceforge.net/"><img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://validator.w3.org/check?uri=referer"><img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://jigsaw.w3.org/css-validator/check/referer"><img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31"></a></td>
+      </tr>
+    </tbody></table>
+  
+
+</body></html>

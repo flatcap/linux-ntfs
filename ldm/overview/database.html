@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta name="description" content="LDM Documentation">
+    <link rel="stylesheet" type="text/css" href="../style/ldm.css">
+    <link rel="icon" href="../style/ldmicon.png" type="image/png">
+    <link rel="start" type="text/html" href="../index.html" title="LDM Documentation">
+    <link rel="next" href="index.html">
+    <link rel="previous" href="limits.html">
+    <link rel="contents" href="../index.html">
+    <title>Database - Overview - LDM Documentation</title>
+  </head>
+
+  <body>
+    <table class="toolbar" summary="toolbar" cellspacing="0">
+      <tr>
+        <td class="toolbar"><div class="toolbar"><a class="toolbar" accesskey="1" href="../index.html">Home</a></div></td>
+        <td class="toolbar"><div class="toolbar"><a class="toolbar" accesskey="2" href="../overview/index.html">Overview</a></div></td>
+	<td class="toolbar"><a class="toolbar" accesskey="3" href="../technical/index.html">Technical</a></td>
+      </tr>
+    </table>
+
+    <h1>Database - Overview</h1>
+
+    <a class="prevnext" accesskey="," href="limits.html">Previous</a>
+    <a class="prevnext" accesskey="." href="index.html">Next</a>
+
+    <a name="layoutdisk"></a>
+    <h2>Layout of Disk</h2>
+
+    <img src="images/part_ldm.png" width="682" height="117" alt="part_ldm" />
+
+    <p>
+    Just after the dummy partition table, there is the first LDM structure.
+    The Private Header (PRIVHEAD) is a table of accounting information.  It
+    contains a version number, a unique GUID for the disk and the location of
+    each of the other LDM structures.  If this structure is missing or damaged,
+    then there are two backup copies.
+    </p>
+
+    <p>
+    The LDM structures don't seem to vary in size, but the Private Header is the
+    definitive reference.  The LDM database takes up the last 1MiB of the
+    physical disk, which is why you need a small amount of space to upgrade to a
+    dynamic disk.  If the disk is reverted to being a basic disk, then all
+    traces of the LDM database is removed.
+    </p>
+
+    <a name="layoutldm"></a>
+    <h2>Layout of LDM</h2>
+
+    <img src="images/database.png" width="682" height="118" alt="database" />
+
+    <p>
+    The PRIVHEAD gives the location and size of the database.  The first
+    structure in the LDM is a Table of Contents (TOCBLOCK).  This lists which
+    high-level we can expect.  At the moment there are only two: the
+    <q>config</q> section which contains the actual database of partitions and
+    volumes; the <q>log</q> section contains a journal of changes to the
+    database.  There are four copies of the TOCBLOCK, but they seem to be
+    identical at all times.
+    </p>
+
+    <p>
+    The config section contains a VMDB and many VBLKs.  Each VBLK represents a
+    disk group, disk, partition, component (container) or volume.
+    </p>
+
+    <p>
+    The Journal (KLOG) is just an index of changes to the database.  The actual
+    pending changes are kept in the main database.
+    </p>
+
+    <a name="vblkname"></a>
+    <h2>VBLK Naming</h2>
+
+    <p>
+    Internally, each disk, partition, component and volume is given a unique
+    name.  Disk groups are named after the machine, e.g. HomeDg0.  Disks are
+    named Disk1, Disk2, etc.  The partitions for Disk1 are then called Disk1-01,
+    Disk1-02, etc.
+    </p>
+
+    <p>
+    Striped volumes will be called Stripe1, Stripe2, etc<br>
+    RAID volumes will be called Raid1, Raid2, etc<br>
+    Simple, spanned and mirrored volumes will be called Volume1, Volume2, etc
+    </p>
+
+    <p>
+    The component belonging the the volumes, above, will be called:
+    Stripe1-01, Stripe1-02, Raid1-01, Raid1-02, Volume1-01, Volume1-02, etc
+    </p>
+
+    <p>
+    When objects are deleted, new ones will take the lowest value of name
+    available.
+    </p>
+
+    <a name="examples"></a>
+    <h2>Example Volumes</h2>
+
+    <p>
+    Below are some example volumes.  The diagrams show which VBLKs will be
+    present and how they are related.
+    </p>
+
+    <p>
+    <b>Key:</b><br>
+      <img src="images/key-v.png" width="75" height="30" alt="table key" />
+      <img src="images/key-c.png" width="106" height="30" alt="table key" />
+      <img src="images/key-p.png" width="79" height="30" alt="table key" />
+      <img src="images/key-d.png" width="48" height="30" alt="table key" />
+    </p>
+    <br>
+
+    <div>
+    <img class="left" src="images/layout1.png" width="25" height="210" alt="vblk layout" />
+    <p>
+    <b>Simple Volume</b> The easiest example is the Simple Volume.  The
+    filesystem takes up exactly one partition on one disk.
+    </p>
+
+    <p>
+    If another partition is added to this volume type, then volume will be
+    promoted to a Spanned Volume (below).
+    </p>
+
+    </div>
+    <br class="clear">
+
+    <img class="left" src="images/layout2.png" width="78" height="210" alt="vblk layout" />
+    <p>
+    <b>Mirrored Volume</b> This is easily identified.  The same volume information is
+    sent to two components, partitions and disks.  The components don't alter
+    the data at all.
+    </p>
+
+    <p>
+    With two more partitions, it is possible to extend the volume.  The two
+    components will have two children each, i.e. a Mirrored Spanned Volume (see
+    below).
+    </p>
+
+    <p>
+    Another partition could be added to this volume type, creating a third
+    mirror section, giving the Volume a third child.
+    </p>
+
+    <br class="clear">
+
+    <img class="left" src="images/layout3.png" width="77" height="210" alt="vblk layout" />
+    <p>
+    <b>Striped, RAID5, Spanned Volume</b> This is the most interesting layout.
+    The component controls how the volume information is transformed before
+    being sent to two or more partitions.
+    </p>
+
+    <p>
+    With a Spanned Volume the partitions are joined together in a linear manner.
+    The beginning of the filesystem is written to the first partition and the
+    next part to the second partition, etc.
+    </p>
+
+    <p>
+    For a striped volume, the filesystem is divided into chunks, usually 64kB.
+    The first chunk is written to partition 1, the second to partition 2, for
+    each partition, then it wraps around.
+    </p>
+
+    <p>
+    A RAID5 volume usually has a chunk size of 16kB.  This type requires a
+    minimun of three partitions.  For each set of chunks there is an additional
+    chunk which contains parity information, which gives the volume fault
+    tolerance.
+    </p>
+
+    <p>
+    If another partition is added to any of these volumes, then the filesystem
+    can be extended into it.  This will give the component more children.
+    </p>
+
+    <br class="clear">
+
+    <img class="left" src="images/layout4.png" width="179" height="210" alt="vblk layout" />
+    <p>
+    <b>Mirrored Stripe, Mirrored Spanned Volume</b>  This shows how different
+    ideas can be combined.  The volume information is written identically to two
+    components which can either Stripe or Span the filesystem.
+    </p>
+
+    <p>
+    These volumes can be extended, in two ways.  Adding another mirror would
+    require two more partitions.  Extending the volume, would require four more
+    partitions.
+    </p>
+    <br class="clear">
+
+    <!--
+    <a name="klog"></a>
+    <h2>KLOG Description</h2>???
+
+    <pre>
+    overview of the log, too
+
+    klog:
+    fragged vblks have to be in order, since they have to be added
+    (pending) in gaps in an atomic manner
+
+    the sizes are variable, but give defaults, e.g. VBLK 128 bytes
+    give overview of how sizes are range checked
+
+    consistent state
+    </pre>
+    -->
+
+    <br>
+    <a class="contact" href="../home/license.html">Copyright &copy; 2002, </a>
+    $Date: 2002/06/19 14:04:27 $
+    <a class="contact" href="http://validator.w3.org/checklink?uri=referer">L</a>
+    <a class="contact" href="http://validator.w3.org/check?uri=referer">H</a>
+    <a class="contact" href="http://jigsaw.w3.org/css-validator/validator?uri=referer">C</a>
+  </body>
+</html>
+

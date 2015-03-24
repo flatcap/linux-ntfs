@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta name="description" content="LDM Documentation">
+    <link rel="stylesheet" type="text/css" href="../style/ldm.css">
+    <link rel="icon" href="../style/ldmicon.png" type="image/png">
+    <link rel="start" type="text/html" href="../index.html" title="LDM Documentation">
+    <link rel="next" href="database.html">
+    <link rel="previous" href="volumes.html">
+    <link rel="contents" href="../index.html">
+    <title>Limits - Overview - LDM Documentation</title>
+  </head>
+
+  <body>
+    <table class="toolbar" summary="toolbar" cellspacing="0">
+      <tr>
+        <td class="toolbar"><div class="toolbar"><a class="toolbar" accesskey="1" href="../index.html">Home</a></div></td>
+        <td class="toolbar"><div class="toolbar"><a class="toolbar" accesskey="2" href="../overview/index.html">Overview</a></div></td>
+	<td class="toolbar"><a class="toolbar" accesskey="3" href="../technical/index.html">Technical</a></td>
+      </tr>
+    </table>
+
+    <h1>Limits - Overview</h1>
+
+    <a class="prevnext" accesskey="," href="volumes.html">Previous</a>
+    <a class="prevnext" accesskey="." href="database.html">Next</a>
+
+    <a name="limitcont"></a>
+    <h2>Limits of the Containers</h2>
+
+    <p>
+    The containers are the transparent layer between the user and the filesystem.
+    Here are some limits:
+    </p>
+
+    <table border="0" cellspacing="0" summary="container limits">
+      <tr>
+	<th>Volume</th>
+	<th>Miniumum<br>chunk size</th>
+	<th>Maximum<br>chunk size</th>
+	<th>Default<br>chunk size</th>
+	<th>Minimum number<br>of disks</th>
+      </tr>
+      <tr>
+	<td>RAID5</td>
+	<td>0.5kB</td>
+	<td>64kB</td>
+	<td>16kB</td>
+	<td>3</td>
+      </tr>
+      <tr>
+	<td>Stripe</td>
+	<td>0.5kB</td>
+	<td>32000kB</td>
+	<td>64kB</td>
+	<td>2</td>
+      </tr>
+    </table>
+
+    <p>
+    There is also a blanket limit for each container type.  There can only be
+    <b>32</b>:
+    </p>
+
+    <ul>
+      <li>Partitions in a striped volume</li>
+      <li>Partitions in a RAID5 volume</li>
+      <li>Partitions in a spanned volume</li>
+      <li>Mirrors of a simple, or striped, volume</li>
+    </ul>
+
+    <a name="limitwin"></a>
+    <h2>Limitations of Windows</h2>
+
+    <p>
+    Microsoft don't support Dynamic Disks on laptops, removable disks, USB or
+    FireWire interfaces.
+    </p>
+
+    <p>
+    You cannot mix Basic and Dynamic Volumes on on disk.  Once a disk is
+    upgraded to a Dynamic Disk, it cannot be reverted to a Basic Disk, without
+    first removing all the Dynamic Volumes it contains.
+    </p>
+
+    <p>
+    <b>N.B.</b> If you upgrade to a Dynamic Disk, then any partitions, except
+    NTFS and FAT, will show up as free space after the conversion.
+    </p>
+
+    <p>
+    Although LDM doesn't need a DOS-style partition, there'll still be one.
+    This is partly to prevent legacy applications thinking that there is
+    free space on the disk, when there isn't.  Importantly, though, it's needed
+    to boot Windows.  The boot code relies on the operating system being in a
+    primary partition.
+    </p>
+
+    <p>
+    Because booting is reliant on simple, BIOS, calls, you cannot extend the
+    boot volume in any way.
+    </p>
+
+    <p>
+    If you create a dynamic disk, then create partitions, you will not be able
+    to install windows on it because it requires a primary partition.
+    </p>
+
+    <p>
+    Windows can only dynamically resize NTFS volumes.
+    </p>
+
+    <p>
+    Veritas' LDM is a very powerful, robust partitioning scheme.  Most of the
+    limitations, above, are because Microsoft hasn't updated all the disk
+    infrastructure to match.
+    </p>
+
+    <p>
+    Microsoft have only added LDM to Windows 2000 and XP.  Any other versions of
+    windows cannot read from dynamic disks.
+    </p>
+
+    <br>
+    <a class="contact" href="../home/license.html">Copyright &copy; 2002, </a>
+    $Date: 2002/06/19 14:04:27 $
+    <a class="contact" href="http://validator.w3.org/checklink?uri=referer">L</a>
+    <a class="contact" href="http://validator.w3.org/check?uri=referer">H</a>
+    <a class="contact" href="http://jigsaw.w3.org/css-validator/validator?uri=referer">C</a>
+  </body>
+</html>
+

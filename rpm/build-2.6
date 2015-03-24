@@ -1,0 +1,374 @@
+#!/bin/bash
+#
+# Copyright 2002-2006 FlatCap (Richard Russon)
+# Copyright      2004 David Lowe
+# Copyright      2005 Roberto Virga
+# Copyright 2005-2006 Chris Brown
+#
+# This file may be copied under the terms of the GNU Public License.
+# http://www.gnu.org/licenses/gpl.html
+#
+# Generate NTFS kernel modules rpms from a RedHat, or Fedora, kernel source rpm
+#
+# To save time the script will look for a relevant Module.symvers in:
+#   /lib/modules
+#   kernel binary rpm
+
+# Name
+#	kernel-module-ntfs-2.6.8-1.521smp-2.1.15-0.rr.8.2.i686.rpm
+#
+#	rpm type	kernel-module
+#	name		ntfs
+#	kernel version	2.6.8
+#	kernel release	1.521
+#	kernel type	smp
+#	ntfs version	2.1.15
+#	version epoch	0
+#	vendor		rr
+#	build version	8
+#	distro version	2
+#	arch		i686
+#	file type	rpm
+
+MAKEOPTS="V=0"
+NTFS_WRITE=y
+NTFS_DEBUG=n
+
+# ----------------------------------------------------------------------------
+
+NAME=kernel-module-ntfs
+MODULE=ntfs.ko
+ROOT=`pwd`
+RPMTMP=$ROOT/rpmtmp-$$
+SPEC=""
+RPMS=""
+ARCHS=""
+FV_VENDOR="rr"
+FV_EPOCH="0"
+FV_BUILDVER="10"
+
+# Search for some dependencies
+for i in cpio gcc make perl rpm2cpio rpmbuild sed strip yes; do
+	which $i > /dev/null 2>&1
+	if [ $? -ne 0 ]; then
+		echo "Cannot find $i.  Giving up."
+		exit 1
+	fi
+done
+
+# Set up the version number
+if [ -f "/etc/redhat-release" ]; then
+	REL=`cat /etc/redhat-release`
+else
+	REL=""
+fi
+
+case "$REL" in
+	"Fedora Core release 5 (Bordeaux"*)
+		FV_DISTRO="5"
+		;;
+	"Fedora Core release 4 (Rawhide"*)
+		FV_DISTRO="4"
+		;;
+	"Fedora Core release 4 (Stentz"*)
+		FV_DISTRO="4"
+		;;
+	"Fedora Core release 3 (Heidelberg"*)
+		FV_DISTRO="3"
+		;;
+	"Fedora Core release 2 (Tettnang"*)
+		FV_DISTRO="2"
+		;;
+	"Red Hat Enterprise Linux"*"(Nahant"*)
+		FV_DISTRO="10"
+		;;
+	"CentOS release 5"*)
+		FV_DISTRO="11"
+		;;
+	"Red Hat Enterprise Linux"*"(Tikanga"*)
+		FV_DISTRO="11"
+		;;
+	*)
+		FV_DISTRO="0"
+		;;
+esac
+
+FILEVER="$FV_EPOCH.$FV_VENDOR.$FV_BUILDVER.$FV_DISTRO"
+
+# Parse the command line
+for i in $*; do
+	case $i in
+		*.spec)	SPEC=$i			;;
+		*.rpm)	RPMS="$RPMS $i"		;;
+		*)	ARCHS="$ARCHS $i"	;;
+	esac
+done
+
+if [ -z "$SPEC" -o -z "$RPMS" ]; then
+	echo "Usage: $0 specfile source-rpm {source-rpms} {archs}"
+	exit 1
+fi
+
+if [ ! -r $SPEC ]; then
+	echo "Cannot read '$SPEC'  Giving up."
+	exit 1
+fi
+
+for RPM in $RPMS; do
+	if [ ! -r $RPM ];then
+		echo "Cannot read '$RPM'  Giving up."
+		exit 1
+	fi
+done
+
+echo
+echo Using: $SPEC
+
+for RPM in $RPMS; do
+	# Create temporary directories to build in and for rpmbuild to use.
+	rm -fr $RPMTMP
+	mkdir -p $RPMTMP/BUILD
+	mkdir -p $RPMTMP/RPMS/athlon
+	mkdir -p $RPMTMP/RPMS/i386
+	mkdir -p $RPMTMP/RPMS/i586
+	mkdir -p $RPMTMP/RPMS/i686
+	mkdir -p $RPMTMP/RPMS/noarch
+	mkdir -p $RPMTMP/RPMS/x86_64
+	mkdir -p $RPMTMP/SOURCES
+	mkdir -p $RPMTMP/SPECS
+	mkdir -p $RPMTMP/SRPMS
+
+	# Parse the rpm name: kernel-2.6.8-1.521.src.rpm
+	#   VERSION  2.6.8
+	#   RELEASE  1.521
+	TMP=`echo $RPM | sed 's/kernel-\(.*\)\.src.rpm/\1/'`
+	VERSION=`echo $TMP | sed 's/\(.*\)-.*/\1/'`
+	RELEASE=`echo $TMP | sed 's/.*-//'`
+	OUT=$ROOT/$NAME-$VERSION-$RELEASE
+	LOG=$OUT/log-$VERSION-$RELEASE
+
+	# The kernel modules, the rpms and the log will be put here.
+	mkdir -p $OUT
+
+	echo >> $LOG
+	echo "Log started at `date`" >> $LOG
+	echo >> $LOG
+
+	echo
+	echo "Building modules for kernel: $VERSION-$RELEASE"
+
+	pushd $RPMTMP/SOURCES >> $LOG
+
+	echo -n "	Extracting source rpm... "
+	rpm2cpio $ROOT/$RPM | cpio -id --quiet
+	echo "		done"
+
+	echo -n "	Preparing kernel source... "
+	rpmbuild --target=noarch --define=_topdir\ $RPMTMP --define=_tmppath\ $RPMTMP -bp $RPMTMP/SOURCES/kernel-*.spec >> $LOG 2>&1
+	if [ $? -ne 0 ]; then
+		echo "Failed.  Giving up."
+		exit 1
+	fi
+	echo "		done"
+
+	cd ..
+	TMP=BUILD/kernel-$VERSION/linux-$VERSION
+	if [ ! -d $TMP ]; then
+		TMP=$TMP.noarch
+	fi
+	pushd $TMP >> $LOG 2>&1
+	if [ $? -ne 0 ]; then
+		echo "Cannot find source directory: '$TMP'.  Giving up."
+		exit 1
+	fi
+
+	NTFS_VERSION=`grep NTFS_VERSION fs/ntfs/Makefile | sed 's/.*=\\\"\(.*\)\\\"/\1/'`
+
+	# If the user hasn't supplied any arches to build,
+	# create a list from the configs directory.
+	if [ -z "$ARCHS" ]; then
+		TMP=`find configs -name kernel-$VERSION\* ! -name \*64\* ! -name \*sparc\* ! -name \*s390\* ! -name \*ppc\* ! -name \*kdump\* ! -name \*PAE\*`
+		for CFG in $TMP; do
+			CFG=`echo $CFG | sed -e 's/.*\///' -e 's/\.config//' -e 's/kernel-'$VERSION'-//'`
+			ARCHS="$ARCHS $CFG"
+			done
+	fi
+
+	for ARCH in $ARCHS; do
+		# Parse the architecture: i686-smp
+		# (SUFF1 and SUFF2 may be empty)
+		#   CPU    i686
+		#   SUFF1  -smp
+		#   SUFF2  smp
+		CPU=`echo $ARCH | cut -d- -f1`
+		SUFF1=`echo $ARCH | sed 's/[^-]*\(-.*\)*/\1/'`
+		SUFF2=`echo $SUFF1 | sed 's/-//'`
+
+		echo
+		echo "Building: $CPU$SUFF1"
+
+		perl -p -i -e "s/^EXTRAVERSION.*/EXTRAVERSION = -$RELEASE$SUFF2/" Makefile
+
+		CONFIG=configs/kernel-$VERSION-$CPU$SUFF1.config
+		if [ ! -f $CONFIG ]; then
+			echo "Can't find config file for kernel $VERSION-$CPU$SUFF1.  Giving up."
+			exit 1
+		fi
+
+		# Clear out any existing build products.
+		echo -n "	make distclean..."
+		make $MAKEOPTS distclean >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo "			done"
+
+		cp $CONFIG .config
+
+		# Update the build config file, answering "no" to any new questions.
+		echo -n "	make oldconfig..."
+		yes "" | make $MAKEOPTS oldconfig >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo "			done"
+
+# Temporarily disabled, since it can't distinguish between different arches of kernel.
+# i.e. it tried to build an i586 module using the (installed) i686 Module.symvers
+#
+#		echo -n "	building for installed kernel..."
+#		TMP=/lib/modules/$VERSION-$RELEASE$SUFF2/build/Module.symvers
+#		if [ -f $TMP ]; then
+#			echo "	yes"
+#			cp $TMP .
+#		else
+#			echo "	no"
+#		fi
+
+		if [ ! -f Module.symvers ]; then
+			echo -n "	have kernel devel rpm..."
+			if [ -f $ROOT/kernel$SUFF1-devel-$VERSION-$RELEASE.$CPU.rpm ]; then
+				echo "		yes"
+				echo -n "	extracting module versions..."
+				rpm2cpio $ROOT/kernel$SUFF1-devel-$VERSION-$RELEASE.$CPU.rpm | cpio -id --quiet ./usr/src/kernels/$VERSION-$RELEASE$SUFF1-$CPU/Module.symvers
+				if [ $? -ne 0 ]; then
+					echo " failed.  Giving up."
+					exit 1
+				fi
+				if [ ! -f usr/src/kernels/$VERSION-$RELEASE$SUFF1-$CPU/Module.symvers ]; then
+					echo " failed.  Giving up."
+					exit 1
+				fi
+				mv usr/src/kernels/$VERSION-$RELEASE$SUFF1-$CPU/Module.symvers .
+				echo "		done"
+			else
+				echo "		no"
+			fi
+		fi
+
+		if [ ! -f Module.symvers ]; then
+			echo -n "	have kernel binary rpm..."
+			if [ -f $ROOT/kernel$SUFF1-$VERSION-$RELEASE.$CPU.rpm ]; then
+				echo "		yes"
+				echo -n "	extracting module versions..."
+				rpm2cpio $ROOT/kernel$SUFF1-$VERSION-$RELEASE.$CPU.rpm | cpio -id --quiet ./lib/modules/$VERSION-$RELEASE$SUFF2/build/Module.symvers
+				if [ $? -ne 0 ]; then
+					echo " failed.  Giving up."
+					exit 1
+				fi
+				if [ ! -f lib/modules/$VERSION-$RELEASE$SUFF2/build/Module.symvers ]; then
+					echo " failed.  Giving up."
+					exit 1
+				fi
+				mv lib/modules/$VERSION-$RELEASE$SUFF2/build/Module.symvers .
+				echo "		done"
+			else
+				echo "		no"
+			fi
+		fi
+
+		if [ -f Module.symvers ]; then
+			# First prepare, to satisfy dependencies.
+			echo -n "	make prepare-all..."
+			make $MAKEOPTS prepare-all >> $LOG 2>&1
+			if [ $? -ne 0 ]; then
+				echo " failed.  Giving up."
+				exit 1
+			fi
+			echo "			done"
+		else
+			# First build the kernel to get the modvers
+			echo -n "	make..."
+			make $MAKEOPTS >> $LOG 2>&1
+			if [ $? -ne 0 ]; then
+				echo " failed.  Giving up."
+				exit 1
+			fi
+			echo "					done"
+		fi
+
+		# For newer Makefiles, we need to create modpost
+		if [ ! -f scripts/mod/modpost ]; then
+			make $MAKEOPTS scripts >> $LOG 2>&1
+		fi
+
+		# Finally compile the module.
+		echo -n "	make modules..."
+		make $MAKEOPTS CONFIG_NTFS_FS=m CONFIG_NTFS_DEBUG=$NTFS_DEBUG CONFIG_NTFS_RW=$NTFS_WRITE M=fs/ntfs >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo "				done"
+
+		RESULT=fs/ntfs/$MODULE
+		if [ ! -f $RESULT ]; then
+			echo "Cannot find the compiled kernel module.  Skipping."
+			continue
+			#exit 1
+		fi
+
+		strip -g --strip-unneeded $RESULT
+		cp $RESULT $OUT/$NAME-$VERSION-$RELEASE$SUFF2-$NTFS_VERSION-$FILEVER.$CPU.ko
+
+		rm -f $RPMTMP/BUILD/$MODULE
+		cp $RESULT $RPMTMP/BUILD/$MODULE
+
+		echo -n "	make rpm...		"
+		rpmbuild -bb --target=$CPU 				\
+			--define=epoch\ 0				\
+			--define=version\ $NTFS_VERSION			\
+			--define=release\ $FILEVER			\
+			--define=uname\ $VERSION-$RELEASE$SUFF2		\
+			--define=_topdir\ $RPMTMP			\
+			--define=_tmppath\ $RPMTMP			\
+			$ROOT/$SPEC >> $LOG 2>&1
+		if [ $? -ne 0 ]; then
+			echo " failed.  Giving up."
+			exit 1
+		fi
+		echo "		done"
+
+		# Put the rpm somewhere safe and clean up.
+		mv $RPMTMP/RPMS/$CPU/$NAME-$VERSION-$RELEASE$SUFF2-$NTFS_VERSION-$FILEVER.$CPU.rpm $OUT
+		rm -fr $RPMTMP/BUILD/$MODULE
+		rm -fr $RPMTMP/boot $RPMTMP/lib
+		done
+
+	echo "Done."
+
+	popd >> $LOG
+done
+
+echo
+echo -n "Cleaning up..."
+rm -fr $RPMTMP
+echo " done"
+echo
+
+echo >> $LOG
+echo "Log ends at `date`" >> $LOG
+echo >> $LOG
+

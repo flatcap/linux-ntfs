@@ -1,0 +1,484 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfsclone.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2003 Richard Russon -->
+<!-- .\" Copyright (c) 2003-2005 Szabolcs Szakacsits -->
+<!-- .\" Copyright (c) 2004 Per Olofsson -->
+<!-- .\" All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSCLONE 8 "Sep 2005" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSCLONE (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfsclone - Efficiently clone, image, restore or rescue an NTFS
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B ntfsclone -->
+<b>ntfsclone</b> [<i><a href="ntfsclone.html#7">OPTIONS</a></i>]
+<!-- .I SOURCE -->
+<i>SOURCE</i> <!-- .br -->
+<!-- .B ntfsclone \-\-save-image -->
+<!-- Need break --><br>
+<b>ntfsclone --save-image</b> [<i><a href="ntfsclone.html#7">OPTIONS</a></i>]
+<!-- .I SOURCE -->
+<i>SOURCE</i> <!-- .br -->
+<!-- .B ntfsclone \-\-restore-image -->
+<!-- Need break --><br>
+<b>ntfsclone --restore-image</b> [<i><a href="ntfsclone.html#7">OPTIONS</a></i>]
+<!-- .I SOURCE -->
+<i>SOURCE</i> <!-- .br -->
+<!-- .B ntfsclone \-\-metadata -->
+<!-- Need break --><br>
+<b>ntfsclone --metadata</b> [<i><a href="ntfsclone.html#7">OPTIONS</a></i>]
+<!-- .I SOURCE -->
+<i>SOURCE</i> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfsclone -->
+<b>ntfsclone</b> will efficiently clone (copy, save, backup, restore) or rescue an NTFS
+filesystem to a sparse file, image, device (partition) or standard output.
+It works at disk sector level and
+copies only the used data. Unused disk space becomes zero (cloning to
+sparse file), encoded with control codes (saving in special image format),
+left unchanged (cloning to a disk/partition) or
+filled with zeros (cloning to standard output).
+<p>
+<!-- .B ntfsclone -->
+<b>ntfsclone</b> can be useful to make backups, an exact snapshot of an NTFS filesystem
+and restore it later on, or for developers to test NTFS read/write
+functionality, troubleshoot/investigate users’ issues using the clone
+without the risk of destroying the original filesystem.
+</p><p>
+The clone, if not using the special image format, is an exact copy of the original
+NTFS filesystem from sector to sector thus it can be also mounted
+just like the original NTFS filesystem.
+For example if you clone to a file and the kernel has loopback device and
+NTFS support then the file can be mounted as
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B   mount \-t ntfs \-o loop ntfsclone.img /mnt/ntfsclone -->
+<b>mount -t ntfs -o loop ntfsclone.img /mnt/ntfsclone</b> <!-- .SH SPARSE FILES -->
+</p></blockquote>
+</blockquote>
+<a name="3"></a>
+
+     <h2>SPARSE FILES</h2>
+
+<blockquote>
+A file is sparse if it has unallocated blocks (holes). The reported size of such
+files are always higher than the disk space consumed by them.
+The
+<!-- .BR du -->
+<b>du</b> command can tell the real disk space used by a sparse file.
+The holes are always read as zeros. All major Linux filesystem like,
+ext2, ext3, reiserfs, Reiser4, JFS and XFS, supports
+sparse files but for example the ISO 9600 CD-ROM filesystem doesn’t.
+<!-- .SH HANDLING LARGE SPARSE FILES -->
+</blockquote>
+<a name="4"></a>
+
+     <h2>HANDLING LARGE SPARSE FILES</h2>
+
+<blockquote>
+As of today Linux provides inadequate support for managing (tar,
+cp, gzip, gunzip, bzip2, bunzip2, cat, etc) large sparse files.
+The only main Linux filesystem
+having support for efficient sparse file handling is XFS by the
+XFS_IOC_GETBMAPX
+<!-- .BR ioctl\fR. -->
+<b>ioctl</b>. However none of the common utilities supports it.
+This means when you tar, cp, gzip, bzip2, etc a large sparse file
+they will always read the entire file, even if you use the "sparse support"
+options.
+<p>
+<!-- .BR bzip2  -->
+<b>bzip2</b> compresses large sparse files much better than
+<!-- .BR gzip  -->
+<b>gzip</b> but it does so
+also much slower. Moreover neither of them handles large sparse
+files efficiently during uncompression from disk space usage point
+of view.
+</p><p>
+At present the most efficient way, both speed and space-wise, to
+compress and uncompress large sparse files by common tools
+is using
+<!-- .BR tar  -->
+<b>tar</b> with the options
+<!-- .B \-S  -->
+<b>-S</b> (handle sparse files "efficiently") and
+<!-- .B \-j  -->
+<b>-j</b> (filter the archive through bzip2). Although
+<!-- .BR tar -->
+<b>tar</b> still reads and analyses the entire file, it doesn’t pass on the
+large data blocks having only zeros to filters and it also avoids
+writing large amount of zeros to the disk needlessly. But since
+<!-- .BR tar -->
+<b>tar</b> can’t create an archive from the standard input, you can’t do this
+in-place by just reading
+<!-- .BR ntfsclone -->
+<b>ntfsclone</b> standard output.
+<!-- .SH THE SPECIAL IMAGE FORMAT -->
+</p></blockquote>
+<a name="5"></a>
+
+     <h2>THE SPECIAL IMAGE FORMAT</h2>
+
+<blockquote>
+It’s also possible, actually it’s recommended, to save an NTFS filesystem
+to a special image format.
+Instead of representing unallocated blocks as holes, they are
+encoded using control codes. Thus, the image saves space without
+requiring sparse file support. The image format is ideal for streaming
+filesystem images over the network and similar, and can be used as a
+replacement for Ghost or Partition Image if it is combined with other
+tools. The downside is that you can’t mount the image directly, you
+need to restore it first.
+<p>
+To save an image using the special image format, use the
+<!-- .B \-s -->
+<b>-s</b> or the
+<!-- .B \-\-save\-image -->
+<b>--save-image</b> option. To restore an image, use the
+<!-- .B \-r -->
+<b>-r</b> or the
+<!-- .B \-\-restore\-image -->
+<b>--restore-image</b> option. Note that you can restore images from standard input by
+using ’-’ as the
+<!-- .I SOURCE -->
+<i>SOURCE</i> file.
+<!-- .SH METADATA-ONLY CLONING -->
+</p></blockquote>
+<a name="6"></a>
+
+     <h2>METADATA-ONLY CLONING</h2>
+
+<blockquote>
+One of the features of
+<!-- .BR ntfsclone -->
+<b>ntfsclone</b> is that, it can also save only the NTFS metadata using the option
+<!-- .B \-m -->
+<b>-m</b> or
+<!-- .B \-\-metadata -->
+<b>--metadata</b> and the clone still will be
+mountable. In this case all non-metadata file content will be lost and
+reading them back will result always zeros.
+<p>
+The metadata-only image can be compressed very
+well, usually to not more than 1-3 MB thus it’s relatively easy to transfer
+for investigation, troubleshooting.
+</p><p>
+In this mode of ntfsclone,
+<!-- .B NONE  -->
+<b>NONE</b> of the user’s data is saved, including the resident user’s data
+embedded into metadata. All is filled with zeros.
+Moreover all the file timestamps, deleted and unused spaces inside
+the metadata are filled with zeros. Thus this mode is inappropriate
+for example for forensic analyses.
+</p><p>
+Please note, filenames are not wiped out. They might contain
+sensitive information, so think twice before sending such an
+image to anybody.
+<!-- .SH OPTIONS -->
+</p></blockquote>
+<a name="7"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+Below is a summary of all the options that
+<!-- .B ntfsclone -->
+<b>ntfsclone</b> accepts.  All options have two equivalent names.  The short name is preceded by
+<!-- .BR \- -->
+<b>-</b> and the long name is preceded by
+<!-- .BR \-\- . -->
+<b>--</b>. Any single letter options, that don’t take an argument, can be combined into a
+single command, e.g.
+<!-- .BR \-fm -->
+<b>-fm</b> is equivalent to
+<!-- .BR "\-f \-m" . -->
+<b>-f -m</b>. <!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: Below is a summary of all the options that
+ -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-o, \-\-output " FILE -->
+<b>-o, --output </b><i>FILE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Clone NTFS to the non-existent
+<!-- .I FILE\fR. If  -->
+<i>FILE</i>. If <!-- .I FILE  -->
+<i>FILE</i> is ’-’ then clone to the
+standard output.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-O, \-\-overwrite " FILE -->
+<b>-O, --overwrite </b><i>FILE</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Clone NTFS to
+<!-- .I FILE\fR, overwriting if exists. -->
+<i>FILE</i>, overwriting if exists. <!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-s, \-\-save\-image -->
+<b>-s, --save-image</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Save to the special image format. This is the most efficient way space and
+speed-wise if imaging is done to the standard output, e.g. for image
+compression, encryption or streaming through a network.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-r, \-\-restore\-image -->
+<b>-r, --restore-image</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Restore from the special image format specified by
+<!-- .I SOURCE\fR. -->
+<i>SOURCE</i>. If the
+<!-- .I SOURCE -->
+<i>SOURCE</i> is ’-’ then the image is read from the standard input.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-rescue -->
+<b>--rescue</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Ignore disk read errors so disks having bad sectors, e.g. dying disks, can be
+rescued the most efficiently way, with minimal stress on them. Ntfsclone works
+at the lowest, sector level in this mode too thus more data can be rescued.
+The contents of the unreadable sectors are filled by character ’?’ and the
+beginning of such sectors are marked by "BadSectoR\0".
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-m, \-\-metadata -->
+<b>-m, --metadata</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Clone
+<!-- .B ONLY METADATA -->
+<b>ONLY METADATA</b> (for NTFS experts). Moreover only cloning to a file is allowed.
+You can’t metadata-only clone to a device, image or standard output.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-\-ignore\-fs\-check -->
+<b>--ignore-fs-check</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Ignore the result of the filesystem consistency check. This option is allowed
+to be used only with the
+<!-- .BR --metadata  -->
+<b>--metadata</b> option, for the safety of user’s data. The clusters which cause the
+inconsistency are saved too.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-f, \-\-force -->
+<b>-f, --force</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Forces ntfsclone to proceed if the filesystem is marked
+"dirty" for consistency check.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-h, \-\-help -->
+<b>-h, --help</b> </td><td valign="bottom">
+Show a list of options with a brief description of each one.
+<!-- .SH EXIT CODES -->
+</td></tr>
+<tr></tr></tbody></table></blockquote>
+<a name="8"></a>
+
+     <h2>EXIT CODES</h2>
+
+<blockquote>
+The exit code is 0 on success, non-zero otherwise.
+<!-- .SH EXAMPLES -->
+</blockquote>
+<a name="9"></a>
+
+     <h2>EXAMPLES</h2>
+
+<blockquote>
+Save an NTFS to a file in the special image format
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsclone \-\-save\-image \-\-output backup.img /dev/hda1 -->
+<b>ntfsclone --save-image --output backup.img /dev/hda1</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Restore an NTFS from a special image file to its original partition
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsclone \-\-restore-image \-\-overwrite /dev/hda1 backup.img  -->
+<b>ntfsclone --restore-image --overwrite /dev/hda1 backup.img</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Save an NTFS into a compressed image.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsclone \-\-save-image \-o \- /dev/hda1 | gzip \-c > backup.img.gz -->
+<b>ntfsclone --save-image -o - /dev/hda1 | gzip -c &gt; backup.img.gz</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Restore an NTFS volume from a compressed image file
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B gunzip \-c backup.img.gz | \\\\ -->
+<b>gunzip -c backup.img.gz | \\</b> <!-- .br -->
+<!-- .B ntfsclone \-\-restore-image \-\-overwrite /dev/hda1 \- -->
+<!-- Need break --><br>
+<b>ntfsclone --restore-image --overwrite /dev/hda1 -</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Backup an NTFS volume to a remote host, using ssh.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsclone \-\-save-image \-\-output \- /dev/hda1 | \\\\ -->
+<b>ntfsclone --save-image --output - /dev/hda1 | \\</b> <!-- .br -->
+<!-- .B gzip \-c | ssh host 'cat > backup.img.gz' -->
+<!-- Need break --><br>
+<b>gzip -c | ssh host ’cat &gt; backup.img.gz’</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Restore an NTFS volume from a remote host via ssh.
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ssh host 'cat backup.img.gz' | gunzip -c | \\\\ -->
+<b>ssh host ’cat backup.img.gz’ | gunzip -c | \\</b> <!-- .br -->
+<!-- .B ntfsclone \-\-restore-image \-\-overwrite /dev/hda1 \- -->
+<!-- Need break --><br>
+<b>ntfsclone --restore-image --overwrite /dev/hda1 -</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Stream an image from a web server and restore it to a partition
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B wget \-qO \- http://server/backup.img | \\\\ -->
+<b>wget -qO - http://server/backup.img | \\</b> <!-- .br -->
+<!-- .B ntfsclone \-\-restore\-image \-\-overwrite /dev/hda1 \- -->
+<!-- Need break --><br>
+<b>ntfsclone --restore-image --overwrite /dev/hda1 -</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Clone an NTFS volume to a non-existent file
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsclone \-\-output ntfs-clone.img /dev/hda1 -->
+<b>ntfsclone --output ntfs-clone.img /dev/hda1</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Pack NTFS metadata for NTFS experts
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsclone \-\-metadata \-\-output ntfsmeta.img /dev/hda1 -->
+<b>ntfsclone --metadata --output ntfsmeta.img /dev/hda1</b> <!-- .br -->
+<!-- .B tar \-cjSf ntfsmeta.img.tar.bz2 ntfsmeta.img -->
+<!-- Need break --><br>
+<b>tar -cjSf ntfsmeta.img.tar.bz2 ntfsmeta.img</b> <!-- .SH KNOWN ISSUES -->
+</p></blockquote>
+</blockquote>
+<a name="10"></a>
+
+     <h2>KNOWN ISSUES</h2>
+
+<blockquote>
+This program has no known bugs. If you think you have found one then
+please send an email to
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+linux-ntfs-dev@lists.sourceforge.net
+<p>
+Sometimes it might appear ntfsclone froze if the clone is on ReiserFS
+and even CTRL-C won’t stop it. This is not a bug in ntfsclone, however
+it’s due to ReiserFS being extremely inefficient creating large
+sparse files and not handling signals during this operation. This
+ReiserFS problem was improved in kernel 2.4.22.
+XFS, JFS and ext3 don’t have this problem.
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH AUTHOR -->
+</p></blockquote>
+<a name="11"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+<!-- .B ntfsclone -->
+<b>ntfsclone</b> was written by Szabolcs Szakacsits.
+<p>
+Special image format support was added by Per Olofsson.
+<!-- .SH AVAILABILITY -->
+</p></blockquote>
+<a name="12"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfsclone -->
+<b>ntfsclone</b> is part of the ntfsprogs package and is available from
+<!-- .br -->
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+<!-- Need break --><br>
+http://linux-ntfs.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="13"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR ntfsresize (8) -->
+<b><a href="ntfsresize.html">ntfsresize(8)</a></b><!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><!-- .BR xfs_copy (8) -->
+<b>xfs_copy(8)</b>
+<!-- .BR debugreiserfs (8) -->
+<b>debugreiserfs(8)</b>
+<!-- .BR e2image (8) -->
+<b>e2image(8)</b>
+<p>
+</p></blockquote>
+<p></p>
+</body></html>

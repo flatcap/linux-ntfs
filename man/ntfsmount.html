@@ -1,0 +1,433 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfsmount.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2005 Yura Pakhuchiy. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSMOUNT 8 "October 2005" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSMOUNT (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfsmount - NTFS module for FUSE.
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .BI "ntfsmount " device " " mount_point " [\-o " options "]" -->
+<b>ntfsmount </b><i>device</i><b> </b><i>mount_point</i><b> [-o </b><i>options</i><b>]</b> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfsmount -->
+<b>ntfsmount</b> is a
+<!-- .B FUSE -->
+<b>FUSE</b> module that rely on
+<!-- .B libntfs. -->
+<b>libntfs.</b> You need
+<!-- .B FUSE -->
+<b>FUSE</b> to compile it,
+<!-- .B xattr -->
+<b>xattr</b> is recommended, but not mandatory.
+<!-- .sp -->
+<p>
+<!-- .TP -->
+<table summary="formatting" cellpadding="3">
+<tbody><tr valign="top"><td colspan="2">
+<!-- .B Fully implemented ntfsmount features are: -->
+<b>Fully implemented ntfsmount features are:</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+<p>
+* Read-only access to normal, sparse and compressed files.
+</p><p>
+* Overwrite normal and sparse files *with* changes to size.
+</p><p>
+* List/Read/Write/Add/Remove named data streams.
+</p><p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B Partly implemented features: -->
+<b>Partly implemented features:</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+<p>
+* Create/Delete/Move files and directories.
+</p><p>
+* Hard link files.
+</p><p>
+<!-- .SH OPTIONS -->
+</p></td></tr>
+<tr></tr></tbody></table></p></blockquote>
+<a name="3"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+Below is a summary of all the options that
+<!-- .B ntfsmount -->
+<b>ntfsmount</b> accepts.
+<p>
+<!-- .TP -->
+<table summary="formatting" cellpadding="3">
+<tbody><tr valign="top"><td colspan="2">
+<!-- .B uid=, gid=, umask= -->
+<b>uid=, gid=, umask=</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Provide default owner, group, and access mode mask.
+These options work as documented in mount(8).  By
+default, the files/directories are owned by user that mounted volume and
+he/she has read and write permissions, as well as
+browse permission for directories.  No one else has any
+access permissions.  I.e. the mode on all files is by
+default rw------- and for directories rwx------, a
+consequence of the default fmask=0177 and dmask=0077.
+Using a umask of zero will grant all permissions to
+everyone, i.e. all files and directories will have mode
+rwxrwxrwx.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B fmask=, dmask= -->
+<b>fmask=, dmask=</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Instead of specifying umask which applies both to
+files and directories, fmask applies only to files and
+mask only to directories.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B show_sys_files -->
+<b>show_sys_files</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+If show_sys_files is specified, show the system files
+in directory listings.  Otherwise the default behaviour
+is to hide the system files.
+Note that even when show_sys_files is specified, "$MFT"
+may will not be visible due to bugs/mis-features in glibc.
+Further, note that irrespective of show_sys_files, all
+files are accessible by name, i.e. you can always do
+"ls -l ’$UpCase’" for example to specifically show the
+system file containing the Unicode upcase table.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B default_permissions -->
+<b>default_permissions</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+By default FUSE doesn’t check file access permissions, the
+filesystem is free to implement it’s access policy or leave it to
+the underlying file access mechanism (e.g. in case of network
+filesystems).  This option enables permission checking, restricting
+access based on file mode.  This is option is usually useful
+together with the ’allow_other’ mount option.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B allow_other -->
+<b>allow_other</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+This option overrides the security measure restricting file access
+to the user mounting the filesystem.  This option is by default only
+allowed to root, but this restriction can be removed with a
+configuration option described in the previous section.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B kernel_cache -->
+<b>kernel_cache</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+(NOTE: Work only with FUSE-2.3.0)
+This option disables flushing the cache of the file contents on
+every open().  This should only be enabled on filesystems, where the
+file data is never changed externally (not through the mounted FUSE
+filesystem).  Thus it is not suitable for network filesystems and
+other "intermediate" filesystems.
+<p>
+NOTE: if this option is not specified (and neither ’direct_io’) data
+is still cached after the open(), so a read() system call will not
+always initiate a read operation.
+</p><p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B large_read -->
+<b>large_read</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Issue large read requests.  This can improve performance for some
+filesystems, but can also degrade performance.  This option is only
+useful on 2.4.X kernels, as on 2.6 kernels requests size is
+automatically determined for optimum performance.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B direct_io -->
+<b>direct_io</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+This option disables the use of page cache (file content cache) in
+the kernel for this filesystem.  This has several affects:
+<p>
+- Each read() or write() system call will initiate one or more
+read or write operations, data will not be cached in the
+kernel.
+</p><p>
+- The return value of the read() and write() system calls will
+correspond to the return values of the read and write
+operations.  This is useful for example if the file size is not
+known in advance (before reading it).
+</p><p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B max_read= -->
+<b>max_read=</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+With this option the maximum size of read operations can be set.
+The default is infinite.  Note that the size of read requests is
+limited anyway to 32 pages (which is 128kbyte on i386).
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B force -->
+<b>force</b> </td><td valign="bottom">
+Force mount even if errors occurred. Use this option only if you know what
+are you doing and don’t cry about data loss.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B ro -->
+<b>ro</b> </td><td valign="bottom">
+Mount filesystem read-only.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B no_def_opts -->
+<b>no_def_opts</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+By default ntfsmount acts as "default_permissions,allow_other" was passed to it,
+this option cancel this behaviour.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B succeed_chmod -->
+<b>succeed_chmod</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Don’t change any permissions and don’t return error on chmod operation.
+<p>
+<!-- .TP -->
+</p></td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B locale= -->
+<b>locale=</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+You can set locale with this option. It’s useful if locale enviroment variables
+are not set before partitions from /etc/fstab had been mounted.
+<p>
+<!-- .SH DATA STREAMS -->
+</p></td></tr>
+<tr></tr></tbody></table></p></blockquote>
+<a name="4"></a>
+
+     <h2>DATA STREAMS</h2>
+
+<blockquote>
+All data on NTFS is stored in streams, which can have names.
+A file can have more than one data streams, but exactly one must have no name.
+The size of a file is the size of its unnamed data stream.
+Usually when you don’t specify stream name you are access to the unnamed data
+stream.
+If you want access to named data stream you need to add ":stream_name" to the
+filename. For example: by opening "some.mp3:artist" you will open stream
+"artist" in "some.mp3".
+But windows usually prevent you from accessing to named data streams,
+so you need to use some program like FAR or utils from cygwin to access named
+data streams.
+<!-- .sp -->
+<p>
+NTFS FUSE module don’t prevent you from accessing to named data streams so you
+can use your preferred utils to access them. You can even delete them using
+<!-- .B rm. -->
+<b>rm.</b> You can list all named data streams by getting "ntfs.streams.list" extended
+attribute. NOTE: The last feature is unique for NTFS FUSE module and maybe
+will be never supported by kernel driver.
+</p><p>
+<!-- .SH EXAMPLES -->
+</p></blockquote>
+<a name="5"></a>
+
+     <h2>EXAMPLES</h2>
+
+<blockquote>
+Mount /dev/hda1 to /mnt/ntfs-fuse using ntfsmount:
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsmount /dev/hda1 /mnt/ntfs-fuse -->
+<b>ntfsmount /dev/hda1 /mnt/ntfs-fuse</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+<p>
+Read-only mount /dev/hda5 to /home/user/mnt and make user with uid 1000 to be
+owner of all files:
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfsmount /dev/hda5 /home/user/mnt -o ro,uid=1000 -->
+<b>ntfsmount /dev/hda5 /home/user/mnt -o ro,uid=1000</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+<p>
+/etc/fstab entry for above:
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B /dev/hda5 /home/user/mnt ntfs-fuse ro,uid=1000 0 0 -->
+<b>/dev/hda5 /home/user/mnt ntfs-fuse ro,uid=1000 0 0</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+<p>
+Umount /mnt/ntfs-fuse:
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B fusermount -u /mnt/ntfs-fuse -->
+<b>fusermount -u /mnt/ntfs-fuse</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+<p>
+Cat "artist" named data stream of "some.mp3":
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B cat some.mp3:artist -->
+<b>cat some.mp3:artist</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+<p>
+Write "Sympho Black Metal" to "genre" named data stream of "some.mp3":
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B echo Sympho Black Metal > some.mp3:genre -->
+<b>echo Sympho Black Metal &gt; some.mp3:genre</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+<p>
+Remove "album" named data stream from "some.mp3":
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B rm some.mp3:album -->
+<b>rm some.mp3:album</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+<p>
+List all named data streams for "some.mp3":
+<!-- .RS -->
+</p><blockquote>
+<!-- .sp -->
+<p>
+<!-- .B getfattr -n ntfs.streams.list some.mp3 -->
+<b>getfattr -n ntfs.streams.list some.mp3</b> </p><p>
+<!-- .SH BUGS -->
+</p></blockquote>
+</blockquote>
+<a name="6"></a>
+
+     <h2>BUGS</h2>
+
+<blockquote>
+No bugs are known at present. If you find any bugs, please send an email to
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+linux-ntfs-dev@lists.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<p>
+<!-- .SH AUTHOR -->
+</p></blockquote>
+<a name="7"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+<!-- .B ntfsmount -->
+<b>ntfsmount</b> was written by Yura Pakhuchiy. This manual page use
+information from Documentation/filesystems/ntfs.txt from linux kernel
+source, and from README from FUSE.
+<p>
+<!-- .SH DEDICATION -->
+</p></blockquote>
+<a name="8"></a>
+
+     <h2>DEDICATION</h2>
+
+<blockquote>
+With love to Marina Sapego.
+<p>
+<!-- .SH THANKS -->
+</p></blockquote>
+<a name="9"></a>
+
+     <h2>THANKS</h2>
+
+<blockquote>
+Many thanks to Miklos Szeredi for advice and answers about FUSE.
+<p>
+<!-- .SH AVAILABILITY -->
+</p></blockquote>
+<a name="10"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfsmount -->
+<b>ntfsmount</b> is part of the ntfsprogs package and is available from
+<!-- .br -->
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+<!-- Need break --><br>
+http://linux-ntfs.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<p>
+<!-- .SH SEE ALSO -->
+</p></blockquote>
+<a name="11"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR "ntfsprogs" (8), " attr" (5), " getfattr" (1) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b>,<br>
+ attr (5),
+<br>
+ getfattr (1)
+<p>
+</p></blockquote>
+<p></p>
+</body></html>

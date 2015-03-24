@@ -1,0 +1,204 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfsprogs.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" Copyright (c) 2002 Richard Russon. All Rights Reserved. -->
+<!-- .\" Copyright (c) 2002-2003 Anton Altaparmakov. All Rights Reserved. -->
+<!-- .\" Copyright (c) 2005 Szabolcs Szakacsits. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSPROGS 8 "June 2005" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSPROGS (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfsprogs - several tools for doing neat things with NTFS partitions
+<!-- .SH OVERVIEW -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>OVERVIEW</h2>
+
+<blockquote>
+<!-- .B ntfsprogs -->
+<b>ntfsprogs</b> is a suite of NTFS utilities based around a shared library.  The tools are
+available for free and come with full source code.
+<p>
+<!-- .SH TOOLS -->
+</p></blockquote>
+<a name="2"></a>
+
+     <h2>TOOLS</h2>
+
+<blockquote>
+<!-- .SS mkntfs -->
+</blockquote>
+
+    <h3>&nbsp; &nbsp; mkntfs</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR mkntfs (8) -->
+<b><a href="mkntfs.html">mkntfs(8)</a></b>: Format a partition using NTFS.
+<!-- .SS ntfscat -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfscat</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfscat (8) -->
+<b><a href="ntfscat.html">ntfscat(8)</a></b>: Dump a file’s contents to the standard output.
+<!-- .PP -->
+</p><p>
+<!-- .SS ntfsclone -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfsclone</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfsclone (8) -->
+<b><a href="ntfsclone.html">ntfsclone(8)</a></b>: Efficiently clone, create, restore or rescue an image of an NTFS partition.
+<!-- .SS ntfscluster -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfscluster</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfscluster (8) -->
+<b><a href="ntfscluster.html">ntfscluster(8)</a></b>: Locate the owner of any given sector or cluster on an NTFS partition.
+<!-- .SS ntfscp -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfscp</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfscp (8) -->
+<b><a href="ntfscp.html">ntfscp(8)</a></b>: Overwrite file on an NTFS partition.
+<!-- .SS ntfsfix -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfsfix</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfsfix (8) -->
+<b><a href="ntfsfix.html">ntfsfix(8)</a></b>: Check and fix some common errors, clear the LogFile and make Windows
+perform a thorough check next time it boots.
+<!-- .SS ntfsinfo -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfsinfo</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfsinfo (8) -->
+<b><a href="ntfsinfo.html">ntfsinfo(8)</a></b>: Show some information about an NTFS partition or one of the files
+or directories within it.
+<!-- .SS ntfslabel -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfslabel</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfslabel (8) -->
+<b><a href="ntfslabel.html">ntfslabel(8)</a></b>: Show, or set, an NTFS partition’s volume label.
+<!-- .SS ntfsls -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfsls</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfsls (8) -->
+<b><a href="ntfsls.html">ntfsls(8)</a></b>: List information about files in a directory residing on an NTFS partition.
+<!-- .SS ntfsmount -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfsmount</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfsmount (8) -->
+<b><a href="ntfsmount.html">ntfsmount(8)</a></b>: NTFS module for FUSE.
+<!-- .SS ntfsresize -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfsresize</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfsresize (8) -->
+<b><a href="ntfsresize.html">ntfsresize(8)</a></b>: Resize an NTFS partition without losing data.
+<!-- .SS ntfsundelete -->
+</p></blockquote>
+
+    <h3>&nbsp; &nbsp; ntfsundelete</h3>
+
+<blockquote>
+<!-- .PP -->
+<p>
+<!-- .BR ntfsundelete (8) -->
+<b><a href="ntfsundelete.html">ntfsundelete(8)</a></b>: Recover deleted files from an NTFS partition.
+</p><p>
+<!-- .SH AUTHORS -->
+</p></blockquote>
+<a name="3"></a>
+
+     <h2>AUTHORS</h2>
+
+<blockquote>
+<!-- .PP -->
+<p>
+The tools have been written by Anton Altaparmakov, Richard Russon,
+Matthew Fanto, Szabolcs Szakacsits, Lode Leroy, Yuval Fledel and Yura
+Pakhuchiy.
+</p><p>
+<!-- .SH AVAILABILITY -->
+</p></blockquote>
+<a name="4"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+The
+<!-- .B ntfsprogs -->
+<b>ntfsprogs</b> can be downloaded from http://linux-ntfs.sourceforge.net
+<!-- .br -->
+<!-- Need break --><br>
+These manual pages can be viewed online at <a href="ntfsprogs.html">ntfsprogs.html</a>
+<p>
+<!-- .SH SEE ALSO -->
+</p></blockquote>
+<a name="5"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR libntfs-gnomevfs (8) -->
+<b><a href="libntfs-gnomevfs.html">libntfs-gnomevfs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

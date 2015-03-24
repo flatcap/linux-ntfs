@@ -1,0 +1,106 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfslabel.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2002-2004 Anton Altaparmakov. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" Adapted from e2fsprogs-1.26/misc/e2label.8.in by Theodore Ts'o. -->
+<!-- .\" -->
+<!-- .TH NTFSLABEL 8 "April 2002" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSLABEL (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfslabel - display/change the label on an ntfs file system
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B ntfslabel -->
+<b>ntfslabel</b> <!-- .I device -->
+<i>device</i> [
+<!-- .I new-label -->
+<i>new-label</i> ]
+<!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfslabel -->
+<b>ntfslabel</b> will display or change the file system label on the ntfs file system located on
+<!-- .IR device . -->
+<i>device</i>. <!-- .PP -->
+<p>
+If the optional argument
+<!-- .I new-label -->
+<i>new-label</i> is not present,
+<!-- .B ntfslabel -->
+<b>ntfslabel</b> will simply display the current file system label.
+<!-- .PP -->
+</p><p>
+If the optional argument
+<!-- .I new-label -->
+<i>new-label</i> is present, then
+<!-- .B ntfslabel -->
+<b>ntfslabel</b> will set the file system label to be
+<!-- .IR new-label . -->
+<i>new-label</i>. NTFS file system labels can be at most 128 Unicode characters long; if
+<!-- .I new-label -->
+<i>new-label</i> is longer than 128 Unicode characters,
+<!-- .B ntfslabel -->
+<b>ntfslabel</b> will truncate it and print a warning message.
+<!-- .PP -->
+</p><p>
+It is also possible to set the file system label using the
+<!-- .B \-L -->
+<b>-L</b> option of
+<!-- .BR mkntfs (8) -->
+<b><a href="mkntfs.html">mkntfs(8)</a></b>during creation of the file system.
+<!-- .PP -->
+</p><p>
+<!-- .SH AUTHOR -->
+</p></blockquote>
+<a name="3"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+<!-- .B ntfslabel -->
+<b>ntfslabel</b> was written by Matthew J. Fanto. This man page was
+written by Anton Altaparmakov.
+<!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="4"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfslabel -->
+<b>ntfslabel</b> is part of the ntfsprogs package and is available from
+http://linux-ntfs.sourceforge.net
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="5"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR mkntfs (8), -->
+<b><a href="mkntfs.html">mkntfs(8)</a></b>,<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

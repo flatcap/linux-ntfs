@@ -1,0 +1,138 @@
+
+
+
+
+
+/*
+     FILE ARCHIVED ON 16:36:27 Sep 11, 2005 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:29:15 Sep 17, 2011.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+body {
+  margin: 0px 0px;
+  color: #000;
+  background-color: #eeb;
+
+}
+
+a {
+  color: #000;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a.quiet, a.contact {
+  text-decoration: none;
+}
+
+a.contact {
+  font: 75% serif;
+  color: #cc9;
+  background-color: transparent;
+}
+
+a.contact:hover {
+  color: inherit;
+  background-color: inherit;
+}
+
+a.heading {
+  color: #069;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #069;
+}
+
+h1, h2, h3, h4 {
+  color: #069;
+  background-color: transparent;
+}
+
+h2, h3, h4 {
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 5px;
+}
+
+dl {
+  margin-top: 0px;
+}
+
+dd {
+  text-align: justify;
+}
+
+dt {
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+td.block, td.alert {
+  color: inherit;
+  background-color: #ffc;
+}
+
+td.alert {
+  border: 3px solid red;
+  font: 120% serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+th {
+  text-align: left;
+}
+
+th.indent, td.indent {
+  padding: 0px 0px 0px 1em;
+}
+
+.odd {
+  color: inherit;
+  background-color: #ffe;
+}
+
+.even {
+  color: inherit;
+  background-color: #eee;
+}
+
+.command {
+  font-family: monospace;
+  color: #000;
+  background-color: #ddd;
+  max-width: 9999px;
+  border: 1px solid black;
+}
+
+pre.command {
+  padding: 1em 2em 0em 0em;
+}
+
+ul {
+  margin-top: 0;
+}
+
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.mark {
+  border-left: 2px solid #666;
+}
+
+table.highlight {
+  color: inherit;
+  background-color: #ffd;
+}
+
+

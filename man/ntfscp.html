@@ -1,0 +1,236 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfscp.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\" -*- nroff -*- -->
+<!-- .\" Copyright (c) 2004-2005 Yura Pakhuchiy. All Rights Reserved. -->
+<!-- .\" This file may be copied under the terms of the GNU Public License. -->
+<!-- .\" -->
+<!-- .TH NTFSCP 8 "October 2005" "ntfsprogs version 1.12.1" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSCP (8)</h1>
+<hr>
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfscp - overwrite file on an NTFS volume.
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .BI "ntfscp [" options "] device source_file destination" -->
+<b>ntfscp [</b><i>options</i><b>] device source_file destination</b> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<!-- .B ntfscp -->
+<b>ntfscp</b> will overwrite file on an NTFS volume. At present
+<!-- .B ntfscp -->
+<b>ntfscp</b> can’t create new files.
+<!-- .B destination -->
+<b>destination</b> can be either file or directory. In case if
+<!-- .B destination -->
+<b>destination</b> is directory specified by name then
+<!-- .B source_file -->
+<b>source_file</b> is copied into this directory, in case if
+<!-- .B destination -->
+<b>destination</b> is directory and specified by inode number then unnamed data attribute is created for this inode and
+<!-- .B source_file -->
+<b>source_file</b> is copied into it (WARNING: it’s unusual to have
+unnamed data streams in the directories, think twice before specifying
+directory by inode number).
+<!-- .SH OPTIONS -->
+</blockquote>
+<a name="3"></a>
+
+     <h2>OPTIONS</h2>
+
+<blockquote>
+Below is a summary of all the options that
+<!-- .B ntfscp -->
+<b>ntfscp</b> accepts.  All options have two equivalent names.  The short name is preceded by
+<!-- .BR \- -->
+<b>-</b> and the long name is preceded by
+<!-- .BR \-\- . -->
+<b>--</b>. Any single letter options, that don’t take an argument, can be combined into a
+single command, e.g.
+<!-- .BR \-fv -->
+<b>-fv</b> is equivalent to
+<!-- .BR "\-f \-v" . -->
+<b>-f -v</b>. Long named options can be abbreviated to any unique prefix of their name.
+<!-- .TP -->
+<table summary="formatting" cellpadding="3"><!-- tsb: Below is a summary of all the options that
+ -->
+<tbody><tr></tr><tr></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-a, \-\-attribute " number -->
+<b>-a, --attribute </b><i>number</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Write to this attribute.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-i, \-\-inode -->
+<b>-i, --inode</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Treat
+<!-- .I destination -->
+<i>destination</i> as inode number.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .BI "\-N, \-\-attr-name " name -->
+<b>-N, --attr-name </b><i>name</i> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Write to attribute with this name.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B -n, --no-action -->
+<b>-n, --no-action</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Use this option to make a test run before doing the real copy operation.
+Volume will be opened read-only and no write will be done.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-f, \-\-force -->
+<b>-f, --force</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+This will override some sensible defaults, such as not working with a mounted
+volume.  Use this option with caution.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td nowrap="nowrap" width="6%">
+<!-- .B \-h, \-\-help -->
+<b>-h, --help</b> </td><td valign="bottom">
+Show a list of options with a brief description of each one.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-q, \-\-quiet -->
+<b>-q, --quiet</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Suppress some debug/warning/error messages.
+<!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-V, \-\-version -->
+<b>-V, --version</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Show the version number, copyright and license
+<!-- .BR ntfscp . -->
+<b>ntfscp</b>. <!-- .TP -->
+</td></tr>
+<tr valign="top"><td colspan="2">
+<!-- .B \-v, \-\-vebose -->
+<b>-v, --vebose</b> </td></tr><tr valign="top"><td width="6%">&nbsp;</td><td>
+Display more debug/warning/error messages.
+<!-- .SH DATA STREAMS -->
+</td></tr>
+<tr></tr></tbody></table></blockquote>
+<a name="4"></a>
+
+     <h2>DATA STREAMS</h2>
+
+<blockquote>
+All data on NTFS is stored in streams, which can have names. A file can
+have more than one data streams, but exactly one must have no name. The
+size of a file is the size of its unnamed data stream. Usually when you
+don’t specify stream name you are access to unnamed data stream. If you
+want access to named data stream you need to add ":stream_name" to the
+filename. For example: by opening "some.mp3:artist" you will open stream
+ "artist" in "some.mp3". But windows usually prevent you from accessing
+to named data streams, so you need to use some program like FAR or utils
+ from cygwin to access named data streams.
+<!-- .SH EXAMPLES -->
+</blockquote>
+<a name="5"></a>
+
+     <h2>EXAMPLES</h2>
+
+<blockquote>
+Copy new_boot.ini from /home/user as boot.ini to the root of an /dev/hda1 NTFS volume:
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfscp /dev/hda1 /home/user/new_boot.ini boot.ini -->
+<b>ntfscp /dev/hda1 /home/user/new_boot.ini boot.ini</b> <!-- .sp -->
+</p><p>
+<!-- .RE -->
+</p></blockquote>
+Copy myfile to C:\some\path\myfile:stream (assume that /dev/hda1 letter in windows is C):
+<!-- .RS -->
+<blockquote>
+<!-- .sp -->
+<p>
+<!-- .B ntfscp -N stream /dev/hda1 myfile /some/path -->
+<b>ntfscp -N stream /dev/hda1 myfile /some/path</b> <!-- .SH BUGS -->
+</p></blockquote>
+</blockquote>
+<a name="6"></a>
+
+     <h2>BUGS</h2>
+
+<blockquote>
+No bugs are known at present. If you find any bugs, please send an email to
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+linux-ntfs-dev@lists.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH AUTHOR -->
+</blockquote>
+<a name="7"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+<!-- .B ntfscp -->
+<b>ntfscp</b> was written by Yura Pakhuchiy.
+<!-- .B ntfscp -->
+<b>ntfscp</b> and this manual page is based on
+<!-- .B ntfscat -->
+<b>ntfscat</b> and it’s manaul page by Richard Russon, so many thanks to him. Information about named data streams was partly taken from
+<!-- .B ntfsdoc. -->
+<b>ntfsdoc.</b> <!-- .SH DEDICATION -->
+</blockquote>
+<a name="8"></a>
+
+     <h2>DEDICATION</h2>
+
+<blockquote>
+With love to Marina Sapego.
+<!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="9"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfscp -->
+<b>ntfscp</b> is part of the ntfsprogs package and is available from
+<!-- .br -->
+<!-- .nh -->
+<!-- ignored unsupported tag .nh -->
+<!-- Need break --><br>
+http://linux-ntfs.sourceforge.net
+<!-- .hy -->
+<!-- ignored unsupported tag .hy -->
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="10"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b><p>
+</p></blockquote>
+<p></p>
+</body></html>

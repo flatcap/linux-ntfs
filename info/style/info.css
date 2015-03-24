@@ -1,0 +1,147 @@
+body {
+  margin: 10px 32px 10px 32px;
+  color: #000;
+  background-color: #ffc;
+}
+
+body.ntfsdoc {
+  background-image: url(ntfsdoc.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 2px 8px;
+}
+
+body.ldmdoc {
+  background-image: url(ldmdoc.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 2px 8px;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:link {
+  color: #000;
+  background-color: transparent;
+}
+
+a:visited {
+  color: #000;
+  background-color: transparent;
+}
+
+a:active {
+  color: #000;
+  background-color: transparent;
+}
+
+a:hover, a.heading:hover, a.grey:hover {
+  color: #fff;
+  background-color: #069;
+}
+
+a.contact, td.copyright {
+  font: 75% serif;
+  color: #cc9;
+  background-color: transparent;
+}
+
+a.grey {
+  color: #aa8;
+  background-color: transparent;
+}
+
+a.na {
+  color: #f00;
+  background-color: transparent;
+}
+
+h1, h2, h3, h4, a.heading {
+  text-align: left;
+  color: #069;
+  background-color: transparent;
+}
+
+h1 {
+  margin: 0px;
+  padding: 0px;
+}
+
+table, th, td {
+  text-align: left;
+}
+
+th, td {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-right: solid #999 0px;
+  border-bottom: solid #999 0px;
+}
+
+table {
+  border-top: solid #999 0px;
+  border-left: solid #999 0px;
+}
+
+table.highlight {
+  color: inherit;
+  background-color: #ffd;
+}
+
+dt {
+  padding-top: 0.5em;
+  font-weight: bold;
+}
+
+p, dd, blockquote {
+  text-align: justify;
+  max-width: 570px;
+}
+
+dd.wide {
+  max-width: 9999px;
+}
+
+li {
+  text-align: justify;
+  max-width: 510px;
+}
+
+p.quote {
+  padding-left: 2em;
+  max-width: 510px;
+}
+
+.command {
+  font-family: monospace;
+  color: #000;
+  background-color: #ddd;
+  max-width: 9999px;
+  border: 1px solid black;
+}
+
+pre.command {
+  padding: 1em 2em 0em 0em;
+}
+
+table.command {
+  padding: 0em 2em 0em 0em;
+}
+
+hr {
+  border: 0px;
+  color: inherit;
+  background-color: #069;
+}
+
+tr.odd {
+  color: inherit;
+  background-color: #dff;
+}
+
+tr.even {
+  color: inherit;
+  background-color: #ffd;
+}

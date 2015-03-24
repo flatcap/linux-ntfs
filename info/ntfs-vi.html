@@ -1,0 +1,1811 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- ntfs.html -->
+<html lang="vi"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Linux NTFS Project">
+    <meta name="keywords" content="Linux NTFS FAQ HOWTO">
+    <link rel="stylesheet" type="text/css" href="style/info.css">
+    <link rel="icon" href="../style/ntfsicon.png" type="image/png">
+    <title>NTFS FAQ (vi)</title>
+  </head>
+  <body class="ntfsdoc">
+  <a name="top"></a>
+    <h2>NTFS FAQ (Frequently Asked Questions)</h2>
+
+    <p>
+    <a href="ntfs.html"><img alt="English" src="style/uk.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-it.html"><img alt="Italian" src="style/italy.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ja.html"><img alt="Japanese" src="style/japan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-vi.html"><img alt="Vietnamese" src="style/vietnam.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-de.html"><img alt="German" src="style/germany.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh.html"><img alt="Simplified Chinese" src="style/china.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-fr.html"><img alt="French" src="style/france.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-es.html"><img alt="Spanish" src="style/spain.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-pt_BR.html"><img alt="Brazilian" src="style/brazil.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh_TW.html"><img alt="Traditional Chinese" src="style/taiwan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ru.html"><img alt="Russian" src="style/russia.png" border="0" width="30" height="20"></a>
+    </p>
+
+    <p>Bản cập nhật mới nhất ở đây<br>
+    <a href="ntfs.html">ntfs.html</a></p>
+
+    <p>Dịch bởi: Trịnh Hoài Trí tritrinh@hcm.vnn.vn
+    Cập nhật 13/10/2003</p><p>
+    </p><p>FAQ này là một phần của <a href="../">Linux NTFS Project</a>.</p>
+
+    <p>Nếu bạn có câu hỏi nào mà bản FAQ này
+    không có, hoặc bạn có góp ý gì
+    cho bản FAQ này, xin gởi email về cho
+    <b>linux-ntfs-dev@sourceforge.net</b>
+    </p>
+
+    <h2>Mục lục:</h2>
+
+    <h3>Ký hiệu:</h3>
+    <p style="margin-left: 2em; margin-bottom: 0px;">
+    <img src="style/blue.png" alt="**" width="16" height="16">&nbsp;-&nbsp;Các câu hỏi thường gặp<br>
+    <img src="style/green.png" alt="!!" width="16" height="16">&nbsp;-&nbsp;Các thông tin lý thú khác<br>
+    <img src="style/red.png" alt="NB" width="16" height="16">&nbsp;-&nbsp;Lưu ý cẩn thận
+    </p>
+    <div style="background-color: #DDD; color: #000; border: 1px solid black;
+    margin-left: 2em; max-width: 300px;">&nbsp;<b>Lệnh</b> hay kết quả kết xuất</div>
+
+    <h3>1. <a class="heading" href="ntfs-vi.html#1.0">Các thắc mắc cơ bản về NTFS.</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-vi.html#1.1">1.1 NTFS là gì</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#1.2">1.2 NTFS có tốt hơn FAT/FAT32 không?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#1.3">1.3 Tôi có nên dùng (hay nâng cấp lên) NTFS không?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#1.4">1.4 NTFS có giống nhau trên các phiên bản Windows khác nhau không?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#1.5">1.5 Giới hạn của NTFS</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>2. <a class="heading" href="ntfs-vi.html#2.0">NTFS Volumes</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-vi.html#2.1">2.1 Làm sao để đọc một NTFS Volume từ Windows 95/98/ME hay DOS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#2.2">2.2 Làm sao để chuyển đổi một FAT Volume sang một NTFS Volume?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#2.3">2.3 Làm sao để chuyển đổi một NTFS Volume sang một FAT Volume?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#2.4">2.4 Làm sao để xoá một NTFS Volume?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#2.5">2.5 Làm sao để chống phân mảnh (defrag) một NTFS volume?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#2.6">2.6 Làm sao để thay đổi kích thước một NTFS volume?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>3. <a class="heading" href="ntfs-vi.html#3.0">Linux và NTFS</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#3.1">3.1 Linux có thể đọc phiên bản NTFS nào?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#3.2">3.2 Driver cho Linux có thể ghi vào một NTFS volume không?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#3.3">3.3 Linux hỗ trợ các tính năng nào của NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#3.4">3.4 Tôi nên làm gì khi gặp sự cố?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#3.5">3.5 Làm sao để Linux hỗ trợ NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#3.6">3.6 Phiên bản nào là tốt nhất?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#3.7">3.7 Còn những công cụ hỗ trợ nào nữa?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#3.8">3.8 Driver hỗ trợ NTFS cho Linux đã được phát triển như thế nào?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#3.9">3.9 Ghi công</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>4. <a class="heading" href="ntfs-vi.html#4.0">Mount các NTFS volumes</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-vi.html#4.1">4.1 Tôi có thể mount một NTFS volume không?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#4.2">4.2 Driver hỗ trợ NTFS cho Linux có an toàn không?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#4.3">4.3 Tôi nên dùng partition nào?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#4.4">4.4 Tôi đang dùng phiên bản nào của NTFS driver?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#4.5">4.5 Làm sao để mount một NTFS volume?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#4.6">4.6 Các tùy chọn thông dụng của lệnh mount</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#4.7">4.7 Các tùy chọn cho driver nguyên thủy</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#4.8">4.8 Các tùy chọn cho driver mới</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#4.9">4.9 Làm sao để thay đổi quyền truy cập của một NTFS volume?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-vi.html#4.10">4.10 Làm sao để mount  một NTFS volume một cách tự động?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>5. <a class="heading" href="ntfs-vi.html#5.0">Boot vào hệ điều hành trên NTFS</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-vi.html#5.1">5.1 Tôi có thể boot Windows trên một NTFS volume không?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#5.2">5.2 Dùng LILO như thế nào?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#5.3">5.3 Dùng GRUB thì phải làm sao?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>6. <a class="heading" href="ntfs-vi.html#6.0">Về các bản phân phối Linux khác nhau</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-vi.html#6.1">6.1 Bản phân phối nào hỗ trợ sẵn NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#6.2">6.2 Vì sao Red Hat không hỗ trợ NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#6.3">6.3 Vì sao Red Hat bị khóa khi truy cập vào NTFS volume?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#6.4">6.4 Có bản phân phối Linux nào cài Linux vào NTFS không?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>7. <a class="heading" href="ntfs-vi.html#7.0">Driver NTFS mới cho Linux</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-vi.html#7.1">7.1 Driver NTFS mới cho Linux là cái chi?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#7.2">7.2 Tôi có cần dùng driver mới không?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#7.3">7.3 Làm sao để dùng driver mới?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#7.4">7.4 Bản cải tiến (patch) là gì?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#7.5">7.5 Nếu tôi vẫn không hiểu thì phải làm sao?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#7.6">7.6 Khi nào thì nhân Linux mới sẽ chứa các phát triển này?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-vi.html#7.7">7.7 Không thể viết các wrapper cho các driver của Windows sao?</a></td>
+    </tr>
+    </tbody></table>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="1.0"></a>
+    <h2>1. Các thắc mắc cơ bản về NTFS</h2>
+
+    <a name="1.1"></a>
+    <h3>1.1 NTFS là gì?</h3>
+
+    <p>
+    NTFS viết tắt của New Technology Filesystem. Có chữ <q>NT</q>
+    là vì NTFS được dùng lần đầu tiên
+    trong Windows NT, và filesystem (hệ thống tập tin) chỉ
+    là cách mà máy tính lưu trữ các
+    tập tin trên đĩa. Các hệ điều hành khác
+    nhau lưu trữ tập tin theo cách khác nhau.
+    </p>
+
+    <p>
+    NTFS được dùng trong Windows NT, 2000 và XP.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="1.2"></a>
+    <h3>1.2 NTFS có tốt hơn FAT/FAT32 không?</h3>
+
+    <p>
+    Thật ra thì có. NTFS mạnh hơn nhiều so với FAT/FAT32.
+     NTFS hỗ trợ tên tập tin dùng mã Unicode,
+    bảo mật tốt hơn, hỗ trợ nén và mã
+    hóa. Điểm yếu của NTFS là chỉ có
+    Windows NT, 2000 hay XP là đọc được nó, nghĩa
+    là bạn không thể khởi động máy bằng
+    đĩa mềm DOS rồi đọc dữ liệu trên NTFS volume.
+    </p>
+
+    <p>
+    Nói vậy nhưng vẫn có ngoại lệ: Linux có driver cho
+    NTFS từ tháng 12/1997. Ngoài ra cũng có chương
+    trình cho phép DOS hỗ trợ NTFS, xem chi tiết hơn
+    ở <a href="ntfs-vi.html#2.1">phần 2.1</a>
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="1.3"></a>
+    <h3>1.3 Tôi có nên dùng (hay nâng cấp lên) NTFS không?</h3>
+
+    <p>
+    Không, mặc dù đây là một ý kiến hay cho
+    hầu hết mọi người. Bạn có thể không nhận
+    ra sự khác biệt, ngoại trừ một chuyện là
+    sau khi dùng hay nâng cấp lên NTFS bạn không
+    thể chuyển về lại FAT. Xem chi tiết hơn ở <a href="ntfs-vi.html#2.3">phần 2.3</a>
+    </p>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    Bạn có thể cài Windows NT trên một FAT16
+    filesystem, hay cài Windows 2000 hay XP trên một FAT32
+    filesystem, rồi nâng cấp lên NTFS sau.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="1.4"></a>
+    <h3>1.4 NTFS có giống nhau trên các phiên bản Windows khác nhau không?</h3>
+
+    <p>
+    Không, mặc dù chúng có vẻ tương đồng, nhưng
+    phiên bản mới hơn có các tính năng
+    mà phiên bản trước không có. Ví
+    dụ như Windows 2000 hỗ trợ hạn mức đĩa (quota).
+    </p>
+
+    <table class="highlight" summary="Phiên bản Windows" border="1" cellspacing="0">
+      <tbody><tr><th>NTFS</th><th>Phiên bản Windows</th></tr>
+      <tr><td>v1.2</td><td>NT 3.51, NT 4</td></tr>
+      <tr><td>v3.0</td><td>2000</td></tr>
+      <tr><td>v3.1</td><td>XP</td></tr>
+    </tbody></table>
+
+    <p>
+    Phiên bản 1.2 đôi khi được biết tới như phiên bản 4.0;
+    </p>
+
+    <p>
+    Phiên bản 3.0 và 3.1 đôi khi được biết tới như
+    phiên bản 5.0 và 5.1
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="1.5"></a>
+    <h3>1.5 Giới hạn của NTFS</h3>
+
+    <p>
+    NTFS hỗ trợ tới 2<sup>63</sup> bytes. Các NTFS volume có
+    thế có đến 2<sup>63</sup> cluster, mỗi cluster có
+    thể dài 64KB. Do vậy giới hạn của NTFS vào
+    khoảng 500 tỉ gigabyte.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.0"></a>
+    <h2>2. NTFS Volumes</h2>
+
+    <a name="2.1"></a>
+    <h3>2.1 Làm sao để đọc một NTFS Volume từ Windows 95/98/ME hay DOS?</h3>
+
+    <p>
+    Rất tiếc là không thể làm được. Các
+    phiên bản Windows này chỉ hiểu FAT. NTFS chỉ có
+    thể đọc bởi Windows NT, 2000 và XP.
+    </p>
+
+    <p>
+    Tuy vậy, bạn có thể dùng các tiện ích
+    <q>NTFS cho Windows 98</q> và <q>NTFS cho DOS</q> tại
+    <a href="http://technet.microsoft.com/en-us/sysinternals">SysInternals</a>
+    để đọc NTFS từ Windows 95, 98 và DOS. Nếu bạn trả
+    tiền, bạn có thể mua phiên bản cho phép
+    ghi vào NTFS, nhưng chúng rất đắt.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.2"></a>
+    <h3>2.2 Làm sao để chuyển đổi một FAT Volume sang một NTFS Volume?</h3>
+
+    <p>
+    Mở một cửa sổ dòng lệnh trong Windows rồi gõ vào
+    dòng lệnh sau đây, nhớ thay thế <q>x:</q> với
+    volume muốn chuyển đổi:
+    </p>
+
+    <pre class="command">    <b>convert x: /fs:ntfs</b>
+    </pre>
+
+    <p>
+    Nếu volume này đang bị sử dụng, việc chuyển đổi sẽ
+    diễn ra khi bạn khởi động lại máy.
+    </p>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    Lệnh này không thể đảo ngược, Xem thêm mục
+    tiếp theo.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.3"></a>
+    <h3>2.3 Làm sao để chuyển đổi một NTFS Volume sang một FAT Volume?</h3>
+
+    <p>
+    Không thể được, trừ khi bạn có tiền. Partition Magic
+    (<a href="http://us.norton.com/products/overview.jsp?pcid=sp&pvid=pm80">norton.com</a>)
+    có thể chuyển đổi giữa nhiều hệ thống tập tin
+    khác nhau, kể cả NTFS và FAT.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.4"></a>
+    <h3>2.4 Làm sao để xoá một NTFS Volume?</h3>
+
+    <p>
+    Điều này tùy thuộc vào hệ điều hành bạn
+    đang sử dụng.
+    </p>
+
+    <p>
+    DOS, Windows 95/98/ME: dùng fdisk. Dùng một đĩa mềm
+    boot, hoặc boot Windows vào chế độ DOS, rồi chạy
+    fdisk. Nếu bạn có nhiều hơn một đĩa thì
+    trước hết bạn phải chọn ổ đĩa mình muốn, rồi
+    chọn xoá non-DOS partition.
+    </p>
+
+    <p>
+    Windows NT: dùng Computer Management.
+    </p>
+
+    <p>
+    Windows 2000, XP: dùng Logical Disk Manager.  Vào Control
+    Panel, chọn Administrative Tools, rồi chọn Computer Management.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.5"></a>
+    <h3>2.5 Làm sao để chống phân mảnh (defrag) một NTFS volume?</h3>
+
+    <p>
+    Sau một thời gian sử dụng, các tập tin trên đĩa
+    sẽ bị phân mảnh, nghĩa là chúng không
+    nằm cùng một chỗ với nhau mà rải rác
+    nhiều nơi trên đĩa. Điều này làm chậm
+    hệ thống khi hệ thống tìm cách truy cập các
+    tập tin này.
+    </p>
+
+    <p>
+    Windows 2000 và XP có gồm sẵn chương trình chống
+    phân mảnh. Có một chương trình miễn phí
+    cho Windows NT - <q>Diskeeper Lite</q> - có thể tải về từ
+    <a href="http://diskeeper.com/">http://diskeeper.com</a>
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.6"></a>
+    <h3>2.6 Làm sao để thay đổi kích thước một NTFS volume?</h3>
+
+    <p>
+    Cho đến gần đây cách duy nhất để làm điều
+    này mà không bị mất dữ liệu là chi
+    thật nhiều tiền. Giờ đây chúng ta đã có
+    <b>ntfsresize</b>. Chương trình này đã qua một
+    số thử nghiệm. Xem chi tiết hơn tại
+    ntfsresize FAQ.
+    </p>
+
+    <p>
+    Một chương trình khác có thể thay đổi kích
+    thước NTFS là <q>Partition Magic</q>
+    (<a href="http://powerquest.com/">http://powerquest.com</a>)
+    nhưng không miễn phí.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.0"></a>
+    <h2>3. Linux và NTFS</h2>
+
+    <a name="3.1"></a>
+    <h3>3.1 Linux có thể đọc phiên bản NTFS nào?</h3>
+
+    <p>
+    Driver hỗ trợ NTFS cho Linux có thể đọc mọi phiên
+    bản của NTFS (<a href="ntfs-vi.html#1.4">xem phần 1.4</a>).
+    Các phiên bản có
+    khác nhau chút ít, nhưng driver hỗ trợ này
+    chỉ phải phiên dịch các tập tin và thư
+    mục. Các chỉ mục (index) mà NTFS kiểm soát
+    có thể được bỏ qua một cách an toàn.
+    </p>
+
+    <p>
+    Khi driver muốn ghi vào NTFS volume, khi đó có
+    thể khả năng ghi này bị thay đổi  đôi chút
+    tùy theo phiên bản NTFS nó định ghi vào.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.2"></a>
+    <h3>3.2 Driver cho Linux có thể ghi vào một NTFS volume không?</h3>
+
+    <p>
+    Thật ra thì không, nhưng nếu bạn chỉ cần chép
+    tập tin từ Linux sang Windows trên một máy tính
+    khởi động kép (dual-boot), xem cách <q>đi vòng</q>
+    trong phần
+    <q><a href="ntfs-vi.html#3.2workaround">Làm sao để ghi vào NTFS</a></q>
+    dưới đây. Nếu bạn cần hỗ trợ ghi vào NTFS
+    từ Linux, xin xem tiếp.
+    </p>
+
+    <p>
+    Hiện nay có hai driver. Driver nguyên thủy cho nhân
+    2.4 có phần mã cho phép ghi, nhưng <b>cực
+    kỳ nguy hiểm</b>. Bạn có nhiều nguy cơ làm
+    hỏng cả hệ thống tập tin của bạn!
+    </p>
+
+    <p>
+    Driver mới, được đưa vào nhân 2.5.11, cũng có
+    phần mã cho phép ghi, nhưng tính năng rất
+    giới hạn. Driver này có thể ghi đè lên
+    tập tin có sẵn, nhưng không thể thay đổi  kích
+    thước tập tin, hay tạo tập tin mới, hay xoá các
+    tập tin có sẵn.
+    </p>
+
+    <p>
+    Thêm phần hỗ trợ ghi này sẽ <b>mất nhiều thời gian</b>.
+    NTFS được tổ chức như là một cơ sở dữ liệu.
+    Bất cứ thay đổi nào bạn tạo ra cũng cần được
+    cập nhật tại nhiều chỗ khác nhau để bảo đảm
+    tính nhất quán của hệ thống. Bạn chỉ cần
+    phạm một sai lầm nhỏ là cả hệ thống tập tin
+    của bạn bị hỏng. Nếu bạn phạm nhiều sai lầm, cả
+    hệ thống tập tin của bạn sẽ bị phá hủy hoàn
+    toàn.  Hơn nữa, các nhà phát triển
+    chỉ làm việc với NTFS như là thú tiêu
+    khiển trong lúc nhàn rỗi. Nếu bạn muốn hỗ
+    trợ họ, xin gởi email cho tôi:
+    <b>linux-ntfs-dev@sourceforge.net</b>
+    </p>
+
+    <a name="3.2workaround"></a>
+    <p>
+    <b>Làm sao để ghi vào NTFS</b>. Nếu bạn đang dùng máy
+    tính có khởi động kép (dual-boot) và
+    bạn chỉ cần chuyển tập tin từ Linux sang Windows, bạn
+    có thể dùng các driver cho ext2/ext3 để đọc
+    các tập tin này trên các partition Linux
+    khi đang chạy Windows. Bằng cách dùng hai driver
+    <q>chỉ đọc không ghi</q> này bạn có thể
+    chép các tập tin từ hệ thống tập tin này
+    sang hệ thống tập tin khác.
+    </p>
+
+    <p>
+    Các driver mã nguồn mở sau đây hỗ trợ ext2 và
+    ext3 Linux cho Windows, cập nhật 4/6/2003:
+    </p>
+
+    <ul type="square">
+    <li><strong>explore2fs</strong>
+      <ul>
+      <li>Trang chủ: http://uranus.chrysocome.net/linux/explore2fs.htm</li>
+      <li>Dành cho Windows NT, Windows 2000 và Windows XP</li>
+      </ul>
+    </li>
+
+    <li><strong>ext2fsd</strong>
+      <ul>
+      <li>Trang chủ: http://ext2fsd.sourceforge.net</li>
+      <li>Dành cho Windows NT, Windows 2000 và Windows XP</li>
+      </ul>
+    </li>
+    <li><strong>winext2fsd</strong>
+      <ul>
+      <li>Trang chủ: http://sourceforge.net/projects/winext2fsd</li>
+      <li>Chạy với Windows NT và XP, có lẽ cũng sẽ chạy với Windows 2000</li>
+      </ul>
+    </li>
+    <li><strong>ext2forxp</strong>
+      <ul>
+      <li>Trang chủ: http://sourceforge.net/projects/ext2forxp</li>
+      <li>Chưa sẵn sàng (4/6/2003)</li>
+      </ul>
+    </li>
+    <li><strong>vmware</strong>
+      <ul>
+      <li>Trang chủ: http://www.vmware.com
+      </li><li>VMWare cho phép
+        bạn chạy một hệ điều hành trong một hệ điều
+        hành khác. Do đó bạn có thể chạy
+        Windows trong Linux và ghi vào NTFS một cách
+        tự nhiên và an toàn như thể bạn đang chạy
+        Windows, nhưng giải pháp này khá đắt tiền.
+      </li>
+      </ul>
+    </li>
+    </ul>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.3"></a>
+    <h3>3.3 Linux hỗ trợ các tính năng nào của NTFS?</h3>
+
+    <p>
+    NTFS hỗ trợ khá nhiều tính năng, nhưng chỉ có
+    một số ít được driver NTFS cho Linux hỗ trợ.
+    </p>
+
+    <p>
+    Driver NTFS cho Linux hỗ trợ tên tập tin với mã Unicode
+    (chuyển thành utf8 hoặc một local codepage), các
+    tập tin nén và sparse file.
+    </p>
+
+    <p>
+    Tuy vậy, driver không thể đọc các tập tin bị mã
+    hoá, driver cũng bỏ qua các thông tin về bảo
+    mật của Windows, và bỏ qua hạn ngạch đĩa (quota)
+    của Windows.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.4"></a>
+    <h3>3.4 Tôi nên làm gì khi gặp sự cố?</h3>
+
+    <p>
+    Driver NTFS cho Linux khá an toàn khi chỉ đọc, nhưng
+    không thể kiểm tra hết mọi tình huống. Nếu
+    bạn gặp sự cố, xin giúp chúng tôi xác
+    định và sửa lỗi đó.
+    </p>
+
+    <p>
+    Xin gởi email cho nhóm phát triển tại địa chỉ
+    linux-ntfs-dev@list.sourceforge.net
+    và cho biết bạn đang dùng phiên bản nào
+    của driver, phiên bản Linux (<b>uname -a</b>)
+    và phiên bản của NTFS (Win NT, 2K hay XP).
+    </p>
+
+    <p>
+    Xin gởi cả các log (/var/log/messages) nếu bạn thấy hữu
+    ích.
+    </p>
+
+    <p>
+    Xin cảm ơn.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.5"></a>
+    <h3>3.5 Làm sao để Linux hỗ trợ NTFS?</h3>
+
+    <p>
+    Hầu hết người dùng không phải biên dịch lại
+    chương trình nào cả. Hầu hết các bản
+    phân phối Linux (trừ Red Hat) đều gồm sẵn hỗ trợ
+    NTFS.
+    </p>
+
+    <p>
+    Nếu bạn sử dụng Red Hat 9 (Shrike), 8.0 (Psyche) hay 7.3
+    (Valhalla), bạn chỉ cần
+    <a href="../rpm/index.html">cài đặt gói rpm</a>
+    để có hỗ trợ NTFS.  Gói
+    rpm bao gồm cả hướng dẫn chi tiết bên trong.
+    </p>
+
+    <p>
+    Nếu bạn dùng các phiên bản Red Hat cũ hơn, hay
+    các bản phân phối khác không có
+    sẵn hỗ trợ NTFS, bạn phải tự biên dịch nhân
+    Linux. Nghe thì có vẻ phức tạp, nhưng thật ra
+    thì không khó. Bạn có thể xem
+    <a href="compile.html">ở đây</a>
+    để biết chi tiết.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.6"></a>
+    <h3>3.6 Phiên bản nào là tốt nhất?</h3>
+
+    <p>
+    Phiên bản mới của driver tốt hơn phiên bản nguyên
+    thủy, nhanh hon, ít lỗi hơn và dùng an toàn
+    cho các hệ thống nhiều bộ xử lý (SMP). Driver
+    mới có trong nhân 2.5.11 trở đi, và một
+    <a href="../downloads.html">bản cải tiến (patch)</a>
+    đã được phát triển để thêm
+    driver này vào nhân 2.4
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.7"></a>
+    <h3>3.7 Còn những công cụ hỗ trợ nào nữa?</h3>
+
+    <p>
+    Hiện tại chỉ có một vài công cụ dành
+    cho các nhà phát triển. Có thể xem
+    <a href="../status.html">danh sách các công cụ</a>
+    chúng tôi có ở đây.
+    </p>
+
+    <p>
+    Thường thì các phát triển cho phép ghi vào
+    NTFS được ưu tiên hơn.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.8"></a>
+    <h3>3.8 Driver hỗ trợ NTFS cho Linux đã được phát triển như thế nào?</h3>
+
+    <p>
+    Microsoft không tiết lộ bất cứ tài liệu gì về
+    thiết kế của NTFS, vì vậy chúng tôi phải
+    tìm cách giải mã hệ thống tập tin này.
+    Phương pháp đại khái như sau:
+    </p>
+
+    <ol>
+      <li>Xem volume bằng một trình xử lý mã lục thập phân (hex editor)</li>
+      <li>Thực hiện một số tác vụ, như là tạo tập tin</li>
+      <li>Dùng trình xử lý mã lục thập phân để xem các thay đổi</li>
+      <li>Phân loại và lập tài liệu cho các thay đổi</li>
+      <li>Lặp lại mãi các bước 1-4</li>
+    </ol>
+
+    <p>
+    Nếu bạn thấy quy trình này có vẻ tốn công
+    thì bạn có thể hiểu công việc này
+    khó khăn tới mức nào. Chúng tôi giờ
+    đã hiểu khá nhiều về NTFS và chúng
+    tôi đã lập tài liệu về nó cho mọi
+    người có thể sử dụng tại:
+    <a href="../ntfs/index.html">../ntfs/index.html</a>
+    </p>
+
+    <p>
+    Việc viết driver đơn giản hơn nhiều so với việc thu thập
+    thông tin.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.9"></a>
+    <h3>3.9 Ghi công</h3>
+
+    <p>
+    Xin cảm ơn Martin von Löwis đã tạo ra driver NTFS nguyên
+    thủy vào năm 1995. Driver này đã được
+    thêm vào nhân Linux vào tháng 12/1997
+    (2.1.74). Những người sau đây đã giúp anh:
+    </p>
+
+    <p class="quote">
+    Albert&nbsp;Cahalan, Anton&nbsp;Altaparmakov, Damon&nbsp;Casale,
+    David&nbsp;Dillard, Domagoj&nbsp;Pensa, Joseph&nbsp;Malicki,
+    Matthew&nbsp;Fanto, Olof&nbsp;Wolgast, Rani&nbsp;Assaf,
+    Régis&nbsp;Duchesne, Richard&nbsp;Russon, Steve&nbsp;Dodd,
+    Werner&nbsp;Seiler.
+    </p>
+
+    <p>
+    Xin cảm ơn Anton&nbsp;Altaparmakov. Sự nhiệt tình của anh đã
+    giúp duy trì chương trình này. Vào
+    lúc mà chương trình này bị bỏ dở,
+    anh đã tiếp nhận và ổn định phần mã.
+    Anh tiếp tục viết lại mã của driver từ đầu để
+    có một nền tảng tốt hơn cho việc hỗ trợ ghi vào
+    NTFS. Những người sau đây đã giúp anh:
+    </p>
+
+    <p class="quote">
+    Pawel&nbsp;Kot, Richard&nbsp;Russon.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.0"></a>
+    <h2>4. Mount các NTFS volumes</h2>
+
+    <a name="4.1"></a>
+    <h3>4.1 Tôi có thể mount một NTFS volume không?</h3>
+
+    <p>
+    Tất nhiên là được. Driver có thể đọc mọi
+    phiên bản của NTFS, nhưng chỉ đọc mà thôi.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.2"></a>
+    <h3>4.2 Driver hỗ trợ NTFS cho Linux có an toàn không?</h3>
+
+    <p>
+    Nói chung thì khi chỉ đọc thì cả phiên bản
+    nguyên thủy lẫn phiên bản mới đều an toàn.
+    Các driver này <b>không</b> thay đổi gì
+    cả lên hệ thống tập tin NTFS, vì vậy chúng
+    không thể gây bất kỳ hư hỏng nào.
+    </p>
+
+    <p>
+    Thêm vào đó, phiên bản driver mới an toàn
+    khi dùng với các hệ thống nhiều bộ xử lý
+    (SMP)
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.3"></a>
+    <h3>4.3 Tôi nên dùng partition nào?</h3>
+
+    <p>
+    Trên Linux các đĩa được đặt tên  hda, hdb cho hai ổ
+    đĩa đầu tiên trên kênh IDE đầu tiên,
+    và hdc, hdd cho các ổ đĩa thứ ba và thứ
+    tư. Các đĩa SCSI được đặt tên sda, sdb, v.v...
+    theo thứ tự chúng được hệ thống nhận diện.
+    </p>
+
+    <p>
+    Có một cách đơn giản để tìm các NTFS
+    volume là sử dụng
+    </p>
+
+    <pre class="command">    <b>fdisk -l</b>
+    </pre>
+
+    <p>
+    Bạn sẽ nhận được kết xuất đại khái như sau:
+    </p>
+
+    <pre class="command">    Disk /dev/hda: 64 heads, 63 sectors, 4465 cylinders
+    Units = cylinders of 4032 * 512 bytes
+
+       Device Boot    Start       End    Blocks   Id  System
+       /dev/hda1             1      2125   4283968+  07  NTFS/HPFS
+       /dev/hda2          2126     19851  35735616   0f  Win95 Ext'd (LBA)
+       /dev/hda5   *      2126      4209   4201312+  83  Linux
+       /dev/hda6          4210      4465    516064+  82  Linux swap
+    </pre>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.4"></a>
+    <h3>4.4 Tôi đang dùng phiên bản nào của NTFS driver?</h3>
+
+    <p>
+    Nếu bạn dùng nhân Linux 2.4.*, hay 2.5.0 – 2.5.10, bạn
+    có thể đang dùng driver NTFS cho Linux phiên
+    bản nguyên thủy. Nếu bạn dùng nhân 2.5.11
+    hay mới hơn, bạn có thể đang dùng phiên
+    bản mới của driver NTFS cho Linux.
+    </p>
+
+    <p>
+    Tốt hơn là kiểm tra bằng cách nhìn vào
+    kernel log để tìm các NTFS log message. Sử dụng
+    một trong hai lệnh sau đây (bạn có thể phải
+    là root để xem được các log).
+    </p>
+
+    <pre class="command">    <b>dmesg | grep -i ntfs</b>
+    <b>grep -i ntfs /var/log/messages</b>
+    </pre>
+
+    <p>
+    Phiên bản nguyên thủy của driver là phiên bản
+    1.1.*, trong khi các phiên bản mới của driver có
+    số phiên bản 2.*.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.5"></a>
+    <h3>4.5 Làm sao để mount một NTFS volume?</h3>
+
+    <p>
+    Đầu tiên nên kiểm tra xem nhân Linux của bạn có
+    hiểu NTFS không. Lệnh dưới đây sẽ cho một
+    danh sách các hệ thống tập tin mà Linux
+    hiểu được. Nếu bạn thấy <q>ntfs</q> thì nhân
+    Linux của bạn hiểu NTFS. Ngoài ra, bạn nên đọc
+    manual của lệnh mount, <q>man 8 mount</q>.
+    </p>
+
+    <pre class="command">    <b>cat /proc/filesystems</b>
+    </pre>
+
+    <p>
+    Tiếp theo bạn cần tạo một chỗ để mount NTFS volume vào.
+    Xong, bạn có thể mount nó vào.
+    </p>
+
+    <pre class="command">    <b>mkdir /mnt/windows</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+    </pre>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    Để thay đổi quyền truy cập trên hệ thống tập tin đã
+    mount, xem các tùy chọn <q>umask</q> tại
+    <a href="ntfs-vi.html#4.6">phần 4.6</a>.  Nếu bạn muốn mount tự động lúc
+    khởi động, xem <a href="ntfs-vi.html#4.10">phần 4.10</a>.
+    </p>
+
+    <p>
+    Bạn có thể unmount bằng <b>một trong hai</b> lệnh sau đây:
+    </p>
+
+    <pre class="command">    <b>umount /mnt/windows</b>
+    <b>umount /dev/hda1</b>
+    </pre>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    Chú ý là lệnh <q>umount</q> chỉ có một chữ
+    'n'.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.6"></a>
+    <h3>4.6 Các tùy chọn thông dụng của lệnh mount</h3>
+
+    <p>
+    Các tùy chọn sau đây thông dụng cho cả hai
+    phiên bản của driver.  Bạn nên đọc man page của
+    lệnh mount. Dạng thức thông thường của lệnh mount
+    như sau:
+    </p>
+
+    <pre class="command">    mount device directory [options]
+    </pre>
+
+    <p>
+    Các tùy chọn cho phần <q>-o option</q> có
+    thể thêm vào đơn lẻ,
+    hay cùng lúc cách nhau bằng dấu phẩy. Hai
+    lệnh sau đây là tương đương:
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -o X -o Y -o Z</b>
+    <b>mount /dev/hda1 /mnt/windows -o X,Y,Z</b>
+    </pre>
+
+    <dl>
+      <dt>-t ntfs</dt>
+      <dd>
+      Cho lệnh mount biết hệ thống tập tin muốn mount. Tùy
+      chọn này không cần thiết vì lệnh mount
+      biết cách nhận dạng hầu hết các dạng hệ
+      thống tập tin.
+      </dd>
+
+      <dt>-r</dt>
+      <dd>
+      Mount chỉ đọc. Mount thường tìm cách mount một
+      volume cho phép đọc và ghi, trừ khi chỉ định
+      rõ.
+      </dd>
+
+      <dt>-o ro</dt>
+      <dd>
+      Tùy chọn này tương tự như <q>-r</q>.
+      </dd>
+
+      <dt>-o umask={VALUE}</dt>
+      <dd>
+      Quyền truy cập mặc nhiên gán cho NTFS volume được
+      mount là rwx------ vì
+      lý do bảo mật. Tham số umask kiểm soát quyền
+      truy cập vào các tập tin và thư mục. Xem
+      <a href="ntfs-vi.html#4.9">phần 4.9</a> để biết thêm chi tiết.
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b>
+    </pre>
+      </dd>
+
+      <dt>-o uid={USERID}</dt>
+      <dd>
+      Mặc nhiên các tập tin trên NTFS volume mount vào
+      sẽ có chủ sở hữu là root. Bạn có thể
+      gán lại quyền sở hữu bằng tham số <b>uid</b>.
+      USERID có thể là tên bất kỳ trong
+      /etc/passwd, hay bất kỳ số nào biểu thị cho một
+      user id.
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=flatcap</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=500</b>
+    </pre>
+      </dd>
+
+      <dt>-o gid={GROUPID}</dt>
+      <dd>
+      Mặc nhiên tất cả các tập tin trên NTFS volume
+      mount vào sẽ có nhóm sở hữu là
+      root. Bạn có thể gán lại quyền sở hữu cho
+      nhóm khác bằng tham số <b>gid</b>. GROUPID có
+      thể là tên nhóm bất kỳ trong /etc/group,
+      hoặc số bất kỳ biểu thị cho một group id.
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=winusers</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=520</b>
+    </pre>
+      </dd>
+
+    </dl>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.7"></a>
+    <h3>4.7 Các tùy chọn cho driver nguyên thủy</h3>
+
+    <p>
+    Để biết bạn đang dùng driver nào, xem phần 4.4.
+    Phần này bàn về các tùy chọn cho
+    phiên bản nguyên thủy của driver mà thôi.
+    Các tùy chọn thông dụng đã được
+    bàn tại <a href="ntfs-vi.html#4.6">phần 4.6</a>.
+    </p>
+
+    <p>
+    Một số tùy chọn có dạng <q>true</q> hay <q>false</q><br>
+    Bạn có thể thay <q>true</q> với <q>yes</q> hay <q>1</q>.<br>
+    Bạn có thể thay <q>false</q> với <q>no</q> hay <q>0</q>.
+    </p>
+
+    <dl>
+      <dt>-o iocharset={NAME}</dt>
+      <dd>
+        <p>
+        NTFS lưu tên các tập tin và thư mục bằng mã
+        Unicode. Mã này có thể thể hiện bất kỳ
+        ký tự nào của bất kỳ ngôn ngữ nào.
+        Mặc nhiên driver NTFS cho Linux chuyển đổi  các
+        tên này sang mã ASCII. Cách này
+        dùng được cho một số người nhưng có thể
+        không tốt nếu ngôn ngữ của bạn có những
+        ký tự đặc biệt.
+        </p>
+
+        <p>
+        NLS (Native Language Support) kiểm soát cách hiển thị
+        các ký tự. Bạn có thể chọn <b>utf8</b>,
+        giống như Unicode, có thể hiển thị mọi ký
+        tự, hoặc chọn trang mã riêng của bạn, ví
+        dụ iso8859-1 (Tây Âu), iso8859-2 (Trung Âu),
+        gb2312 (tiếng Hoa giản lược), iso8859-8 (Hebrew). Dưới đây
+        là một số ví dụ về lệnh mount:
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=utf8</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=iso8859-2</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=gb2312</b>
+    </pre>
+      </dd>
+
+      <dt>utf8=true</dt>
+      <dd>
+        <p>
+        Nếu nhân Linux của bạn không hỗ trợ utf8, bạn có
+        thể dùng tùy chọn này để làm việc
+        với hỗ trợ utf8 từ driver NTFS. Bạn cần dùng <q>-o iocharset=utf8</q>
+        bất cứ khi nào cần:
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o utf8=true</b>
+    </pre>
+      </dd>
+
+      <dt>-o posix={BOOL}</dt>
+      <dd>
+        <p>
+        Windows bảo toàn chữ in hoa hay chữ thường trong tên
+        tập tin, nhưng Windows không phân biệt chúng
+        khi đọc. Vì vậy bạn có thể tạo một tập
+        tin tên <q>MyFileName</q> và mở nó ra bằng
+        cách yêu cầu tập tin tên <q>mYfiLEname</q>.
+        </p>
+
+        <p>
+        Mặc nhiên thì Linux phân biệt chữ in hoa và
+        chữ thường, <q>MyFile</q>, <q>MYFILE</q>, và <q>myfile</q>
+        là các tên tập tin khác nhau. Nếu bạn
+        muốn Linux xử lý tên tập tin giống Windows cho
+        một NTFS volume, bạn hãy đặt tùy chọn posix về
+        giá trị <q>true</q>. Đặt tùy chọn này về
+        <q>false</q> sẽ làm driver ứng xử theo kiểu của
+        Linux.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o posix=true</b>
+    </pre>
+      </dd>
+
+      <dt>-o show_sys_files={BOOL}</dt>
+      <dd>
+        <p>
+        Nếu tùy chọn này được đặt về <q>true</q> thì
+        các metadata của hệ thống tập tin sẽ được hiển
+        thị. Nếu chúng không hiển thị chúng vẫn
+        có thể được liệt ra bằng cách gọi thẳng
+        tên, ví dụ <q>ls -l \$MFT</q>
+        </p>
+
+        <p>
+        <img src="style/red.png" alt="NB" width="16" height="16">
+        Do giới hạn của glibc, <q>$MFT</q> có thể không xuất hiện
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o show_sys_files=true</b>
+    </pre>
+      </dd>
+
+    </dl>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.8"></a>
+    <h3>4.8 Các tùy chọn cho driver mới</h3>
+
+    <p>
+    Để biết bạn đang dùng driver nào, xem
+    <a href="ntfs-vi.html#4.4">phần 4.4</a>.
+    Phần này bàn về các tùy chọn cho
+    phiên bản mới của driver mà thôi. Các
+    tùy chọn thông dụng đã được bàn
+    tại <a href="ntfs-vi.html#4.6">phần 4.6</a>
+    </p>
+
+    <p>
+    Một số tùy chọn có dạng <q>true</q> hay <q>false</q><br>
+    Bạn có thể thay <q>true</q> với <q>yes</q> hay <q>1</q>.<br>
+    Bạn có thể thay <q>false</q> với <q>no</q> hay <q>0</q>.
+    </p>
+
+    <dl>
+      <dt>-o nls={NAME}</dt>
+      <dd>
+        <p>
+        NTFS lưu tên các tập tin và thư mục bằng mã
+        Unicode. Mã này có thể thể hiện bất kỳ
+        ký tự nào của bất kỳ ngôn ngữ nào.
+        Mặc nhiên driver NTFS cho Linux chuyển đổi  các
+        tên này sang mã ASCII. Cách này
+        dùng được cho một số người nhưng có thể
+        không tốt nếu ngôn ngữ của bạn có những
+        ký tự đặc biệt.
+        </p>
+
+        <p>
+        NLS (Native Language Support) kiểm soát cách hiển thị
+        các ký tự. Bạn có thể chọn <b>utf8</b>,
+        giống như Unicode, có thể hiển thị mọi ký
+        tự, hoặc chọn trang mã riêng của bạn, ví
+        dụ iso8859-1 (Tây Âu), iso8859-2 (Trung Âu),
+        gb2312 (tiếng Hoa giản lược), iso8859-8 (Hebrew). Dưới đây
+        là một số ví dụ về lệnh mount:
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=utf8</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=iso8859-2</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=gb2312</b>
+    </pre>
+      </dd>
+
+      <dt>-o fmask={VALUE}</dt>
+      <dt>-o dmask={VALUE}</dt>
+      <dd>
+        <p>
+        Tham số <q>umask</q> thay đổi quyền truy cập cho cả tập tin
+        lẫn thư mục (xem <a href="ntfs-vi.html#4.6">phần 4.6</a>). <q>fmask</q>
+	có tác
+        động trên các tập tin, trong khi <q>dmask</q> tác
+        động trên các thư mục theo cùng một cách.
+        Có thể phối hợp tác dụng của hai tham số
+        này. Ví dụ:
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0222</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o dmask=0222</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0077,dmask=0222</b>
+    </pre>
+      </dd>
+
+      <dt>-o case_sensitive={BOOL}</dt>
+      <dd>
+        <p>
+        Windows bảo toàn chữ in hoa hay chữ thường trong tên
+        tập tin, nhưng Windows không phân biệt chúng
+        khi đọc. Vì vậy bạn có thể tạo một tập
+        tin tên <q>MyFileName</q> và mở nó ra bằng
+        cách yêu cầu tập tin tên <q>mYfiLEname</q>.
+        </p>
+
+        <p>
+        Mặc nhiên thì Linux phân biệt chữ in hoa và
+        chữ thường, <q>MyFile</q>, <q>MYFILE</q>, và <q>myfile</q>
+        là các tên tập tin khác nhau. Nếu bạn
+        muốn Linux xử lý tên tập tin giống Windows cho
+        một NTFS volume, bạn hãy đặt tùy chọn
+        case_sensitive về giá trị <q>false</q>. Đặt tùy
+        chọn này về <q>true</q> sẽ làm driver ứng xử
+        theo kiểu của Linux.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=true</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=false</b>
+    </pre>
+      </dd>
+
+      <dt>-o sloppy={BOOL}</dt>
+      <dd>
+        <p>
+        Mặc nhiên thì driver sẽ từ chối mount nếu bất kỳ
+        tùy chọn nào được khai báo không
+        chính xác. Bằng cách thêm tham số
+        sloppy, bạn có thể làm driver bỏ qua các
+        tùy chọn không chính xác.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=true</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=false</b>
+    </pre>
+      </dd>
+
+      <dt>-o errors={VALUE}</dt>
+      <dd>
+        <p>
+        Tham số này kiểm soát cách mà driver phản
+        ứng với các lỗi. Mặc nhiên là thử lại
+        và tiếp tục (VALUE=<b>continue</b>).
+        Các sai lỗi sẽ được đánh dấu và tìm
+        cách <q>đi vòng</q>. Cách khác là
+        yêu cầu driver thử lại và khôi phục
+        (VALUE=<b>recover</b>). Hiện nay
+        driver chỉ có thể khôi phục bằng cách
+        thay thế boot sector với bản sao lưu dự phòng.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=continue</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=recover</b>
+    </pre>
+      </dd>
+
+    </dl>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <a name="4.9"></a>
+    <h3>4.9 Làm sao để thay đổi quyền truy cập của một NTFS volume?</h3>
+
+    <p>
+    Có 3 tùy chọn để kiểm soát quyền truy cập và
+    quyền sở hữu của các tập tin và thư mục,
+    đó là <q>umask</q>, <q>uid</q> và <q>gid</q>, xem
+    <a href="ntfs-vi.html#4.6">phần 4.6</a> Các tùy chọn thông dụng
+    của lệnh mount.
+    </p>
+
+    <p>
+    Dưới đây là vài ví dụ cho mỗi tùy
+    chọn và cách mà chúng ảnh hưởng
+    đến các tập tin. Ta sẽ dùng cùng một
+    lệnh mount và chỉ chú ý vào phần
+    tùy chọn.
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+    </pre>
+
+    <p>
+    <q>umask</q> là một bộ lọc quyền truy cập, làm việc theo
+    cách ngược lại với chmod. Toàn quyền tương
+    ứng với 777 (rwxrwxrwx). Umask 0222 (-w—w—w-) và 555
+    (r-xr-xr-x)
+    </p>
+
+    <p>
+    Mặc nhiên thì umask được gán 0077 vì lý
+    do bảo mật.
+    </p>
+
+    <pre class="command">    <b>mount ... -o umask=0277</b>
+
+    -r-x------ 1 root    root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <pre class="command">    <b>mount ... -o umask=0222</b>
+
+    -r-xr-xr-x 1 root    root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <p>
+    Cho tới đây các tập tin vẫn có người và
+    nhóm sở hữu là root. Tiếp theo ta sẽ thử tham
+    số uid và gid.
+    </p>
+
+    <pre class="command">    <b>mount ... -o uid=flatcap</b>
+
+    -r-x------ 1 flatcap root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <pre class="command">    <b>mount ... -o gid=winuser</b>
+
+    -r-x------ 1 root    winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <pre class="command">    <b>mount ... -o uid=flatcap,gid=winuser</b>
+
+    -r-x------ 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <p>
+    Cuối cùng, kết hợp vài tham số với nhau để có
+    kết quả như mong muốn. Dưới đây ta cho <q>flatcap</q>
+    toàn quyền, nhóm <q>winuser</q> có quyền đọc
+    và các user khác không được truy cập.
+    </p>
+
+    <pre class="command">    <b>mount ... -o umask=0027,uid=flatcap,gid=winuser</b>
+
+    -rwxr-x--- 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.10"></a>
+    <h3>4.10 Làm sao để mount  một NTFS volume một cách tự động?</h3>
+
+    <p>
+    Một khi bạn đã quen thuộc với lệnh mount, bạn có
+    thể chỉ định Linux tự động mount NTFS bằng cách
+    thêm một dòng vào tập tin <q>/etc/fstab</q>
+    (<b>f</b>ile<b>s</b>ystem <b>tab</b>le)
+    </p>
+
+    <p>
+    Dưới đây là vài ví dụ về lệnh mount và
+    lệnh tương đương của nó dùng trong tập tin
+    fstab.
+    </p>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    Đừng quan tâm về ý nghĩa của <q>0 0</q> ở cuối dòng
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+
+    /dev/hda1 /mnt/windows ntfs ro                                    0 0
+    </pre>
+
+    <p>
+    Bây giờ ta chuyển đổi <q>-r</q> thành <q>-o ro</q> tương đương:
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b>
+
+    /dev/hda1 /mnt/windows ntfs ro,umask=0222                         0 0
+    </pre>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222,uid=flatcap,gid=winuser</b>
+
+    /dev/hda1 /mnt/windows ntfs ro,umask=0222,uid=flatcap,gid=winuser 0 0
+    </pre>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="5.0"></a>
+    <h2>5. Boot vào hệ điều hành trên NTFS</h2>
+
+    <a name="5.1"></a>
+    <h3>5.1 Tôi có thể boot Windows trên một NTFS volume không?</h3>
+
+    <p>
+    Được, cả grub và lilo đều có thể boot Windows từ một
+    NTFS volume. Thật ra thì Linux boot loader tìm NTFS
+    boot loader và chuyển điều khiển cho nó.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="5.2"></a>
+    <h3>5.2 Dùng LILO như thế nào?</h3>
+
+    <p>
+    Thêm phần này vào /etc/lilo.conf rồi chạy lilo
+    </p>
+
+    <pre class="command">    other = /dev/hda1
+        table = /dev/hda
+        label = Windows
+    </pre>
+
+    <p>
+    Mục <q>other</q> chỉ vào partition có chứa Windows và
+    mục <q>table</q> chỉ vào bảng partition của đĩa đó.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="5.3"></a>
+    <h3>5.3 Dùng GRUB thì phải làm sao?</h3>
+
+    <p>
+    Thêm phần này vào /boot/grub/grub.conf
+    </p>
+
+    <pre class="command">    title Windows
+        root (hd0,0)
+        makeactive
+        chainloader +1
+    </pre>
+
+    <p>
+    Dùng cách đánh số đĩa của grub: /dev/hda tương ứng
+    với hd0, hdb tương ứng với hd1, v.v... Các partition
+    được đánh số từ số không (zero). Vì
+    vậy, hda1 tương ứng với hd0,0, hdc4 tương ứng với hd2,3
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="6.0"></a>
+    <h2>6. Về các bản phân phối Linux khác nhau</h2>
+
+    <a name="6.1"></a>
+    <h3>6.1 Bản phân phối nào hỗ trợ sẵn NTFS?</h3>
+
+    <p>
+    Đó là các bản <a href="http://www.mandrake.com/">Mandrake</a>,
+    <a href="http://www.debian.org/">Debian</a>, <a href="http://www.suse.com/">SuSE</a>,
+    <a href="http://www.gentoo.org/">Gentoo</a>
+    và <a href="http://www.caldera.com/">Caldera</a>
+    </p>
+
+    <p>
+    Thật ra nếu bản phân phối đó không phải là
+    Red Hat thì nó sẽ hỗ trợ NTFS.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="6.2"></a>
+    <h3>6.2 Vì sao Red Hat không hỗ trợ NTFS?</h3>
+
+    <p>
+    Tôi cũng rất muốn biết. Tin đồn nói rằng do vấn đề
+    luật pháp.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="6.3"></a>
+    <h3>6.3 Vì sao Red Hat bị khóa khi truy cập vào NTFS volume?</h3>
+
+    <p>
+    Kiểm tra phiên bản của nhân Linux bạn đang sử dụng
+    bằng lệnh <q>uname -a</q>.
+    Nếu phiên bản 2.4.9 thì bạn cần phải cập
+    nhật nhân Linux. Xem
+    <a href="http://www.redhat.com/">trang web của Red Hat</a>
+    để biết thêm chi tiết.
+    </p>
+
+    <p>
+    Nếu thích bạn có thể tự biên dịch lại nhân
+    Linux cho mình. Xem <a href="ntfs-vi.html#3.5">phần 3.5</a>
+    Làm sao để Linux hỗ trợ NTFS?
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="6.4"></a>
+    <h3>6.4 Có bản phân phối Linux nào cài Linux vào NTFS không?</h3>
+
+    <p>
+    Không nhiều. <a href="http://phatlinux.com/">Phat Linux</a> có thể
+    cài vào một FAT partition trong Windows, rồi boot
+    từ các tập tin bên trong Windows. Driver NTFS mới
+    hỗ trợ gần như đầy đủ cho bản phân phối này
+    dùng NTFS.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.0"></a>
+    <h2>7. Driver NTFS mới cho Linux</h2>
+
+    <a name="7.1"></a>
+    <h3>7.1 Driver NTFS mới cho Linux là cái chi?</h3>
+
+    <p>
+    Đó là bản driver được viết lại hoàn toàn
+    mới. Phiên bản nguyên thủy đã được viết
+    từ nhiều năm trước. Thoạt đầu chúng ta chỉ biết
+    chút ít về NTFS hay Linux, làm cho mã
+    nguồn ngày càng trở nên khó sửa
+    chữa.
+    </p>
+
+    <p>
+    Chúng tôi đã viết lại một driver mới, dựa trên
+    những kiến thức mới thu thập được. Driver mới này
+    đơn giản hơn nhiều, nhanh hơn và dễ sửa chữa
+    phát triển hơn.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.2"></a>
+    <h3>7.2 Tôi có cần dùng driver mới không?</h3>
+
+    <p>
+    Không, bạn đã có một driver NTFS ngay trong nhân
+    Linux hiện hành, vì vậy bạn không cần
+    dùng bản driver mới này. Phiên bản driver
+    nguyên thủy dù xưa cũ, vẫn đủ tin cậy để
+    dùng.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.3"></a>
+    <h3>7.3 Làm sao để dùng driver mới?</h3>
+
+    <p>
+    Chúng tôi phát hành phiên bản driver mới như
+    là một
+    <a href="../downloads.html">bản cải tiến (patch)</a>
+    cho mã nguồn của bản
+    <a href="http://www.kernel.org/pub/linux/kernel/v2.4/">nhân Linux chính thức</a>.
+    </p>
+
+    <p>
+    <a href="../downloads.html">../downloads.html</a>
+    <br>
+    <a href="http://www.kernel.org/pub/linux/kernel/v2.4/" target="_blank">http://www.kernel.org/pub/linux/kernel/v2.4/</a>
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.4"></a>
+    <h3>7.4 Bản cải tiến (patch) là gì?</h3>
+
+    <p>
+    Bản cải tiến (patch) là một bộ các thay đổi cho
+    một bộ các tập tin dạng văn bản. Do chúng
+    tôi chỉ thay đổi các mã NTFS nên sẽ
+    không hiệu quả để phát hành toàn bộ
+    mã của hạt nhân Linux mỗi khi cải tiến. Chúng
+    tôi viết bản cải tiến (patch) cho các release
+    chính thức của hạt nhân Linux.
+    </p>
+
+    <p>
+    Một khi bạn đã mở gói nguồn, hãy đổi vào
+    thư mục chứa mã nguồn và dùng lệnh sau
+    đây (đổi đường dẫn  nếu cần):
+    </p>
+
+    <pre class="command">    <b>patch -p1 &lt; path/to/patchname</b>
+    </pre>
+
+    <p>
+    Lệnh này sẽ thay đổi mã nguồn. Bạn cần kiểm tra
+    để bảo đảm không có lỗi. Xong biên dịch
+    lại hạt nhân như bình thường. Các hướng
+    dẫn để làm việc này có thể tìm
+    thấy đâu đó  trong các FAQ
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.5"></a>
+    <h3>7.5 Nếu tôi vẫn không hiểu thì phải làm sao?</h3>
+
+    <p>
+    Chúng tôi cố gắng giúp mọi người trong khả năng
+    của chúng tôi, nhưng thời gian của chúng
+    tôi có hạn. Có vài trang web có
+    thể giúp bạn hiểu cơ bản về Linux. Ngoài ra,
+    bạn có thể tìm các Nhóm người dùng
+    Linux gần chỗ bạn.
+    </p>
+
+    <ul>
+  <li>Just Linux - http://www.justlinux.com</li>
+  <li>The Linux Documentation Project - http://tldp.org</li>
+  <li>The Linux Kernel HOWTO - http://tldp.org/HOWTO/Kernel-HOWTO.html</li>
+  <li>Linux User Groups - http://www.linux.org/groups/index.html</li>
+    </ul>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.6"></a>
+    <h3>7.6 Khi nào thì nhân Linux mới sẽ chứa các phát triển này?</h3>
+
+    <p>
+    Có hai nhân Linux để xem xét. Mã của phát
+    triển mới đã được thêm vào trong nhân
+    Linux đang được phát triển. Nó đã được
+    thêm vào từ phiên bản 2.5.11
+    </p>
+
+    <p>
+    Phiên bản ổn định của nhân Linux, hiện đang là
+    2.4.20, vẫn chứa phiên bản cũ của driver.  Mặc dù
+    chúng tôi cho rằng phiên bản mới đã
+    ổn định, chúng ta vẫn phải thuyết phục các
+    Ngài quản lý hạt nhân rằng nó tốt
+    thật sự.
+    </p>
+
+    <p>
+    Cho đến khi phiên bản mới được kết hợp vào
+    nhân Linux, chúng tôi vẫn tiếp tục phát
+    hành các bản cải tiến dưới dạng patch.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.7"></a>
+    <h3>7.7 Không thể viết các wrapper cho các driver của Windows sao?</h3>
+
+    <p>
+    Nghe thì có vẻ là ý kiến hay, nhưng có
+    nhiều vấn đề khó giải quyết.
+    </p>
+
+    <p>
+    Vấn đề kỹ thuật lớn nhất là liên kết các
+    thư viện liên kết động DLL của Widnows vào
+    Linux VFS. Có thể làm được, nhưng sẽ không
+    hay lắm. Nó sẽ phải chạy như là một phần
+    của hạt nhân, điều đó có nghĩa là
+    nếu nó có vấn đề thì cả hệ thống sẽ
+    bị sụp. Vì không có mã nguồn chúng
+    ta khó có thể giải quyết vấn đề một cách
+    ổn thoả.
+    </p>
+
+    <p>
+    Vấn đề tiếp theo là tính tương thích. Chúng
+    ta sẽ dùng phiên bản nào của hệ thống
+    tập tin của Windows? Nếu chỉ chọn một sẽ làm cho
+    bản driver không thể được ứng dụng rộng rãi,
+    còn làm cho bản wrapper tương hợp với tất cả
+    sẽ là một cơn ác mộng về lập trình!
+    </p>
+
+    <p>
+    Tệ hơn nữa, các ràng buộc về luật pháp khi
+    phân phối hệ thống Windows có thể gây rắc
+    rối. Ngoài ra bản chất độc quyền của loại
+    driver này sẽ đồng nghĩa với việc các nhà
+    lập trình hạt nhân sẽ không điều tra các
+    sự cố ai đó sẽ gặp khi dùng driver này.
+    </p>
+
+    <p><a href="ntfs-vi.html#top">Về đầu trang</a></p>
+
+    <table summary="" border="0" cellspacing="0" width="100%">
+      <tbody><tr>
+	<td class="copyright" width="99%">Copyright &copy; flatcap (Richard Russon)</td>
+        <td valign="bottom" width="88"><a href="http://sourceforge.net/"><img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://validator.w3.org/check?uri=referer"><img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://jigsaw.w3.org/css-validator/check/referer"><img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31"></a></td>
+      </tr>
+    </tbody></table>
+  
+
+</body></html>

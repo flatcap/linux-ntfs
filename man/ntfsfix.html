@@ -1,0 +1,92 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>ntfsfix.8</title>
+<link rel="stylesheet" href="info.css" type="text/css">
+<link rel="icon" href="ntfsicon.png" type="image/png">
+</head><body class="ntfsdoc"><a name="top"></a>
+<!-- .\"                                      Hey, EMACS: -*- nroff -*- -->
+<!-- .\" First parameter, NAME, should be all caps -->
+<!-- .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection -->
+<!-- .\" other parameters are allowed: see man(7), man(1) -->
+<!-- .TH NTFSFIX 8 "July 2005" "ntfsprogs version 1.12.2-WIP" -->
+<hr>
+<h1><a href="..">Linux NTFS</a> - NTFSFIX (8)</h1>
+<hr>
+<!-- .\" Please adjust this date whenever revising the manpage. -->
+<!-- .\" -->
+<!-- .\" Some roff macros, for reference: -->
+<!-- .\" .nh        disable hyphenation -->
+<!-- .\" .hy        enable hyphenation -->
+<!-- .\" .ad l      left justify -->
+<!-- .\" .ad b      justify to both left and right margins -->
+<!-- .\" .nf        disable filling -->
+<!-- .\" .fi        enable filling -->
+<!-- .\" .br        insert line break -->
+<!-- .\" .sp <n> insert n+1 empty lines -->
+<!-- .\" for manpage-specific macros, see man(7) -->
+<!-- .SH NAME -->
+<a name="0"></a>
+
+     <h2>NAME</h2>
+
+<blockquote>
+ntfsfix - fix common errors and force Windows to check NTFS
+<!-- .SH SYNOPSIS -->
+</blockquote>
+<a name="1"></a>
+
+     <h2>SYNOPSIS</h2>
+
+<blockquote>
+<!-- .B ntfsfix -->
+<b>ntfsfix</b> <!-- .I device -->
+<i>device</i> <!-- .SH DESCRIPTION -->
+</blockquote>
+<a name="2"></a>
+
+     <h2>DESCRIPTION</h2>
+
+<blockquote>
+<b>ntfsfix</b> is a utility that fixes some common NTFS problems.
+<b>ntfsfix</b> is <b>NOT</b> a Linux
+version of chkdsk. It only repairs some fundamental NTFS inconsistencies,
+resets the NTFS journal file and schedules an NTFS consistency check for
+the first boot into Windows.
+<!-- .sp -->
+<p>
+You may run
+<!-- .B ntfsfix  -->
+<b>ntfsfix</b> on an NTFS volume if you think it’s damaged and it can’t be mounted.
+<!-- .SH AUTHOR -->
+</p></blockquote>
+<a name="3"></a>
+
+     <h2>AUTHOR</h2>
+
+<blockquote>
+The original ntfsfix manual page was written by David Martínez Moreno
+ender@debian.org and rewritten
+by Szabolcs Szakacsits to reflect the current role of
+<!-- .B ntfsfix. -->
+<b>ntfsfix.</b> <!-- .SH AVAILABILITY -->
+</blockquote>
+<a name="4"></a>
+
+     <h2>AVAILABILITY</h2>
+
+<blockquote>
+<!-- .B ntfsfix -->
+<b>ntfsfix</b> is part of the ntfsprogs package and is available from
+http://linux-ntfs.sourceforge.net
+<!-- .SH SEE ALSO -->
+</blockquote>
+<a name="5"></a>
+
+     <h2>SEE ALSO</h2>
+
+<blockquote>
+<!-- .BR mkntfs (8), -->
+<b><a href="mkntfs.html">mkntfs(8)</a></b>,<!-- .BR ntfsprogs (8) -->
+<b><a href="ntfsprogs.html">ntfsprogs(8)</a></b></blockquote>
+<p></p>
+</body></html>

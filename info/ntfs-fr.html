@@ -1,0 +1,1654 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- ntfs-fr.html -->
+<html lang="fr"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Linux NTFS Project">
+    <meta name="keywords" content="Linux NTFS FAQ HOWTO">
+    <link rel="stylesheet" type="text/css" href="style/info.css">
+    <link rel="icon" href="../style/ntfsicon.png" type="image/png">
+    <title>NTFS FAQ (fr)</title>
+  </head>
+  <body class="ntfsdoc">
+  <a name="top"></a>
+    <h2>NTFS FAQ (Foire Aux Questions)</h2>
+
+    <p>
+    <a href="ntfs.html"><img alt="English" src="style/uk.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-it.html"><img alt="Italian" src="style/italy.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ja.html"><img alt="Japanese" src="style/japan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-vi.html"><img alt="Vietnamese" src="style/vietnam.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-de.html"><img alt="German" src="style/germany.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh.html"><img alt="Simplified Chinese" src="style/china.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-fr.html"><img alt="French" src="style/france.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-es.html"><img alt="Spanish" src="style/spain.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-pt_BR.html"><img alt="Brazilian" src="style/brazil.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-zh_TW.html"><img alt="Traditional Chinese" src="style/taiwan.png" border="0" width="30" height="20"></a>
+    <a href="ntfs-ru.html"><img alt="Russian" src="style/russia.png" border="0" width="30" height="20"></a>
+    </p>
+
+    <p>Cette FAQ est une composante du <a href="../">Projet
+    Linux NTFS</a>.<br>
+    La version à jour peut-être trouvée en-ligne à l'adresse<br>
+    <a href="ntfs.html">ntfs.html</a><br>
+    </p>
+
+    <p>Si vous avez des questions concernant le système de fichiers NTFS
+ qui ne
+    sont pas répondues dans cette FAQ ou désirez nous laisser vos 
+commentaires, n'hésitez pas à me faire parvenir un courriel à l'adresse 
+suivante:
+    <b>linux-ntfs-dev@sourceforge.net</b>
+    </p>
+
+    <h2>Contenu</h2>
+
+    <h3>Code</h3>
+    <p style="margin-left: 2em; margin-bottom: 0px;">
+    <img src="style/blue.png" alt="**" width="16" height="16">&nbsp;-&nbsp;Questions
+    les plus fréquemment posées<br>
+    <img src="style/green.png" alt="!!" width="16" height="16">&nbsp;-&nbsp;Autres
+    informations intéressantes<br>
+    <img src="style/red.png" alt="NB" width="16" height="16">&nbsp;-&nbsp;Informations
+    à lire attentivement
+    </p>
+    <div style="background-color: #DDD; color: #000; max-width: 250px; border: 1px solid black; margin-left: 2em">&nbsp;<b>Commandes</b>  ou résultat de
+      commande</div>
+
+    <h3>1. <a class="heading" href="ntfs-fr.html#1.0">Questions générales sur le système
+    de fichiers NTFS</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-fr.html#1.1">1.1 Qu'est ce que le système de fichiers NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#1.2">1.2 Est-ce que le système de fichiers NTFS est
+        meilleur que FAT/FAT32?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#1.3">1.3 Devrais-je utiliser le système de fichiers NTFS? (Mettre
+        à jour?)</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#1.4">1.4 Est-ce que le système de fichiers NTFS est le
+        même dans chaque version de Windows?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#1.5">1.5 Quelles sont les limites du s</a><a href="ntfs-fr.html#1.4">ystème
+        de fichiers NTFS</a><a href="ntfs-fr.html#1.5">?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>2. <a class="heading" href="ntfs-fr.html#2.0">Volumes NTFS</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-fr.html#2.1">2.1 Comment lire un volume NTFS à partir de Windows 95/98/ME
+        ou du DOS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#2.2">2.2 Comment convertir un volume FAT en un volume NTFS?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#2.3">2.3 Comment convertir un volume NTFS en un volume FAT?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#2.4">2.4 Comment effacer un volume NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#2.5">2.5 Comment défragmenter un volume NTFS?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#2.6">2.6 Comment modifier la grosseur d'</a><a href="ntfs-fr.html#2.5">un
+        volume NTFS?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>3. <a class="heading" href="ntfs-fr.html#3.0">Linux et NTFS</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#3.1">3.1 Quelles versions de NTFS peuvent être lues par Linux?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#3.2">3.2 Est-ce que le <i>driver</i> permet aussi d'écrire
+        sur une partition NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#3.3">3.3 Quelles fonctionnalités de NTFS sont supportées par
+        Linux?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#3.4">3.4 Que faire si des problèmes surgissent?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#3.5">3.5 Comment ajouter le support NTFS à Linux?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#3.6">3.6 Quelle est la meilleure version?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#3.7">3.7 Quels sont les autres outils disponibles?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#3.8">3.8 De quelle manière a été écrit le <i>driver</i> NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#3.9">3.9 Qui doit-on remercier?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>4. <a class="heading" href="ntfs-fr.html#4.0"><i>Monter</i> des Volumes NTFS</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-fr.html#4.1">4.1 Puis-je <i>monter</i>  un volume NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#4.2">4.2 Jusqu'à quel point le <i>driver</i>
+        NTFS est-il sécuritaire?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#4.3">4.3 Quelle partition devrais-je utiliser?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#4.4">4.4 Quelle est la version de mon <i>driver</i> NTFS?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#4.5">4.5 Comment <i>monter</i> un volume NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#4.6">4.6 Options communes de la commande Mount.</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#4.7">4.7 Options exclusives au <i>driver</i> Original.</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#4.8">4.8 </a><a href="ntfs-fr.html#4.7">Options exclusives au Nouveau <i>driver</i>.</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/blue.png" alt="**" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#4.9">4.9 Comment changer les permissions sur un volume NTFS <i>monté</i>?</a></td>
+    </tr>
+    <tr>
+      <td><img src="style/green.png" alt="!!" width="16" height="16"></td>
+      <td><a href="ntfs-fr.html#4.10">4.10 Comment <i>monter </i>des volumes NTFS 
+      automatiquement?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>5. <a class="heading" href="ntfs-fr.html#5.0">Démarrage de systèmes d'exploitation
+    à partir de NTFS</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-fr.html#5.1">5.1 Puis-je démarrer Windows sur un volume NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#5.2">5.2 Comment utiliser lilo?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#5.3">5.3 Comment utiliser grub?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>6. <a class="heading" href="ntfs-fr.html#6.0">Distributions de Linux</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-fr.html#6.1">6.1 Quelles distributions de Linux supportent NTFS de 
+      manière native?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#6.2">6.2 Pourquoi est-ce que RedHat ne supporte pas NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#6.3">6.3 Pourquoi est-ce que la version Linux de RedHat gèle 
+      lorsqu'on accède à un volume NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#6.4">6.4 Y-a-t-il des distributions qui peuvent être 
+      installées sur NTFS?</a></td>
+    </tr>
+    </tbody></table>
+
+    <h3>7. <a class="heading" href="ntfs-fr.html#7.0">&nbsp;Le nouveau <i>driver </i>NTFS 
+    pour Linux</a></h3>
+    <table summary="" border="0" cellspacing="0">
+    <tbody><tr>
+      <td width="16">&nbsp;</td>
+      <td><a href="ntfs-fr.html#7.1">7.1 Qu'est ce que le nouveau <i>driver</i> NTFS?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#7.2">7.2 Dois-je utiliser obligatoirement le nouveau <i>
+      driver</i>?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#7.3">7.3 Comment utiliser le nouveau <i>driver</i>?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#7.4">7.4 Qu'est ce qu'un <i>patch</i>?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#7.5">7.5 Que faire si je ne comprends toujours pas?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#7.6">7.6 Quand est-ce que le nouveau code sera intégré au 
+      kernel de Linux?</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><a href="ntfs-fr.html#7.7">7.7 Pourquoi ne pas écrire un <i>wrapper</i> pour le <i>
+      driver</i> Windows?</a></td>
+    </tr>
+    </tbody></table>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="1.0"></a>
+    <h2>1. Questions générales sur le système de fichiers NTFS</h2>
+
+    <a name="1.1"></a>
+    <h3>1.1 Qu'est ce que le système de fichiers NTFS?</h3>
+
+    <p>
+    NTFS est l'abbreviation de <i>New Technology Filesystem</i>; <q>NT</q> 
+    parce qu'il fut développé à l'origine pour Windows NT et <q>Filesystem</q>
+    (système de fichiers) parce qu'il s'agit de la manière dont un ordinateur
+    organise et enregistre les fichiers sur un disque. Dépendamment du
+    système d'exploitation utilisé, le système de fichiers enregistre les
+    données de
+    manières différentes.
+    </p>
+
+    <p>
+    NTFS est utilisé sous Windows NT, 2000 et XP.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="1.2"></a>
+    <h3>1.2 Est-ce que le système de fichiers NTFS est meilleur que FAT/FAT32?</h3>
+
+    <p>En un mot, oui. Il est beaucoup plus robuste, supporte les noms de
+    fichiers Unicode, offre une sécurité décente et permet la compression et
+    l'encryption des données. Son principal défaut vient du fait qu'il
+    ne peut être lu que par les systèmes d'exploitation Windows NT, 2000 et XP,
+    c'est à dire que vous ne pouvez pas utiliser une disquette de démarrage
+    DOS standard et accéder à vos données.
+    </p>
+
+    <p>Cependant, comme toujours, il y a des exceptions à cette règle. Linux
+    possède un <i>driver</i> pour le système de fichier NTFS depuis décembre
+    1997. De plus, il existe également un programme permettant l'accès au système
+    de fichiers NTFS à partir du DOS (voir la <a href="ntfs-fr.html#2.1">Section 2.1</a> 
+    pour plus de détails).
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="1.3"></a>
+    <h3>1.3 Devrais-je utiliser le système de fichiers NTFS? (Mettre à
+    jour?)</h3>
+
+    <p>Non, vous n'êtes pas obligé, même si pour la plupart des gens cela
+    serait une bonne idée. De plus, vous ne verriez probablement aucune
+    différence. Le seul problème est qu'une fois migré, vous ne
+    pourriez plus revenir au système de fichiers FAT si vous changez d'idée (voir la <a href="ntfs-fr.html#2.3">Section 2.3</a>  pour plus de
+    détails).
+    </p>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    Vous pouvez installer Windows NT sur un système de fichiers FAT16 et Windows 2000
+    ou XP sur un système de fichiers FAT32. Par la suite, vous pourrez
+    migrer votre système de fichiers à NTFS (voir la <a href="ntfs-fr.html#2.2">Section
+    2.2</a>  pour plus de détails).
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="1.4"></a>
+    <h3>1.4 Est-ce que le système de fichiers NTFS est le même dans chaque
+    version de Windows?</h3>
+
+    <p>Non. Bien qu'ils se ressemblent, les nouvelles versions ont des
+    fonctionnalités supplémentaires. Par exemple, Windows 2000 permet
+    d'imposer des quotas.
+    </p>
+
+    <table class="highlight" summary="NTFS/Windows versions" border="1" cellspacing="0">
+      <tbody><tr><th>NTFS</th><th>Version de Windows</th></tr>
+      <tr><td>v1.2</td><td>NT 3.51, NT 4</td></tr>
+      <tr><td>v3.0</td><td>2000</td></tr>
+      <tr><td>v3.1</td><td>XP</td></tr>
+    </tbody></table>
+
+    <p>La version 1.2 est parfois appelée 4.0.<br>
+    Les versions 3.0 et 3.1 sont parfois référencées comme étant 5.0 et 5.1.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="1.5"></a>
+    <h3>1.5 Quelles sont les limites du système de fichiers NTFS?</h3>
+
+    <p>IMMENSE. Le système de fichiers NTFS supporte des fichiers de
+    grosseur allant jusqu'à 2<sup>63</sup>  octets. Les volumes NTFS
+    peuvent s'étendre jusqu'à 2<sup>63</sup>  <i> clusters</i> et chaque <i> cluster</i>
+    peut être aussi grand que 64KiB. Cela procure au système de fichiers
+    NTFS une limite maximum approximative de 500 milliards de gigaoctets.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="2.0"></a>
+    <h2>2. Volumes NTFS</h2>
+
+    <a name="2.1"></a>
+    <h3>2.1 Comment lire un volume NTFS à partir de Windows 95/98/ME ou
+    du DOS?</h3>
+
+    <p>Malheureusement, vous ne pouvez pas. Ces versions de Windows ne
+    peuvent lire que le système de fichiers FAT. Le système de fichiers NTFS,
+    lui, ne peut être lu que par des versions de Windows NT, 2000 et XP.
+    </p>
+
+    <p>Cependant, avec un peu de travail, vous pouvez utiliser certains
+    utilitaires disponibles à l'adresse <a href="http://technet.microsoft.com/en-us/sysinternals" target="_blank">SysInternals</a>
+    "NTFS for Windows 98" et "NTFSDOS" qui vont vous permettre de <u>lire</u>
+    des volumes NTFS à partir de Windows 95,
+    98 et DOS. De plus, si vous êtes prêt à payer, des versions
+    permettant <u>d'écrire</u> sur des volumes NTFS sont aussi disponibles
+    (N.B.
+    Le prix est prohibitif).
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="2.2"></a>
+    <h3>2.2 Comment convertir un volume FAT en un volume NTFS?</h3>
+
+    <p>Accédez à l'invité de commandes et tapez (replacer <q>x:</q> 
+    par le nom du volume):
+    </p>
+
+    <pre class="command">    <b>convert x: /fs:ntfs</b>
+    </pre>
+
+    <p>Si le volume visé est en cours d'utilisation, la conversion aura lieu
+    lors du prochain redémarrage.
+    </p>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16"> Cette commande ne
+    permet pas facilement de revenir en arrière. Voir la prochaine question.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="2.3"></a>
+    <h3>2.3 Comment convertir un volume NTFS en un volume FAT?</h3>
+
+    <p>La réponse courte est, <q>Vous ne pouvez pas</q>. Cependant,
+    il y a une exception si vous êtes prêt à payer. Le
+    logiciel <q>Partition Magic</q>,
+    disponible à l'adresse <a href="http://us.norton.com/products/overview.jsp?pcid=sp&pvid=pm80" target="_blank">norton.com</a>,
+    permet de convertir entre plusieurs systèmes de fichiers, incluant NTFS et FAT.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="2.4"></a>
+    <h3>2.4 Comment effacer un volume NTFS?</h3>
+
+    <p>Cela dépend du système d'exploitation que vous utilisez.
+    </p>
+
+    <p>Pour DOS, Windows 95/98/ME: Utilisez l'utilitaire <q>fdisk</q>. Démarrez
+    l'ordinateur avec une disquette de démarrage ou demandez à Windows de
+    redémarrer en mode DOS. Ensuite, exécutez fdisk. Si vous avez
+    plus qu'un disque dur, assurez-vous de choisir le bon. Enfin,
+    sélectionnez la partition non-DOS à effacer. Attention! Vos
+    changements seront effectifs immédiatement.
+    </p>
+
+    <p>
+    Windows NT: <q>Gestion de l'ordinateur</q>. Dans le menu
+    <q>Programmes</q>, sélectionnez
+    <q>Outils d'administration</q>.
+    </p>
+
+    <p>
+    Windows 2000, XP: <q>Gestion des disques</q>. Au panneau de configuration, sélectionnez
+    <q>Outils d'administration</q>, ensuite <q>Gestion de
+    l'ordinateur</q>.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="2.5"></a>
+    <h3>2.5 Comment défragmenter un volume NTFS?</h3>
+
+    <p>Après qu'un volume ait été utilisé quelques temps et que plusieurs
+    écritures aient eu lieu sur le disque dur, les fichiers peuvent devenir
+    fragmentés. C'est à dire qu'au lieu de ne se retrouver dans un seul
+    endroit sur le disque, un fichier se retrouve dispersé en plusieurs petits
+    morceaux sur le disque. Cela cause alors un ralentissement lorsque
+    l'ordinateur accéde à ces fichiers.
+    </p>
+
+    <p>
+    Windows 2000 et XP ont un programme de défragmentaton
+    intégré. Pour les utilisateurs de Windows NT, il y a un
+    programme gratuit permettant d'accomplir la même tâche. <q>Diskeeper
+    Lite</q>  peut être téléchargé à partir de l'adresse
+    <a href="http://diskeeper.com/" target="_blank">http://diskeeper.com</a>
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="2.6"></a>
+    <h3>2.6 Comment modifier la grosseur d'un volume NTFS?</h3>
+
+    <p>Jusqu'à dernièrement, la seule façon de modifier la grosseur d'un
+    volume NTFS, sans perte de données, était de payer un gros tas
+    d'argent. Cependant, maintenant nous avons notre propre programme, <b>ntfsresize</b>.
+    Il a été testé, mais pour l'instant il devrait continuer à être
+    considéré comme expérimental. Pour plus d'informations, lisez le
+    fichier ntfsresize FAQ.
+    </p>
+
+    <p>Un logiciel, non-gratuit, permettant de modifier les volumes NTFS est
+    <q>Partition Magic</q> disponible à l'adresse
+    <a href="http://powerquest.com/" target="_blank">http://powerquest.com</a>.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="3.0"></a>
+    <h2>3. Linux et NTFS</h2>
+
+    <a name="3.1"></a>
+    <h3>3.1 Quelles versions de NTFS peuvent être lues par Linux?</h3>
+
+    <p>Le <i>driver</i> Linux peut lire <u>toutes les versions de NTFS</u>.
+    Car, bien que chaque version diffère quelque peu, le <i>driver</i> ne fait
+    qu'interprêter les répertoires et les fichiers. Tous les index
+    gérés par NTFS peuvent être alors ignorés sans danger.
+    </p>
+
+    <p>Lorsque le <i>driver</i> permettant d'écrire sur les volumes NTFS
+    deviendra disponible, alors seulement les fonctionnalités pourront varier
+    dépendamment de la version de NTFS sur laquelle vous voudrez écrire.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.2"></a>
+    <h3>3.2 Est-ce que le <i>driver</i> permet aussi d'écrire sur un volume
+    NTFS?</h3>
+
+    <p>Pas vraiment, mais si vous avez seulement besoin de copier quelques
+    fichiers de Linux vers Windows sur une machine multi-boot alors lisez le
+    paragraphe <q><a href="ntfs-fr.html#3.2workaround">Comment écrire sur un volume NTFS</a></q>
+    ci-dessous qui vous présente une manière de contourner le manque de
+    support en écriture. Et pour le support d'écriture sur un volume
+    Linux, continuez à lire.
+    </p>
+
+    <p>Il existe actuellement deux <i>drivers</i>. Le <i>driver</i>
+    original, présent dans le <i>kernel</i> 2.4, contient quelques
+    fonctionnalités d'écriture, mais il est <b>extrêmement dangereux </b>de
+    l'utiliser. La possibilité de détruire votre système de fichier est
+    très élevée.
+    </p>
+
+    <p>Le nouveau <i>driver</i>, introduit avec le <i>kernel</i> 2.5.11,
+    contient également quelques fonctionnalités d'écriture mais elles sont
+    très limitées. Le <i>driver</i> peut écraser des fichiers
+    existants, mais il ne peut pas changer la longueur d'un fichier, ajouter de
+    nouveaux fichiers ou effacer des fichiers existants.
+    </p>
+
+    <p>Il ne faut pas se le cacher, ajoutez le support en écriture au volume
+    NTFS pourrait prendre <b>longtemps</b>. NTFS étant bati comme une
+    base de données, chaque changement que vous faites, nécessite des
+    modifications à plusieurs endroits, pour la redondance. Trompez-vous
+    une fois et votre système de fichiers risque d'être endommagé,
+    trompez-vous plusieurs fois et votre système de fichiers sera complètement
+    détruit. également, les développeurs actuels ne travaillent sur ce
+    projet qu'à titre de <i>hobby</i>, durant leurs temps libres.
+    Cependant, si vous aimeriez nous donner un coup de main, écrivez-moi à
+    l'adresse suivant: <b>linux-ntfs-dev@sourceforge.net</b>
+    </p>
+
+    <a name="3.2workaround"></a>
+    <p>
+    <strong>Comment écrire sur un volume NTFS.</strong> Si vous
+    utilisez un ordinateur avec multi-boot et avez besoin seulement des
+    capacités d'écriture sur un volume NTFS afin d'y transférer des fichiers
+    de Linux vers Windows, vous pouvez, à la place, utiliser un <i>driver</i>
+    ext2/ext3 pour Windows et pendant que vous utilisez Windows, lire vos
+    fichiers sur la partition Linux. De cette manière, en utilisant deux <i>drivers</i>
+    de lecture seulement, vous pouvez quand même copier des fichiers d'un
+    système de fichiers à l'autre.
+    </p>
+
+    <p>à ce jour, 4 juin 2003, les <i>drivers open source</i> suivants
+    permettent à Windows de lire les systèmes de fichiers Linux ext2/ext3:
+    </p>
+    <ul type="square">
+    <li><strong>explore2fs</strong>
+      <ul>
+      <li>Page d'accueil: http://uranus.chrysocome.net/linux/explore2fs.htm</li>
+      <li>Pour Windows NT, Windows 2000 et Windows XP.</li>
+      </ul>
+    </li>
+    <li><strong>ext2fsd</strong>
+      <ul>
+      <li>Page d'accueil: http://ext2fsd.sourceforge.net</li>
+      <li>Pour Windows NT, Windows 2000 et Windows XP.</li>
+      </ul>
+    </li>
+    <li><strong>winext2fsd</strong>
+      <ul>
+      <li>Page d'accueil: http://sourceforge.net/projects/winext2fsd</li>
+      </ul>
+    </li>
+    <li><strong>ext2forxp</strong>
+      <ul>
+      <li>Page d'accueil: http://sourceforge.net/projects/ext2forxp
+      </li><li>En cours de développement, mais pas encore prêt pour une utilisation
+        générale (4 Juin 2003).</li>
+      </ul>
+    </li>
+    <li><strong>vmware</strong>
+      <ul>
+      <li>Page d'accueil: http://www.vmware.com
+      </li><li>VMWare vous permet d'exécuter un système d'exploitation complet à
+        l'intérieur d'un autre système d'exploitation.</li>
+      <li>Donc, vous pourriez rouler Windows à l'intérieur de Linux et le
+        faire écrire directemement sur un volume NTFS de manière native.</li>
+      <li>Aussi sécuritaire que le Windows que vous rouler chaque jour, mais
+        cher.</li>
+      </ul>
+    </li>
+    </ul>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.3"></a>
+    <h3>3.3 Quelles fonctionnalités de NTFS sont supportées par Linux?</h3>
+
+    <p>
+    NTFS possède un grand éventail de fonctionnalités, cependant peu sont
+    actuellement disponibles avec le <i>driver</i> NTFS pour Linux.
+    </p>
+
+    <p>Le <i>driver</i> NTFS pour Linux supporte actuellement: Les noms de
+    fichiers Unicode (converti selon la page de code locale ou utf8), les
+    fichiers compressés et les fichiers <i>vides</i> (<i>sparse files)</i>.
+    </p>
+
+    <p>Cependant, le <i>driver</i> ne peut lire les fichiers encryptés, il
+    ignore les informations de sécurité attibuées aux fichiers par Windows et
+    les quotas établis.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.4"></a>
+    <h3>3.4 Que faire si des problèmes surgissent?</h3>
+
+    <p>Ce <i>driver</i> est <u>très sécuritaire</u> en lecture seulement, mais
+    il est impossible de tester toutes les possibilités. Cependant, si
+    quelque chose venait qu'à mal tourner, s'il vous plait, aidez-nous à
+    trouver et à règler le problème.
+    </p>
+
+    <p>Faites parvenir un courriel à l'équipe de développment à l'adresse
+    linux-ntfs-dev@lists.sourceforge.net
+    et indiquez-nous <u>la version du <i>driver</i></u> que vous utilisez,<u>
+    la version de Linux</u> (uname -a) et <u>la version de NTFS</u> (Windows NT,
+    2000 ou XP).
+    </p>
+
+    <p>De plus, s'il y a des journaux (logs) ( /var/log/messages ) que vous
+    pensez pourraient nous être utiles, veuillez les inclure avec votre
+    message.
+    </p>
+
+    <p>Merci.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.5"></a>
+    <h3>3.5 Comment ajouter le support NTFS à Linux?</h3>
+
+    <p>La plupart des utilisateurs n'auront rien à compiler pour activer le
+    support NTFS dans Linux. La majorité des distributions de Linux (à
+    l'exception remarquée de RedHat) offre le support NTFS
+    <q>out-of-the-box</q>.
+    </p>
+
+    <p>Si vous utilisez RedHat 9 (Shrike), 8.0 (Psyche) ou 7.3 (Valhalla), alors
+    vous devrez <a href="../rpm/index.html">installer un rpm</a>  pour activer
+    le support NTFS. Des informations d'installation détaillées sont
+    fournies avec le rpm.
+    </p>
+
+    <p>Si vous utlisez une version de RedHat plus vieille ou une autre
+    distribution qui n'offre pas le support NTFS, alors vous devrez recompiler
+    votre <i>kernel</i> vous-même. Ce n'est pas aussi difficile que ça
+    en a l'air. Jetez un coup d'oeil à la page <a href="compile.html">Compilation</a>
+    pour plus de détails.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.6"></a>
+    <h3>3.6 Quelle est la meilleure version?</h3>
+
+    <p>La nouvelle version du <i>driver</i> est la meilleure. Elle est
+    mieux écrite, plus rapide, moins boguée et <q>SMP-safe</q>. Le
+    nouveau <i>driver</i> est inclus avec le kernel 2.5.11 et supérieur et une <a href="../downloads.html">patch
+    est disponible</a> pour ajouter le nouveau <i>driver</i> au kernel 2.4.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.7"></a>
+    <h3>3.7 Quel sont les autres outils disponibles?</h3>
+
+    <p>En ce moment, il y a peu d'autres outils et ils sont principalement
+    orientés pour les développeurs. Nous gardons une liste de tous nos
+    outils <a href="../status.html">ici</a>.
+    </p>
+
+    <p>Naturellement, notre priorité est le développement du code permettant
+    l'écriture sur des volumes NTFS.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.8"></a>
+    <h3>3.8 De quelle manière a été écrit le <i>driver</i> NTFS?</h3>
+
+    <p>
+    Microsoft n'ayant jamais publié de documention sur le fonctionnement
+    interne de NTFS, nous avons dû alors procéder à du <q>reverse engineering</q>
+    sur le système de fichiers et cela à partir de rien. La méthode se
+    résumait à peu près à ceci:
+    </p>
+
+    <ol>
+      <li>Examiner le volume avec un éditeur héxadécimal</li>
+      <li>Exécuter une opération (par exemple, créer un fichier)</li>
+      <li>Utiliser l'éditeur héxadécimal et rechercher les changements</li>
+      <li>Classer et documenter les changements</li>
+      <li>Répéter les étapes 1 à 4 à l'infini</li>
+    </ol>
+
+    <p>Si cela vous semble être beaucoup de travail, alors vous comprenez
+    combien la tâche fut ardue. Nous comprenons maintenant presque
+    complètement tout le fonctionnement interne du système de fichiers NTFS et
+    nous l'avons documenté pour le bénéfice de tous à l'adresse suivante: <a href="../ntfs/index.html">../ntfs/index.html</a>
+    </p>
+
+    <p>En fait, écrire le <i>driver</i> était de loin beaucoup plus simple que
+    de recueillir toutes les informations.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="3.9"></a>
+    <h3>3.9 Qui doit-on remercier?</h3>
+
+    <p>Premièrement, nous devons remercier Martin von Löwis. C'est
+    lui qui créa le <i>driver</i> NTFS original en 1995. C'est ce <i>driver</i>
+    qui fut ajouté au kernel de Linux en décembre 1997 (2.1.74). Il fut
+    aidé par les bonnes âmes suivantes:
+    </p>
+
+    <p class="quote">
+    Albert&nbsp;Cahalan, Anton&nbsp;Altaparmakov, Damon&nbsp;Casale,
+    David&nbsp;Dillard, Domagoj&nbsp;Pensa, Joseph&nbsp;Malicki,
+    Matthew&nbsp;Fanto, Olof&nbsp;Wolgast, Rani&nbsp;Assaf,
+    Régis&nbsp;Duchesne, Richard&nbsp;Russon, Steve&nbsp;Dodd,
+    Werner&nbsp;Seiler.
+    </p>
+
+    <p>Ensuite, nous devons remercier Anton&nbsp;Altaparmakov dont
+    l'enthousiasme a contribué à garder ce projet en vie. Dans une période
+    où le projet était effectivement à l'abandon, il prit la relève et
+    stabilisa le code. Il prit sur lui de réécrire entièrement le <i>driver</i>
+    à partir de rien dans le but d'avoir une base de travail solide afin
+    de permettre éventuellement l'ajout du support à l'écriture. Il fut
+    aidé par:
+    </p>
+
+    <p class="quote">
+    Pawel&nbsp;Kot, Richard&nbsp;Russon.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="4.0"></a>
+    <h2>4. <i>Monter</i> des Volumes NTFS</h2>
+
+    <a name="4.1"></a>
+    <h3>4.1 Puis-je <i>monter</i> un Volume NTFS?</h3>
+
+    <p>Bien sûr! Le <i>driver</i> peut lire toutes les versions NTFS,
+    cependant, il fonctionne en lecture-seulement.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.2"></a>
+    <h3>4.2 Jusqu'à quel point le <i>driver</i> NTFS est-il sécuritaire?</h3>
+
+    <p>Lorsque utilisé en mode lecture-seulement, le <i>driver</i> original et
+    le nouveau <i>driver</i> sont sécuritaires pour une utilisation
+    générale. <b>Ils n'apportent aucun changement au système de
+    fichiers</b>, donc ils ne peuvent causer aucun dommage.
+    </p>
+
+    <p>De plus, le nouveau <i>driver</i> est <q>SMP-safe</q>.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.3"></a>
+    <h3>4.3 Quelle partition devrais-je utiliser?</h3>
+
+    <p>Sous Linux, les disques sont appelés hda, hdb pour les deux premiers
+    disques sur le premier contrôleur IDE et hdc, hdd pour le troisième et
+    quatrième disque. Les disques SCSI sont appelés sda, sdb, etc,
+    dans l'ordre dans lequel ils sont découverts.
+    </p>
+
+    <p>Une manière simple de trouver des volumes NTFS, est
+    d'exécuter la commande suivante :
+    </p>
+
+    <pre class="command">    <b>fdisk -l</b>
+    </pre>
+
+    <p>Le résultat devrait ressembler à ce qui suit:
+    </p>
+
+    <pre class="command">    Disk /dev/hda: 64 heads, 63 sectors, 4465 cylinders
+    Units = cylinders of 4032 * 512 bytes
+
+       Device Boot    Start       End    Blocks   Id  System
+       /dev/hda1             1      2125   4283968+  07  NTFS/HPFS
+       /dev/hda2          2126     19851  35735616   0f  Win95 Ext'd (LBA)
+       /dev/hda5   *      2126      4209   4201312+  83  Linux
+       /dev/hda6          4210      4465    516064+  82  Linux swap
+    </pre>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.4"></a>
+    <h3>4.4 Quelle est la version de mon <i>driver</i> NTFS?</h3>
+
+    <p>Si la version de votre kernel est 2.4.* ou de 2.5.0 à 2.5.10, alors vous
+    avez probablement le <i>driver</i> NTFS original. Si vous avez une
+    version de kernel égale ou supérieure à 2.5.11, alors vous avez le
+    nouveau <i>driver</i> NTFS.
+    </p>
+
+    <p>Une autre façon plus sûr d'identifier la version de votre <i>kernel</i>
+    est de regarder dans les journaux système à la recherche d'un message
+    identifiant le <i>driver</i> NTFS. Essayez <b>une ou l'autre </b>des
+    commandes suivantes et examinez le résultat (dépendamment de la
+    distribution que vous utilisez, vous devrez peut-être être connecté à
+    l'aide du compte <q>root</q> pour pouvoir lire les journaux système).
+    </p>
+
+    <pre class="command">    <b>
+    dmesg | grep -i ntfs</b>
+    <b>grep -i ntfs /var/log/messages</b>
+    </pre>
+
+    <p>Le <i>driver</i> original est la version 1.1.* tandis que le nouveau <i>driver</i>
+    est la version 2.*.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.5"></a>
+    <h3>4.5 Comment <i>monter</i> un volume NTFS?</h3>
+
+    <p>Avant tout, ce serait une bonne idée de vérifier si votre kernel
+    supporte le système de fichiers NTFS. La commande ci-dessous vous
+    affichera la liste de tous les systèmes de fichiers reconnus par votre
+    distribution Linux. Si vous voyez parmi eux <q>ntfs</q>,
+    alors votre système est OK. Aussi, ce serait une bonne idée de jeter
+    un coup d'oeil à la commande <i>mount</i> dans les <i>man..</i>uels ( <q>man 8 mount</q>
+    ).
+    </p>
+
+    <pre class="command">    <b>cat /proc/filesystems</b>
+    </pre>
+
+    <p>Ensuite, vous devez créer un répertoire où <i>monter</i> le volume
+    NTFS. Alors, vous pourrez <i>monter</i> le volume.
+    </p>
+
+    <pre class="command">    <b>mkdir /mnt/windows</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+    </pre>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    Pour modifier les permissions d'un système de fichiers déjà <i>monté</i>, voyez
+    l'option <q><i>umask</i></q>
+    à la <a href="ntfs-fr.html#4.6">Section 4.6</a>. Et si vous aimeriez qu'un volume
+    soit <i>monté</i> automatiquement à chaque démarrage, lisez la <a href="ntfs-fr.html#4.10">Section 4.10</a>.
+    </p>
+
+    <p>Quand vous avez terminé, vous pouvez <i> démonter</i> (umount) la partition
+    à l'aide de l'<b>une
+    des deux </b>commandes suivantes:
+    </p>
+
+    <pre class="command">    <b>umount /mnt/windows</b>
+    <b>umount /dev/hda1</b>
+    </pre>
+
+    <p>
+    <img src="style/red.png" alt="NB" width="16" height="16">
+    La commande s'écrit bien <q>umount</q> (et non u<u>n</u>mount).
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.6"></a>
+    <h3>4.6 Options communes de la commande Mount.</h3>
+
+    <p>Les options qui suivent s'appliquent aux deux <i>drivers</i> NTFS. Nous
+    vous recommandons également de lire les <i>man</i>..uels se rapportant à
+    la commande mount. La syntaxe de la commande mount se lit comme suit:
+    </p>
+
+    <pre class="command">    mount device répertoire [options]
+    </pre>
+
+    <p>Les options additionnelles de l'option -o peuvent être données
+    individuellement ou comme un seul paramètre séparé par des
+    virgules. Ainsi, les deux commandes suivantes sont équivalentes:
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -o X -o Y -o Z</b>
+    <b>mount /dev/hda1 /mnt/windows -o X,Y,Z</b>
+    </pre>
+
+    <dl>
+      <dt>-t ntfs</dt>
+      <dd>
+        Informe la commande mount du type de système de fichiers qui sera <i>monté</i>.
+        Cette option n'est pas vraiment nécessaire puisque mount est capable
+        d'identifier la majorité des types de système de fichiers.
+      </dd>
+
+      <dt>-r</dt>
+      <dd>
+        <i>Monte</i> le volume en mode lecture-seulement. Par défault, mount
+        essaie toujours de <i> monter</i> un volume en mode lecture-écriture. Aussi, à
+        moins qu'on le force, le <i>driver</i> montera le système de fichiers en
+        lecture-seulement automatiquement.
+      </dd>
+
+      <dt>-o ro</dt>
+      <dd>
+        Cette option est équivalente à <q>-r</q>.
+      </dd>
+
+      <dt>-o umask={VALEUR}</dt>
+      <dd>
+        Les permissions par défaut données à un volume <i>monté</i> NTFS
+        sont rwx------ (pour des raisons de sécurité). L'option <b>umask</b>
+        controle les permissions sur les répertoires et les fichiers.
+        Pour des exemples et plus d'informations, voir la <a href="ntfs-fr.html#4.9">Section 4.9</a>.
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b>
+    </pre>
+      </dd>
+
+      <dt>-o uid={IDENTIFIANT DE L'USAGER}</dt>
+      <dd>
+        Par défaut, tous les fichiers sur un volume <i>monté</i> NTFS
+        appartiendront à l'usager root. Si vous ajoutez l'option <b>uid</b>,
+        vous pouvez définir à quel usager appartiendront les fichiers.
+        L'identifiant de l'usager (userid) peut être n'importe quel nom
+        présent dans /etc/passwd ou n'importe quel nombre représentant un
+        identifiant d'usager.
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=flatcap</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o uid=500</b>
+    </pre>
+      </dd>
+
+      <dt>-o gid={IDENTIFIANT DE GROUPE}</dt>
+      <dd>
+        Par défaut, tous les fichiers sur un volume <i>monté</i> NTFS
+        appartiendront au groupe d'usagers root. Si vous ajoutez l'option <b>gid</b>,
+        vous pouvez définir à quel groupe d'usagers appartiendront les
+        fichiers. L'identifiant de groupe (groupid) peut être n'importe
+        quel nom présent dans /etc/group ou n'importe quel nombre
+        représentant un identifiant de groupe.
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=winusers</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o gid=520</b>
+    </pre>
+      </dd>
+
+    </dl>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.7"></a>
+    <h3>4.7 Options exclusives au <i>driver</i> Original.</h3>
+
+    <p>Pour découvrir quelle version du <i>driver</i> NTFS vous utilisez,
+    consultez la <a href="ntfs-fr.html#4.4">Section 4.4</a>. Cette section traite des
+    options exclusives au <i>driver</i> Original. Les options communes aux
+    deux versions du <i>driver</i> NTFS sont décrites à la <a href="ntfs-fr.html#4.6">Section 4.6</a>.
+    </p>
+
+    <p>Plusieurs des options suivantes peuvent prendre les valeurs booléennes
+    <i><q>true</q> </i> (vrai) ou <i><q>false</q> </i>
+    (faux).<br>
+    Vous pouvez remplacer la valeur <i><q>true</q></i> par <i><q>yes</q></i>
+    (oui) ou <q>1</q>.<br>
+    Vous pouvez remplacer la valeur <q>false</q> par <q>no</q> (non)
+    ou <q>0</q>.
+    </p>
+
+    <dl>
+      <dt>-o iocharset={NOM}</dt>
+      <dd>
+        <p>
+        NTFS enregistre les noms de fichiers et les noms de répertoires à
+        l'aide du code Unicode qui peut afficher tous les caractères de toutes
+        les langues. Par défaut, le <i>driver</i> NTFS convertit les noms
+        au code ASCII ce qui est acceptable pour certains mais inacceptable pour
+        tous ceux qui utilisent une langue incluant des lettres telles que å ou é.
+        </p>
+
+        <p>
+        NLS (Native Language Support) controle la manière dont sont affichés
+        les caractères. Vous pouvez choisir, soit <b>utf8</b>  qui, comme
+        Unicode, peut afficher tous les caractères de toutes les langues, soit
+        votre propre page de code, i.e. iso8859-1 (Europe de l'Ouest),
+        iso8859-2 (Europe Central), gb2312 (Chinois Simplifié), iso8859-8 (Hébreu).
+        Ci-bas, quelques exemples de la commande mount en action:
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=utf8</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=iso8859-2</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o iocharset=gb2312</b>
+    </pre>
+      </dd>
+
+      <dt>utf8=true</dt>
+      <dd>
+        <p>Si votre <i>kernel</i> ne supporte pas <b>utf8</b>, alors vous pouvez
+        utiliser cette option pour activer le support utf8 à partir du <i>driver</i>
+        NTFS. D'ailleurs, vous devriez utiliser <q>-o iocharset=utf8</q> 
+        chaque fois que cela est possible.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o utf8=true</b>
+    </pre>
+      </dd>
+
+      <dt>-o posix={BOOLÉEN}</dt>
+      <dd>
+        <p>
+        Windows conserve la casse des noms de fichiers mais ne fais pas de
+        différence lorsque vous les lisez. Donc, vous pouvez créer un
+        fichier appelé <q>MonFichier</q> et ensuite l'ouvrir en tapant
+        <q>mONFIChier</q>.
+        </p>
+
+        <p>Par défaut, Linux différencie la casse des noms de fichiers, <q>MonFichier</q>,
+        <q>Monfichier</q> et <q>monfichier</q> sont tous des
+        fichiers différents. Si vous aimeriez que Linux se comporte
+        comme le fait Windows pour un volume NTFS, définissez l'option <b>posix</b>
+        à <q>true</q>. Règler l'option à <q>false</q>,
+        et le <i>driver</i> linux à se comportera comme Linux (valeur par
+        défault).
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o posix=true</b>
+    </pre>
+      </dd>
+
+      <dt>-o show_sys_files={BOOLÉEN}</dt>
+      <dd>
+        <p>Si cette option est définie à <q>true</q> (vrai), alors le
+        système de fichiers metadata sera visible. S'il n'est pas
+        visible, il peut quand même être affiché en citant son nom, i.e.
+	<q>ls -l \$MFT</q>.
+        </p>
+
+        <p>
+        <img src="style/red.png" alt="NB" width="16" height="16"> à cause d'une
+        limitation de glibc, <q>$MFT</q>  peut ne pas apparaître à
+        l'écran car son <i>inode</i> est zéro.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o show_sys_files=true</b>
+    </pre>
+      </dd>
+
+    </dl>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.8"></a>
+    <h3>4.8 Options exclusives au Nouveau <i>driver</i>.</h3>
+
+    <p>
+    Pour découvrir quelle version du <i>driver</i> NTFS vous utilisez,
+    consultez la <a href="ntfs-fr.html#4.4">Section 4.4</a>. Cette section traite des
+    options exclusives au Nouveau <i>driver</i>. Les options communes aux
+    deux versions du <i>driver</i> NTFS sont décrites à la <a href="ntfs-fr.html#4.6">Section 4.6</a>.
+    </p>
+
+    <p>
+    Plusieurs des options suivantes peuvent prendre les valeurs booléennes
+    <i><q>true</q> </i> (vrai) ou <i><q>false</q> </i>
+    (faux).<br>
+    Vous pouvez remplacer la valeur <i>true</i> par <i>yes</i>
+    (oui) ou <q>1</q>.<br>
+    Vous pouvez remplacer la valeur <q>false</q> par <q>no</q> (non)
+    ou <q>0</q>.
+    </p>
+
+    <dl>
+      <dt>-o nls={NOM}</dt>
+      <dd>
+        <p>
+        NTFS enregistre les noms de fichiers et les noms de répertoires à
+        l'aide du code Unicode qui peut afficher tous les caractères de toutes
+        les langues. Par défaut, le <i>driver</i> NTFS convertit les noms
+        au code ASCII ce qui est acceptable pour certains mais inacceptable pour
+        tous ceux qui utilisent une langue incluant des lettres telles que å ou é.
+        </p>
+
+        <p>
+        NLS (Native Language Support) controle la manière dont sont affichés
+        les caractères. Vous pouvez choisir, soit <b>utf8</b>  qui, comme Unicode,
+        peut afficher tous les caractères de toutes les langues, soit votre
+        propre page de code, i.e. iso8859-1 (Europe de l'Ouest),
+        iso8859-2 (Europe Central), gb2312 (Chinois Simplifié), iso8859-8 (Hébreu).
+        Ci-bas, quelques exemples de la commande mount en action:
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=utf8</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=iso8859-2</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o nls=gb2312</b>
+    </pre>
+      </dd>
+
+      <dt>-o fmask={VALEUR}</dt>
+      <dt>-o dmask={VALEUR}</dt>
+      <dd>
+        <p>
+        <q>Le paramètre umask</q> permet de modifier les permissions autant des 
+        fichiers que des répertoires (voir la <a href="ntfs-fr.html#4.6">Section 4.6</a> 
+        pour plus de détails).
+        <q>Le paramètre fmask, lui, ne s'applique qu'aux permissions des 
+        fichiers et dmask</q> fait de même, mais uniquement pour les 
+        répertoires. L'effet de ses deux options peut être combiné sur une 
+        même ligne en les séparant par une virgule. Voici quelques 
+        exemples:
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0222</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o dmask=0222</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o fmask=0077,dmask=0222</b>
+    </pre>
+      </dd>
+
+      <dt>-o case_sensitive={BOOLÉEN}</dt>
+      <dd>
+        <p>
+        Windows conserve la casse des noms de fichiers mais ne fait pas de
+        différence lorsque vous les lisez. Donc, vous pouvez créer un
+        fichier appelé <q>MonFichier</q> et ensuite l'ouvrir en tapant
+        <q>mONFIChier</q>.
+        </p>
+
+        <p>Par défaut, Linux différencie la casse des noms de fichiers, <q>MonFichier</q>,
+        <q>Monfichier</q> et <q>monfichier</q> sont tous des
+        fichiers différents. Si vous aimeriez que Linux se comporte
+        comme le fait Windows pour un volume NTFS, définissez l'option <b>case_sensitive</b>
+        à <q>true</q>. Règler l'option à <q>false</q>,
+        et le <i>driver</i> linux à se comportera comme Linux (valeur par
+        défault).
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=true</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o case_sensitive=false</b>
+    </pre>
+      </dd>
+
+      <dt>-o sloppy={BOOLÉEN}</dt>
+      <dd>
+        <p>
+        Par défaut, le <i>driver</i> refusera de démarrer si une des options est tapée 
+        incorrectement. En ajoutant le paramètre <b>sloppy</b>, le <i>driver</i> 
+        ignorera les mauvais paramètres et démarrera quand même.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=true</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o sloppy=false</b>
+    </pre>
+      </dd>
+
+      <dt>-o errors={VALEUR}</dt>
+      <dd>
+        <p>
+        Cette option contrôle la manière dont le <i>driver</i> se comporte 
+        lorsqu'il rencontre des problèmes. Le comportement par défaut est 
+        d'essayer et de continuer <b>(continue)</b>. Les erreurs causés 
+        par de la corruption seront notés et contournés. L'alternative est 
+        de forcer le <i>driver</i> à essayer et récupérer <b>(recover)</b> 
+        l'erreur. Actuellement, la seule récupération possible permise par 
+        le <i>driver</i> est le remplacement du secteur de d'amorçage (boot 
+        sector) par la copie de sécurité de celui-ci.
+        </p>
+      </dd>
+
+      <dd class="wide">
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=continue</b>
+    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o errors=recover</b>
+    </pre>
+      </dd>
+
+    </dl>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.9"></a>
+    <h3>4.9 Comment changer les permissions sur un volume NTFS <i>monté</i>?</h3>
+
+    <p>
+    Il y a trois options permettant de contrôler les permissions et les droits 
+    sur les fichiers et les répertoires. Ce sont: <q>umask</q>, <q>uid</q> 
+    et <q>gid. Ils sont décrits avec plus de détail dans la section</q>
+    <a href="ntfs-fr.html#4.6">Options communes de la commande Mount</a>.
+    </p>
+
+    <p>
+    Ci-dessous, vous trouverez des exemples de chaque option et la manière dont 
+    elles influencent les fichiers. Nous utiliserons chaque fois la même 
+    commande <i>mount</i> mais ne vous montreront que la syntaxe de l'option.
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+    </pre>
+
+    <p>
+    <q>umask</q> permet de filtrer les permissions, donc il fonctionne de la 
+    manière contraire à
+    chmod. Les permissons totales sont équivalentes à 777 (rwxrwxrwx). 
+    Un umask de 0222
+    (-w--w--w-) produit 555 (r-xr-xr-x).
+    </p>
+
+    <p>
+    Pour des raisons de sécurité, la valeur par défaut de umask est définie à 0077.</p>
+
+    <pre class="command">    <b>mount ... -o umask=0277</b>
+
+    -r-x------ 1 root    root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <pre class="command">    <b>mount ... -o umask=0222</b>
+
+    -r-xr-xr-x 1 root    root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <p>
+    Jusqu'ici, les fichiers appartiennent toujours au propriétaire et au groupe <q>
+    root. Maintenant, nous allons essayer les options uid</q> et <q>gid.</q></p>
+
+    <pre class="command">    <b>mount ... -o uid=flatcap</b>
+
+    -r-x------ 1 flatcap root    28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <pre class="command">    <b>mount ... -o gid=winuser</b>
+
+    -r-x------ 1 root    winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <pre class="command">    <b>mount ... -o uid=flatcap,gid=winuser</b>
+
+    -r-x------ 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <p>
+    Enfin, nous pouvons combiner les différentes options pour avoir un contrôle 
+    plus précis. Ci-dessous, nous allons donner à l'usager <i><q>flatcap</q></i> 
+    le contrôle total, attribuer le groupe d'usager <i> <q>winuser</q></i> avec 
+    des droits de lecture seul et interdire l'accès à tous les autres usagers.
+    </p>
+
+    <pre class="command">    <b>mount ... -o umask=0027,uid=flatcap,gid=winuser</b>
+
+    -rwxr-x--- 1 flatcap winuser 28096 Aug 24 1996 chkdsk.exe
+    </pre>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="4.10"></a>
+    <h3>4.10 Comment <i>monter</i> des volumes NTFS automatiquement?</h3>
+
+    <p>
+    Une fois que vous aurez déterminé les options de la commande mount que vous 
+    désirez utiliser, vous pouvez configurer Linux pour qu'il <i>monte</i> 
+    automatiquement le volume NTFS en ajoutant une ligne au fichier <q>/etc/fstab</q>
+    (<b>f</b>ile<b>s</b>ystem <b>tab</b>le).
+    </p>
+
+    <p>
+    Ci-dessous, vous retrouverez quelques exemples de la commande <i>mount</i> 
+    avec ses équivalents pour le fichier /etc/fstab.<br>
+    <img src="style/red.png" alt="NB" width="16" height="16"> Ne vous occupez de 
+    la signification des <q>0&nbsp;0</q> à la fin de la ligne de commande.
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r</b>
+
+    /dev/hda1 /mnt/windows ntfs ro                                    0 0
+    </pre>
+
+    <p>
+    Ici, nous avons transformé <q>-r</q> dans son équivalent <q>-o ro</q>.
+    </p>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222</b>
+
+    /dev/hda1 /mnt/windows ntfs ro,umask=0222                         0 0
+    </pre>
+
+    <pre class="command">    <b>mount /dev/hda1 /mnt/windows -t ntfs -r -o umask=0222,uid=flatcap,gid=winuser</b>
+
+    /dev/hda1 /mnt/windows ntfs ro,umask=0222,uid=flatcap,gid=winuser 0 0
+    </pre>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="5.0"></a>
+    <h2>5. Démarrage de systèmes d'exploitation à partir de NTFS</h2>
+
+    <a name="5.1"></a>
+    <h3>5.1 Puis-je démarrer Windows sur un volume NTFS?</h3>
+
+    <p>Oui, grub et lilo peuvent lancer un Windows installé sur un volume NTFS.
+    Ce qui se produit, c'est que lorsque le <i>boot loader</i> de Linux détecte
+    la présence du <i>boot loader </i>NTFS, il lui transfert le contrôle.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="5.2"></a>
+    <h3>5.2 Comment utiliser lilo?</h3>
+
+    <p>Ajoutez les lignes suivantes au fichier /etc/lilo.conf et relancez lilo.
+    </p>
+
+    <pre class="command">    other = /dev/hda1
+        table = /dev/hda
+        label = Windows
+    </pre>
+
+    <p>La ligne <q>other =</q> se réfère à la partition contenant Windows
+    et la ligne <q>table =</q>, elle, pointe vers la table de partition du disque.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="5.3"></a>
+    <h3>5.3 Comment utiliser grub?</h3>
+
+    <p>
+    Ajoutez les lignes suivantes au fichier /boot/grub/grub.conf
+    </p>
+
+    <pre class="command">    title Windows
+        root (hd0,0)
+        makeactive
+        chainloader +1
+    </pre>
+
+    <p>
+    Selon la numérotation de grub, /dev/hda est hd0, hdb est hd1, etc. Les 
+    partitions sont numérotées à partir de zéro. Ainsi, hda1 est hd0,0, hdc4 
+    est
+    hd2,3.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="6.0"></a>
+    <h2>6.  Distributions de Linux</h2>
+
+    <a name="6.1"></a>
+    <h3>6.1 Quelles distributions de Linux supportent NTFS de manière native?</h3>
+
+    <p>
+    Les distributions de Linux connues pour supporter NTFS de manière native 
+    sont:
+    <a href="http://www.mandrake.com/" target="_blank">Mandrake</a>,
+    <a href="http://www.debian.org/" target="_blank">Debian</a>,
+    <a href="http://www.suse.com/" target="_blank">SuSE</a>,
+    <a href="http://www.gentoo.org/" target="_blank">Gentoo</a> et
+    <a href="http://www.caldera.com/" target="_blank">Caldera</a>
+    </p>
+
+    <p>
+    En fait, la réalité est que tout ce qui ne porte par le nom RedHat,
+    supporte NTFS.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="6.2"></a>
+    <h3>6.2 Pourquoi est-ce que RedHat ne supporte pas NTFS?</h3>
+
+    <p>
+    Vraiment, j'aimerais le savoir aussi. Les rumeurs laissent entendre 
+    qu'il s'agirait d'une question légale.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="6.3"></a>
+    <h3>6.3 Pourquoi est-ce que la version Linux de RedHat gèle lorsqu'on accède 
+    à un volume NTFS?</h3>
+
+    <p>
+    Vérifiez la version de votre kernel avec la commande <q>uname -a. Si 
+    votre version est</q> 2.4.9 alors il est impératif que vous mettiez à jour 
+    votre kernel. Consultez le <a href="http://www.redhat.com/" target="_blank">
+    site de RedHat</a> pour plus de détails.
+    </p>
+
+    <p>
+    Si vous préférez, vous pouvez également compiler votre propre kernel. 
+    Voyez <a href="ntfs-fr.html#3.5">Comment ajouter le support NTFS à Linux?</a> pour plus 
+    de détails.</p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="6.4"></a>
+    <h3>6.4 Y-a-t-il des distributions qui peuvent être installées sur NTFS?</h3>
+
+    <p>
+    Par vraiment.  <a href="http://phatlinux.com/" target="_blank">Phat Linux</a> 
+    peut être installé sur un partition FAT à l'intérieur de Windows et ensuite 
+    démarrer à partir des fichiers de Windows.  Le nouveau <i>driver</i> a juste 
+    assez de support pour réaliser cela sous NTFS.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <hr><!-- ............................................................. -->
+
+    <a name="7.0"></a>
+    <h2>7. Le nouveau <i>driver</i> NTFS pour Linux</h2>
+
+    <a name="7.1"></a>
+    <h3>7.1 Qu'est-ce que le nouveau <i>driver</i> NTFS?</h3>
+
+    <p>
+    Il s'agit d'une réécriture complète du <i>driver</i> NTFS. Le <i>
+    driver</i> original avait été développé sur une période de plusieurs années. 
+    Au début, nous n'en connaissions que très peu sur NTFS ou Linux et le code 
+    source était devenu difficile à maintenir.
+    </p>
+
+    <p>
+    Avec nos nouvelles connaissances, nous avons créé un nouveau <i>driver</i> 
+    qui est beaucoup plus simple, rapide et facile à maintenir.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="7.2"></a>
+    <h3>7.2 Dois-je utiliser obligatoirement le nouveau <i>driver</i>?</h3>
+
+    <p>
+    Non.  Il y a déjà un <i>driver</i> NTFS intégré à votre kernel Linux 
+    courant, donc vous n'etes pas obligé d'utiliser le nouveau <i>driver</i>. 
+    Et, bien que vieux, le <i>driver</i> original est assez fiable pour un usage 
+    quotidien.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="7.3"></a>
+    <h3>7.3 Comment utiliser le nouveau <i>driver</i>?</h3>
+
+    <p>
+    Nous avons publié le
+    <a href="../downloads.html">nouveau <i>driver</i> 
+    sous la forme d'une <i>patch</i></a> pour le
+    <a href="http://www.kernel.org/pub/linux/kernel/v2.4/">code source original 
+    de la kernel Linux</a>.
+    </p>
+
+    <p>
+    <a href="../downloads.html">../downloads.html</a>
+    <br>
+    <a href="http://www.kernel.org/pub/linux/kernel/v2.4/" target="_blank">http://www.kernel.org/pub/linux/kernel/v2.4/</a>
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="7.4"></a>
+    <h3>7.4 Qu'est ce qu'un <i>patch</i>?</h3>
+
+    <p>
+    Un <i>patch</i> est une compilation de modifications à apporter à certains 
+    fichiers textes. Puisque nous ne modifions que le code se rapportant 
+    au NTFS, c'était contre productif de publier tout le code d'un kernel à 
+    chaque fois que nous faisions un petit changement. Nous produisons nos 
+    patches à partir des publications officielles <i>(releases)</i> du kernel de 
+    Linux.
+    </p>
+
+    <p>
+    Une fois le code source décompressé, accédez au répertoire où se trouve 
+    celui-ci et exécutez la commande suivante (en remplaçant le chemin et le nom 
+    de la patch au besoin):
+    </p>
+
+    <pre class="command">    <b>patch -p1 &lt; <i>chemin</i>/<i>nom-de-la-patch</i></b>
+    </pre>
+
+    <p>
+    Ceci modifiera le code source. Il ne devrait pas y avoir de rejets ou 
+    d'erreurs. Ensuite, compilez votre kernel comme à l'habitude.  Il y a 
+    des instructions pour cela ailleurs dans cette FAQ.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="7.5"></a>
+    <h3>7.5 Que faire si je ne comprends toujours pas?</h3>
+
+    <p>
+    Désolé. Nous essayons d'aider le plus de gens possible, mais nous 
+    avons une quantité de temps limitée. Il y a quelques sites qui peuvent 
+    vous aider à comprendre les bases du fonctionnement de Linux. 
+    également, vérifiez s'il n'y a pas près de chez vous, un groupe 
+    d'utilisateurs Linux.</p>
+
+    <ul>
+  <li>Just Linux - http://www.justlinux.com</li>
+  <li>The Linux Documentation Project - http://tldp.org</li>
+  <li>The Linux Kernel HOWTO - http://tldp.org/HOWTO/Kernel-HOWTO.html</li>
+  <li>Linux User Groups - http://www.linux.org/groups/index.html</li>
+    </ul>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="7.6"></a>
+    <h3>7.6 Quand est-ce que le nouveau code sera intégré au kernel de Linux?</h3>
+
+    <p>
+    Il y a deux kernels à considérer. Le nouveau code fait déjà parti du 
+    kernel Linux en développement. Il fut intégré à partir de la version 2.5.11.
+    </p>
+
+    <p>
+    Le kernel stable de Linux, actuellement 2.4.20, fonctionne toujours avec le 
+    vieux <i>driver</i>. Nous sommes satisfaits de l'état du code, mais nous 
+    avons encore à convaincre les Dieux du kernel qu'il est bon.</p>
+
+    <p>
+    D'ici à ce qu'il soit incorporé, nous produirons encore de nombreuses 
+    publications (releases) sous la forme de patches.
+    </p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <a name="7.7"></a>
+    <h3>7.7 Pourquoi ne pas écrire un <i>wrapper</i> pour le <i>driver</i> 
+    Windows?</h3>
+
+    <p>
+    à bien y penser, c'est une idée très intéressante, cependant il y de 
+    nombreux problèmes à résoudre.
+    </p>
+
+    <p>
+    Le plus grand problème technique est de réunir le système de DLL de Windows 
+    au système VFS de Linux. Cela peut être fait, mais ça risque de ne pas 
+    être joli. Il devrait être intégré au kernel de Linux ce qui signifie 
+    que si quelque chose venait qu'à tourner mal, cela pourrait crasher la 
+    machine. Sans le code source, nous pourrions ne pas être capable de 
+    contourner ce problème.
+    </p>
+
+    <p>
+    Le problème majeur suivant est la compatibilité.  Quelle version du système 
+    de fichiers de Windows devrions-nous utiliser? En sélectionner un par 
+    rapport à un autre limiterait son usage et rendre le <i>wrapper</i> 
+    compatible avec toutes les versions de Windows résulterait en un cauchemar de 
+    programmation.
+    </p>
+
+    <p>
+    Et ce n'est pas tout. Les implications légales de distribuer le 
+    système de fichiers de Windows pourraient causer de gros problèmes. De 
+    plus, la nature <q>propriétaire</q> du <i>driver</i> pourrait faire que les 
+    autres développeurs de kernels ne supporteraient pas les problèmes provenant 
+    de l'utilisation du<i> wrapper</i> NTFS.
+    </p>
+
+    <p>
+    Malgré tout, il y a un brave homme qui l'a fait.
+    <a href="http://www.jankratochvil.net/project/captive/">Captive</a> de Jan Kratochvil 
+    est un <i>wrapper</i> pour le <i>driver</i> Windows. Il est capable 
+    d'écrire des fichiers sur NTFS mais contient encore certains bogues et est 
+    beaucoup plus lent que le <i>driver</i> NTFS de Linux. Captive est 
+    développé sur <a href="http://www.reactos.com/">ReactOS</a> et utilise le <i>
+    driver</i>
+    LUFS. Il est problable 
+    que si un montant égal de temps avait été mis sur le développement du <i>
+    driver</i> NTFS Linux que sur celui de Captive, nous aurions déjà une <i>
+    driver</i> fiable, entièrement <i>open-source</i> et supportant l'écriture.</p>
+
+    <p><a href="ntfs-fr.html#top">Retour au haut de la page</a></p>
+
+    <table summary="" border="0" cellspacing="0" width="100%">
+      <tbody><tr>
+	<td class="copyright" width="99%">Copyright &copy; flatcap (Richard Russon)</td>
+        <td valign="bottom" width="88"><a href="http://sourceforge.net/"><img src="style/sflogo.png" alt="SourceForge" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://validator.w3.org/check?uri=referer"><img src="style/valid-html401.png" alt="Validate HTML" border="0" width="88" height="31"></a></td>
+        <td valign="bottom" width="88"><a class="contact" href="http://jigsaw.w3.org/css-validator/check/referer"><img src="style/valid-css.png" alt="Validate CSS" border="0" width="88" height="31"></a></td>
+      </tr>
+    </tbody></table>
+  
+
+</body></html>
