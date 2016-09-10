@@ -20,6 +20,8 @@ It features:
   [![Spanish][17]][18]
   [![Traditional Chinese][19]][20]
   [![Vietnamese][21]][22]
+- [NTFS Technical Docs](https://flatcap.github.io/linux-ntfs/ntfs/)
+- [LDM Technical Docs](https://flatcap.github.io/linux-ntfs/ldm/)
 
   [1]:  https://flatcap.github.io/linux-ntfs/info/style/uk.png
   [2]:  https://flatcap.github.io/linux-ntfs/info/ntfs.html (NTFS FAQ in English)
