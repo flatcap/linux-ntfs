@@ -1,0 +1,8 @@
+[submodule "ntfs-docs"]
+	path = ntfs
+	url = https://github.com/flatcap/ntfs-docs
+	branch = gh-pages
+[submodule "ldm-docs"]
+	path = ldm
+	url = https://github.com/flatcap/ldm-docs
+	branch = gh-pages
